@@ -22,7 +22,7 @@ The app runs with all of these blank or in draft. Admin → Content flags shows 
 ## Materials still needed
 
 11. Module 5: milestones quick-reference guide, both matching card sets (currently 6 sample cards each), and real scenario cards (one sample scenario now).
-12. Elliott Sans font files (`.woff2`) and the CTR logo file. Until then the app uses Nunito Sans and four CSS circles.
+12. Elliott Sans font files (`.woff2`). Until then the app uses Nunito Sans. (Logo received and in place.)
 13. **Links:** neighborhood videos (5) and Homes.com Congress Heights, Revisionist History episode, A Tale of Two Systems, KIPP DC 25-year video,
     Hometown Padlet, the correct Personal Why link (the one sent matches Praxis Registration), Teaching Is Heart Work video, Hattie video,
     the three scenario videos and their captions, the four-domains video, Genially originals, Praxis documentation upload,

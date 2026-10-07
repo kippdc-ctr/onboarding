@@ -2,8 +2,8 @@ import { redirect } from "next/navigation";
 import { sql } from "@/lib/db";
 import { getSettings, pickerName } from "@/lib/data";
 import { currentResident } from "@/lib/session";
-import { ResidentHeader } from "@/components/ResidentHeader";
 import { NamePicker } from "@/components/NamePicker";
+import { FullLogo } from "@/components/Logo";
 
 export const dynamic = "force-dynamic";
 
@@ -19,14 +19,8 @@ export default async function Landing() {
 
   return (
     <>
-      <ResidentHeader />
       <main id="main" className="mx-auto max-w-xl px-4 py-8 sm:py-12">
-        <div className="mb-6 flex gap-2" aria-hidden="true">
-          <span className="h-3 w-12 rounded-full bg-coral" />
-          <span className="h-3 w-12 rounded-full bg-teal-light" />
-          <span className="h-3 w-12 rounded-full bg-yellow" />
-          <span className="h-3 w-12 rounded-full bg-teal" />
-        </div>
+        <FullLogo className="mx-auto mb-8 h-40 w-40 sm:h-48 sm:w-48" />
         <h1 className="h1">Welcome to the Team!</h1>
         <p className="mt-3 text-xl">We&apos;re so happy you&apos;re joining us.</p>
         <p className="mt-1 text-lg font-semibold text-teal-ink">Together, a future without limits.</p>
