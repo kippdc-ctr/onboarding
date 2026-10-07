@@ -1,0 +1,42 @@
+{
+  "_comment": "Initial database rows. Seeding never overwrites rows that already exist, so edits made in /admin are kept.",
+  "groups": [
+    { "number": 1, "welcome_email_date": "2026-12-07" },
+    { "number": 2, "welcome_email_date": "2027-03-01" },
+    { "number": 3, "welcome_email_date": "2027-04-01" },
+    { "number": 4, "welcome_email_date": "2027-05-01" },
+    { "number": 5, "welcome_email_date": "2027-06-01" },
+    { "number": 6, "welcome_email_date": "2027-07-01" }
+  ],
+  "modules": [
+    { "slug": "our-city-our-schools", "title": "Our City, Our Schools", "sort_order": 1, "due_date": "2027-06-15", "soft_due_date": null },
+    { "slug": "your-story-matters", "title": "Your Story Matters", "sort_order": 2, "due_date": "2027-06-15", "soft_due_date": "2027-06-26T09:00:00-04:00" },
+    { "slug": "what-we-believe", "title": "What We Believe", "sort_order": 3, "due_date": "2027-07-01", "soft_due_date": null },
+    { "slug": "you-are-the-variable", "title": "You Are the Variable", "sort_order": 4, "due_date": "2027-07-01", "soft_due_date": null },
+    { "slug": "child-development", "title": "Child Development", "sort_order": 5, "due_date": "2027-07-01", "soft_due_date": null }
+  ],
+  "phase_items": [
+    { "id": "p1-info-form", "phase": 1, "sort_order": 1, "label": "Complete Resident Information Form", "description": null, "link_key": "url.resident_info_form", "due_rule": "group_plus_days", "due_days": 14, "due_date": null, "required": true, "condition": null },
+    { "id": "p1-praxis-exemption", "phase": 1, "sort_order": 2, "label": "Complete Praxis Stage 1: submit exemption form", "description": "Required even if you believe you are exempt.", "link_key": "url.praxis_exemption_form", "due_rule": "group_plus_days", "due_days": 14, "due_date": null, "required": true, "condition": null },
+    { "id": "p1-welcome-call", "phase": 1, "sort_order": 3, "label": "Schedule your Welcome Call", "description": null, "link_key": "url.welcome_call", "due_rule": "group_plus_days", "due_days": 14, "due_date": null, "required": true, "condition": null },
+    { "id": "p1-praxis-registration", "phase": 1, "sort_order": 4, "label": "Complete Praxis Registration", "description": null, "link_key": "url.praxis_registration", "due_rule": "group_plus_days", "due_days": 14, "due_date": null, "required": true, "condition": "praxis_not_exempt" },
+
+    { "id": "p3-background", "phase": 3, "sort_order": 1, "label": "Complete background checks", "description": "HireRight (includes Sex Offender Registry), 7-year reference collection, FBI fingerprint check, and NASDTEC.", "link_key": "url.p3.background_checklist", "due_rule": "fixed", "due_days": null, "due_date": "2027-07-09", "required": true, "condition": null },
+    { "id": "p3-workday", "phase": 3, "sort_order": 2, "label": "Complete Workday onboarding", "description": "Workday access arrives after the New Hire Onboarding Preview webinar. Sign the background check consent form and complete the other onboarding items.", "link_key": "url.p3.workday_instructions", "due_rule": "fixed", "due_days": null, "due_date": "2027-07-09", "required": true, "condition": null },
+    { "id": "p3-contact-info", "phase": 3, "sort_order": 3, "label": "Update your contact information (optional)", "description": null, "link_key": null, "due_rule": "fixed", "due_days": null, "due_date": "2027-07-09", "required": false, "condition": null },
+    { "id": "p3-webinar", "phase": 3, "sort_order": 4, "label": "Attend the New Hire Onboarding Preview webinar (optional)", "description": null, "link_key": "url.p3.webinar", "due_rule": "fixed", "due_days": null, "due_date": "2027-07-09", "required": false, "condition": null },
+    { "id": "p3-summer-schedule", "phase": 3, "sort_order": 5, "label": "Review the Summer Academy schedule", "description": null, "link_key": "url.p3.summer_academy_schedule", "due_rule": "fixed", "due_days": null, "due_date": "2027-07-09", "required": true, "condition": null }
+  ],
+  "sample_residents": [
+    { "first_name": "Sample", "last_name": "Avery", "grade_band": "ECE", "group_number": 1, "school": "Grow" },
+    { "first_name": "Sample", "last_name": "Brooks", "grade_band": "Elementary", "group_number": 1, "school": "Heights" },
+    { "first_name": "Sample", "last_name": "Castillo", "grade_band": "Middle", "group_number": 2, "school": "Aim" },
+    { "first_name": "Sample", "last_name": "Diallo", "grade_band": "Secondary", "group_number": 2, "school": "KIPP DC College Preparatory (KCP)" },
+    { "first_name": "Sample", "last_name": "Ellis", "grade_band": "Elementary", "group_number": 3, "school": "Promise" },
+    { "first_name": "Sample", "last_name": "Fontaine", "grade_band": "Middle", "group_number": 3, "school": "Valor" },
+    { "first_name": "Sample", "last_name": "Greene", "grade_band": "ECE", "group_number": 4, "school": "Discover" },
+    { "first_name": "Sample", "last_name": "Hughes", "grade_band": "Secondary", "group_number": 5, "school": "Legacy College Prep" },
+    { "first_name": "Sample", "last_name": "Ito", "grade_band": "Elementary", "group_number": 6, "school": "Spring" },
+    { "first_name": "Sample", "last_name": "Johnson", "grade_band": "Middle", "group_number": 6, "school": "KEY" }
+  ]
+}

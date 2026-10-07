@@ -1,0 +1,156 @@
+{
+  "slug": "you-are-the-variable",
+  "number": 4,
+  "title": "You Are the Variable",
+  "description": "Teacher self-efficacy, collective efficacy, and your own starting point.",
+  "estimatedMinutes": 45,
+  "geniallyLinkKey": "url.genially.you-are-the-variable",
+  "objectives": [
+    "Define teacher self-efficacy and explain why it is one of the strongest predictors of student outcomes.",
+    "Distinguish between self-efficacy and collective efficacy and explain how both operate in a school community.",
+    "Identify specific actions and habits of mind that build and sustain efficacy over time.",
+    "Reflect on your own efficacy starting point and articulate a growth-oriented response."
+  ],
+  "sections": [
+    {
+      "id": "hattie-video",
+      "title": "Collective Teacher Efficacy according to John Hattie",
+      "audioUrl": "",
+      "blocks": [
+        { "type": "link", "kind": "video", "label": "Watch: Collective Teacher Efficacy (John Hattie)", "linkKey": "url.m4.hattie_video" }
+      ]
+    },
+    {
+      "id": "teacher-is-variable",
+      "title": "The Teacher Is the Variable",
+      "audioUrl": "",
+      "blocks": [
+        { "type": "text", "text": "John Hattie's Visible Learning synthesizes more than 1,700 studies. It identifies teacher self-efficacy as one of the most powerful predictors of student achievement." },
+        { "type": "text", "text": "Self-efficacy is not general confidence. It is belief in your capacity to produce outcomes through your specific actions in a particular situation." },
+        { "type": "table", "sample": true, "columns": ["High self-efficacy", "Low self-efficacy"], "rows": [
+          ["Persists when students struggle", "Gives up when strategies don't work right away"],
+          ["Looks for what to adjust in their own practice", "Attributes results to students or circumstances"],
+          ["Seeks feedback and support", "Avoids showing struggle"],
+          ["Sets high expectations and plans to meet them", "Lowers expectations to avoid failure"]
+        ] },
+        { "type": "text", "text": "Self-efficacy is developmental. No resident arrives with high efficacy in all areas." }
+      ]
+    },
+    {
+      "id": "callout",
+      "title": "A force, not a fact",
+      "blocks": [
+        { "type": "callout", "text": "A teacher's belief about whether they can reach a student is not a neutral fact. It is a force that actively shapes what that student experiences in the classroom every day." }
+      ]
+    },
+    {
+      "id": "scenario-videos",
+      "title": "Efficacy in Action: Scenario Videos",
+      "audioUrl": "",
+      "blocks": [
+        { "type": "text", "text": "Each video shows a high-efficacy and a low-efficacy response to the same moment. High-efficacy responses are not perfect; they are persistent, reflective, and growth-oriented." },
+        { "type": "link", "kind": "video", "label": "Watch: Ms. Rivera", "linkKey": "url.m4.rivera_video", "captionsLinkKey": "url.m4.rivera_captions" },
+        { "type": "link", "kind": "video", "label": "Watch: Ms. Kim", "linkKey": "url.m4.kim_video", "captionsLinkKey": "url.m4.kim_captions" },
+        { "type": "link", "kind": "video", "label": "Watch: Mr. Logan", "linkKey": "url.m4.logan_video", "captionsLinkKey": "url.m4.logan_captions" }
+      ]
+    },
+    {
+      "id": "collective-efficacy",
+      "title": "Collective Efficacy: The Power of the Team",
+      "audioUrl": "",
+      "blocks": [
+        { "type": "text", "text": "Collective efficacy is a team's shared belief in its ability to produce positive outcomes for students." },
+        { "type": "list", "items": [
+          "It has one of the highest effect sizes in Hattie's research: higher than socioeconomic status, prior achievement, or home environment.",
+          "It is not the same as morale.",
+          "It is built through shared goals, shared language, shared accountability, and repeated evidence that efforts make a difference."
+        ] }
+      ]
+    },
+    {
+      "id": "starting-point",
+      "title": "Your Efficacy Starting Point",
+      "audioUrl": "",
+      "blocks": [
+        { "type": "text", "text": "Naming your strengths and anticipated doubts is a prerequisite for targeted growth." },
+        { "type": "callout", "text": "When doubt shows up, the high-efficacy response is to name it, seek support, and take one concrete next step." },
+        { "type": "reflection", "promptId": "m4-efficacy", "prompt": "Where do you feel most capable as a teacher right now? Where do you anticipate doubt, and what is one thing you will do when it shows up?" }
+      ]
+    },
+    {
+      "id": "knowledge-check",
+      "title": "Knowledge check",
+      "blocks": [{ "type": "quiz" }]
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "id": "m4-q1",
+        "prompt": "How does John Hattie's Visible Learning research describe the role of teacher self-efficacy?",
+        "options": [
+          { "id": "A", "text": "It primarily affects teacher job satisfaction, not student outcomes" },
+          { "id": "B", "text": "It is one factor among many, roughly equal in importance to curriculum and school funding" },
+          { "id": "C", "text": "It is one of the most powerful predictors of student achievement identified across more than 1,700 studies" },
+          { "id": "D", "text": "Its effect on student outcomes is limited to students in early elementary grades" }
+        ],
+        "correct": "C",
+        "explanation": "Across 1,700+ studies, teacher self-efficacy stands out as one of the strongest predictors of achievement."
+      },
+      {
+        "id": "m4-q2",
+        "prompt": "A teacher's class scores lower than expected on a mid-year assessment. Which response best reflects high self-efficacy?",
+        "options": [
+          { "id": "A", "text": "\"I'll mention this to my coach but keep doing what I'm doing. One assessment isn't everything.\"" },
+          { "id": "B", "text": "\"The assessment probably wasn't a fair measure of what I taught.\"" },
+          { "id": "C", "text": "\"I need to look at where the gaps are and adjust my approach for the next unit.\"" },
+          { "id": "D", "text": "\"These students just aren't putting in the effort. I can't make them care.\"" }
+        ],
+        "correct": "C",
+        "explanation": "High efficacy means owning the result and adjusting your own practice."
+      },
+      {
+        "id": "m4-q3",
+        "prompt": "What is the key difference between self-efficacy and collective efficacy?",
+        "options": [
+          { "id": "A", "text": "Collective efficacy is another term for school culture and has no specific definition in research" },
+          { "id": "B", "text": "Self-efficacy decreases as teachers gain experience; collective efficacy increases" },
+          { "id": "C", "text": "Self-efficacy applies to teachers; collective efficacy applies only to school leaders" },
+          { "id": "D", "text": "Self-efficacy is about believing you can impact outcomes on your own; collective efficacy is a team's shared belief in its ability to produce results together" }
+        ],
+        "correct": "D",
+        "explanation": "Self-efficacy is individual belief; collective efficacy is a team's shared belief."
+      },
+      {
+        "id": "m4-q4",
+        "prompt": "According to Hattie's research, collective efficacy has an effect size higher than which of the following factors?",
+        "options": [
+          { "id": "A", "text": "Student access to technology in the classroom" },
+          { "id": "B", "text": "Class size and student-to-teacher ratio" },
+          { "id": "C", "text": "Teacher credentials and certification status" },
+          { "id": "D", "text": "Socioeconomic status, prior student achievement, and home environment" }
+        ],
+        "correct": "D",
+        "explanation": "Collective efficacy outranks socioeconomic status, prior achievement, and home environment."
+      },
+      {
+        "id": "m4-q5",
+        "prompt": "A resident teacher struggles in the first few weeks and begins to think, \"Maybe I'm just not cut out for this.\" Which of the following best reflects a high-efficacy response to this moment?",
+        "options": [
+          { "id": "A", "text": "Push through independently and avoid showing vulnerability to colleagues or coaches" },
+          { "id": "B", "text": "Focus only on lessons that are going well to rebuild confidence before addressing areas of struggle" },
+          { "id": "C", "text": "Name the doubt, seek support from your coach or team, and identify one concrete next step" },
+          { "id": "D", "text": "Accept that some people are natural teachers and others are not, and adjust expectations accordingly" }
+        ],
+        "correct": "C",
+        "explanation": "Name it, seek support, take one concrete next step."
+      }
+    ]
+  },
+  "completion": {
+    "allQuestions": true,
+    "reflections": ["m4-efficacy"],
+    "checklist": [],
+    "activities": []
+  }
+}

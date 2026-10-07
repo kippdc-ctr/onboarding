@@ -1,0 +1,158 @@
+{
+  "slug": "what-we-believe",
+  "number": 3,
+  "title": "What We Believe",
+  "description": "Child development, asset-based thinking, and how we see students and families.",
+  "estimatedMinutes": 45,
+  "geniallyLinkKey": "url.genially.what-we-believe",
+  "objectives": [
+    "Identify the domains of child development and explain how developmental stages influence student learning and behavior.",
+    "Define asset-based thinking and contrast it with deficit-based approaches to students and families.",
+    "Identify specific ways deficit narratives show up in schools: in language, policy, and practice.",
+    "Apply asset-based framing to realistic classroom and family engagement scenarios.",
+    "Connect asset-based mindsets to KIPP DC's mission and your own personal why."
+  ],
+  "sections": [
+    {
+      "id": "four-domains",
+      "title": "The Four Domains",
+      "audioUrl": "",
+      "blocks": [
+        { "type": "link", "kind": "video", "label": "Watch: The Four Domains", "linkKey": "url.m3.four_domains_video" },
+        { "type": "list", "items": [
+          "**Cognitive:** knowledge and intellectual skills.",
+          "**Physical:** body growth and movement.",
+          "**Social:** interactions with people and the environment.",
+          "**Emotional:** processing and understanding feelings."
+        ] }
+      ]
+    },
+    {
+      "id": "why-it-matters",
+      "title": "Why does this matter?",
+      "audioUrl": "",
+      "blocks": [
+        { "type": "text", "text": "Understanding child development gives asset-based thinking its foundation. A child who pushes back, shuts down, or moves through big emotions loudly is not a problem; they are a child doing what children at their developmental stage do." },
+        { "type": "callout", "text": "It shifts the first question from \"What is wrong with this child?\" to \"What does this child need right now?\"" }
+      ]
+    },
+    {
+      "id": "whole-child",
+      "title": "Seeing the Whole Child: Asset-Based Thinking",
+      "audioUrl": "",
+      "blocks": [
+        { "type": "text", "text": "Asset-based thinking focuses on students' strengths, knowledge, and cultural resources rather than on what they lack." },
+        { "type": "text", "text": "**Deficit ideology** (Gorski, 2011) does the opposite: it locates the cause of inequity in students, families, and communities instead of in the systems around them." },
+        { "type": "text", "text": "**The Pygmalion Effect** (Rosenthal & Jacobson, 1968): students tend to rise or fall to the level of belief their teacher holds about them." }
+      ]
+    },
+    {
+      "id": "ladson-billings",
+      "title": "Gloria Ladson-Billings: Culturally Relevant Pedagogy (1995)",
+      "audioUrl": "",
+      "blocks": [
+        { "type": "text", "text": "Culturally relevant pedagogy rests on three pillars:" },
+        { "type": "list", "items": ["**Academic Success**", "**Cultural Competence**", "**Sociopolitical Consciousness**"] },
+        { "type": "callout", "text": "All three pillars require an asset-based orientation." }
+      ]
+    },
+    {
+      "id": "deficit-thinking",
+      "title": "Naming and Interrupting Deficit Thinking",
+      "audioUrl": "",
+      "blocks": [
+        { "type": "text", "text": "Deficit thinking shows up in:" },
+        { "type": "list", "items": [
+          "**Language:** \"those kids,\" \"at-risk,\" \"low.\"",
+          "**Tracking** that sorts students by perceived ability.",
+          "**Discipline policies** that disproportionately exclude Black, brown, and low-income students."
+        ] },
+        { "type": "callout", "text": "Shift the question to: \"What does this student know, and how do I build on it?\"" }
+      ]
+    },
+    {
+      "id": "families",
+      "title": "Families as Partners",
+      "audioUrl": "",
+      "blocks": [
+        { "type": "text", "text": "Skepticism from historically underserved families is a response to institutional failure, not a lack of value for learning (Ladson-Billings, 2017)." },
+        { "type": "text", "text": "Treat caregivers as experts on their own children. KIPP DC's mission begins \"Together with families and communities.\"" }
+      ]
+    },
+    {
+      "id": "knowledge-check",
+      "title": "Knowledge check",
+      "blocks": [{ "type": "quiz" }]
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "id": "m3-q1",
+        "prompt": "Which of the following best describes an asset-based approach to teaching?",
+        "options": [
+          { "id": "A", "text": "Celebrating cultural differences during designated heritage months while maintaining standard instruction" },
+          { "id": "B", "text": "Avoiding any acknowledgment of academic gaps so students do not feel discouraged" },
+          { "id": "C", "text": "Focusing on what students know and can do, and building instruction from those strengths" },
+          { "id": "D", "text": "Lowering academic expectations so that all students can experience success" }
+        ],
+        "correct": "C",
+        "explanation": "Asset-based teaching starts from students' strengths and builds instruction from them, without lowering expectations."
+      },
+      {
+        "id": "m3-q2",
+        "prompt": "What does Rosenthal and Jacobson's 1968 Pygmalion research demonstrate about teacher expectations?",
+        "options": [
+          { "id": "A", "text": "Students tend to rise or fall to the level of belief their teacher holds about them, regardless of their actual starting point" },
+          { "id": "B", "text": "Positive expectations only benefit students who already have a strong academic foundation" },
+          { "id": "C", "text": "Only the expectations of highly experienced teachers influence student performance" },
+          { "id": "D", "text": "Teacher expectations have no measurable impact on student outcomes once students reach middle school" }
+        ],
+        "correct": "A",
+        "explanation": "The Pygmalion Effect shows that teacher beliefs shape student outcomes, whatever the starting point."
+      },
+      {
+        "id": "m3-q3",
+        "prompt": "A teacher looks at a student's cumulative file before the year begins and thinks, \"This student has a lot of absences and low test scores. This is going to be a challenging year.\" Which of the following best describes this kind of thinking?",
+        "options": [
+          { "id": "A", "text": "Neutral: reviewing records is standard practice and does not reflect a mindset" },
+          { "id": "B", "text": "Deficit thinking: the teacher is starting with what the student lacks rather than what they bring" },
+          { "id": "C", "text": "Culturally relevant: the teacher is using data to inform their instruction" },
+          { "id": "D", "text": "Asset-based: the teacher is being realistic about the student's needs" }
+        ],
+        "correct": "B",
+        "explanation": "Starting from what a student lacks, before meeting them, is deficit thinking."
+      },
+      {
+        "id": "m3-q4",
+        "prompt": "According to Ladson-Billings' research, what do effective teachers of Black students consistently do?",
+        "options": [
+          { "id": "A", "text": "Avoid discussing race and culture in class to maintain a neutral environment" },
+          { "id": "B", "text": "Hold high expectations, validate students' cultural identities, and view student differences as assets" },
+          { "id": "C", "text": "Focus exclusively on academic content and leave cultural competence to other staff" },
+          { "id": "D", "text": "Lower expectations to reduce stress and build confidence gradually" }
+        ],
+        "correct": "B",
+        "explanation": "Effective teachers pair high expectations with cultural validation and see differences as assets."
+      },
+      {
+        "id": "m3-q5",
+        "prompt": "A parent misses a school event and doesn't respond to a teacher's phone call. Which response reflects an asset-based approach to families?",
+        "options": [
+          { "id": "A", "text": "\"I've done my part. It's up to them to show up.\"" },
+          { "id": "B", "text": "\"This family is clearly not invested in their child's education.\"" },
+          { "id": "C", "text": "\"I should report this to administration so they can follow up.\"" },
+          { "id": "D", "text": "\"I'll try a different way of reaching out. They may have barriers I don't know about, and they deserve my effort.\"" }
+        ],
+        "correct": "D",
+        "explanation": "An asset-based response assumes good intent, considers barriers, and keeps reaching out."
+      }
+    ]
+  },
+  "completion": {
+    "allQuestions": true,
+    "reflections": [],
+    "checklist": [],
+    "activities": []
+  }
+}

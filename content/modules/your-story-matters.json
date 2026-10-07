@@ -1,0 +1,78 @@
+{
+  "slug": "your-story-matters",
+  "number": 2,
+  "title": "Your Story Matters",
+  "description": "Introduce yourself, develop your why, and tell us how you work best.",
+  "estimatedMinutes": 60,
+  "geniallyLinkKey": "url.genially.your-story-matters",
+  "softDueNote": "Intro and why submissions are requested by {softDue}.",
+  "objectives": [
+    "Articulate a personal \"why\" for teaching that connects to your values, experiences, and commitment to students.",
+    "Identify your learning preferences and professional context in ways that inform your development during the residency.",
+    "Introduce yourself to the KIPP DC community in a way that reflects both your identity and your purpose."
+  ],
+  "sections": [
+    {
+      "id": "background",
+      "title": "Your Background: A Resource",
+      "audioUrl": "",
+      "blocks": [
+        { "type": "text", "text": "Your personal, educational, and professional history shapes how you see students, how you build relationships, and what you bring to a classroom." },
+        { "type": "callout", "text": "Your reasons for choosing DC matter to this community." }
+      ]
+    },
+    {
+      "id": "get-to-know-you",
+      "title": "Help Us Get To Know You",
+      "audioUrl": "",
+      "blocks": [
+        { "type": "text", "text": "Complete each submission using the button, then tick it off here." },
+        { "type": "checklist", "items": [
+          { "id": "padlet", "label": "Hometown Padlet", "description": "CTR Hometowns: drop a pin and add a post with your name and something you love about your hometown.", "linkKey": "url.m2.padlet" },
+          { "id": "intro-slide", "label": "Intro Slide submission", "linkKey": "url.m2.intro_slide" },
+          { "id": "gradeband-photo", "label": "Grade-band photo", "optional": true, "linkKey": "url.m2.gradeband_photo" }
+        ] }
+      ]
+    },
+    {
+      "id": "heart-work",
+      "title": "Teaching Is Heart Work",
+      "audioUrl": "",
+      "blocks": [
+        { "type": "link", "kind": "video", "label": "Watch: Teaching Is Heart Work (Teach For America)", "linkKey": "url.m2.heart_work_video" }
+      ]
+    },
+    {
+      "id": "developing-why",
+      "title": "Developing Your Why",
+      "audioUrl": "",
+      "blocks": [
+        { "type": "text", "text": "Take a few minutes with each of these questions:" },
+        { "type": "list", "items": ["Who are you?", "What do you value?", "What do you want to be true for students?", "Why does it matter?"] },
+        { "type": "reflection", "promptId": "m2-why-themes", "prompt": "Are any key themes emerging? Are there any words that you have an emotional response to or feel particularly drawn to?" },
+        { "type": "text", "text": "A good why statement is simple, short, and easy to understand. It has no \"whats\" and is clear without further explanation." },
+        { "type": "reflection", "promptId": "m2-why-tuesday", "prompt": "Will this sustain me on a hard Tuesday in October?" },
+        { "type": "reflection", "promptId": "m2-why-statement", "prompt": "Draft your why statement.", "rows": 3 },
+        { "type": "checklist", "items": [
+          { "id": "personal-why", "label": "Submitted Personal Why", "linkKey": "url.m2.personal_why" }
+        ] }
+      ]
+    },
+    {
+      "id": "preferences",
+      "title": "Your Preferences and Context",
+      "audioUrl": "",
+      "blocks": [
+        { "type": "text", "text": "Next, complete the Mentor Match survey. It asks about your feedback preferences, how you handle stress, your communication style, and your grade-band preference. Grade-band preferences are considered, but placement can't be promised." },
+        { "type": "form", "formSlug": "mentor-match", "checklistItemId": "mentor-match", "label": "Mentor Match survey" }
+      ]
+    }
+  ],
+  "quiz": null,
+  "completion": {
+    "allQuestions": false,
+    "reflections": ["m2-why-themes", "m2-why-tuesday"],
+    "checklist": ["padlet", "intro-slide", "personal-why", "mentor-match"],
+    "activities": []
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "slug": "our-city-our-schools",
+  "number": 1,
+  "title": "Our City, Our Schools",
+  "description": "Washington, DC's history, neighborhoods, and schools, and where KIPP DC fits in.",
+  "estimatedMinutes": 60,
+  "geniallyLinkKey": "url.genially.our-city-our-schools",
+  "objectives": [
+    "Describe the demographic, economic, and cultural context of Washington, DC.",
+    "Summarize the history of DC's public education system and the consequences of systemic under-investment.",
+    "Explain DC's dual education landscape and what research says about student outcomes.",
+    "Identify KIPP DC's origins, mission, and role in the broader DC education ecosystem.",
+    "Articulate why historical knowledge of DC is relevant to your daily work as a resident teacher."
+  ],
+  "sections": [
+    {
+      "id": "city-of-contrasts",
+      "title": "A City of Contrasts",
+      "audioUrl": "",
+      "blocks": [
+        { "type": "text", "text": "Washington, DC is the seat of federal power. It is also a predominantly Black city with a deep history of resistance." },
+        { "type": "list", "items": [
+          "DC has no voting representation in Congress, despite having a larger population than two states.",
+          "The city is majority-minority.",
+          "DC has one of the highest income inequality rates of any major American city.",
+          "Nearly 1 in 5 DC children lives in poverty."
+        ] },
+        { "type": "callout", "text": "This is the city your students are growing up in. Understanding it is part of your job." }
+      ]
+    },
+    {
+      "id": "neighborhoods",
+      "title": "Neighborhoods",
+      "audioUrl": "",
+      "blocks": [
+        { "type": "text", "text": "Wards east of the Anacostia River have historically been under-resourced, over-policed, and underserved by public institutions, including schools." },
+        { "type": "callout", "text": "This doesn't mean your students are defined by their zip codes." }
+      ]
+    },
+    {
+      "id": "reflect-neighborhood",
+      "title": "Reflect",
+      "blocks": [
+        { "type": "reflection", "promptId": "m1-neighborhood", "prompt": "Think about the neighborhood where your school is located. What do you already know about it? What do you want to know?" }
+      ]
+    },
+    {
+      "id": "choose-adventure",
+      "title": "Choose your own adventure: DC neighborhoods",
+      "audioUrl": "",
+      "blocks": [
+        { "type": "text", "text": "Pick one or more neighborhoods to explore. Each is near a KIPP DC campus." },
+        { "type": "cards", "cards": [
+          { "title": "Anacostia", "subtitle": "Near KIPP DC Douglass", "linkKey": "url.m1.neighborhood.anacostia", "kind": "video" },
+          { "title": "Hillcrest", "subtitle": "Near KIPP DC Benning", "linkKey": "url.m1.neighborhood.hillcrest", "kind": "video" },
+          { "title": "Congress Heights", "subtitle": "Near KIPP DC Wheeler and Legacy College Prep", "linkKey": "url.m1.neighborhood.congress_heights", "kind": "article" },
+          { "title": "Deanwood", "subtitle": "Near KIPP DC Smilow", "linkKey": "url.m1.neighborhood.deanwood", "kind": "video" },
+          { "title": "H St. Corridor", "subtitle": "Near KIPP DC Webb and KIPP DC College Prep", "linkKey": "url.m1.neighborhood.h_street", "kind": "video" },
+          { "title": "Shaw & U Street", "subtitle": "Near KIPP DC Shaw", "linkKey": "url.m1.neighborhood.shaw_u", "kind": "video" }
+        ] }
+      ]
+    },
+    {
+      "id": "education-in-district",
+      "title": "Education in the District",
+      "audioUrl": "",
+      "blocks": [
+        { "type": "heading", "text": "Before Brown" },
+        { "type": "text", "text": "DC ran a segregated school system. Black schools were sites of excellence, staffed by highly educated Black teachers who knew their students and communities." },
+        { "type": "heading", "text": "Brown v. Board (1954) and what was lost" },
+        { "type": "text", "text": "Desegregation was a landmark victory, and it came at a cost, including the mass dismissal of Black teachers." },
+        { "type": "link", "kind": "audio", "label": "Listen: Revisionist History, \"Miss Buchanan's Period of Adjustment\" (Malcolm Gladwell)", "linkKey": "url.m1.revisionist_history" },
+        { "type": "heading", "text": "The 1990s collapse of DCPS" },
+        { "type": "text", "text": "By the 1990s, DCPS was described as \"educationally and managerially bankrupt.\"" },
+        { "type": "heading", "text": "DC charter history" },
+        { "type": "text", "text": "1996 legislation created the DC Public Charter School Board. Charters served over 27% of students by 2007 and close to half today." },
+        { "type": "heading", "text": "The Reform Era" },
+        { "type": "text", "text": "In 2007, Mayor Adrian Fenty and Chancellor Michelle Rhee launched an era of reform, including the IMPACT teacher evaluation system." },
+        { "type": "link", "kind": "article", "label": "Read: A Tale of Two Systems", "linkKey": "url.m1.tale_of_two_systems" },
+        { "type": "callout", "title": "Key Idea", "text": "Reform in DC was never just about data. It was always about race, power, and who gets to decide what's best for children." }
+      ]
+    },
+    {
+      "id": "kipp-dc",
+      "title": "KIPP and KIPP DC",
+      "audioUrl": "",
+      "blocks": [
+        { "type": "text", "text": "KIPP was founded in 1994 by Mike Feinberg and Dave Levin. KIPP DC opened its first school in 2001." },
+        { "type": "link", "kind": "video", "label": "Watch: Celebrating 25 Years of KIPP DC Public Schools", "linkKey": "url.m1.kipp25_video" },
+        { "type": "quote", "cite": "KIPP DC mission", "text": "Together with families and communities, we create joyful, academically excellent schools that prepare students with the skills and confidence to pursue the paths they choose — college, career, and beyond — so they can lead fulfilling lives and build a more just world." }
+      ]
+    },
+    {
+      "id": "knowledge-check",
+      "title": "Knowledge check",
+      "blocks": [{ "type": "quiz" }]
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "id": "m1-q1",
+        "prompt": "Which of the following best describes the economic landscape of Washington, DC?",
+        "options": [
+          { "id": "A", "text": "DC's poverty rate is lower than most major American cities" },
+          { "id": "B", "text": "DC has high income inequality, with extreme wealth and concentrated poverty coexisting" },
+          { "id": "C", "text": "DC is a uniformly wealthy city with few low-income residents" }
+        ],
+        "correct": "B",
+        "explanation": "DC has one of the highest income inequality rates of any major American city."
+      },
+      {
+        "id": "m1-q2",
+        "prompt": "What does research tell us about the impact of having a Black teacher on Black students?",
+        "options": [
+          { "id": "A", "text": "There is no measurable difference in outcomes based on teacher race" },
+          { "id": "B", "text": "Black students with at least one Black teacher are significantly more likely to graduate from high school and aspire to college" },
+          { "id": "C", "text": "The impact only applies to students in elementary school" }
+        ],
+        "correct": "B",
+        "explanation": "Having even one Black teacher raises Black students' graduation rates and college aspirations."
+      },
+      {
+        "id": "m1-q3",
+        "prompt": "According to A Tale of Two Systems, what was the primary reason DCPS was labeled \"educationally and managerially bankrupt\" in the 1990s?",
+        "options": [
+          { "id": "A", "text": "Significant underfunding relative to other major American cities" },
+          { "id": "B", "text": "Decades of political corruption, patronage hiring, and systemic disinvestment in students" },
+          { "id": "C", "text": "A lack of student motivation and family engagement in DC communities" }
+        ],
+        "correct": "B",
+        "explanation": "The reading points to political corruption, patronage hiring, and systemic disinvestment, not students or families."
+      },
+      {
+        "id": "m1-q4",
+        "prompt": "What does KIPP DC's mission mean when it says \"the paths they choose\"?",
+        "options": [
+          { "id": "A", "text": "KIPP DC guides all students toward four-year college as the primary pathway" },
+          { "id": "B", "text": "KIPP DC gives students skills and confidence to pursue their own paths: college, career, and beyond" },
+          { "id": "C", "text": "KIPP DC allows students to opt out of academic expectations based on personal preference" }
+        ],
+        "correct": "B",
+        "explanation": "The mission is about students choosing their own paths, with the skills and confidence to pursue them."
+      }
+    ]
+  },
+  "completion": {
+    "allQuestions": true,
+    "reflections": ["m1-neighborhood"],
+    "checklist": [],
+    "activities": []
+  }
+}

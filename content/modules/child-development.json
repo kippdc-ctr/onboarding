@@ -1,0 +1,298 @@
+{
+  "slug": "child-development",
+  "number": 5,
+  "title": "Child Development",
+  "badge": "New this year",
+  "description": "Domains of development, milestones, and the major learning theories (Praxis PLT: Students as Learners).",
+  "estimatedMinutes": 75,
+  "geniallyLinkKey": "url.genially.child-development",
+  "geniallyLabel": "View the original slides",
+  "objectives": [
+    "Identify the domains of child development and describe typical milestones.",
+    "Explain how developmental stages influence student learning and behavior.",
+    "Differentiate between typical developmental variation and potential concerns.",
+    "Discuss the key concepts of major learning and development theories.",
+    "Apply an understanding of child development to plan developmentally appropriate strategies."
+  ],
+  "sections": [
+    {
+      "id": "opening",
+      "title": "Before we begin",
+      "blocks": [
+        { "type": "quote", "text": "How old would you be if you didn't know how old you were?", "cite": "Satchel Paige" }
+      ]
+    },
+    {
+      "id": "five-domains",
+      "title": "How Children Grow: Five Domains",
+      "audioUrl": "",
+      "blocks": [
+        { "type": "list", "items": [
+          "**Physical:** body, brain, gross and fine motor skills.",
+          "**Cognitive:** thinking, memory, problem-solving.",
+          "**Language:** expressive and receptive communication.",
+          "**Social-Emotional:** relationships, self-regulation, identity.",
+          "**Moral:** reasoning about right and wrong."
+        ] },
+        { "type": "callout", "text": "Development is uneven (asynchronous)." }
+      ]
+    },
+    {
+      "id": "milestones",
+      "title": "Milestones are tools, not rules",
+      "audioUrl": "",
+      "blocks": [
+        { "type": "list", "items": [
+          "**Typical, not universal:** milestones describe what most children do around an age, not what every child must do.",
+          "**Variability is expected.**",
+          "**Development is asynchronous:** a student can be advanced cognitively yet socially immature.",
+          "**Growth is dynamic:** expect bursts and plateaus."
+        ] }
+      ]
+    },
+    {
+      "id": "explore-guide",
+      "title": "Explore: Developmental Milestones Quick Reference",
+      "blocks": [
+        { "type": "link", "kind": "article", "label": "Open the milestones quick reference guide", "linkKey": "url.m5.milestones_guide" }
+      ]
+    },
+    {
+      "id": "practice-matching",
+      "title": "Practice: Matching",
+      "blocks": [
+        {
+          "type": "matching",
+          "activityId": "m5-match-domains",
+          "title": "Match each behavior to its developmental domain",
+          "sample": true,
+          "categories": ["Physical", "Cognitive", "Language", "Social-Emotional", "Moral"],
+          "cards": [
+            { "id": "c1", "text": "A kindergartner learns to cut along a line with scissors.", "answer": "Physical" },
+            { "id": "c2", "text": "A second grader sorts shapes by number of sides.", "answer": "Cognitive" },
+            { "id": "c3", "text": "A preschooler starts using full sentences to ask for help.", "answer": "Language" },
+            { "id": "c4", "text": "A fourth grader takes a deep breath and waits their turn instead of shouting out.", "answer": "Social-Emotional" },
+            { "id": "c5", "text": "A seventh grader argues a rule is unfair because it doesn't apply to everyone equally.", "answer": "Moral" },
+            { "id": "c6", "text": "A middle schooler plans the steps of a science project and checks their own work.", "answer": "Cognitive" }
+          ]
+        },
+        {
+          "type": "matching",
+          "activityId": "m5-match-gradebands",
+          "title": "Match each milestone to its grade band",
+          "sample": true,
+          "categories": ["ECE", "Elementary", "Middle", "Secondary"],
+          "cards": [
+            { "id": "g1", "text": "Begins to hold a pencil with a tripod grasp.", "answer": "ECE" },
+            { "id": "g2", "text": "Engages in pretend play with simple roles.", "answer": "ECE" },
+            { "id": "g3", "text": "Understands conservation of number and volume.", "answer": "Elementary" },
+            { "id": "g4", "text": "Peer acceptance becomes highly important; heightened self-consciousness.", "answer": "Middle" },
+            { "id": "g5", "text": "Reasons about abstract and hypothetical ideas.", "answer": "Secondary" },
+            { "id": "g6", "text": "Explores identity and future goals more independently.", "answer": "Secondary" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "three-theories",
+      "title": "Three Major Learning Theories",
+      "audioUrl": "",
+      "blocks": [
+        { "type": "heading", "text": "Behaviorism (Pavlov, Watson, Skinner)" },
+        { "type": "list", "items": [
+          "**Classical conditioning:** learning by association (Pavlov).",
+          "**Operant conditioning:** learning from consequences (Skinner).",
+          "**Reinforcement** increases a behavior; **punishment** decreases it."
+        ] },
+        { "type": "callout", "title": "PLT tip", "text": "\"Positive\" and \"negative\" mean adding vs. removing, not good vs. bad." },
+        { "type": "heading", "text": "Cognitivism (information processing)" },
+        { "type": "list", "items": [
+          "Information moves from the **sensory register** to **working memory** to **long-term memory**.",
+          "**Schema:** mental frameworks that organize knowledge.",
+          "**Chunking** helps working memory hold more.",
+          "**Metacognition:** thinking about your own thinking."
+        ] },
+        { "type": "heading", "text": "Constructivism (Piaget, Vygotsky)" },
+        { "type": "list", "items": [
+          "**Piaget:** children build understanding through four stages, using **assimilation** (fitting new information into existing schema) and **accommodation** (changing schema to fit new information).",
+          "**Vygotsky:** the **Zone of Proximal Development** is the gap between what a learner can do alone and what they can do with help. **Scaffolding** and a **More Knowledgeable Other** help learners cross it."
+        ] }
+      ]
+    },
+    {
+      "id": "piaget",
+      "title": "Piaget's Four Stages",
+      "audioUrl": "",
+      "blocks": [
+        { "type": "table", "sample": true, "columns": ["Stage", "Ages", "What it looks like"], "rows": [
+          ["Sensorimotor", "0–2", "Learns through senses and movement; develops object permanence."],
+          ["Preoperational", "2–7", "Uses symbols and language; thinking is egocentric; not yet logical about conservation."],
+          ["Concrete Operational", "7–11", "Reasons logically about concrete objects; understands conservation."],
+          ["Formal Operational", "11+", "Reasons about abstract and hypothetical ideas."]
+        ] }
+      ]
+    },
+    {
+      "id": "more-theorists",
+      "title": "More Theorists",
+      "audioUrl": "",
+      "blocks": [
+        { "type": "list", "items": [
+          "**Bruner:** discovery learning; spiral curriculum; enactive, iconic, and symbolic representation.",
+          "**Bandura:** observational learning, modeling, and self-efficacy.",
+          "**Erikson:** initiative vs. guilt (3–5), industry vs. inferiority (6–11), identity vs. role confusion (12–18).",
+          "**Kohlberg:** pre-conventional, conventional, and post-conventional moral reasoning.",
+          "**Maslow:** hierarchy of needs; why basic needs come before learning."
+        ] }
+      ]
+    },
+    {
+      "id": "quick-reference",
+      "title": "Theory Quick Reference",
+      "blocks": [
+        { "type": "table", "sample": true, "columns": ["Theorist", "Big idea", "Signature terms"], "rows": [
+          ["Pavlov / Watson / Skinner", "Behavior is learned through conditioning.", "Classical and operant conditioning, reinforcement, punishment, shaping"],
+          ["Information Processing", "The mind encodes, stores, and retrieves information.", "Sensory register, working memory, long-term memory, chunking, metacognition"],
+          ["Piaget", "Children construct knowledge in stages.", "Schema, assimilation, accommodation, four stages"],
+          ["Vygotsky", "Learning is social and happens with support.", "ZPD, scaffolding, More Knowledgeable Other"],
+          ["Bruner", "Learners discover and revisit ideas with growing depth.", "Discovery learning, spiral curriculum, enactive-iconic-symbolic"],
+          ["Bandura", "We learn by watching others.", "Observational learning, modeling, self-efficacy"],
+          ["Erikson", "Each life stage brings a psychosocial crisis.", "Initiative vs. guilt, industry vs. inferiority, identity vs. role confusion"],
+          ["Kohlberg", "Moral reasoning develops in levels.", "Pre-conventional, conventional, post-conventional"],
+          ["Bronfenbrenner", "Children develop within nested systems.", "Microsystem, mesosystem, exosystem, macrosystem, chronosystem"],
+          ["Maslow", "Basic needs must be met before higher needs drive behavior.", "Hierarchy of needs, self-actualization"],
+          ["Gardner", "Intelligence takes many forms.", "Multiple intelligences"]
+        ] }
+      ]
+    },
+    {
+      "id": "key-idea",
+      "title": "Key Idea",
+      "blocks": [
+        { "type": "callout", "title": "Key Idea", "text": "When we recognize where students are developmentally, we can better support their growth without rushing to judgment or setting inappropriate expectations." }
+      ]
+    },
+    {
+      "id": "scenario",
+      "title": "Scenario Practice",
+      "blocks": [
+        {
+          "type": "scenario",
+          "activityId": "m5-scenario-1",
+          "sample": true,
+          "scenario": "Jordan is a first grader. During independent reading, Jordan often gets up, wanders to the window, and taps on other students' desks. When the teacher asks Jordan to sit down, Jordan says, \"I'm bored!\" and puts their head on the desk. Jordan reads above grade level.",
+          "prompts": [
+            { "id": "behavior", "prompt": "What behavior do you see?" },
+            { "id": "domains", "prompt": "Which developmental domains and milestones are connected?" },
+            { "id": "response", "prompt": "What would a developmentally appropriate teacher response be?" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "looking-ahead",
+      "title": "Looking Ahead",
+      "blocks": [
+        { "type": "text", "text": "Learning Environment sessions at Summer Academy are rooted in developmentally appropriate practice." },
+        { "type": "callout", "text": "We are dealing with children, not little adults." }
+      ]
+    },
+    {
+      "id": "closing-reflection",
+      "title": "Closing Reflection",
+      "blocks": [
+        { "type": "text", "text": "Think of a photo of yourself as a child (no upload needed; just reflect)." },
+        { "type": "reflection", "promptId": "m5-close-memories", "prompt": "What memories or feelings come to mind about yourself at that age?" },
+        { "type": "reflection", "promptId": "m5-close-strengths", "prompt": "Based on the developmental milestones, what strengths and needs might you have had at that time, across the five domains?" },
+        { "type": "reflection", "promptId": "m5-close-needs", "prompt": "What did you need most from your teachers at that stage?" }
+      ]
+    },
+    {
+      "id": "knowledge-check",
+      "title": "Knowledge check",
+      "blocks": [{ "type": "quiz" }]
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "id": "m5-q1",
+        "prompt": "In the PLT tip on reinforcement, what do \"positive\" and \"negative\" refer to?",
+        "options": [
+          { "id": "A", "text": "Whether the behavior is good or bad" },
+          { "id": "B", "text": "Whether something is added or removed" },
+          { "id": "C", "text": "Whether the student likes the consequence" },
+          { "id": "D", "text": "Whether the consequence is immediate or delayed" }
+        ],
+        "correct": "B",
+        "explanation": "Positive means something is added; negative means something is removed."
+      },
+      {
+        "id": "m5-q2",
+        "prompt": "A third grader reads two grade levels above, but struggles to share and take turns. What does this best illustrate?",
+        "options": [
+          { "id": "A", "text": "The student has a developmental delay across all domains" },
+          { "id": "B", "text": "Development is asynchronous, so a student can be advanced in one domain and still growing in another" },
+          { "id": "C", "text": "Milestones are strict deadlines" },
+          { "id": "D", "text": "The student should skip a grade" }
+        ],
+        "correct": "B",
+        "explanation": "Development is uneven across domains; that is typical, not a red flag."
+      },
+      {
+        "id": "m5-q3",
+        "prompt": "A 9-year-old can reason logically about concrete objects and understands conservation. Which Piaget stage is this?",
+        "options": [
+          { "id": "A", "text": "Sensorimotor" },
+          { "id": "B", "text": "Preoperational" },
+          { "id": "C", "text": "Concrete operational" },
+          { "id": "D", "text": "Formal operational" }
+        ],
+        "correct": "C",
+        "explanation": "Logical reasoning about concrete objects and conservation mark the concrete operational stage (7–11)."
+      },
+      {
+        "id": "m5-q4",
+        "prompt": "What is the Zone of Proximal Development (Vygotsky)?",
+        "options": [
+          { "id": "A", "text": "The gap between a student's grade level and their reading level" },
+          { "id": "B", "text": "The gap between what a learner can do alone and what they can do with help" },
+          { "id": "C", "text": "The physical area of the classroom where students work with a teacher" },
+          { "id": "D", "text": "The stage at which students can think abstractly" }
+        ],
+        "correct": "B",
+        "explanation": "The ZPD is the space between independent and supported performance, where scaffolding helps most."
+      },
+      {
+        "id": "m5-q5",
+        "prompt": "According to Erikson, which crisis best matches students ages 6 to 11?",
+        "options": [
+          { "id": "A", "text": "Initiative vs. guilt" },
+          { "id": "B", "text": "Industry vs. inferiority" },
+          { "id": "C", "text": "Identity vs. role confusion" },
+          { "id": "D", "text": "Trust vs. mistrust" }
+        ],
+        "correct": "B",
+        "explanation": "Ages 6–11 is industry vs. inferiority: building competence and a sense of accomplishment."
+      },
+      {
+        "id": "m5-q6",
+        "prompt": "A student who is hungry, feels unsafe, or feels excluded is struggling to focus on learning. Which idea explains this best?",
+        "options": [
+          { "id": "A", "text": "Maslow's hierarchy: lower needs must be reasonably met before higher ones drive behavior" },
+          { "id": "B", "text": "Bruner's spiral curriculum" },
+          { "id": "C", "text": "Kohlberg's conventional stage" },
+          { "id": "D", "text": "Skinner's shaping" }
+        ],
+        "correct": "A",
+        "explanation": "Maslow: physiological, safety, and belonging needs come before learning."
+      }
+    ]
+  },
+  "completion": {
+    "allQuestions": true,
+    "reflections": ["m5-close-memories", "m5-close-strengths", "m5-close-needs"],
+    "checklist": [],
+    "activities": ["m5-match-domains", "m5-match-gradebands", "m5-scenario-1"]
+  }
+}

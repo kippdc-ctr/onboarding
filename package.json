@@ -1,0 +1,31 @@
+{
+  "name": "ctr-onboarding-hub",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "db:migrate": "node scripts/db.mjs migrate",
+    "db:seed": "node scripts/db.mjs seed",
+    "db:seed-samples": "node scripts/db.mjs samples",
+    "db:reset": "node scripts/db.mjs reset"
+  },
+  "dependencies": {
+    "next": "^15.5.27",
+    "postgres": "^3.4.9",
+    "react": "^19.1.9",
+    "react-dom": "^19.1.9",
+    "server-only": "^0.0.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "^22.20.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "postcss": "^8.5.29",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^5.9.3"
+  }
+}

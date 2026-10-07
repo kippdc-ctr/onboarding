@@ -1,0 +1,63 @@
+{
+  "_comment": "Registry of every admin-editable setting. Seeded into the settings table; edited in /admin/settings. Values here are only the initial defaults.",
+  "links": [
+    { "key": "url.resident_info_form", "group": "Phase 1", "label": "Resident Information Form (Google Form)", "default": "https://forms.gle/T88ueDmCbLUbXZNc7" },
+    { "key": "url.praxis_exemption_form", "group": "Phase 1", "label": "Praxis Stage 1 exemption form (Google Form)", "default": "https://forms.gle/tQQy6wKfP55zDYHr8" },
+    { "key": "url.welcome_call", "group": "Phase 1", "label": "Welcome Call (Calendly)", "default": "https://calendly.com/ctr-carter/ctr-welcome-call" },
+    { "key": "url.praxis_registration", "group": "Phase 1", "label": "Praxis Registration (Google Form)", "default": "https://forms.gle/BG4WjysFDqcCQvsn6" },
+    { "key": "url.praxis_upload", "group": "Praxis", "label": "Upload your Praxis documentation (Google Form or Drive request folder)", "default": "" },
+    { "key": "url.praxis_info", "group": "Praxis", "label": "Praxis info / exemption study document", "default": "" },
+
+    { "key": "url.m1.neighborhood.anacostia", "group": "Module 1: Our City, Our Schools", "label": "Neighborhood video: Anacostia (WETA PBS)", "default": "" },
+    { "key": "url.m1.neighborhood.hillcrest", "group": "Module 1: Our City, Our Schools", "label": "Neighborhood video: Hillcrest (WETA PBS)", "default": "" },
+    { "key": "url.m1.neighborhood.deanwood", "group": "Module 1: Our City, Our Schools", "label": "Neighborhood video: Deanwood (WETA PBS)", "default": "" },
+    { "key": "url.m1.neighborhood.h_street", "group": "Module 1: Our City, Our Schools", "label": "Neighborhood video: H St. Corridor (WETA PBS)", "default": "" },
+    { "key": "url.m1.neighborhood.shaw_u", "group": "Module 1: Our City, Our Schools", "label": "Neighborhood video: Shaw & U Street (WETA PBS)", "default": "" },
+    { "key": "url.m1.neighborhood.congress_heights", "group": "Module 1: Our City, Our Schools", "label": "Neighborhood article: Congress Heights (Homes.com)", "default": "" },
+    { "key": "url.m1.revisionist_history", "group": "Module 1: Our City, Our Schools", "label": "Revisionist History: \"Miss Buchanan's Period of Adjustment\"", "default": "" },
+    { "key": "url.m1.tale_of_two_systems", "group": "Module 1: Our City, Our Schools", "label": "Reading: A Tale of Two Systems (Google Doc)", "default": "" },
+    { "key": "url.m1.kipp25_video", "group": "Module 1: Our City, Our Schools", "label": "Video: Celebrating 25 Years of KIPP DC Public Schools", "default": "" },
+
+    { "key": "url.m2.padlet", "group": "Module 2: Your Story Matters", "label": "CTR Hometowns Padlet", "default": "" },
+    { "key": "url.m2.intro_slide", "group": "Module 2: Your Story Matters", "label": "Intro Slide submission (Google Form)", "default": "https://forms.gle/qU9ytxnEpe6pQyfj9" },
+    { "key": "url.m2.gradeband_photo", "group": "Module 2: Your Story Matters", "label": "Grade-band photo (Google Form)", "default": "https://forms.gle/yGdX8zKAg35gfU7DA" },
+    { "key": "url.m2.heart_work_video", "group": "Module 2: Your Story Matters", "label": "Video: Teaching Is Heart Work (YouTube)", "default": "" },
+    { "key": "url.m2.personal_why", "group": "Module 2: Your Story Matters", "label": "Personal Why submission form", "default": "" },
+
+    { "key": "url.m3.four_domains_video", "group": "Module 3: What We Believe", "label": "Video: The Four Domains (YouTube)", "default": "" },
+
+    { "key": "url.m4.hattie_video", "group": "Module 4: You Are the Variable", "label": "Video: Collective Teacher Efficacy, John Hattie (YouTube)", "default": "" },
+    { "key": "url.m4.rivera_video", "group": "Module 4: You Are the Variable", "label": "Scenario video: Ms. Rivera", "default": "" },
+    { "key": "url.m4.rivera_captions", "group": "Module 4: You Are the Variable", "label": "Captions/transcript: Ms. Rivera", "default": "" },
+    { "key": "url.m4.kim_video", "group": "Module 4: You Are the Variable", "label": "Scenario video: Ms. Kim", "default": "" },
+    { "key": "url.m4.kim_captions", "group": "Module 4: You Are the Variable", "label": "Captions/transcript: Ms. Kim", "default": "" },
+    { "key": "url.m4.logan_video", "group": "Module 4: You Are the Variable", "label": "Scenario video: Mr. Logan", "default": "" },
+    { "key": "url.m4.logan_captions", "group": "Module 4: You Are the Variable", "label": "Captions/transcript: Mr. Logan", "default": "" },
+
+    { "key": "url.m5.milestones_guide", "group": "Module 5: Child Development", "label": "Developmental milestones quick reference guide", "default": "" },
+
+    { "key": "url.genially.our-city-our-schools", "group": "Genially originals", "label": "Original on Genially: Our City, Our Schools", "default": "" },
+    { "key": "url.genially.your-story-matters", "group": "Genially originals", "label": "Original on Genially: Your Story Matters", "default": "" },
+    { "key": "url.genially.what-we-believe", "group": "Genially originals", "label": "Original on Genially: What We Believe", "default": "" },
+    { "key": "url.genially.you-are-the-variable", "group": "Genially originals", "label": "Original on Genially: You Are the Variable", "default": "" },
+    { "key": "url.genially.child-development", "group": "Genially originals", "label": "Original slides: Child Development", "default": "" },
+
+    { "key": "url.p3.background_checklist", "group": "Phase 3", "label": "Background check checklist", "default": "" },
+    { "key": "url.p3.workday_instructions", "group": "Phase 3", "label": "Workday instructions", "default": "" },
+    { "key": "url.p3.webinar", "group": "Phase 3", "label": "New Hire Onboarding Preview webinar (join link or recording)", "default": "" },
+    { "key": "url.p3.summer_academy_schedule", "group": "Phase 3", "label": "Summer Academy schedule", "default": "" },
+    { "key": "url.hr_action_items", "group": "Helpful links", "label": "HR action items", "default": "" }
+  ],
+  "values": [
+    { "key": "contact_email", "group": "General", "type": "email", "label": "CTR team contact email (used for \"Don't see your name?\" and lockout help)", "default": "" },
+    { "key": "praxis.register_by", "group": "Praxis", "type": "date", "label": "Register for Praxis by", "default": "2027-05-01" },
+    { "key": "praxis.ideal_test_by", "group": "Praxis", "type": "date", "label": "Ideal test date by", "default": "2027-06-15" },
+    { "key": "praxis.scores_by", "group": "Praxis", "type": "date", "label": "Scores must reach CTR by", "default": "2027-07-01" },
+    { "key": "praxis.status_options", "group": "Praxis", "type": "list", "label": "Allowed Praxis subtest statuses (comma separated)", "default": "Exempt, Not started, Registered, Passed, Not passed" },
+    { "key": "p3.background_results_due", "group": "Phase 3", "type": "date", "label": "Cleared background check results due (week before start date)", "default": "" },
+    { "key": "p3.webinar_datetime", "group": "Phase 3", "type": "text", "label": "New Hire Onboarding Preview webinar date and time (shown as text)", "default": "" },
+    { "key": "p3.contact_update_text", "group": "Phase 3", "type": "longtext", "label": "Updated contact information instructions", "default": "If your phone number, mailing address, or personal email has changed, reply to your CTR welcome email with the update." },
+    { "key": "mentor_match.schools", "group": "Mentor Match", "type": "list", "label": "Placement school options (comma separated)", "default": "Aim, ATA, Connect, Discover, Grow, Heights, Honor, Inspire, KIPP DC College Preparatory (KCP), KEY, Lead, LEAP, Legacy College Prep, Northeast, Pride, Promise, Quest, Spring, Valor, WILL" },
+    { "key": "quiz.pass_mark_percent", "group": "Hidden", "type": "number", "label": "Pass mark percent (only used if enabled)", "default": "" }
+  ]
+}

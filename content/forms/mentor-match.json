@@ -1,0 +1,61 @@
+{
+  "slug": "mentor-match",
+  "title": "Mentor Match Survey",
+  "visibilityNotice": "Your answers are visible only to the CTR team (admin users) and are used to match you with a mentor. Once you submit, the survey locks.",
+  "intro": "This survey helps our team match you with a mentor teacher who fits your working style and personality. There are no right or wrong answers. Responses go to your school leader; final placement is based on what best supports your development and student achievement.",
+  "linkedChecklist": { "moduleSlug": "your-story-matters", "itemId": "mentor-match" },
+  "questions": [
+    { "id": "name", "type": "short_text", "prompt": "Enter your name.", "required": true, "prefill": "residentName" },
+    { "id": "school", "type": "single_choice", "prompt": "Select your placement school.", "required": true, "optionsSetting": "mentor_match.schools", "allowOther": true },
+    { "id": "grade_pref", "type": "long_text", "prompt": "Do you have preference on what grade you are placed in? If so, please capture your top three preferences in the space below.", "help": "Desired grade placement can't be guaranteed.", "required": false },
+    { "id": "challenge_instinct", "type": "single_choice", "prompt": "If you encounter a challenge in your classroom, what do you think will be your first instinct?", "required": true, "options": [
+      "Try to figure it out on my own before asking for help",
+      "Immediately ask my mentor or a colleague for guidance",
+      "Observe how others handle similar situations, then act",
+      "Research and look for resources or frameworks first"
+    ] },
+    { "id": "learn_best", "type": "single_choice", "prompt": "How do you learn best when developing a new skill?", "required": true, "options": [
+      "Watch someone model it first, then try myself",
+      "Dive in and learn from my mistakes",
+      "Read or research about it, then practice",
+      "Discuss and talk it through with someone before trying"
+    ] },
+
+    { "id": "sec_feedback", "type": "section", "prompt": "Feedback", "help": "1 = Strongly Disagree, 5 = Strongly Agree" },
+    { "id": "fb_direct", "type": "scale", "prompt": "I prefer direct, candid feedback over softened critique.", "required": true, "minLabel": "Strongly Disagree", "maxLabel": "Strongly Agree" },
+    { "id": "fb_not_all_answers", "type": "scale", "prompt": "I feel okay not having all the answers in front of students.", "required": true, "minLabel": "Strongly Disagree", "maxLabel": "Strongly Agree" },
+    { "id": "fb_public_challenge", "type": "scale", "prompt": "I am comfortable with my mentor challenging my instructional choices publicly.", "required": true, "minLabel": "Strongly Disagree", "maxLabel": "Strongly Agree" },
+
+    { "id": "sec_communication", "type": "section", "prompt": "Communication style", "help": "1 = Strongly Disagree, 5 = Strongly Agree" },
+    { "id": "cs_daily_checkin", "type": "scale", "prompt": "My mentor checks in with me daily, even on small things.", "required": true, "minLabel": "Strongly Disagree", "maxLabel": "Strongly Agree" },
+    { "id": "cs_initiate", "type": "scale", "prompt": "I would be comfortable initiating conversations with my mentor.", "required": true, "minLabel": "Strongly Disagree", "maxLabel": "Strongly Agree" },
+    { "id": "cs_scheduled", "type": "scale", "prompt": "I prefer scheduled check-ins over spontaneous conversations.", "required": true, "minLabel": "Strongly Disagree", "maxLabel": "Strongly Agree" },
+    { "id": "cs_process_internally", "type": "scale", "prompt": "I tend to process feedback internally before responding.", "required": true, "minLabel": "Strongly Disagree", "maxLabel": "Strongly Agree" },
+    { "id": "cs_share_personal", "type": "scale", "prompt": "I like to share personal context (life, stress) with colleagues.", "required": true, "minLabel": "Strongly Disagree", "maxLabel": "Strongly Agree" },
+
+    { "id": "sec_self", "type": "section", "prompt": "Self-description", "help": "1 = Never True, 5 = Always True" },
+    { "id": "sd_withdraw", "type": "scale", "prompt": "When overwhelmed, I tend to withdraw and need space.", "required": true, "minLabel": "Never True", "maxLabel": "Always True" },
+    { "id": "sd_dont_know", "type": "scale", "prompt": "I feel comfortable saying \"I don't know\" to a colleague.", "required": true, "minLabel": "Never True", "maxLabel": "Always True" },
+    { "id": "sd_encouragement", "type": "scale", "prompt": "I need encouragement and affirmation to stay motivated.", "required": true, "minLabel": "Never True", "maxLabel": "Always True" },
+    { "id": "sd_recover", "type": "scale", "prompt": "I recover quickly after a hard day or bad lesson.", "required": true, "minLabel": "Never True", "maxLabel": "Always True" },
+    { "id": "hard_day_need", "type": "single_choice", "prompt": "If you had a really difficult day in the classroom, what would you most need from your mentor?", "required": true, "options": [
+      "To just listen while I vent (no advice yet)",
+      "To help me immediately identify what went wrong",
+      "To remind me of what I did well that day",
+      "To give me space and check in the next day",
+      "To share a time they also struggled, so I feel less alone"
+    ] },
+
+    { "id": "sec_identity", "type": "section", "prompt": "Mentor Identity", "help": "Identity preferences will be considered but can't all be accommodated." },
+    { "id": "identity", "type": "multi_select", "prompt": "Are there aspects of a mentor's identity that feel important to you in this relationship? Select all that apply.", "required": true, "options": [
+      "Race or ethnicity",
+      "Gender identity",
+      "Cultural or religious background",
+      "LGBTQ+ identity",
+      "Disability or neurodivergence",
+      "None (identity is not a priority for me in this match)"
+    ] },
+    { "id": "anything_else", "type": "long_text", "prompt": "Is there anything else you'd like our team to know about you or what you're hoping to get out of this mentoring relationship?", "required": false },
+    { "id": "teacher_in_mind", "type": "long_text", "prompt": "If you worked at KIPP DC last year and have a particular teacher in mind that you'd like to work with, please share that here.", "required": false }
+  ]
+}
