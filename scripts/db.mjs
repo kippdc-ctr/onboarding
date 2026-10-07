@@ -2,6 +2,7 @@
 //   node scripts/db.mjs migrate   create/upgrade tables (safe to re-run)
 //   node scripts/db.mjs seed      insert groups, modules, phase items, settings (never overwrites)
 //   node scripts/db.mjs samples   add the 10 clearly fake sample residents
+//   node scripts/db.mjs deploy    migrate + seed (+ samples if SEED_SAMPLE_RESIDENTS=true); runs on every Vercel build
 //   node scripts/db.mjs reset     DROP EVERYTHING, then migrate + seed (local dev only)
 import { readFileSync, existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
@@ -22,11 +23,13 @@ function loadEnv() {
 }
 loadEnv();
 
-if (!process.env.DATABASE_URL) {
+// POSTGRES_URL is what the Vercel <-> Supabase integration sets automatically.
+const DB_URL = process.env.DATABASE_URL || process.env.POSTGRES_URL;
+if (!DB_URL) {
   console.error("DATABASE_URL is not set. Copy .env.example to .env.local and fill it in.");
   process.exit(1);
 }
-const sql = postgres(process.env.DATABASE_URL, { prepare: false, onnotice: () => {} });
+const sql = postgres(DB_URL, { prepare: false, onnotice: () => {} });
 const json = (f) => JSON.parse(readFileSync(path.join(root, f), "utf8"));
 
 async function migrate() {
@@ -63,7 +66,7 @@ async function samples() {
 }
 
 async function reset() {
-  if (process.env.NODE_ENV === "production" || /supabase/.test(process.env.DATABASE_URL)) {
+  if (process.env.NODE_ENV === "production" || /supabase/.test(DB_URL)) {
     console.error("Refusing to reset a production/Supabase database.");
     process.exit(1);
   }
@@ -79,6 +82,11 @@ try {
   else if (cmd === "samples") await samples();
   else if (cmd === "reset") await reset();
   else if (cmd === "setup") { await migrate(); await seed(); }
+  else if (cmd === "deploy") {
+    await migrate();
+    await seed();
+    if (process.env.SEED_SAMPLE_RESIDENTS === "true") await samples();
+  }
   else console.log("Commands: migrate | seed | samples | setup | reset");
 } finally {
   await sql.end();

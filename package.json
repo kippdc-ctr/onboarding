@@ -10,7 +10,8 @@
     "db:migrate": "node scripts/db.mjs migrate",
     "db:seed": "node scripts/db.mjs seed",
     "db:seed-samples": "node scripts/db.mjs samples",
-    "db:reset": "node scripts/db.mjs reset"
+    "db:reset": "node scripts/db.mjs reset",
+    "vercel-build": "node scripts/db.mjs deploy && next build"
   },
   "dependencies": {
     "next": "^15.5.27",

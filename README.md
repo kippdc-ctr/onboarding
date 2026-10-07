@@ -14,7 +14,8 @@ five prework modules, and HR/summer prep. The CTR team sees everyone's progress 
 
 | Name | What it is |
 | --- | --- |
-| `DATABASE_URL` | Supabase Postgres connection string. Use the **Transaction pooler** string (port 6543) from Supabase → Project Settings → Database. |
+| `DATABASE_URL` or `POSTGRES_URL` | Supabase Postgres connection string. `POSTGRES_URL` is set for you by Vercel's Supabase integration; if you set it yourself, use the **Transaction pooler** string (port 6543). |
+| `SEED_SAMPLE_RESIDENTS` | Optional. `true` adds the 10 fake "Sample" residents on deploy, for testing. Remove before launch. |
 | `ADMIN_PASSCODE` | The shared CTR team passcode for `/admin`. Changing it signs every admin out. |
 | `SESSION_SECRET` | Long random string that signs sign-in cookies. Generate with `openssl rand -hex 32`. |
 | `PIN_ENCRYPTION_KEY` | Long random string that encrypts resident PINs at rest. Generate with `openssl rand -hex 32`. **Never change it** after residents set PINs, or their PINs can't be read (they'd need resets). |
@@ -22,19 +23,22 @@ five prework modules, and HR/summer prep. The CTR team sees everyone's progress 
 
 Copy `.env.example` to `.env.local` for local development.
 
-## Deploy (first time)
+## Deploy (first time, no command line needed)
 
-1. **Supabase:** create a free project. Copy the transaction-pooler connection string (with your DB password).
-2. **Create the tables and seed data** from your computer (one time, and again after schema changes):
-   ```bash
-   npm install
-   DATABASE_URL="postgres://..." npm run db:migrate
-   DATABASE_URL="postgres://..." npm run db:seed          # groups, modules, phase items, settings
-   DATABASE_URL="postgres://..." npm run db:seed-samples  # optional: 10 clearly fake residents for testing
-   ```
-   Seeding never overwrites rows that already exist, so it is safe to re-run.
-3. **Vercel:** import this GitHub repo, add the four environment variables above (Production and Preview), and deploy.
-4. Open `/admin`, sign in with the passcode, and work through **Content flags** (every link still empty).
+1. **Vercel:** sign in at vercel.com with GitHub, choose **Add New → Project**, and import `kippdc-ctr/onboarding`. Leave the build settings as they are.
+2. **Database:** in the new Vercel project, open **Storage → Create / Connect Database → Supabase** (free plan) and connect it to the project.
+   This creates the Supabase project and adds its connection string (`POSTGRES_URL`) for you.
+3. **Environment variables** (Vercel project → Settings → Environment Variables), for Production and Preview:
+   `ADMIN_PASSCODE`, `SESSION_SECRET`, `PIN_ENCRYPTION_KEY` (see the table above), and for a test run `SEED_SAMPLE_RESIDENTS` = `true`.
+4. **Redeploy** (Deployments → ⋯ → Redeploy). Every build creates or updates the tables and seeds groups, modules, phase items, and settings
+   automatically (`npm run vercel-build`); it never overwrites anything already edited in `/admin`.
+5. Open the site. Pick any "Sample" name to try the resident side; open `/admin` with the passcode for the admin side.
+6. **Before real launch:** delete `SEED_SAMPLE_RESIDENTS`, then Admin → Data → **Delete sample data**, and work through **Content flags**.
+
+Every push to a branch also gets its own preview link from Vercel (shown on the GitHub branch and in the Vercel dashboard).
+
+To use a Supabase project you created yourself instead, set `DATABASE_URL` to its **Transaction pooler** connection string (port 6543).
+You can also run the database steps by hand: `npm run db:migrate`, `npm run db:seed`, `npm run db:seed-samples`.
 
 ## Everyday admin tasks
 

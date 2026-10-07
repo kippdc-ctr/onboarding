@@ -7,7 +7,8 @@ declare global {
 }
 
 function create() {
-  const url = process.env.DATABASE_URL;
+  // POSTGRES_URL is what the Vercel ↔ Supabase integration sets automatically.
+  const url = process.env.DATABASE_URL || process.env.POSTGRES_URL;
   if (!url) throw new Error("DATABASE_URL is not set");
   // prepare:false is required for Supabase's transaction pooler.
   return postgres(url, {
