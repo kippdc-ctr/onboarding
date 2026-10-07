@@ -29,6 +29,12 @@ The app runs with all of these blank or in draft. Admin → Content flags shows 
     Praxis info, background check checklist, Workday instructions, Summer Academy schedule, preview webinar link, HR action items.
 14. **Settings:** CTR contact email (for "Don't see your name?"), cleared background check due date, webinar date and time.
 
+## Content editor notes
+
+- Most items above (answer keys, Module 5 cards and scenario, draft tables, wording) can now be fixed directly in **Admin → Module content**.
+- Audio upload uses Supabase Storage. It was tested against a stand-in for Supabase's API, not a real Supabase project; try one upload after the first deploy.
+- Videos play inside the page from YouTube, Vimeo, or Google Drive links; they are not uploaded into the app (bandwidth limits on the free plans).
+
 ## Choices made while building (tell me if you want any changed)
 
 - **Database connection:** the app connects to Supabase Postgres with a `DATABASE_URL` connection string instead of the `SUPABASE_URL` + `SUPABASE_SERVICE_KEY` pair. Same Supabase project, still server-only; it lets the app run real SQL and be tested locally.

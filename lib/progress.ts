@@ -1,6 +1,6 @@
 // Pure status computations. No database access here, so the same logic drives the
 // resident dashboard, the admin grid, and the CSV exports.
-import { MODULES, ModuleContent, moduleChecklistItems } from "./content";
+import { ModuleContent, moduleChecklistItems } from "./content";
 import type { Config, PhaseItem, ProgressBundle, Resident } from "./data";
 import { addDays, isPast } from "./dates";
 
@@ -178,7 +178,7 @@ export type ResidentSummary = {
 
 export function summarize(cfg: Config, r: Resident, b: ProgressBundle): ResidentSummary {
   const enabled = new Set(cfg.modules.filter((m) => m.enabled).map((m) => m.slug));
-  const modules = MODULES.filter((m) => enabled.has(m.slug)).map((m) => moduleState(cfg, r, b, m));
+  const modules = cfg.content.filter((m) => enabled.has(m.slug)).map((m) => moduleState(cfg, r, b, m));
   const phase1 = itemStates(cfg, r, b, 1);
   const phase3 = itemStates(cfg, r, b, 3);
 

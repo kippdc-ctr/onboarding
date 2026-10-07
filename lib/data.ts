@@ -1,6 +1,8 @@
 import "server-only";
 import { cache } from "react";
 import { sql } from "./db";
+import { MODULES, ModuleContent } from "./content";
+import { applyOverrides, OverrideRow, OverrideStatus } from "./contentOverrides";
 
 export type Resident = {
   id: string;
@@ -56,6 +58,8 @@ export type Config = {
   phaseItems: PhaseItem[];
   overrides: { group_number: number; target: string; due_date: string }[];
   settings: Record<string, string>;
+  /** Module content with admin edits applied. Use this, not MODULES, for anything residents see or that is graded. */
+  content: ModuleContent[];
 };
 
 export type ProgressBundle = {
@@ -74,15 +78,28 @@ export const getSettings = cache(async (): Promise<Record<string, string>> => {
   return Object.fromEntries(rows.map((r) => [r.key, r.value]));
 });
 
+/** Module content with admin edits applied, plus the status of every edit (for the editor). */
+export const getResolvedContent = cache(async (): Promise<{ modules: ModuleContent[]; status: Map<string, OverrideStatus[]> }> => {
+  const rows = await sql<OverrideRow[]>`select module_slug, target, value, original_hash, updated_at from content_overrides order by updated_at`;
+  const status = new Map<string, OverrideStatus[]>();
+  const modules = MODULES.map((m) => {
+    const res = applyOverrides(m, rows.filter((r) => r.module_slug === m.slug));
+    status.set(m.slug, res.status);
+    return res.module;
+  });
+  return { modules, status };
+});
+
 export const getConfig = cache(async (today: string): Promise<Config> => {
-  const [groups, modules, phaseItems, overrides, settings] = await Promise.all([
+  const [groups, modules, phaseItems, overrides, settings, resolved] = await Promise.all([
     sql<Group[]>`select number, welcome_email_date from groups order by number`,
     sql<ModuleMeta[]>`select * from modules order by sort_order`,
     sql<PhaseItem[]>`select * from phase_items order by phase, sort_order`,
     sql<Config["overrides"]>`select group_number, target, due_date from group_due_overrides`,
     getSettings(),
+    getResolvedContent(),
   ]);
-  return { today, groups, modules, phaseItems, overrides, settings };
+  return { today, groups, modules, phaseItems, overrides, settings, content: resolved.modules };
 });
 
 export async function getResidentById(id: string): Promise<Resident | null> {
@@ -91,7 +108,7 @@ export async function getResidentById(id: string): Promise<Resident | null> {
   return r ?? null;
 }
 
-function emptyBundle(): ProgressBundle {
+export function emptyBundle(): ProgressBundle {
   return { itemChecks: [], checklist: [], attempts: [], reflections: [], activities: [], moduleProgress: [], praxis: null, forms: [] };
 }
 

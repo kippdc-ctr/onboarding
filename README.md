@@ -7,8 +7,9 @@ five prework modules, and HR/summer prep. The CTR team sees everyone's progress 
 - **Stack:** Next.js (App Router) + TypeScript + Tailwind, hosted on Vercel; Postgres on Supabase.
 - **The browser never talks to the database.** Every read and write goes through the Next.js server,
   which identifies the resident from a signed cookie (never from an id sent by the browser).
-- **Content** (module text, quiz questions and answer keys, the Mentor Match survey) lives in
-  [`/content`](content). **Links, due dates, the roster, and groups** live in the database and are edited in `/admin`.
+- **Content** (module text, quiz questions and answer keys, the Mentor Match survey) starts from the files in
+  [`/content`](content). Admins can edit module wording, quizzes, activities, videos, and audio in **Admin → Module content**;
+  those edits are stored in the database on top of the files. **Links, due dates, the roster, and groups** live in the database too.
 
 ## Environment variables
 
@@ -19,6 +20,7 @@ five prework modules, and HR/summer prep. The CTR team sees everyone's progress 
 | `ADMIN_PASSCODE` | The shared CTR team passcode for `/admin`. Changing it signs every admin out. |
 | `SESSION_SECRET` | Long random string that signs sign-in cookies. Generate with `openssl rand -hex 32`. |
 | `PIN_ENCRYPTION_KEY` | Long random string that encrypts resident PINs at rest. Generate with `openssl rand -hex 32`. **Never change it** after residents set PINs, or their PINs can't be read (they'd need resets). |
+| `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` | Used only for audio uploads (Supabase Storage). Set for you by Vercel's Supabase integration; if you set them yourself, they're in Supabase → Project Settings → API. Without them, admins can still paste audio links. |
 | `APP_TIME_ZONE` | Optional. Defaults to `America/New_York`; used for "today" in due dates. |
 
 Copy `.env.example` to `.env.local` for local development.
@@ -54,14 +56,29 @@ You can also run the database steps by hand: `npm run db:migrate`, `npm run db:s
 
 ## Editing module content
 
-Module text and quizzes are in `content/modules/*.json`; the Mentor Match survey is `content/forms/mentor-match.json`.
-Ask Claude Code to make the edit, then push; Vercel redeploys automatically.
+**In the app (Admin → Module content).** For each module you can edit:
+- the module card (title, description, minutes, learning objectives)
+- every section title, paragraph, list, callout, quote, and table
+- quiz questions, choices, explanations, and **which answer is correct**
+- reflection prompts, checklist labels, and link labels and URLs
+- the matching activities (options and cards; add or remove cards) and the scenario practice
+- **video:** paste a YouTube, Vimeo, or Google Drive link on any video block, or add a video to the top of any section. These play inside the page.
+- **audio:** upload an mp3/m4a/wav (up to 50 MB) or paste an audio link for any section, with an optional transcript
 
-- To flip a quiz answer, change that question's `"correct"` letter.
+Changes go live as soon as you save. Each edited item shows **Edited** and a **Reset to original** button.
+"Preview as a resident" opens the module exactly as residents see it, with answers turned off.
+Changing a correct answer affects new answers only; answers already given keep their score.
+
+Videos are not uploaded into the app: host them on YouTube or Vimeo (as Unlisted) or Google Drive ("Anyone with the link"),
+because the free hosting plans have monthly bandwidth limits that ~70 residents watching videos could exceed.
+Audio files go to Supabase Storage in a public bucket named `media` with unguessable file names.
+
+**By request (Claude Code).** Adding, removing, or reordering sections or questions, and editing the Mentor Match survey,
+are done in the files: `content/modules/*.json` and `content/forms/mentor-match.json`.
 - Keep every `id` / `promptId` / `activityId` the same so saved answers stay attached. Add new ids for new questions.
+- Admin edits are tied to those ids (and, for paragraphs and lists, to their position in a section). If a file change moves
+  or rewrites something that was also edited in the app, the editor flags that edit for review instead of guessing.
 - Blocks marked `"sample": true` show a "sample, replace" or "CTR to confirm" tag to residents until replaced.
-- Each section has an `"audioUrl"` slot for narrated audio (blank for now).
-- Links in content refer to settings keys (`"linkKey": "url.m3.four_domains_video"`), so the URL itself is set in Admin → Settings.
 
 ## Next year's cohort
 

@@ -1,7 +1,7 @@
 import { NextRequest } from "next/server";
 import { sql } from "@/lib/db";
 import { filtersFrom, loadCohort } from "@/lib/cohort";
-import { getForm, MODULES } from "@/lib/content";
+import { getForm } from "@/lib/content";
 import { csvResponse, toCSV } from "@/lib/csv";
 import { displayName, Resident } from "@/lib/data";
 import { answerText, FormAnswers } from "@/lib/forms";
@@ -25,7 +25,7 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ kind
     const header = [
       "First", "Last", "Preferred", "Label", "Group", "Grade band", "School", "Added on", "Last active",
       ...p1.map((i) => `P1: ${i.label}`),
-      ...MODULES.flatMap((m) => [`M${m.number} ${m.title}: Completion`, `M${m.number}: Accuracy`, `M${m.number}: Attempts`]),
+      ...cfg.content.flatMap((m) => [`M${m.number} ${m.title}: Completion`, `M${m.number}: Accuracy`, `M${m.number}: Attempts`]),
       ...p3.map((i) => `P3: ${i.label}`),
       "Praxis stage", "Math", "Reading", "Writing",
       "Phase 1", "Phase 2", "Phase 3",
@@ -37,7 +37,7 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ kind
         r.first_name, r.last_name, r.preferred_name, r.picker_label, r.group_number, r.grade_band, r.school, r.added_on,
         r.last_active_at ? new Date(r.last_active_at).toISOString() : "",
         ...s.phase1.map(itemText),
-        ...MODULES.flatMap((m) => {
+        ...cfg.content.flatMap((m) => {
           const st = mods.get(m.slug);
           return st ? [STATUS_LABEL[st.status], accuracyText(st), st.attemptCount || ""] : ["", "", ""];
         }),

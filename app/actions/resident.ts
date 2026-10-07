@@ -4,14 +4,19 @@
 // Ids that arrive from the browser are content ids (module, question, item), validated against /content.
 import { revalidatePath } from "next/cache";
 import { sql } from "@/lib/db";
-import { getForm, getModule, moduleActivities, moduleChecklistItems, moduleReflectionPrompts } from "@/lib/content";
-import { getConfig, getSettings, loadBundle } from "@/lib/data";
+import { getForm, moduleActivities, moduleChecklistItems, moduleReflectionPrompts } from "@/lib/content";
+import { getConfig, getResolvedContent, getSettings, loadBundle } from "@/lib/data";
 import { todayISO } from "@/lib/dates";
 import { itemStates, moduleState } from "@/lib/progress";
 import { requireResident } from "@/lib/session";
 import { validateAnswers, FormAnswers } from "@/lib/forms";
 
 const MAX_TEXT = 20_000;
+
+/** Module content with admin edits applied (quiz answer keys and matching cards can be edited). */
+async function getModule(slug: string) {
+  return (await getResolvedContent()).modules.find((m) => m.slug === slug);
+}
 
 async function touchModule(residentId: string, slug: string) {
   await sql`
@@ -39,7 +44,7 @@ export async function toggleItemCheck(itemId: string, checked: boolean) {
 
 export async function toggleChecklist(moduleSlug: string, itemId: string, checked: boolean) {
   const r = await requireResident();
-  const m = getModule(moduleSlug);
+  const m = await getModule(moduleSlug);
   if (!m) return { ok: false };
   if (!moduleChecklistItems(m).some((i) => i.id === itemId)) return { ok: false };
   // Form-linked items are ticked by submitting the form, not by hand.
@@ -56,7 +61,7 @@ export async function toggleChecklist(moduleSlug: string, itemId: string, checke
 
 export async function markModuleOpened(moduleSlug: string) {
   const r = await requireResident();
-  if (!getModule(moduleSlug)) return;
+  if (!(await getModule(moduleSlug))) return;
   await touchModule(r.id, moduleSlug);
 }
 
@@ -66,7 +71,7 @@ export type AnswerResult =
 
 export async function answerQuestion(moduleSlug: string, questionId: string, optionId: string, attemptNo: number): Promise<AnswerResult> {
   const r = await requireResident();
-  const m = getModule(moduleSlug);
+  const m = await getModule(moduleSlug);
   const q = m?.quiz?.questions.find((x) => x.id === questionId);
   if (!m || !q || !q.options.some((o) => o.id === optionId)) return { ok: false, error: "Unknown question." };
   const [{ max }] = await sql<{ max: number | null }[]>`
@@ -86,7 +91,7 @@ export async function answerQuestion(moduleSlug: string, questionId: string, opt
 
 export async function saveReflection(moduleSlug: string, promptId: string, text: string) {
   const r = await requireResident();
-  const m = getModule(moduleSlug);
+  const m = await getModule(moduleSlug);
   if (!m || !moduleReflectionPrompts(m).some((p) => p.promptId === promptId)) return { ok: false };
   await touchModule(r.id, m.slug);
   await sql`
@@ -98,7 +103,7 @@ export async function saveReflection(moduleSlug: string, promptId: string, text:
 
 export async function saveActivity(moduleSlug: string, activityId: string, payload: Record<string, unknown>) {
   const r = await requireResident();
-  const m = getModule(moduleSlug);
+  const m = await getModule(moduleSlug);
   const act = m && moduleActivities(m).find((a) => a.activityId === activityId);
   if (!m || !act) return { ok: false, complete: false };
   let clean: Record<string, string>;
@@ -130,9 +135,9 @@ export async function saveActivity(moduleSlug: string, activityId: string, paylo
 
 export async function completeModule(moduleSlug: string) {
   const r = await requireResident();
-  const m = getModule(moduleSlug);
-  if (!m) return { ok: false, missing: ["Unknown module"] };
   const cfg = await getConfig(todayISO());
+  const m = cfg.content.find((x) => x.slug === moduleSlug);
+  if (!m) return { ok: false, missing: ["Unknown module"] };
   const state = moduleState(cfg, r, await loadBundle(r.id), m);
   if (!state.ruleMet) return { ok: false, missing: state.missing };
   await sql`

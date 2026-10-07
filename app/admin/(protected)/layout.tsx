@@ -10,6 +10,7 @@ const NAV = [
   ["/admin/roster", "Roster"],
   ["/admin/groups", "Groups"],
   ["/admin/praxis", "Praxis upload"],
+  ["/admin/content", "Module content"],
   ["/admin/forms/mentor-match", "Mentor Match"],
   ["/admin/settings", "Settings"],
   ["/admin/flags", "Content flags"],

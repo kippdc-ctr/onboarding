@@ -1,5 +1,5 @@
 import "server-only";
-import { MODULES, moduleReflectionPrompts, moduleActivities } from "./content";
+import { moduleReflectionPrompts, moduleActivities } from "./content";
 import type { Config, ProgressBundle, Resident } from "./data";
 import { displayName } from "./data";
 import { formatDate } from "./dates";
@@ -12,7 +12,7 @@ export function residentResponsesText(cfg: Config, r: Resident, b: ProgressBundl
   lines.push(`${displayName(r)}${r.group_number ? `, Group ${r.group_number}` : ""}`);
   lines.push(`Downloaded ${formatDate(cfg.today)}`);
   lines.push("");
-  for (const m of MODULES) {
+  for (const m of cfg.content) {
     const st = moduleState(cfg, r, b, m);
     lines.push("=".repeat(60));
     lines.push(`Module ${m.number}: ${m.title}`);

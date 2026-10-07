@@ -29,7 +29,17 @@ export type Block =
 
 export type ChecklistItem = { id: string; label: string; description?: string; linkKey?: string; optional?: boolean };
 
-export type Section = { id: string; title: string; audioUrl?: string; blocks: Block[] };
+export type SectionVideo = { title: string; url: string; captionsUrl?: string };
+
+export type Section = {
+  id: string;
+  title: string;
+  audioUrl?: string;
+  audioTranscript?: string;
+  /** Optional video added in the admin content editor, shown at the top of the section. */
+  video?: SectionVideo | null;
+  blocks: Block[];
+};
 
 export type Question = {
   id: string;
@@ -138,9 +148,9 @@ export const LINK_SETTINGS: SettingDef[] = settingsRegistry.links;
 export const VALUE_SETTINGS: SettingDef[] = settingsRegistry.values;
 
 /** Content still marked "sample, replace" (placeholder activities and tables). */
-export function sampleContent(): string[] {
+export function sampleContent(modules: ModuleContent[] = MODULES): string[] {
   const out: string[] = [];
-  for (const m of MODULES)
+  for (const m of modules)
     for (const s of m.sections)
       for (const b of s.blocks)
         if ((b.type === "matching" || b.type === "scenario" || b.type === "table") && b.sample)

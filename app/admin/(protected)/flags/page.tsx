@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { contentLinkKeys, LINK_SETTINGS, sampleContent, VALUE_SETTINGS } from "@/lib/content";
-import { getSettings } from "@/lib/data";
+import { getResolvedContent, getSettings } from "@/lib/data";
 
 export const dynamic = "force-dynamic";
 
@@ -10,7 +10,7 @@ export default async function Flags() {
   for (const { key, where } of contentLinkKeys()) usedIn.set(key, [...(usedIn.get(key) ?? []), where]);
   const emptyLinks = LINK_SETTINGS.filter((d) => !v[d.key]);
   const emptyValues = VALUE_SETTINGS.filter((d) => d.group !== "Hidden" && !v[d.key]);
-  const samples = sampleContent();
+  const samples = sampleContent((await getResolvedContent()).modules);
   return (
     <div className="space-y-6">
       <h1 className="h1">Content flags</h1>
@@ -42,7 +42,7 @@ export default async function Flags() {
       </section>
       <section className="card">
         <h2 className="h2">Draft or sample content ({samples.length})</h2>
-        <p className="mt-1 text-muted">These are marked &quot;sample, replace&quot; or &quot;CTR to confirm&quot; for residents. Ask Claude Code to update the matching file in /content/modules.</p>
+        <p className="mt-1 text-muted">These are marked &quot;sample, replace&quot; or &quot;CTR to confirm&quot; for residents. Replace them in <Link className="link" href="/admin/content">Module content</Link> and untick the &quot;still a sample&quot; box.</p>
         <ul className="mt-3 list-disc pl-6">
           {samples.map((s) => (
             <li key={s}>{s}</li>

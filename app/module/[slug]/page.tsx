@@ -1,14 +1,15 @@
 import Link from "next/link";
-import { notFound } from "next/navigation";
-import { Block, getModule, moduleChecklistItems } from "@/lib/content";
-import { displayName, getConfig, loadBundle } from "@/lib/data";
+import { notFound, redirect } from "next/navigation";
+import { Block, moduleChecklistItems } from "@/lib/content";
+import { displayName, emptyBundle, getConfig, loadBundle } from "@/lib/data";
 import { formatDate, formatDateTime, todayISO } from "@/lib/dates";
 import { moduleState } from "@/lib/progress";
-import { requireResident } from "@/lib/session";
+import { currentResident, isAdmin } from "@/lib/session";
 import { ResidentHeader } from "@/components/ResidentHeader";
 import { StatusChip } from "@/components/StatusChip";
 import { LinkButton } from "@/components/LinkButton";
 import { RichText } from "@/components/RichText";
+import { AudioPlayer, VideoPlayer } from "@/components/Media";
 import { CheckItem } from "@/components/CheckItem";
 import { ModuleProgressProvider, Requirement } from "@/components/module/ProgressContext";
 import { StickyProgress } from "@/components/module/ProgressBar";
@@ -23,14 +24,17 @@ export const dynamic = "force-dynamic";
 
 export default async function ModulePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const m = getModule(slug);
-  if (!m) notFound();
-  const r = await requireResident();
+  const r = await currentResident();
+  // Admins (not signed in as a resident) get a read-only preview with nothing saved.
+  const preview = !r && (await isAdmin());
+  if (!r && !preview) redirect("/");
   const cfg = await getConfig(todayISO());
+  const m = cfg.content.find((x) => x.slug === slug);
+  if (!m) notFound();
   const meta = cfg.modules.find((x) => x.slug === m.slug);
   if (meta && !meta.enabled) notFound();
-  const b = await loadBundle(r.id);
-  const st = moduleState(cfg, r, b, m);
+  const b = r ? await loadBundle(r.id) : emptyBundle();
+  const st = moduleState(cfg, r ?? { group_number: null }, b, m);
   const settings = cfg.settings;
 
   const reflections = new Map(b.reflections.filter((x) => x.module_slug === m.slug).map((x) => [x.prompt_id, x.response_text]));
@@ -107,13 +111,12 @@ export default async function ModulePage({ params }: { params: Promise<{ slug: s
         // eslint-disable-next-line @next/next/no-img-element
         return <img key={key} src={blk.src} alt={blk.alt} className="w-full rounded-2xl" />;
       case "link":
+        if (blk.kind === "video")
+          return <VideoPlayer key={key} url={settings[blk.linkKey]} title={blk.label.replace(/^Watch:\s*/, "")} captionsUrl={blk.captionsLinkKey ? settings[blk.captionsLinkKey] : null} />;
         return (
           <div key={key} className="flex flex-wrap items-center gap-3">
             <LinkButton href={settings[blk.linkKey]} label={blk.label} kind={blk.kind} />
             {blk.captionsLinkKey && <LinkButton href={settings[blk.captionsLinkKey]} label="Captions / transcript" variant="small" />}
-            {blk.kind === "video" && !blk.captionsLinkKey && settings[blk.linkKey] && (
-              <span className="text-sm text-muted">Captions are available in the video player.</span>
-            )}
           </div>
         );
       case "cards":
@@ -259,10 +262,22 @@ export default async function ModulePage({ params }: { params: Promise<{ slug: s
 
   return (
     <>
-      <ResidentHeader name={displayName(r)} />
-      <OpenTracker moduleSlug={m.slug} />
+      {r ? (
+        <>
+          <ResidentHeader name={displayName(r)} />
+          <OpenTracker moduleSlug={m.slug} />
+        </>
+      ) : (
+        <div className="bg-yellow px-4 py-2 text-center font-semibold">
+          Admin preview: this is what residents see. Answers and ticks are turned off here.{" "}
+          <Link href={`/admin/content/${m.slug}`} className="underline">
+            Back to the editor
+          </Link>
+        </div>
+      )}
       <ModuleProgressProvider initial={reqs}>
         <main id="main" className="mx-auto max-w-3xl px-4 pb-16">
+          <fieldset disabled={preview} className="m-0 min-w-0 border-0 p-0">
           <StickyProgress title={`Module ${m.number}: ${m.title}`} completed={st.status === "complete"} />
           <p className="mt-4">
             <Link href="/home" className="link">
@@ -303,11 +318,8 @@ export default async function ModulePage({ params }: { params: Promise<{ slug: s
               <h2 id={`${s.id}-h`} className="h2">
                 {s.title}
               </h2>
-              {s.audioUrl && (
-                <audio controls preload="none" src={s.audioUrl} className="w-full">
-                  Your browser does not support audio playback.
-                </audio>
-              )}
+              {s.audioUrl && <AudioPlayer url={s.audioUrl} transcript={s.audioTranscript} />}
+              {s.video?.url && <VideoPlayer url={s.video.url} title={s.video.title || "Video"} captionsUrl={s.video.captionsUrl} />}
               {s.blocks.map((blk, bi) => renderBlock(blk, `${si}-${bi}`))}
             </section>
           ))}
@@ -323,6 +335,7 @@ export default async function ModulePage({ params }: { params: Promise<{ slug: s
               </a>
             ) : null}
           </p>
+          </fieldset>
         </main>
       </ModuleProgressProvider>
     </>

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MODULES, moduleReflectionPrompts } from "@/lib/content";
+import { moduleReflectionPrompts } from "@/lib/content";
 import { displayName, getConfig, loadBundle } from "@/lib/data";
 import { formatDateTime, todayISO } from "@/lib/dates";
 import { accuracyText, moduleState } from "@/lib/progress";
@@ -29,7 +29,7 @@ export default async function Results() {
           </a>
         </div>
         <p className="text-muted">Only you and the CTR team can see these.</p>
-        {MODULES.map((m) => {
+        {cfg.content.map((m) => {
           const st = moduleState(cfg, r, b, m);
           const prompts = moduleReflectionPrompts(m);
           return (

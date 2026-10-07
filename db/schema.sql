@@ -148,3 +148,27 @@ create table if not exists settings (
   key    text primary key,
   value  text not null default ''
 );
+
+-- Admin edits to module content. The files in /content stay the original; each row overrides one piece.
+-- target examples: 'module', 'section:<id>', 'block:<sectionId>:<index>', 'question:<id>', 'activity:<id>'.
+-- original_hash records what the file said when the edit was made, so the editor can flag edits whose
+-- original has since changed (block edits are ignored if their original changed, since indexes can shift).
+create table if not exists content_overrides (
+  module_slug    text not null,
+  target         text not null,
+  value          jsonb not null,
+  original_hash  text not null,
+  updated_at     timestamptz not null default now(),
+  primary key (module_slug, target)
+);
+
+-- Uploaded media (audio narration). Files live in Supabase Storage (or a local folder in development).
+create table if not exists media_files (
+  id            uuid primary key default gen_random_uuid(),
+  storage_path  text not null,
+  public_url    text not null,
+  filename      text not null,
+  content_type  text not null,
+  size_bytes    bigint not null,
+  created_at    timestamptz not null default now()
+);
