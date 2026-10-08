@@ -1,0 +1,128 @@
+@import "tailwindcss";
+
+/* Elliott Sans: when the licensed font files arrive, put them in /public/fonts and add
+   @font-face rules here (font-family: "Elliott Sans"). The stack below already prefers it. */
+
+@theme {
+  --font-sans: "Elliott Sans", "Nunito Sans", ui-sans-serif, system-ui, sans-serif;
+
+  /* CTR brand colors */
+  --color-coral: #ed4d44;
+  --color-teal-light: #63ddda;
+  --color-yellow: #f1d666;
+  --color-gray-brand: #8d8685;
+  --color-teal: #4998a4;
+
+  /* Accessible text variants (brand hues darkened to pass WCAG AA on white). */
+  --color-teal-ink: #2c6a74;
+  --color-coral-ink: #b8312a;
+  --color-ink: #1f2a2e;
+  --color-muted: #5c5655;
+
+  /* Tints for backgrounds */
+  --color-teal-wash: #e8f6f7;
+  --color-yellow-wash: #fdf7dd;
+  --color-coral-wash: #fdeceb;
+  --color-sand: #faf8f6;
+}
+
+html {
+  font-size: 16px;
+}
+body {
+  background: var(--color-sand);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  line-height: 1.55;
+}
+
+/* Visible keyboard focus everywhere */
+:focus-visible {
+  outline: 3px solid var(--color-teal-ink);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+@utility btn {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-6 py-2 text-[1.2rem] font-bold transition disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+@utility btn-primary {
+    @apply btn bg-coral text-white hover:brightness-95;
+  }
+
+@utility btn-secondary {
+    @apply btn border-2 border-teal bg-white text-teal-ink hover:bg-teal-wash;
+  }
+
+@utility btn-small {
+    @apply inline-flex min-h-10 items-center justify-center gap-1 rounded-full border-2 border-teal bg-white px-4 py-1 text-base font-semibold text-teal-ink hover:bg-teal-wash disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+@utility btn-danger {
+    @apply inline-flex min-h-10 items-center justify-center rounded-full border-2 border-coral-ink bg-white px-4 py-1 text-base font-semibold text-coral-ink hover:bg-coral-wash;
+  }
+
+@utility card {
+    @apply rounded-2xl border border-gray-brand/30 bg-white p-5 shadow-sm sm:p-6;
+  }
+
+@utility input {
+    @apply min-h-12 w-full rounded-xl border-2 border-gray-brand/50 bg-white px-4 py-2 text-base text-ink focus:border-teal-ink focus:outline-none;
+  }
+
+@utility label {
+    @apply mb-1 block font-semibold text-ink;
+  }
+
+@utility link {
+    @apply font-semibold text-teal-ink underline decoration-2 underline-offset-2 hover:text-ink;
+  }
+
+@utility h1 {
+    @apply text-3xl font-bold text-teal-ink sm:text-4xl;
+  }
+
+@utility h2 {
+    @apply text-2xl font-bold text-teal-ink;
+  }
+
+@utility h3 {
+    @apply text-xl font-bold text-ink;
+  }
+
+/* Score colors (approved campus one-pager palette). Never the only signal: the number is always shown. */
+@theme {
+  --color-s1: #ed4d44;
+  --color-s2: #f1d666;
+  --color-s3: #63ddda;
+  --color-s4: #2c6a74;
+}
+
+@utility pill {
+  @apply inline-flex h-8 min-w-8 items-center justify-center rounded-full px-2 text-sm font-bold;
+}
+
+@utility chip {
+  @apply inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5 text-xs font-bold;
+}
+
+@utility table-basic {
+  @apply w-full border-collapse text-sm [&_th]:border-b-2 [&_th]:border-gray-brand/40 [&_th]:px-2 [&_th]:py-2 [&_th]:text-left [&_th]:font-bold [&_td]:border-b [&_td]:border-gray-brand/20 [&_td]:px-2 [&_td]:py-2 [&_td]:align-top;
+}
+
+@media print {
+  body { background: white; }
+  .no-print { display: none !important; }
+}
+
+/* Campus one-pagers: one letter-size portrait page per campus. */
+@media print {
+  @page { size: letter portrait; margin: 0.45in; }
+  .onepager { break-after: page; box-shadow: none !important; border: 0 !important; padding: 0 !important; margin: 0 !important; }
+  .onepager:last-child { break-after: auto; }
+  main { padding: 0 !important; max-width: none !important; }
+}
+.onepager { font-family: Calibri, Carlito, "Segoe UI", Arial, sans-serif; }
+
+fieldset { min-width: 0; }
