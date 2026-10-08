@@ -1,0 +1,88 @@
+{
+  "observers": [
+    { "id": "ashley", "name": "Ashley", "full_name": "Ashley Pettway Carter", "advisor_code": "APC", "email": "ashley.carter@kippdc.org", "is_admin": true },
+    { "id": "alison", "name": "Alison", "full_name": "Alison", "advisor_code": "AC", "email": "", "is_admin": false }
+  ],
+  "cycles": [
+    { "number": 0, "theme": "Summer Academy", "start_date": "2026-07-13", "end_date": "2026-08-09" },
+    { "number": 1, "theme": "Care of Students and Classroom Culture", "start_date": "2026-08-10", "end_date": "2026-10-02" },
+    { "number": 2, "theme": "Content Knowledge", "start_date": "2026-10-05", "end_date": "2026-11-20" },
+    { "number": 3, "theme": "Instructional Responsiveness", "start_date": "2026-11-30", "end_date": "2027-02-05" },
+    { "number": 4, "theme": "Growth & Development", "start_date": "2027-02-08", "end_date": "2027-03-26" },
+    { "number": 5, "theme": "Ethical Practice", "start_date": "2027-03-29", "end_date": "2027-05-21" }
+  ],
+  "indicators": [
+    { "code": "CC.A.4", "name": "Body language demonstrates a Warm/Demanding (Firm) presence", "short_label": "Warm/Demanding presence", "domain": "CC", "area": "Learning Environment", "sort": 1, "scored": true, "introduced_cycle": 0, "first_scored_cycle": 1, "tier": 1 },
+    { "code": "CC.A.5", "name": "Gives clear \"What to Do\" directions", "short_label": "What to Do", "domain": "CC", "area": "Learning Environment", "sort": 2, "scored": true, "introduced_cycle": 0, "first_scored_cycle": 1, "tier": 1 },
+    { "code": "CC.A.6", "name": "Reinforces expectations verbally and non-verbally", "short_label": "Reinforces expectations", "domain": "CC", "area": "Learning Environment", "sort": 3, "scored": true, "introduced_cycle": 0, "first_scored_cycle": 1, "tier": 1 },
+    { "code": "CC.A.7", "name": "Uses least-invasive responses to non-productive behavior", "short_label": "Least-invasive responses", "domain": "CC", "area": "Learning Environment", "sort": 4, "scored": true, "introduced_cycle": 1, "first_scored_cycle": 2, "tier": 2 },
+    { "code": "CC.P.3", "name": "Classroom routines (library only; not scored this year)", "short_label": "Routines", "domain": "CC", "area": "Learning Environment", "sort": 5, "scored": false, "introduced_cycle": 0, "first_scored_cycle": null, "tier": null },
+    { "code": "CK.P.1", "name": "Uses an internalization system to prepare lessons", "short_label": "Internalization", "domain": "CK", "area": "Intellectual Prep", "sort": 6, "scored": true, "introduced_cycle": 1, "first_scored_cycle": 2, "tier": 2 },
+    { "code": "CK.A.4", "name": "Actively monitors student practice", "short_label": "Active monitoring", "domain": "CK", "area": "Intellectual Prep", "sort": 7, "scored": true, "introduced_cycle": 1, "first_scored_cycle": 2, "tier": 2 },
+    { "code": "CK.A.5", "name": "Engaging presence that builds joy and belonging", "short_label": "Engaging presence", "domain": "CK", "area": "Responsive Instruction", "sort": 8, "scored": true, "introduced_cycle": 3, "first_scored_cycle": 3, "tier": 3 },
+    { "code": "CK.A.6", "name": "Communicates a compelling \"why\"", "short_label": "Compelling why", "domain": "CK", "area": "Responsive Instruction", "sort": 9, "scored": true, "introduced_cycle": 3, "first_scored_cycle": 3, "tier": 3 },
+    { "code": "CK.A.7", "name": "Stamps concise, student-friendly key points", "short_label": "Key points", "domain": "CK", "area": "Responsive Instruction", "sort": 10, "scored": true, "introduced_cycle": 3, "first_scored_cycle": 3, "tier": 3 },
+    { "code": "CK.A.8", "name": "Checks for understanding", "short_label": "Checks for understanding", "domain": "CK", "area": "Responsive Instruction", "sort": 11, "scored": true, "introduced_cycle": 3, "first_scored_cycle": 3, "tier": 3 }
+  ],
+  "cfs": [
+    { "id": "CC.A.4.1", "indicator": "CC.A.4", "short_label": "Posture", "full_text": "Teacher stands up straight with shoulders back" },
+    { "id": "CC.A.4.2", "indicator": "CC.A.4", "short_label": "Warm, firm tone", "full_text": "Teacher uses a warm, firm tone" },
+    { "id": "CC.A.4.3", "indicator": "CC.A.4", "short_label": "Formal register", "full_text": "Teacher speaks in a formal register" },
+    { "id": "CC.A.4.4", "indicator": "CC.A.4", "short_label": "Attention-getter + scan", "full_text": "Teacher uses an attention-getter and scans the room before setting expectations" },
+    { "id": "CC.A.5.1", "indicator": "CC.A.5", "short_label": "Movement (Body/Materials)", "full_text": "Teacher clearly communicates expectations for movement (Body/Materials)" },
+    { "id": "CC.A.5.2", "indicator": "CC.A.5", "short_label": "Voice level", "full_text": "Teacher sets a voice level expectation" },
+    { "id": "CC.A.5.3", "indicator": "CC.A.5", "short_label": "Participation (Mind/Activity)", "full_text": "Teacher explicitly states expectations for participation (Mind/Activity)" },
+    { "id": "CC.A.5.4", "indicator": "CC.A.5", "short_label": "Time limit", "full_text": "Teacher sets a time limit for the task" },
+    { "id": "CC.A.6.1", "indicator": "CC.A.6", "short_label": "Be Seen Looking", "full_text": "Teacher scans using an exaggerated “Be Seen Looking” move" },
+    { "id": "CC.A.6.2", "indicator": "CC.A.6", "short_label": "Narrates 2-3 students", "full_text": "Teacher positively narrates 2-3 students" },
+    { "id": "CC.A.6.3", "indicator": "CC.A.6", "short_label": "Narration matches WTD", "full_text": "Narration is aligned to the WTD direction" },
+    { "id": "CC.A.7.1", "indicator": "CC.A.7", "short_label": "Within 10 seconds", "full_text": "Teacher addresses non-productive behavior within 10 seconds" },
+    { "id": "CC.A.7.2", "indicator": "CC.A.7", "short_label": "Least-invasive technique", "full_text": "Teacher uses a least-invasive redirection technique" },
+    { "id": "CC.A.7.3", "indicator": "CC.A.7", "short_label": "Neutral tone", "full_text": "Teacher uses a neutral tone for all corrections" },
+    { "id": "CC.A.7.4", "indicator": "CC.A.7", "short_label": "Proportional consequences", "full_text": "Consequences are incremental and proportional to the student’s action" },
+    { "id": "CK.P.1.1", "indicator": "CK.P.1", "short_label": "Annotated plan accessible", "full_text": "Teacher has annotated lesson plan and/or annotated exemplar work accessible" },
+    { "id": "CK.P.1.2", "indicator": "CK.P.1", "short_label": "Know and do annotated", "full_text": "Annotations identify what the student must know and do to produce that part of the response" },
+    { "id": "CK.P.1.3", "indicator": "CK.P.1", "short_label": "Scripted WTD", "full_text": "Teacher scripts clear WTD directions for every part of the lesson" },
+    { "id": "CK.A.4.1", "indicator": "CK.A.4", "short_label": "Names the look-for", "full_text": "Teacher names what they are looking for before starting each lap" },
+    { "id": "CK.A.4.2", "indicator": "CK.A.4", "short_label": "Circulates immediately", "full_text": "Teacher intentionally circulates immediately after releasing students to practice, scanning for confusion and giving quick, private feedback" },
+    { "id": "CK.A.4.3", "indicator": "CK.A.4", "short_label": "Exemplar/tracker in hand", "full_text": "Teacher has an exemplar and/or active monitoring tracker in hand" },
+    { "id": "CK.A.4.4", "indicator": "CK.A.4", "short_label": "Preemptive support", "full_text": "Teacher preemptively supports struggling students with an anchor chart, sentence stem, or a brief check-in" },
+    { "id": "CK.A.5.1", "indicator": "CK.A.5", "short_label": "Modulates tone", "full_text": "Teacher modulates their tone" },
+    { "id": "CK.A.5.2", "indicator": "CK.A.5", "short_label": "Short sentences", "full_text": "Teacher uses short and succinct sentences" },
+    { "id": "CK.A.5.3", "indicator": "CK.A.5", "short_label": "Chants and celebration", "full_text": "Teacher includes chants, call & response, or other developmentally appropriate student celebration throughout lesson" },
+    { "id": "CK.A.6.1", "indicator": "CK.A.6", "short_label": "States the goal", "full_text": "Teacher clearly states the learning goal in student-friendly language" },
+    { "id": "CK.A.6.2", "indicator": "CK.A.6", "short_label": "Explains why", "full_text": "Teacher briefly explains why the learning matters using age-appropriate language" },
+    { "id": "CK.A.7.1", "indicator": "CK.A.7", "short_label": "Think-aloud model", "full_text": "Teacher explicitly models what success looks like using a think aloud to stamp the key points" },
+    { "id": "CK.A.7.2", "indicator": "CK.A.7", "short_label": "Engagement strategies", "full_text": "Teacher uses a variety of student engagement strategies to stamp key points" },
+    { "id": "CK.A.7.3", "indicator": "CK.A.7", "short_label": "Two modalities", "full_text": "Teacher uses at least two modalities to stamp key points" },
+    { "id": "CK.A.8.1", "indicator": "CK.A.8", "short_label": "Think time", "full_text": "Teacher gives students think time after asking a question" },
+    { "id": "CK.A.8.2", "indicator": "CK.A.8", "short_label": "Varied CFU", "full_text": "Teacher uses varied methods to CFU" },
+    { "id": "CK.A.8.3", "indicator": "CK.A.8", "short_label": "Targeted feedback", "full_text": "Teacher provides targeted feedback that is specific and actionable" },
+    { "id": "CK.A.8.4", "indicator": "CK.A.8", "short_label": "Real-time data", "full_text": "Teacher collects real-time data by scanning student work or listening to responses and notes who needs support" }
+  ],
+  "tiers": [
+    { "number": 1, "name": "Tier 1: CC.A.4 to CC.A.6", "calendar_cycle": 1 },
+    { "number": 2, "name": "Tier 2: adds CC.A.7, CK.P.1, CK.A.4", "calendar_cycle": 2 },
+    { "number": 3, "name": "Tier 3: adds CK.A.5 to CK.A.8", "calendar_cycle": 3 },
+    { "number": 4, "name": "Tier 4: full vision of teaching excellence", "calendar_cycle": 4 }
+  ],
+  "tracks": [
+    { "code": "standard", "name": "Standard", "follows_calendar": true, "sort": 1 },
+    { "code": "accelerated", "name": "Accelerated", "follows_calendar": false, "sort": 2 },
+    { "code": "developing", "name": "Developing", "follows_calendar": false, "sort": 3 }
+  ],
+  "settings": {
+    "observation_types": "Pop In\nPlanned Observation\nIP - Coaching\nWalkthrough\nVideo Review\nMid-Year Observation",
+    "involvement_levels": "Leading Whole Group\nLeading Small Group\nSupporting\nCo-Teaching\nNot Teaching",
+    "campuses": "Benning\nDouglass\nHigh Schools\nShaw\nSmilow\nWebb\nWheeler",
+    "max_action_steps": "2",
+    "edit_window_days": "7",
+    "advance_threshold": "3",
+    "advance_observations": "2",
+    "expected_obs_per_cycle": "3",
+    "passcode_enabled": "true",
+    "email_snapshot_default": "true",
+    "email_next_steps": "I'll be back for another observation soon. Reply to this email with any questions.",
+    "rubric_note": "Scores represent a single moment in time and do not impact program standing."
+  }
+}
