@@ -4,6 +4,7 @@ Onboarding app for the Capital Teaching Residency (KIPP DC), replacing Trainual 
 Residents pick their name, set a 4-digit PIN, and work through three phases: welcome action items,
 five prework modules, and HR/summer prep. The CTR team sees everyone's progress at `/admin`.
 
+- **Companion app:** the CTR Program Metrics Hub lives in [`/metrics`](metrics) and deploys as its own Vercel project (Root Directory `metrics`). See its README.
 - **Stack:** Next.js (App Router) + TypeScript + Tailwind, hosted on Vercel; Postgres on Supabase.
 - **The browser never talks to the database.** Every read and write goes through the Next.js server,
   which identifies the resident from a signed cookie (never from an id sent by the browser).
