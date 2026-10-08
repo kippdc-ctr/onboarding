@@ -8,7 +8,7 @@ export const dynamic = "force-dynamic";
 /** Owner-only full archive of one school year (spec section 9: export and archive each year, then lock it). */
 export async function GET(req: Request) {
   const u = await currentUser();
-  if (!u || !can.manageYear(u)) return new Response("Not allowed", { status: 403 });
+  if (!u || u.must_change_password || !can.manageYear(u)) return new Response("Not allowed", { status: 403 });
   const year = await getYear(new URL(req.url).searchParams.get("year") ?? undefined);
   const goalIds = sql`select id from metrics.goals where school_year = ${year.id}`;
   const [goals, periods, residents, measurements, members, imports, changes] = await Promise.all([

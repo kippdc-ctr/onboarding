@@ -1,13 +1,15 @@
 // Database helper. Usage:
 //   node scripts/db.mjs migrate   create/upgrade tables (safe to re-run)
 //   node scripts/db.mjs seed      insert the school year, calendar, campuses, sources, settings, goals,
-//                                 and OWNER_EMAILS as owners (never overwrites anything already there)
+//                                 and OWNER_EMAILS as owners (never overwrites anything already there).
+//                                 An owner with no password yet gets OWNER_INITIAL_PASSWORD as a temporary one.
 //   node scripts/db.mjs deploy    migrate + seed; runs on every Vercel build
 //   node scripts/db.mjs reset     DROP the metrics schema, then migrate + seed (local dev only)
 // Sample data is loaded from inside the app (Admin -> Data), so it goes through the same code as real imports.
 import { readFileSync, existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
+import { randomBytes, scryptSync } from "node:crypto";
 import postgres from "postgres";
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -75,10 +77,22 @@ async function seed() {
     await sql`insert into metrics.goals ${sql(row)} on conflict (school_year, number, visibility) do nothing`;
   }
   const owners = (process.env.OWNER_EMAILS || "").split(",").map((e) => e.trim().toLowerCase()).filter(Boolean);
+  const initial = process.env.OWNER_INITIAL_PASSWORD || "";
+  if (initial && initial.length < 10) console.warn("OWNER_INITIAL_PASSWORD must be at least 10 characters; ignored.");
   for (const email of owners) {
     await sql`insert into metrics.app_users (email, role) values (${email}, 'owner') on conflict (email) do nothing`;
+    if (initial.length >= 10) {
+      await sql`update metrics.app_users set password_hash = ${hashPassword(initial)}, must_change_password = true
+                where email = ${email} and password_hash is null`;
+    }
   }
   console.log(`Seed data inserted (existing rows left unchanged). Owners from OWNER_EMAILS: ${owners.length}.`);
+}
+
+// Same format as lib/password.ts: scrypt$<salt>$<key>, base64url.
+function hashPassword(pw) {
+  const salt = randomBytes(16);
+  return `scrypt$${salt.toString("base64url")}$${scryptSync(pw, salt, 64).toString("base64url")}`;
 }
 
 async function reset() {

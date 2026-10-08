@@ -3,7 +3,8 @@
 // Owner-only actions. Every action re-checks the signed-in user: server actions are public endpoints.
 import { revalidatePath } from "next/cache";
 import { sql } from "@/lib/db";
-import { requireUser, Role } from "@/lib/auth";
+import { allowedDomain, requireUser, Role } from "@/lib/auth";
+import { hashPassword, passwordProblem } from "@/lib/password";
 import { audit } from "@/lib/audit";
 import { CATEGORIES, getCampuses, getGoal, getGoals, getPeriods, getSources, getYear, listYears, scoreGoals } from "@/lib/data";
 import { deleteSampleData, loadSampleData } from "@/lib/samples";
@@ -97,15 +98,37 @@ export async function addUser(fd: FormData) {
   const email = str(fd, "email").toLowerCase();
   const role = str(fd, "role");
   const campus = str(fd, "campus") || null;
-  const domain = (process.env.ALLOWED_EMAIL_DOMAIN || "kippdc.org").toLowerCase();
-  if (!/^[^@\s]+@[^@\s]+$/.test(email) || !email.endsWith(`@${domain}`)) back("/admin/users", `Enter an @${domain} email address.`, "error");
+  const temp = String(fd.get("temp_password") ?? "");
+  const domain = allowedDomain();
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) back("/admin/users", "Enter an email address.", "error");
+  if (domain && !email.endsWith(`@${domain}`)) back("/admin/users", `Enter an @${domain} email address.`, "error");
   if (!validRole(role)) back("/admin/users", "Choose a role.", "error");
   if (role === "rdl" && !(campus && (await getCampuses()).includes(campus))) back("/admin/users", "RDLs need a campus.", "error");
-  const rows = await sql`insert into metrics.app_users (email, name, role, campus) values (${email}, ${str(fd, "name") || null}, ${role}, ${role === "rdl" ? campus : null})
-                         on conflict (email) do nothing returning id`;
+  const problem = passwordProblem(temp);
+  if (problem) back("/admin/users", `Temporary password: ${problem}`, "error");
+  const rows = await sql`
+    insert into metrics.app_users (email, name, role, campus, password_hash, must_change_password)
+    values (${email}, ${str(fd, "name") || null}, ${role}, ${role === "rdl" ? campus : null}, ${await hashPassword(temp)}, true)
+    on conflict (email) do nothing returning id`;
   if (!rows.length) back("/admin/users", `${email} is already on the list.`, "error");
   await audit(u, "user_change", email, { added: true, role, campus });
-  back("/admin/users", `Added ${email}.`);
+  back("/admin/users", `Added ${email}. Give them the temporary password in person or by phone; they'll choose their own when they first sign in.`);
+}
+
+/** Sets a temporary password, unlocks the account, and signs the person out everywhere. */
+export async function resetPassword(fd: FormData) {
+  const u = await owner();
+  const id = str(fd, "id");
+  const temp = String(fd.get("temp_password") ?? "");
+  const problem = passwordProblem(temp);
+  if (problem) back("/admin/users", `Temporary password: ${problem}`, "error");
+  const [target] = await sql<{ email: string }[]>`
+    update metrics.app_users set password_hash = ${await hashPassword(temp)}, must_change_password = true,
+      failed_attempts = 0, locked_until = null, version = version + 1
+    where id = ${id} returning email`;
+  if (!target) back("/admin/users", "User not found.", "error");
+  await audit(u, "user_change", target.email, { password_reset: true });
+  back("/admin/users", `Reset ${target.email}'s password. They'll choose a new one at their next sign-in.`);
 }
 
 export async function updateUser(fd: FormData) {

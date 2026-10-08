@@ -16,6 +16,10 @@ export type AppUser = {
   created_at: Date;
   last_login_at: Date | null;
   version: number;
+  password_hash: string | null;
+  must_change_password: boolean;
+  failed_attempts: number;
+  locked_until: Date | null;
 };
 
 export const ROLE_LABEL: Record<Role, string> = { owner: "Owner", team: "CTR team", rdl: "RDL / campus leader" };
@@ -31,13 +35,9 @@ export const cookieOpts = (maxAgeMs: number) => ({
   maxAge: Math.floor(maxAgeMs / 1000),
 });
 
-export function allowedDomain(): string {
-  return (process.env.ALLOWED_EMAIL_DOMAIN || "kippdc.org").toLowerCase();
-}
-
-/** Local-only shortcut that skips Google. Never available on Vercel. */
-export function devLoginEnabled(): boolean {
-  return process.env.DEV_LOGIN === "true" && process.env.VERCEL !== "1";
+/** Optional: when ALLOWED_EMAIL_DOMAIN is set, only addresses on that domain can be added as users. */
+export function allowedDomain(): string | null {
+  return process.env.ALLOWED_EMAIL_DOMAIN?.trim().toLowerCase() || null;
 }
 
 type Token = { uid: string; v: number; exp: number };
@@ -64,6 +64,8 @@ export async function currentUser(): Promise<AppUser | null> {
 export async function requireUser(...roles: Role[]): Promise<AppUser> {
   const u = await currentUser();
   if (!u) redirect("/login");
+  // A temporary password (set by the owner) must be replaced before anything else.
+  if (u.must_change_password) redirect("/password");
   if (roles.length && !roles.includes(u.role)) redirect("/?error=" + encodeURIComponent("You don't have access to that page."));
   return u;
 }

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { requireUser, ROLE_LABEL, can } from "@/lib/auth";
 import { Logo } from "@/components/Logo";
+import { signOut } from "@/app/actions/auth";
 
 export const dynamic = "force-dynamic";
 
@@ -22,7 +23,10 @@ export default async function AppLayout({ children }: { children: React.ReactNod
             <span className="hidden text-muted sm:inline">
               {u.name || u.email} · <span className="font-semibold text-ink">{ROLE_LABEL[u.role]}</span>
             </span>
-            <form action="/auth/signout" method="post">
+            <Link href="/password" className="link text-sm">
+              Change password
+            </Link>
+            <form action={signOut}>
               <button type="submit" className="link text-sm">
                 Sign out
               </button>

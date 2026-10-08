@@ -8,6 +8,7 @@ This is **Phase A** of the spec: sign-in and roles, roster import, all 45 goals 
 definitions, manual entry and CSV import of results, the program scorecard, goal detail, and data health. The goal
 editor, user list, calendar, settings, audit log, and school-year tools are in Admin.
 
+- **Sign-in:** email + personal password (see Sign-in below).
 - **Stack:** Next.js (App Router) + TypeScript + Tailwind on Vercel; Postgres on Supabase. Charts are plain SVG.
 - **The browser never talks to the database.** Every page and action checks the signed-in user on the server.
 - **Tables live in a `metrics` Postgres schema**, so this app can share the Onboarding Hub's Supabase project safely.
@@ -34,26 +35,27 @@ The audit log records sign-ins, every view of a "who is missing" list, imports, 
 | Name | What it is |
 | --- | --- |
 | `DATABASE_URL` or `POSTGRES_URL` | Supabase Postgres connection string (Transaction pooler, port 6543). `POSTGRES_URL` is set for you by Vercel's Supabase integration. |
-| `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET` | Google OAuth client (see below). |
-| `ALLOWED_EMAIL_DOMAIN` | Defaults to `kippdc.org`. Google accounts on other domains are refused. |
-| `OWNER_EMAILS` | Comma-separated. Added as Owners on each deploy if they aren't on the list yet. Put Ashley's @kippdc.org address here. |
+| `OWNER_EMAILS` | Comma-separated. Added as Owners on each deploy if they aren't on the list yet. Put Ashley's address here. |
+| `OWNER_INITIAL_PASSWORD` | 10+ characters. A temporary password for an owner who has none yet; they choose their own at first sign-in. Delete it afterwards. |
 | `SESSION_SECRET` | Long random string that signs sign-in cookies (`openssl rand -hex 32`). Changing it signs everyone out. |
-| `APP_URL` | Optional. The site's URL, e.g. `https://ctr-metrics.vercel.app`, so the Google redirect is always the same. |
+| `ALLOWED_EMAIL_DOMAIN` | Optional. When set (e.g. `kippdc.org`), only emails on that domain can be added as users. |
 | `APP_TIME_ZONE` | Optional. Defaults to `America/New_York`. |
 
 ## Deploy (first time)
 
 1. **Vercel:** Add New → Project → import `kippdc-ctr/onboarding` again, and set **Root Directory** to `metrics`. Leave the build settings as they are.
 2. **Database:** Storage → Connect Database → choose the Onboarding Hub's Supabase project (or create a new one). The app creates its own `metrics` schema.
-3. **Google sign-in:** in [Google Cloud Console](https://console.cloud.google.com/) (a KIPP DC project), APIs & Services →
-   OAuth consent screen → **Internal** (KIPP DC accounts only); then Credentials → Create credentials → OAuth client ID → Web application.
-   Add the authorized redirect URI `https://<your-vercel-domain>/auth/callback`. Copy the client ID and secret.
-4. **Environment variables** (Settings → Environment Variables): `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, `SESSION_SECRET`, `OWNER_EMAILS`, and `APP_URL`.
-5. **Redeploy.** Every build creates or updates the tables and seeds the goals, calendar, campuses, and sources (`npm run vercel-build`). It never overwrites anything edited in Admin.
-6. Sign in, then: Admin → Users to add the team and RDLs; Admin → Goals to confirm targets; Admin → Calendar to replace placeholder dates.
+3. **Environment variables** (Settings → Environment Variables): `SESSION_SECRET`, `OWNER_EMAILS`, and `OWNER_INITIAL_PASSWORD`.
+4. **Redeploy.** Every build creates or updates the tables and seeds the goals, calendar, campuses, and sources (`npm run vercel-build`). It never overwrites anything edited in Admin.
+5. Sign in with your email and `OWNER_INITIAL_PASSWORD`, choose your own password, then delete `OWNER_INITIAL_PASSWORD` from Vercel. Then: Admin → Users to add the team and RDLs; Admin → Goals to confirm targets; Admin → Calendar to replace placeholder dates.
    To try the screens first: Admin → School years & data → **Load sample data** (delete it before importing real data).
 
-Vercel preview links won't work with Google sign-in unless their URL is added as a redirect URI; test on the production URL.
+## Sign-in
+
+Email and a personal password. Only people on Admin → Users can sign in. When you add someone you set a temporary password
+(share it in person or by phone, not in the same email as the link); they must choose their own (10+ characters) the first time they sign in.
+Five wrong tries lock the account for 15 minutes. Forgotten password: Admin → Users → Reset password (this also unlocks the account and signs them out everywhere).
+Anyone can change their own password from the link in the header. Passwords are stored as scrypt hashes, never in plain text, and nobody (including the owner) can read them.
 
 ## Everyday tasks
 
@@ -82,10 +84,10 @@ and the calendar shifted a year), update targets and dates, make it current, imp
 
 ```bash
 cd metrics
-cp .env.example .env.local   # point DATABASE_URL at a local Postgres; add DEV_LOGIN=true and OWNER_EMAILS=you@kippdc.org
+cp .env.example .env.local   # point DATABASE_URL at a local Postgres; set OWNER_EMAILS and OWNER_INITIAL_PASSWORD
 npm install
 npm run db:migrate && npm run db:seed
-npm run dev                  # http://localhost:3100 (DEV_LOGIN shows a sign-in picker)
+npm run dev                  # http://localhost:3100
 npm test                     # status and breakdown rules
 npm run typecheck
 ```

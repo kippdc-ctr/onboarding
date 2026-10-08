@@ -3,7 +3,8 @@ import { AppUser, allowedDomain, requireUser, ROLE_LABEL } from "@/lib/auth";
 import { getCampuses } from "@/lib/data";
 import { fmtDateTime } from "@/lib/dates";
 import { Flash, flashFrom } from "@/components/Flash";
-import { addUser, updateUser } from "@/app/actions/admin";
+import { addUser, resetPassword, updateUser } from "@/app/actions/admin";
+import { MIN_PASSWORD } from "@/lib/password";
 
 export default async function UsersPage({ searchParams }: { searchParams: Promise<Record<string, string | undefined>> }) {
   const me = await requireUser("owner");
@@ -15,7 +16,8 @@ export default async function UsersPage({ searchParams }: { searchParams: Promis
       <div>
         <h1 className="h1">Users</h1>
         <p className="text-muted">
-          Only people on this list can sign in, and only with their @{allowedDomain()} Google account. Changing someone&apos;s role signs them out so it applies right away.
+          Only people on this list can sign in, with their email and their own password. When you add someone or reset their password, you set a temporary password;
+          they choose their own the first time they sign in. Changing someone&apos;s role signs them out so it applies right away.
         </p>
       </div>
       <div className="card text-sm">
@@ -36,14 +38,20 @@ export default async function UsersPage({ searchParams }: { searchParams: Promis
 
       <div className="space-y-3">
         {users.map((u) => (
-          <form key={u.id} action={updateUser} className={`card grid gap-3 p-4 sm:p-4 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)_11rem_10rem_auto_auto] md:items-end ${u.active ? "" : "opacity-70"}`}>
+          <div key={u.id} className="space-y-2">
+          <form action={updateUser} className={`card grid gap-3 p-4 sm:p-4 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)_11rem_10rem_auto_auto] md:items-end ${u.active ? "" : "opacity-70"}`}>
             <input type="hidden" name="id" value={u.id} />
             <div>
               <p className="font-semibold break-all">
                 {u.email}
                 {u.id === me.id && <span className="ml-1 text-xs text-muted">(you)</span>}
               </p>
-              <p className="text-xs text-muted">Last sign-in: {fmtDateTime(u.last_login_at)}</p>
+              <p className="text-xs text-muted">
+                Last sign-in: {fmtDateTime(u.last_login_at)}
+                {!u.password_hash && <strong className="text-coral-ink"> · no password yet: set one below</strong>}
+                {u.password_hash && u.must_change_password && " · temporary password"}
+                {u.locked_until && new Date(u.locked_until).getTime() > Date.now() && <strong className="text-coral-ink"> · locked (too many wrong tries)</strong>}
+              </p>
             </div>
             <label>
               <span className="label text-sm">Name</span>
@@ -74,14 +82,26 @@ export default async function UsersPage({ searchParams }: { searchParams: Promis
             </label>
             <button className="btn-small">Save</button>
           </form>
+          <details className="px-4 text-sm">
+            <summary className="cursor-pointer font-semibold text-teal-ink">{u.password_hash ? "Reset password" : "Set a password"}</summary>
+            <form action={resetPassword} className="mt-2 flex flex-wrap items-end gap-2">
+              <input type="hidden" name="id" value={u.id} />
+              <label>
+                <span className="label text-sm">Temporary password</span>
+                <input name="temp_password" type="text" autoComplete="off" required minLength={MIN_PASSWORD} className="input min-h-10 py-1" />
+              </label>
+              <button className="btn-small">Set temporary password</button>
+            </form>
+          </details>
+          </div>
         ))}
       </div>
 
-      <form action={addUser} className="card grid gap-3 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)_11rem_10rem_auto] md:items-end">
-        <h2 className="h3 md:col-span-5">Add someone</h2>
+      <form action={addUser} className="card grid gap-3 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)_11rem_10rem_minmax(0,1fr)_auto] md:items-end">
+        <h2 className="h3 md:col-span-6">Add someone</h2>
         <label>
           <span className="label text-sm">Email</span>
-          <input name="email" type="email" required className="input min-h-10 py-1" placeholder={`name@${allowedDomain()}`} />
+          <input name="email" type="email" required className="input min-h-10 py-1" placeholder={`name@${allowedDomain() ?? "kippdc.org"}`} />
         </label>
         <label>
           <span className="label text-sm">Name</span>
@@ -105,6 +125,10 @@ export default async function UsersPage({ searchParams }: { searchParams: Promis
               <option key={c}>{c}</option>
             ))}
           </select>
+        </label>
+        <label>
+          <span className="label text-sm">Temporary password</span>
+          <input name="temp_password" type="text" autoComplete="off" required minLength={MIN_PASSWORD} className="input min-h-10 py-1" placeholder={`${MIN_PASSWORD}+ characters`} />
         </label>
         <button className="btn-small">Add</button>
       </form>

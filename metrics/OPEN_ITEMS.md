@@ -4,7 +4,7 @@ The app runs with all of these at their defaults. Section numbers refer to the v
 
 ## Decisions I made so it could be built (tell me to change any)
 
-1. **Access (Q1).** Google sign-in limited to @kippdc.org **plus** the Users list. Roles as in the README table: CTR team can import
+1. **Access (Q1).** Email + personal password, limited to the Users list (Google sign-in was removed at your request). You set a temporary password when adding someone. Roles as in the README table: CTR team can import
    and type numbers but can't edit goals, users, or the calendar, and never sees demographics on resident rows. RDLs see the scorecard
    and only their own campus's residents and breakdown row.
 2. **CORE goals (Q2).** Not built. The database supports private goals, and they are excluded from every shared screen and export, but there is no "My CORE goals" tab until you decide.
@@ -22,8 +22,7 @@ The app runs with all of these at their defaults. Section numbers refer to the v
 
 ## Things I need from you
 
-- Your @kippdc.org address for `OWNER_EMAILS`, and the list of people (and RDL campuses) to add.
-- A KIPP DC Google Cloud project where IT can create the OAuth client (README step 3), or someone in IT to do it.
+- Your email for `OWNER_EMAILS`, and the list of people (and RDL campuses) to add.
 - The real SY26-27 calendar (cycles, evals, sprints, survey windows).
 - The Info tab's column names and the exact Status values (the app treats exactly "Enrolled - Resident" as enrolled; editable in Settings).
 - Where demographics live today and the category labels used (goal 32 matches race starting with "Black" and gender "Male").

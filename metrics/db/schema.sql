@@ -193,3 +193,9 @@ create table if not exists metrics.settings (
   key    text primary key,
   value  text not null
 );
+
+-- ---------- Passwords (email + personal password sign-in) ----------
+alter table metrics.app_users add column if not exists password_hash text;          -- scrypt$<salt>$<hash>
+alter table metrics.app_users add column if not exists must_change_password boolean not null default true;
+alter table metrics.app_users add column if not exists failed_attempts int not null default 0;
+alter table metrics.app_users add column if not exists locked_until timestamptz;

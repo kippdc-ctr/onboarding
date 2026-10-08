@@ -10,7 +10,7 @@ export const dynamic = "force-dynamic";
 /** Shared goals only, overall numbers only, small groups suppressed for non-owners. */
 export async function GET(req: Request) {
   const u = await currentUser();
-  if (!u) return new Response("Sign in first", { status: 401 });
+  if (!u || u.must_change_password) return new Response("Sign in first", { status: 401 });
   const year = await getYear(new URL(req.url).searchParams.get("year") ?? undefined);
   const [goals, settings] = await Promise.all([getGoals(year.id), getSettings()]);
   const scored = await scoreGoals(year, goals);
