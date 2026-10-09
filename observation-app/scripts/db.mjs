@@ -70,8 +70,22 @@ async function seed() {
     const key = process.env.INITIAL_ACCESS_KEY || randomBytes(24).toString("base64url");
     await sql`insert into settings (key, value) values ('access_key', ${key}), ('auth_version', '1')`;
     console.log(process.env.INITIAL_ACCESS_KEY ? "Access key set from INITIAL_ACCESS_KEY." : `Access link: /enter/${key}`);
+  } else if (process.env.INITIAL_ACCESS_KEY && hasKey.value !== process.env.INITIAL_ACCESS_KEY) {
+    // Until the link is first rotated in Settings, INITIAL_ACCESS_KEY wins. This covers a first build that ran
+    // before the variable was set (that build made up a random key).
+    const [v] = await sql`select value from settings where key = 'auth_version'`;
+    if ((v?.value ?? "1") === "1") {
+      await sql`update settings set value = ${process.env.INITIAL_ACCESS_KEY} where key = 'access_key'`;
+      console.log("Access key updated from INITIAL_ACCESS_KEY.");
+    } else {
+      console.log("INITIAL_ACCESS_KEY ignored: the link was rotated in Settings.");
+    }
   }
   const [hasPass] = await sql`select value from settings where key = 'passcode_hash'`;
+  if (hasPass && !hasPass.value && process.env.INITIAL_PASSCODE) {
+    await sql`update settings set value = ${hashPasscode(process.env.INITIAL_PASSCODE)} where key = 'passcode_hash'`;
+    console.log("Passcode set from INITIAL_PASSCODE.");
+  }
   if (!hasPass) {
     const p = process.env.INITIAL_PASSCODE || "";
     await sql`insert into settings (key, value) values ('passcode_hash', ${p ? hashPasscode(p) : ""})`;
