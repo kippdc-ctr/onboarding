@@ -29,7 +29,7 @@ if (!DB_URL) {
   console.error("DATABASE_URL is not set. Copy .env.example to .env.local and fill it in.");
   process.exit(1);
 }
-const sql = postgres(DB_URL, { prepare: false, onnotice: () => {} });
+const sql = postgres(DB_URL, { prepare: false, max_pipeline: 1, onnotice: () => {} });
 const json = (f) => JSON.parse(readFileSync(path.join(root, f), "utf8"));
 
 // Same format as lib/crypto.ts hashPasscode.
