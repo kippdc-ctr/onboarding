@@ -81,6 +81,7 @@
     "advance_observations": "2",
     "expected_obs_per_cycle": "3",
     "passcode_enabled": "true",
+    "link_required": "false",
     "email_snapshot_default": "true",
     "email_next_steps": "I'll be back for another observation soon. Reply to this email with any questions.",
     "rubric_note": "Scores represent a single moment in time and do not impact program standing."

@@ -2,7 +2,7 @@
 
 ## Spec questions still open (Section 10), and what the app does until you decide
 
-1. **Shared passcode:** on (the recommended setting). Settings → Access turns it off.
+1. **Shared passcode:** on (the recommended setting). The private link is **off** (you asked to remove it), so the passcode is the only lock on resident data. Settings → Access turns the link back on.
 2. **Look-fors, practice reps, resource links for the 48 current steps:** blank. The picker shows "No look-fors yet" on those steps, and the email leaves those sections out.
    Fastest fix: Library → Download CSV → fill the columns → Bulk import.
 3. **Email structure:** built as proposed in Section 6. The optional Sheets bridge to the Send tab (for Document Studio) is **not built**; see "Not built" below.
@@ -51,5 +51,5 @@
 
 1. Fill in look-fors and practice reps (item 2 above) and review the CFS links.
 2. Import the roster, then the Form tab; review the import preview's "not recognized" notes.
-3. Delete the sample data, rotate the link and passcode, and send Alison the link directly.
+3. Delete the sample data, use Settings → Access → Sign out everyone with a new passcode, and give Alison the passcode directly.
 4. Elliott Sans font files (`.woff2`), if you want the brand font (Nunito Sans is used until then).

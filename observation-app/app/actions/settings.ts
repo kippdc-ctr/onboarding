@@ -121,17 +121,19 @@ export async function saveAccess(form: FormData) {
   const me = await requireAdmin();
   const s = await getSettings();
   const enabled = form.get("passcode_enabled") === "on";
+  const linkOn = form.get("link_required") === "on";
   const newPass = String(form.get("new_passcode") ?? "").trim();
   if (newPass && newPass.length < 6) back("Use at least 6 characters for the passcode.", true, "#access");
   if (enabled && !newPass && !s.passcode_hash) back("Set a passcode before turning it on.", true, "#access");
   await put("passcode_enabled", enabled ? "true" : "false");
+  await put("link_required", linkOn ? "true" : "false");
   let hash = s.passcode_hash;
   if (newPass) {
     hash = hashPasscode(newPass);
     await put("passcode_hash", hash);
   }
   await refreshDevice({ ...s, passcode_hash: hash, passcode_enabled: enabled ? "true" : "false" });
-  await audit(me.id, "settings.access", "settings", "", { passcode_enabled: enabled, passcode_changed: !!newPass });
+  await audit(me.id, "settings.access", "settings", "", { passcode_enabled: enabled, link_required: linkOn, passcode_changed: !!newPass });
   back(newPass ? "Passcode changed. Other devices will be asked for the new one." : `Passcode ${enabled ? "on" : "off"}.`, false, "#access");
 }
 

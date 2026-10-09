@@ -31,6 +31,11 @@ function passFingerprint(s: Record<string, string>): string {
   return fingerprint(`${s.passcode_hash ?? ""}:${s.auth_version ?? "1"}`);
 }
 
+/** The private link is optional (off by default). When off, the plain web address opens the app. */
+export function linkRequired(s: Record<string, string>): boolean {
+  return s.link_required === "true";
+}
+
 export function passcodeRequired(s: Record<string, string>): boolean {
   return s.passcode_enabled !== "false";
 }
@@ -46,8 +51,8 @@ async function writeDevice(t: Omit<DeviceToken, "exp">) {
 export async function deviceState(): Promise<{ hasLink: boolean; hasPasscode: boolean; passcodeSet: boolean; required: boolean }> {
   const s = await getSettings();
   const d = await readDevice();
-  const hasLink = !!d && !!s.access_key && d.lk === linkFingerprint(s);
-  const hasPasscode = hasLink && !!s.passcode_hash && d!.pc === passFingerprint(s);
+  const hasLink = !linkRequired(s) || (!!d && !!s.access_key && d.lk === linkFingerprint(s));
+  const hasPasscode = hasLink && !!d && !!s.passcode_hash && d.pc === passFingerprint(s);
   return { hasLink, hasPasscode, passcodeSet: !!s.passcode_hash, required: passcodeRequired(s) };
 }
 

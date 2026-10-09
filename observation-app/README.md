@@ -34,11 +34,13 @@ repo root and from the Program Metrics App (which reads this app's data feed).
 
 ## Access (no Google sign-in)
 
-1. **Private link:** `https://<app>/enter/<access key>`. Without it every page is a plain "Page not found". Search engines are blocked (`robots.txt`, `X-Robots-Tag`).
-2. **Shared passcode** (on by default): entered once per device, remembered 90 days. 10 wrong tries locks entry for 15 minutes.
-3. **"Who is using this?"**: Ashley or Alison, remembered on the device. It labels observations and decisions; it isn't security.
+1. **Shared passcode** (on by default): entered once per device, remembered 90 days. 10 wrong tries locks entry for 15 minutes.
+   This is what keeps resident data private, so keep it on and don't share the passcode.
+2. **"Who is using this?"**: Ashley or Alison, remembered on the device. It labels observations and decisions; it isn't security.
+3. **Private link (optional, off by default):** Settings → Access → "Also require the private link". When on, only `https://<app>/enter/<access key>`
+   opens the app and every other address shows "Page not found". Search engines are blocked either way (`robots.txt`, `X-Robots-Tag`).
 
-**Settings → Access → Rotate link and passcode** makes a new link and passcode and signs every other device out.
+**Settings → Access → Sign out everyone** (or "Rotate link and passcode" when the link is on) sets a new passcode and signs every other device out.
 Only admins (Ashley by default; Settings → Observers) change settings, the library, or imports, and edit observations after the 7-day window.
 
 ## Environment variables
@@ -47,8 +49,8 @@ Only admins (Ashley by default; Settings → Observers) change settings, the lib
 | --- | --- |
 | `DATABASE_URL` or `POSTGRES_URL` | Supabase Postgres connection string (Transaction pooler, port 6543). `POSTGRES_URL` is set for you by Vercel's Supabase integration. |
 | `SESSION_SECRET` | Long random string that signs device cookies (`openssl rand -hex 32`). Changing it signs every device out. |
-| `INITIAL_ACCESS_KEY` | Used once, on the first deploy, as the private link key. Rotate it in Settings afterwards. |
-| `INITIAL_PASSCODE` | Optional, first deploy only. If blank, the first visit to the link creates the passcode. |
+| `INITIAL_ACCESS_KEY` | Optional. The key for the private link, used only if you turn the link on in Settings. |
+| `INITIAL_PASSCODE` | Recommended. The shared passcode. If blank, the first visitor to the app creates it, so open the app right after deploying. |
 | `SEED_SAMPLE_DATA` | Optional. `true` adds 18 fake "Sample" residents with observations, for trying the app. Delete them in Settings before launch. |
 | `APP_TIME_ZONE` | Optional. Defaults to `America/New_York`. |
 
@@ -57,10 +59,10 @@ Only admins (Ashley by default; Settings → Observers) change settings, the lib
 1. **Vercel:** Add New → Project → import `kippdc-ctr/onboarding`. Set **Root Directory** to `observation-app`. Leave the build settings as they are (the `vercel-build` script runs).
    This is a separate Vercel project from the Onboarding Hub.
 2. **Database:** in the new project, Storage → Create / Connect Database → Supabase (a **new** Supabase project; don't share the onboarding database).
-3. **Environment variables** (Production and Preview): `SESSION_SECRET`, `INITIAL_ACCESS_KEY`, optionally `INITIAL_PASSCODE`, and for a trial run `SEED_SAMPLE_DATA=true`.
+3. **Environment variables** (Production and Preview): `SESSION_SECRET`, `INITIAL_PASSCODE`, and for a trial run `SEED_SAMPLE_DATA=true`.
 4. **Redeploy.** Every build creates or updates the tables and seeds cycles, indicators, CFS, tiers, tracks, the action step library, and settings. It never overwrites anything edited in the app.
-5. Open `https://<app>/enter/<INITIAL_ACCESS_KEY>` on each phone and computer, enter the passcode, pick your name. On a phone, use **Add to Home Screen** to install it.
-6. **Before launch:** Settings → Import → roster (Info tab), then the Form tab; Settings → Sample data → delete; Settings → Access → rotate the link and passcode; send Alison the new link directly.
+5. Open `https://<app>` on each phone and computer, enter the passcode, pick your name. On a phone, use **Add to Home Screen** to install it.
+6. **Before launch:** Settings → Import → roster (Info tab), then the Form tab; Settings → Sample data → delete; Settings → Access → Sign out everyone with a new passcode; give Alison the passcode directly.
 
 ## Switching over from Fillout (Section 8)
 
@@ -87,9 +89,9 @@ This app doesn't compute program goals; the Metrics App decides how scores roll 
 
 ```bash
 cd observation-app
-cp .env.example .env.local      # point DATABASE_URL at a local Postgres, set SESSION_SECRET and INITIAL_ACCESS_KEY
+cp .env.example .env.local      # point DATABASE_URL at a local Postgres, set SESSION_SECRET and INITIAL_PASSCODE
 npm install
 npm run db:migrate && npm run db:seed && npm run db:samples
-npm run dev                     # http://localhost:3100/enter/<INITIAL_ACCESS_KEY>
+npm run dev                     # http://localhost:3100
 npm run typecheck && npm test   # rules for cycles, tracks, tiers, and the advance recommendation
 ```
