@@ -30,7 +30,10 @@ export default async function SettingsPage({ searchParams }: { searchParams: Pro
       </div>
       {ro && <p className="rounded-xl bg-yellow-wash p-3 text-sm">You can view settings; only the admin ({cfg.observers.filter((o) => o.is_admin).map((o) => o.name).join(", ")}) can change them.</p>}
 
-      {sp.rotated && (
+      {sp.rotated && s.link_required !== "true" && (
+        <p role="status" className="rounded-xl border-2 border-teal bg-teal-wash p-4 font-semibold">Every other device is signed out and will be asked for the new passcode.</p>
+      )}
+      {sp.rotated && s.link_required === "true" && (
         <div role="status" className="rounded-xl border-2 border-teal bg-teal-wash p-4">
           <p className="font-bold">New private link (old link and passcode no longer work):</p>
           <p className="mt-1 break-all font-mono text-sm">{origin}/enter/{s.access_key}</p>
@@ -160,23 +163,25 @@ export default async function SettingsPage({ searchParams }: { searchParams: Pro
       <section className="card space-y-4" id="access">
         <h2 className="h3">Access</h2>
         <p className="text-sm">
-          The app opens only from the private link. Never paste it into a group email or chat.{" "}
-          {me.is_admin && <>Current link: <span className="break-all font-mono text-xs">{origin}/enter/{s.access_key}</span></>}
+          {s.link_required === "true" ? "The app opens only from the private link. Never paste it into a group email or chat." : <>The app opens from its normal web address (<span className="font-mono text-xs">{origin}</span>). The passcode is what keeps resident data private.</>}{" "}
+          {me.is_admin && s.link_required === "true" && <>Current link: <span className="break-all font-mono text-xs">{origin}/enter/{s.access_key}</span></>}
         </p>
         <form action={saveAccess} className="space-y-2">
           <fieldset disabled={ro} className="space-y-2">
+            <label className="flex items-center gap-2"><input type="checkbox" name="link_required" defaultChecked={s.link_required === "true"} /> Also require the private link (every other address shows &quot;Page not found&quot;)</label>
+            {me.is_admin && <p className="break-all text-xs text-muted">The private link, if you turn it on: <span className="font-mono">{origin}/enter/{s.access_key}</span>. Open it on each device before turning this on.</p>}
             <label className="flex items-center gap-2"><input type="checkbox" name="passcode_enabled" defaultChecked={s.passcode_enabled !== "false"} /> Require the shared passcode (recommended)</label>
-            <p className="text-xs text-coral-ink">With the passcode off, anyone who gets the link can read resident performance data.</p>
+            <p className="text-xs text-coral-ink">With the passcode off, anyone who gets the {s.link_required === "true" ? "link" : "web address"} can read resident performance data.</p>
             <label className="block max-w-sm"><span className="label text-sm">Change the passcode (optional)</span><input name="new_passcode" type="password" autoComplete="new-password" className="input" /></label>
             {!ro && <button className="btn-small">Save access</button>}
           </fieldset>
         </form>
         {!ro && (
           <form action={rotateAccess} className="space-y-2 rounded-xl bg-coral-wash p-3">
-            <p className="font-semibold">Rotate the link and passcode</p>
-            <p className="text-sm">Every other device is signed out. You&apos;ll see the new link here.</p>
+            <p className="font-semibold">{s.link_required === "true" ? "Rotate the link and passcode" : "Sign out every device and change the passcode"}</p>
+            <p className="text-sm">Every other device is signed out and must enter the new passcode.{s.link_required === "true" ? " You'll see the new link here." : ""}</p>
             <label className="block max-w-sm"><span className="label text-sm">New passcode</span><input name="rotate_passcode" type="password" autoComplete="new-password" className="input" required /></label>
-            <button className="btn-danger">Rotate link and passcode</button>
+            <button className="btn-danger">{s.link_required === "true" ? "Rotate link and passcode" : "Sign out everyone"}</button>
           </form>
         )}
       </section>
