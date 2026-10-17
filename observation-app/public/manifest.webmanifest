@@ -1,0 +1,10 @@
+{
+  "name": "CTR Observations",
+  "short_name": "CTR Obs",
+  "start_url": "/observe",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#FAF8F6",
+  "theme_color": "#4998A4",
+  "icons": [{ "src": "/brand/ctr-logo.png", "sizes": "480x480", "type": "image/png", "purpose": "any" }]
+}

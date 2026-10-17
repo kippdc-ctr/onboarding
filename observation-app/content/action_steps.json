@@ -1,0 +1,1228 @@
+[
+ {
+  "id": "AS-001",
+  "indicator": "CC.A.4",
+  "domain": "CC",
+  "text": "Plant your feet, square your shoulders, and level your chin before giving any direction.",
+  "cfs_ids": [
+   "CC.A.4.1"
+  ],
+  "link_type": "single",
+  "status": "active",
+  "is_legacy": false,
+  "intro_cycle": 0,
+  "source": "Draft v2",
+  "pair_group": "A4-Posture",
+  "review_note": "Keep (tie)"
+ },
+ {
+  "id": "AS-002",
+  "indicator": "CC.A.4",
+  "domain": "CC",
+  "text": "Open every direction with your attention-getter, then scan the room before you speak.",
+  "cfs_ids": [
+   "CC.A.4.4"
+  ],
+  "link_type": "single",
+  "status": "active",
+  "is_legacy": false,
+  "intro_cycle": 0,
+  "source": "Draft v2",
+  "pair_group": "A4-Opener",
+  "review_note": "Keep (tie)"
+ },
+ {
+  "id": "AS-003",
+  "indicator": "CC.A.4",
+  "domain": "CC",
+  "text": "Use a formal register and project your voice to ensure all students can hear you.",
+  "cfs_ids": [
+   "CC.A.4.3"
+  ],
+  "link_type": "single",
+  "status": "active",
+  "is_legacy": false,
+  "intro_cycle": 0,
+  "source": "Original CFS",
+  "pair_group": "A4-Register",
+  "review_note": "Keep"
+ },
+ {
+  "id": "AS-004",
+  "indicator": "CC.A.4",
+  "domain": "CC",
+  "text": "Use quiet power when you need students' attention. Drop the tone of your voice and slow your pace. Show poise and calm.",
+  "cfs_ids": [
+   "CC.A.4.2"
+  ],
+  "link_type": "single",
+  "status": "active",
+  "is_legacy": false,
+  "intro_cycle": 0,
+  "source": "Original CFS",
+  "pair_group": "A4-Tone",
+  "review_note": "Weak — revise"
+ },
+ {
+  "id": "AS-005",
+  "indicator": "CC.A.5",
+  "domain": "CC",
+  "text": "Script one WTD line that names exactly what hands and materials should do (e.g., \"Pencils down, eyes on me\").",
+  "cfs_ids": [
+   "CC.A.5.1"
+  ],
+  "link_type": "single",
+  "status": "active",
+  "is_legacy": false,
+  "intro_cycle": 0,
+  "source": "Draft v2",
+  "pair_group": "A5-Movement",
+  "review_note": "Keep"
+ },
+ {
+  "id": "AS-006",
+  "indicator": "CC.A.5",
+  "domain": "CC",
+  "text": "Attach a voice-level number to every direction you give this week.",
+  "cfs_ids": [
+   "CC.A.5.2"
+  ],
+  "link_type": "single",
+  "status": "active",
+  "is_legacy": false,
+  "intro_cycle": 0,
+  "source": "Draft v2",
+  "pair_group": "A5-VoiceLevel",
+  "review_note": "Keep (marginal)"
+ },
+ {
+  "id": "AS-007",
+  "indicator": "CC.A.5",
+  "domain": "CC",
+  "text": "Name a thinking task in your WTD alongside the movement task (e.g., \"underline the verb\").",
+  "cfs_ids": [
+   "CC.A.5.3"
+  ],
+  "link_type": "single",
+  "status": "active",
+  "is_legacy": false,
+  "intro_cycle": 0,
+  "source": "Draft v2",
+  "pair_group": "A5-Thinking",
+  "review_note": "Keep — top scorer"
+ },
+ {
+  "id": "AS-008",
+  "indicator": "CC.A.5",
+  "domain": "CC",
+  "text": "Give every task a time limit and count down the last five seconds out loud.",
+  "cfs_ids": [
+   "CC.A.5.4"
+  ],
+  "link_type": "single",
+  "status": "active",
+  "is_legacy": false,
+  "intro_cycle": 0,
+  "source": "Draft v2",
+  "pair_group": "A5-TimeLimit",
+  "review_note": "Keep (tie)"
+ },
+ {
+  "id": "AS-009",
+  "indicator": "CC.A.5",
+  "domain": "CC",
+  "text": "Check for understanding by asking a student to repeat the direction.",
+  "cfs_ids": [],
+  "link_type": "cross_cutting",
+  "status": "active",
+  "is_legacy": false,
+  "intro_cycle": 0,
+  "source": "Original CFS",
+  "pair_group": "A5-CFU (unique)",
+  "review_note": "Consider adding"
+ },
+ {
+  "id": "AS-010",
+  "indicator": "CC.A.6",
+  "domain": "CC",
+  "text": "After each direction, do one visible, exaggerated scan of the room.",
+  "cfs_ids": [
+   "CC.A.6.1"
+  ],
+  "link_type": "single",
+  "status": "active",
+  "is_legacy": false,
+  "intro_cycle": 0,
+  "source": "Draft v2",
+  "pair_group": "A6-Scan",
+  "review_note": "Keep (marginal)"
+ },
+ {
+  "id": "AS-011",
+  "indicator": "CC.A.6",
+  "domain": "CC",
+  "text": "Narrate 2–3 students by name doing the direction correctly, within 10 seconds of giving it.",
+  "cfs_ids": [
+   "CC.A.6.2"
+  ],
+  "link_type": "single",
+  "status": "active",
+  "is_legacy": false,
+  "intro_cycle": 0,
+  "source": "Draft v2",
+  "pair_group": "A6-Narrate",
+  "review_note": "Keep"
+ },
+ {
+  "id": "AS-012",
+  "indicator": "CC.A.6",
+  "domain": "CC",
+  "text": "Use concise narration: Name + Behavior.",
+  "cfs_ids": [
+   "CC.A.6.2",
+   "CC.A.6.3"
+  ],
+  "link_type": "multiple",
+  "status": "active",
+  "is_legacy": false,
+  "intro_cycle": 0,
+  "source": "Original CFS",
+  "pair_group": "A6-Format",
+  "review_note": "Keep"
+ },
+ {
+  "id": "AS-013",
+  "indicator": "CC.A.6",
+  "domain": "CC",
+  "text": "Periodically pause, scan, and narrate during instruction to remind students of the expectations.",
+  "cfs_ids": [
+   "CC.A.6.1",
+   "CC.A.6.2"
+  ],
+  "link_type": "multiple",
+  "status": "active",
+  "is_legacy": false,
+  "intro_cycle": 0,
+  "source": "Original CFS",
+  "pair_group": "A6-Ongoing",
+  "review_note": "Keep"
+ },
+ {
+  "id": "AS-014",
+  "indicator": "CC.A.7",
+  "domain": "CC",
+  "text": "Keep your face and voice neutral during corrections. Save warmth for your narration moments.",
+  "cfs_ids": [
+   "CC.A.7.3"
+  ],
+  "link_type": "single",
+  "status": "active",
+  "is_legacy": false,
+  "intro_cycle": 1,
+  "source": "Draft v2",
+  "pair_group": "A7-Tone",
+  "review_note": "Keep"
+ },
+ {
+  "id": "AS-015",
+  "indicator": "CC.A.7",
+  "domain": "CC",
+  "text": "Choose a consequence that matches the size of the behavior.",
+  "cfs_ids": [
+   "CC.A.7.4"
+  ],
+  "link_type": "single",
+  "status": "active",
+  "is_legacy": false,
+  "intro_cycle": 1,
+  "source": "Draft v2",
+  "pair_group": "A7-Consequence",
+  "review_note": "Weak — revise"
+ },
+ {
+  "id": "AS-016",
+  "indicator": "CC.A.7",
+  "domain": "CC",
+  "text": "Use 'Be Seen Looking' techniques to catch and address non-productive behavior within ten seconds.",
+  "cfs_ids": [
+   "CC.A.7.1"
+  ],
+  "link_type": "single",
+  "status": "active",
+  "is_legacy": false,
+  "intro_cycle": 1,
+  "source": "Original CFS",
+  "pair_group": "A7-Notice",
+  "review_note": "Keep (marginal)"
+ },
+ {
+  "id": "AS-017",
+  "indicator": "CC.A.7",
+  "domain": "CC",
+  "text": "Use the least-invasive technique to address non-productive behavior. Narrate, use proximity, or a non-verbal cue before moving to a verbal correction.",
+  "cfs_ids": [
+   "CC.A.7.2"
+  ],
+  "link_type": "single",
+  "status": "active",
+  "is_legacy": false,
+  "intro_cycle": 1,
+  "source": "Original CFS",
+  "pair_group": "A7-Ladder",
+  "review_note": "Keep — top scorer"
+ },
+ {
+  "id": "AS-018",
+  "indicator": "CC.A.7",
+  "domain": "CC",
+  "text": "Apply consequences that are consistent with the behavior.",
+  "cfs_ids": [
+   "CC.A.7.4"
+  ],
+  "link_type": "single",
+  "status": "active",
+  "is_legacy": false,
+  "intro_cycle": 1,
+  "source": "Original CFS",
+  "pair_group": "A7-Consequence",
+  "review_note": "Weak — revise"
+ },
+ {
+  "id": "AS-019",
+  "indicator": "CC.P.3",
+  "domain": "CC",
+  "text": "Write out and post the step-by-step actions for one classroom routine, naming what you do and what students do at each step.",
+  "cfs_ids": [],
+  "link_type": "cross_cutting",
+  "status": "active",
+  "is_legacy": false,
+  "intro_cycle": 0,
+  "source": "Draft v2 (new)",
+  "pair_group": "P3-Define",
+  "review_note": "Keep"
+ },
+ {
+  "id": "AS-020",
+  "indicator": "CC.P.3",
+  "domain": "CC",
+  "text": "Model the routine once, narrating each step out loud, before asking students to do it themselves.",
+  "cfs_ids": [],
+  "link_type": "cross_cutting",
+  "status": "active",
+  "is_legacy": false,
+  "intro_cycle": 0,
+  "source": "Draft v2 (new)",
+  "pair_group": "P3-Model",
+  "review_note": "Keep — top scorer for this indicator"
+ },
+ {
+  "id": "AS-021",
+  "indicator": "CC.P.3",
+  "domain": "CC",
+  "text": "Have students repeat a routine immediately if it isn't done correctly the first time.",
+  "cfs_ids": [],
+  "link_type": "cross_cutting",
+  "status": "active",
+  "is_legacy": false,
+  "intro_cycle": 0,
+  "source": "Draft v2 (new)",
+  "pair_group": "P3-DoItAgain",
+  "review_note": "Keep"
+ },
+ {
+  "id": "AS-022",
+  "indicator": "CC.P.3",
+  "domain": "CC",
+  "text": "End \"Do It Again\" practice for a routine as soon as the class performs it correctly.",
+  "cfs_ids": [],
+  "link_type": "cross_cutting",
+  "status": "active",
+  "is_legacy": false,
+  "intro_cycle": 0,
+  "source": "Draft v2 (new)",
+  "pair_group": "P3-CutItShort",
+  "review_note": "Weak — revise"
+ },
+ {
+  "id": "AS-023",
+  "indicator": "CK.P.1",
+  "domain": "CK",
+  "text": "Annotate one lesson plan or exemplar with what students must know and do before you teach it.",
+  "cfs_ids": [
+   "CK.P.1.2"
+  ],
+  "link_type": "single",
+  "status": "active",
+  "is_legacy": false,
+  "intro_cycle": 1,
+  "source": "Draft v2",
+  "pair_group": "P1-Annotate",
+  "review_note": "Keep"
+ },
+ {
+  "id": "AS-024",
+  "indicator": "CK.P.1",
+  "domain": "CK",
+  "text": "Write out your WTD word-for-word for every transition in one lesson this week.",
+  "cfs_ids": [
+   "CK.P.1.3"
+  ],
+  "link_type": "single",
+  "status": "active",
+  "is_legacy": false,
+  "intro_cycle": 1,
+  "source": "Draft v2",
+  "pair_group": "P1-ScriptWTD",
+  "review_note": "Keep (loosely)"
+ },
+ {
+  "id": "AS-025",
+  "indicator": "CK.P.1",
+  "domain": "CK",
+  "text": "Keep your annotated plan or exemplar open and in hand while you teach.",
+  "cfs_ids": [
+   "CK.P.1.1"
+  ],
+  "link_type": "single",
+  "status": "active",
+  "is_legacy": false,
+  "intro_cycle": 1,
+  "source": "Draft v2",
+  "pair_group": "P1-InHand",
+  "review_note": "Keep (marginal)"
+ },
+ {
+  "id": "AS-026",
+  "indicator": "CK.P.1",
+  "domain": "CK",
+  "text": "Rehearse your opening and one key moment out loud, once, before you teach it.",
+  "cfs_ids": [],
+  "link_type": "cross_cutting",
+  "status": "active",
+  "is_legacy": false,
+  "intro_cycle": 1,
+  "source": "Draft v2",
+  "pair_group": "P1-Rehearse",
+  "review_note": "Weak — revise"
+ },
+ {
+  "id": "AS-027",
+  "indicator": "CK.P.1",
+  "domain": "CK",
+  "text": "Rehearse the lesson out loud to refine pacing and clarity.",
+  "cfs_ids": [],
+  "link_type": "cross_cutting",
+  "status": "active",
+  "is_legacy": false,
+  "intro_cycle": 1,
+  "source": "Original CFS",
+  "pair_group": "P1-Rehearse",
+  "review_note": "Weak — revise"
+ },
+ {
+  "id": "AS-028",
+  "indicator": "CK.A.4",
+  "domain": "CK",
+  "text": "Carry your exemplar or tracker and check student work against it as you circulate.",
+  "cfs_ids": [
+   "CK.A.4.3"
+  ],
+  "link_type": "single",
+  "status": "active",
+  "is_legacy": false,
+  "intro_cycle": 1,
+  "source": "Draft v2",
+  "pair_group": "A4b-Exemplar",
+  "review_note": "Keep — top scorer"
+ },
+ {
+  "id": "AS-029",
+  "indicator": "CK.A.4",
+  "domain": "CK",
+  "text": "Check in first with one or two students who might need additional support, using a sentence stem.",
+  "cfs_ids": [
+   "CK.A.4.4"
+  ],
+  "link_type": "single",
+  "status": "active",
+  "is_legacy": false,
+  "intro_cycle": 1,
+  "source": "Draft v2",
+  "pair_group": "A4b-Support",
+  "review_note": "Keep (tie)"
+ },
+ {
+  "id": "AS-030",
+  "indicator": "CK.A.4",
+  "domain": "CK",
+  "text": "State clearly what you are looking for before beginning each monitoring lap. Use academic narration to highlight student thinking.",
+  "cfs_ids": [
+   "CK.A.4.1"
+  ],
+  "link_type": "single",
+  "status": "active",
+  "is_legacy": false,
+  "intro_cycle": 1,
+  "source": "Original CFS",
+  "pair_group": "A4b-NameLookFor",
+  "review_note": "Keep"
+ },
+ {
+  "id": "AS-031",
+  "indicator": "CK.A.4",
+  "domain": "CK",
+  "text": "Circulate right after students begin practice with your pen in hand to give in-the-moment feedback.",
+  "cfs_ids": [
+   "CK.A.4.2"
+  ],
+  "link_type": "single",
+  "status": "active",
+  "is_legacy": false,
+  "intro_cycle": 1,
+  "source": "Original CFS",
+  "pair_group": "A4b-Speed",
+  "review_note": "Keep"
+ },
+ {
+  "id": "AS-032",
+  "indicator": "CK.A.5",
+  "domain": "CK",
+  "text": "Practice shifting your tone between instruction, excitement, and calm-down at least once per lesson.",
+  "cfs_ids": [
+   "CK.A.5.1"
+  ],
+  "link_type": "single",
+  "status": "active",
+  "is_legacy": false,
+  "intro_cycle": 3,
+  "source": "Draft v2",
+  "pair_group": "A5b-Tone",
+  "review_note": "Keep"
+ },
+ {
+  "id": "AS-033",
+  "indicator": "CK.A.5",
+  "domain": "CK",
+  "text": "Give directions in one short sentence at a time. Pause before the next.",
+  "cfs_ids": [
+   "CK.A.5.2"
+  ],
+  "link_type": "single",
+  "status": "active",
+  "is_legacy": false,
+  "intro_cycle": 3,
+  "source": "Draft v2",
+  "pair_group": "A5b-Sentences",
+  "review_note": "Keep"
+ },
+ {
+  "id": "AS-034",
+  "indicator": "CK.A.5",
+  "domain": "CK",
+  "text": "Add one call-and-response or chant moment to a single lesson this week.",
+  "cfs_ids": [
+   "CK.A.5.3"
+  ],
+  "link_type": "single",
+  "status": "active",
+  "is_legacy": false,
+  "intro_cycle": 3,
+  "source": "Draft v2",
+  "pair_group": "A5b-Chant",
+  "review_note": "Keep"
+ },
+ {
+  "id": "AS-035",
+  "indicator": "CK.A.5",
+  "domain": "CK",
+  "text": "Add one specific, named celebration, such as a clap, phrase, or gesture, for a real win.",
+  "cfs_ids": [
+   "CK.A.5.3"
+  ],
+  "link_type": "single",
+  "status": "active",
+  "is_legacy": false,
+  "intro_cycle": 3,
+  "source": "Draft v2",
+  "pair_group": "A5b-Celebration",
+  "review_note": "Keep"
+ },
+ {
+  "id": "AS-036",
+  "indicator": "CK.A.5",
+  "domain": "CK",
+  "text": "Add at least one moment for student voice or choice during each activity.",
+  "cfs_ids": [],
+  "link_type": "cross_cutting",
+  "status": "active",
+  "is_legacy": false,
+  "intro_cycle": 3,
+  "source": "Original CFS",
+  "pair_group": "A5b-VoiceChoice (unique)",
+  "review_note": "Consider adding"
+ },
+ {
+  "id": "AS-037",
+  "indicator": "CK.A.6",
+  "domain": "CK",
+  "text": "Open one lesson with a single student-friendly sentence naming the goal.",
+  "cfs_ids": [
+   "CK.A.6.1"
+  ],
+  "link_type": "single",
+  "status": "active",
+  "is_legacy": false,
+  "intro_cycle": 3,
+  "source": "Draft v2",
+  "pair_group": "A6b-Goal",
+  "review_note": "Keep (tie)"
+ },
+ {
+  "id": "AS-038",
+  "indicator": "CK.A.6",
+  "domain": "CK",
+  "text": "Add one sentence connecting today's learning to students' lives.",
+  "cfs_ids": [
+   "CK.A.6.2"
+  ],
+  "link_type": "single",
+  "status": "active",
+  "is_legacy": false,
+  "intro_cycle": 3,
+  "source": "Draft v2",
+  "pair_group": "A6b-Why",
+  "review_note": "Keep (tie)"
+ },
+ {
+  "id": "AS-039",
+  "indicator": "CK.A.6",
+  "domain": "CK",
+  "text": "Reference yesterday's or last week's learning before introducing today's goal.",
+  "cfs_ids": [],
+  "link_type": "cross_cutting",
+  "status": "active",
+  "is_legacy": false,
+  "intro_cycle": 3,
+  "source": "Draft v2",
+  "pair_group": "A6b-PriorLearning",
+  "review_note": "Keep (tie)"
+ },
+ {
+  "id": "AS-040",
+  "indicator": "CK.A.6",
+  "domain": "CK",
+  "text": "Have students echo the goal back through call-and-response.",
+  "cfs_ids": [
+   "CK.A.6.1"
+  ],
+  "link_type": "single",
+  "status": "active",
+  "is_legacy": false,
+  "intro_cycle": 3,
+  "source": "Draft v2",
+  "pair_group": "A6b-Echo",
+  "review_note": "Keep"
+ },
+ {
+  "id": "AS-041",
+  "indicator": "CK.A.7",
+  "domain": "CK",
+  "text": "Name your key point in one clear sentence during a think-aloud.",
+  "cfs_ids": [
+   "CK.A.7.1"
+  ],
+  "link_type": "single",
+  "status": "active",
+  "is_legacy": false,
+  "intro_cycle": 3,
+  "source": "Draft v2",
+  "pair_group": "A7b-ThinkAloud",
+  "review_note": "Keep (tie)"
+ },
+ {
+  "id": "AS-042",
+  "indicator": "CK.A.7",
+  "domain": "CK",
+  "text": "Use one engagement strategy, such as a gesture, repetition, or call-and-response, to stamp a key point.",
+  "cfs_ids": [
+   "CK.A.7.2"
+  ],
+  "link_type": "single",
+  "status": "active",
+  "is_legacy": false,
+  "intro_cycle": 3,
+  "source": "Draft v2",
+  "pair_group": "A7b-Engagement",
+  "review_note": "Keep (tie)"
+ },
+ {
+  "id": "AS-043",
+  "indicator": "CK.A.7",
+  "domain": "CK",
+  "text": "Pair your verbal explanation with a visual or gesture in the same lesson.",
+  "cfs_ids": [
+   "CK.A.7.3"
+  ],
+  "link_type": "single",
+  "status": "active",
+  "is_legacy": false,
+  "intro_cycle": 3,
+  "source": "Draft v2",
+  "pair_group": "A7b-Modalities",
+  "review_note": "Keep (marginal)"
+ },
+ {
+  "id": "AS-044",
+  "indicator": "CK.A.7",
+  "domain": "CK",
+  "text": "Post one visual, such as an anchor chart or desk card, for students to reference during practice.",
+  "cfs_ids": [
+   "CK.A.7.3"
+  ],
+  "link_type": "single",
+  "status": "active",
+  "is_legacy": false,
+  "intro_cycle": 3,
+  "source": "Draft v2",
+  "pair_group": "A7b-Visual",
+  "review_note": "Keep"
+ },
+ {
+  "id": "AS-045",
+  "indicator": "CK.A.8",
+  "domain": "CK",
+  "text": "Pause three to five seconds of silent think time after every question before calling on anyone.",
+  "cfs_ids": [
+   "CK.A.8.1"
+  ],
+  "link_type": "single",
+  "status": "active",
+  "is_legacy": false,
+  "intro_cycle": 3,
+  "source": "Draft v2",
+  "pair_group": "A8-ThinkTime",
+  "review_note": "Keep (tie)"
+ },
+ {
+  "id": "AS-046",
+  "indicator": "CK.A.8",
+  "domain": "CK",
+  "text": "Use two different CFU methods across the week, such as whiteboards one day and cold call another.",
+  "cfs_ids": [
+   "CK.A.8.2"
+  ],
+  "link_type": "single",
+  "status": "active",
+  "is_legacy": false,
+  "intro_cycle": 3,
+  "source": "Draft v2",
+  "pair_group": "A8-CFUVariety",
+  "review_note": "Keep"
+ },
+ {
+  "id": "AS-047",
+  "indicator": "CK.A.8",
+  "domain": "CK",
+  "text": "State the specific error or success behind a student's answer when you give feedback.",
+  "cfs_ids": [
+   "CK.A.8.3"
+  ],
+  "link_type": "single",
+  "status": "active",
+  "is_legacy": false,
+  "intro_cycle": 3,
+  "source": "Draft v2",
+  "pair_group": "A8-Feedback",
+  "review_note": "Keep (tie)"
+ },
+ {
+  "id": "AS-048",
+  "indicator": "CK.A.8",
+  "domain": "CK",
+  "text": "Track who's getting it during one independent practice block with a simple tally or seating chart.",
+  "cfs_ids": [
+   "CK.A.8.4"
+  ],
+  "link_type": "single",
+  "status": "active",
+  "is_legacy": false,
+  "intro_cycle": 3,
+  "source": "Draft v2",
+  "pair_group": "A8-Tracking",
+  "review_note": "Keep — top scorer"
+ },
+ {
+  "id": "AS-L01",
+  "indicator": "CC.A.4",
+  "domain": "CC",
+  "text": "Stand still with your shoulders back when giving directions.",
+  "cfs_ids": [
+   "CC.A.4.1"
+  ],
+  "link_type": "single",
+  "status": "retired",
+  "is_legacy": true,
+  "intro_cycle": 0,
+  "source": "Original CFS",
+  "pair_group": "A4-Posture",
+  "replacement_id": "AS-001",
+  "review_note": "Cut (tie)"
+ },
+ {
+  "id": "AS-L02",
+  "indicator": "CC.A.4",
+  "domain": "CC",
+  "text": "Use an attention-getter and scan the room before giving directions.",
+  "cfs_ids": [
+   "CC.A.4.4"
+  ],
+  "link_type": "single",
+  "status": "retired",
+  "is_legacy": true,
+  "intro_cycle": 0,
+  "source": "Original CFS",
+  "pair_group": "A4-Opener",
+  "replacement_id": "AS-002",
+  "review_note": "Cut (tie)"
+ },
+ {
+  "id": "AS-L03",
+  "indicator": "CC.A.5",
+  "domain": "CC",
+  "text": "Use specific, observable language for movement and participation when stating your expectations.",
+  "cfs_ids": [
+   "CC.A.5.1"
+  ],
+  "link_type": "single",
+  "status": "retired",
+  "is_legacy": true,
+  "intro_cycle": 0,
+  "source": "Original CFS",
+  "pair_group": "A5-Movement",
+  "replacement_id": "AS-005",
+  "review_note": "Cut"
+ },
+ {
+  "id": "AS-L04",
+  "indicator": "CC.A.5",
+  "domain": "CC",
+  "text": "Give a clear voice level expectation when giving directions.",
+  "cfs_ids": [
+   "CC.A.5.2"
+  ],
+  "link_type": "single",
+  "status": "retired",
+  "is_legacy": true,
+  "intro_cycle": 0,
+  "source": "Original CFS",
+  "pair_group": "A5-VoiceLevel",
+  "replacement_id": "AS-006",
+  "review_note": "Cut (marginal)"
+ },
+ {
+  "id": "AS-L05",
+  "indicator": "CC.A.5",
+  "domain": "CC",
+  "text": "Tell students how long they have to complete a task. For short time periods, give students a verbal countdown.",
+  "cfs_ids": [
+   "CC.A.5.4"
+  ],
+  "link_type": "single",
+  "status": "retired",
+  "is_legacy": true,
+  "intro_cycle": 0,
+  "source": "Original CFS",
+  "pair_group": "A5-TimeLimit",
+  "replacement_id": "AS-008",
+  "review_note": "Cut (tie)"
+ },
+ {
+  "id": "AS-L06",
+  "indicator": "CC.A.6",
+  "domain": "CC",
+  "text": "Use 'Be Seen Looking' techniques to scan the room.",
+  "cfs_ids": [
+   "CC.A.6.1"
+  ],
+  "link_type": "single",
+  "status": "retired",
+  "is_legacy": true,
+  "intro_cycle": 0,
+  "source": "Original CFS",
+  "pair_group": "A6-Scan",
+  "replacement_id": "AS-010",
+  "review_note": "Cut (marginal)"
+ },
+ {
+  "id": "AS-L07",
+  "indicator": "CC.A.6",
+  "domain": "CC",
+  "text": "Positively narrate 2-3 students after each direction.",
+  "cfs_ids": [
+   "CC.A.6.2"
+  ],
+  "link_type": "single",
+  "status": "retired",
+  "is_legacy": true,
+  "intro_cycle": 0,
+  "source": "Original CFS",
+  "pair_group": "A6-Narrate",
+  "replacement_id": "AS-011",
+  "review_note": "Cut (tie)"
+ },
+ {
+  "id": "AS-L08",
+  "indicator": "CC.A.7",
+  "domain": "CC",
+  "text": "Be a thermostat. Address off-task behavior calmly using a neutral tone.",
+  "cfs_ids": [
+   "CC.A.7.3"
+  ],
+  "link_type": "single",
+  "status": "retired",
+  "is_legacy": true,
+  "intro_cycle": 1,
+  "source": "Original CFS",
+  "pair_group": "A7-Tone",
+  "replacement_id": "AS-014",
+  "review_note": "Cut"
+ },
+ {
+  "id": "AS-L09",
+  "indicator": "CK.P.1",
+  "domain": "CK",
+  "text": "Script key points (what students must know and be able to do) in student-friendly language for each part of the lesson.",
+  "cfs_ids": [
+   "CK.P.1.2"
+  ],
+  "link_type": "single",
+  "status": "retired",
+  "is_legacy": true,
+  "intro_cycle": 1,
+  "source": "Original CFS",
+  "pair_group": "P1-Annotate",
+  "replacement_id": "AS-023",
+  "review_note": "Cut"
+ },
+ {
+  "id": "AS-L10",
+  "indicator": "CK.P.1",
+  "domain": "CK",
+  "text": "Annotate your lesson plan or exemplar to highlight key moves, and academic WTD directions for each activity.",
+  "cfs_ids": [
+   "CK.P.1.3"
+  ],
+  "link_type": "single",
+  "status": "retired",
+  "is_legacy": true,
+  "intro_cycle": 1,
+  "source": "Original CFS",
+  "pair_group": "P1-ScriptWTD",
+  "replacement_id": "AS-024",
+  "review_note": "Cut (loosely)"
+ },
+ {
+  "id": "AS-L11",
+  "indicator": "CK.P.1",
+  "domain": "CK",
+  "text": "Have your lesson plan or annotative exemplar accessible when leading or supporting instruction.",
+  "cfs_ids": [
+   "CK.P.1.1"
+  ],
+  "link_type": "single",
+  "status": "retired",
+  "is_legacy": true,
+  "intro_cycle": 1,
+  "source": "Original CFS",
+  "pair_group": "P1-InHand",
+  "replacement_id": "AS-025",
+  "review_note": "Cut (marginal)"
+ },
+ {
+  "id": "AS-L12",
+  "indicator": "CK.A.4",
+  "domain": "CK",
+  "text": "Carry an exemplar or active monitoring tracker while you circulate.",
+  "cfs_ids": [
+   "CK.A.4.3"
+  ],
+  "link_type": "single",
+  "status": "retired",
+  "is_legacy": true,
+  "intro_cycle": 1,
+  "source": "Original CFS",
+  "pair_group": "A4b-Exemplar",
+  "replacement_id": "AS-028",
+  "review_note": "Cut"
+ },
+ {
+  "id": "AS-L13",
+  "indicator": "CK.A.4",
+  "domain": "CK",
+  "text": "Check in proactively with students who may struggle using an anchor chart or sentence stem.",
+  "cfs_ids": [
+   "CK.A.4.4"
+  ],
+  "link_type": "single",
+  "status": "retired",
+  "is_legacy": true,
+  "intro_cycle": 1,
+  "source": "Original CFS",
+  "pair_group": "A4b-Support",
+  "replacement_id": "AS-029",
+  "review_note": "Cut (tie)"
+ },
+ {
+  "id": "AS-L14",
+  "indicator": "CK.A.5",
+  "domain": "CK",
+  "text": "Vary your tone to match the energy and content of the lesson.",
+  "cfs_ids": [
+   "CK.A.5.1"
+  ],
+  "link_type": "single",
+  "status": "retired",
+  "is_legacy": true,
+  "intro_cycle": 3,
+  "source": "Original CFS",
+  "pair_group": "A5b-Tone",
+  "replacement_id": "AS-032",
+  "review_note": "Cut"
+ },
+ {
+  "id": "AS-L15",
+  "indicator": "CK.A.5",
+  "domain": "CK",
+  "text": "Use short, direct sentences when giving directions or explanations.",
+  "cfs_ids": [
+   "CK.A.5.2"
+  ],
+  "link_type": "single",
+  "status": "retired",
+  "is_legacy": true,
+  "intro_cycle": 3,
+  "source": "Original CFS",
+  "pair_group": "A5b-Sentences",
+  "replacement_id": "AS-033",
+  "review_note": "Cut"
+ },
+ {
+  "id": "AS-L16",
+  "indicator": "CK.A.5",
+  "domain": "CK",
+  "text": "Incorporate a chant, call & response, or celebration to build joy and engagement.",
+  "cfs_ids": [
+   "CK.A.5.3"
+  ],
+  "link_type": "single",
+  "status": "retired",
+  "is_legacy": true,
+  "intro_cycle": 3,
+  "source": "Original CFS",
+  "pair_group": "A5b-Chant/Celebration",
+  "replacement_id": "AS-034",
+  "review_note": "Cut"
+ },
+ {
+  "id": "AS-L17",
+  "indicator": "CK.A.6",
+  "domain": "CK",
+  "text": "Clearly state the learning goal or teaching point in student-friendly language at the beginning of the lesson.",
+  "cfs_ids": [
+   "CK.A.6.1"
+  ],
+  "link_type": "single",
+  "status": "retired",
+  "is_legacy": true,
+  "intro_cycle": 3,
+  "source": "Original CFS",
+  "pair_group": "A6b-Goal",
+  "replacement_id": "AS-037",
+  "review_note": "Cut (tie)"
+ },
+ {
+  "id": "AS-L18",
+  "indicator": "CK.A.6",
+  "domain": "CK",
+  "text": "Briefly explain why the learning matters using examples from students' lives.",
+  "cfs_ids": [
+   "CK.A.6.2"
+  ],
+  "link_type": "single",
+  "status": "retired",
+  "is_legacy": true,
+  "intro_cycle": 3,
+  "source": "Original CFS",
+  "pair_group": "A6b-Why",
+  "replacement_id": "AS-038",
+  "review_note": "Cut (tie)"
+ },
+ {
+  "id": "AS-L19",
+  "indicator": "CK.A.6",
+  "domain": "CK",
+  "text": "Reference prior learning to help students see the connection.",
+  "cfs_ids": [],
+  "link_type": "cross_cutting",
+  "status": "retired",
+  "is_legacy": true,
+  "intro_cycle": 3,
+  "source": "Original CFS",
+  "pair_group": "A6b-PriorLearning",
+  "replacement_id": "AS-039",
+  "review_note": "Cut (tie)"
+ },
+ {
+  "id": "AS-L20",
+  "indicator": "CK.A.6",
+  "domain": "CK",
+  "text": "Use call and response, choral response, or other student engagement technique to have students repeat the lesson goal.",
+  "cfs_ids": [
+   "CK.A.6.1"
+  ],
+  "link_type": "single",
+  "status": "retired",
+  "is_legacy": true,
+  "intro_cycle": 3,
+  "source": "Original CFS",
+  "pair_group": "A6b-Echo",
+  "replacement_id": "AS-040",
+  "review_note": "Cut"
+ },
+ {
+  "id": "AS-L21",
+  "indicator": "CK.A.7",
+  "domain": "CK",
+  "text": "Model what success looks like by naming the key points during a think aloud.",
+  "cfs_ids": [
+   "CK.A.7.1"
+  ],
+  "link_type": "single",
+  "status": "retired",
+  "is_legacy": true,
+  "intro_cycle": 3,
+  "source": "Original CFS",
+  "pair_group": "A7b-ThinkAloud",
+  "replacement_id": "AS-041",
+  "review_note": "Cut (tie)"
+ },
+ {
+  "id": "AS-L22",
+  "indicator": "CK.A.7",
+  "domain": "CK",
+  "text": "Reinforce key points using engagement strategies like gestures, repetition, or call and response.",
+  "cfs_ids": [
+   "CK.A.7.2"
+  ],
+  "link_type": "single",
+  "status": "retired",
+  "is_legacy": true,
+  "intro_cycle": 3,
+  "source": "Original CFS",
+  "pair_group": "A7b-Engagement",
+  "replacement_id": "AS-042",
+  "review_note": "Cut (tie)"
+ },
+ {
+  "id": "AS-L23",
+  "indicator": "CK.A.7",
+  "domain": "CK",
+  "text": "Use at least two modalities—like visuals, gestures, or speech—to reinforce key points.",
+  "cfs_ids": [
+   "CK.A.7.3"
+  ],
+  "link_type": "single",
+  "status": "retired",
+  "is_legacy": true,
+  "intro_cycle": 3,
+  "source": "Original CFS",
+  "pair_group": "A7b-Modalities",
+  "replacement_id": "AS-043",
+  "review_note": "Cut (marginal)"
+ },
+ {
+  "id": "AS-L24",
+  "indicator": "CK.A.7",
+  "domain": "CK",
+  "text": "Prepare a student visual (e.g. anchor chart, desk card) for students to reference during the lesson.",
+  "cfs_ids": [
+   "CK.A.7.3"
+  ],
+  "link_type": "single",
+  "status": "retired",
+  "is_legacy": true,
+  "intro_cycle": 3,
+  "source": "Original CFS",
+  "pair_group": "A7b-Visual",
+  "replacement_id": "AS-044",
+  "review_note": "Cut"
+ },
+ {
+  "id": "AS-L25",
+  "indicator": "CK.A.8",
+  "domain": "CK",
+  "text": "Pause for 3–5 seconds after asking a question to give students time to think.",
+  "cfs_ids": [
+   "CK.A.8.1"
+  ],
+  "link_type": "single",
+  "status": "retired",
+  "is_legacy": true,
+  "intro_cycle": 3,
+  "source": "Original CFS",
+  "pair_group": "A8-ThinkTime",
+  "replacement_id": "AS-045",
+  "review_note": "Cut (tie)"
+ },
+ {
+  "id": "AS-L26",
+  "indicator": "CK.A.8",
+  "domain": "CK",
+  "text": "Use a variety of techniques to check for understanding (e.g., cold call, whiteboards, response signals).",
+  "cfs_ids": [
+   "CK.A.8.2"
+  ],
+  "link_type": "single",
+  "status": "retired",
+  "is_legacy": true,
+  "intro_cycle": 3,
+  "source": "Original CFS",
+  "pair_group": "A8-CFUVariety",
+  "replacement_id": "AS-046",
+  "review_note": "Cut"
+ },
+ {
+  "id": "AS-L27",
+  "indicator": "CK.A.8",
+  "domain": "CK",
+  "text": "Give targeted feedback that directly addresses the student's error or success. Your feedback should align with your key points.",
+  "cfs_ids": [
+   "CK.A.8.3"
+  ],
+  "link_type": "single",
+  "status": "retired",
+  "is_legacy": true,
+  "intro_cycle": 3,
+  "source": "Original CFS",
+  "pair_group": "A8-Feedback",
+  "replacement_id": "AS-047",
+  "review_note": "Cut (tie)"
+ },
+ {
+  "id": "AS-L28",
+  "indicator": "CK.A.8",
+  "domain": "CK",
+  "text": "Track who is getting it and who isn't by scanning work or listening to responses.",
+  "cfs_ids": [
+   "CK.A.8.4"
+  ],
+  "link_type": "single",
+  "status": "retired",
+  "is_legacy": true,
+  "intro_cycle": 3,
+  "source": "Original CFS",
+  "pair_group": "A8-Tracking",
+  "replacement_id": "AS-048",
+  "review_note": "Cut"
+ }
+]
