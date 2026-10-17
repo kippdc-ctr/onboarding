@@ -28,9 +28,12 @@ export function cleanDatabaseUrl(raw: string): string {
 function create(): postgres.Sql {
   const url = databaseUrl();
   if (!url) throw new Error("No database connection: set DATABASE_URL (or connect Supabase in Vercel, which sets POSTGRES_URL), then redeploy.");
-  // prepare:false is required for Supabase's transaction pooler.
+  // prepare:false is required for Supabase's transaction pooler. max_pipeline:1 sends one query at a time per
+  // connection: with several queries pipelined on one connection, the pooler can hand back another query's rows.
   return postgres(cleanDatabaseUrl(url), {
     prepare: false,
+    // Supported by postgres.js but missing from its TypeScript types.
+    ...({ max_pipeline: 1 } as object),
     max: 5,
     idle_timeout: 20,
     connect_timeout: 15,
