@@ -76,6 +76,7 @@ export async function endAdminSession() {
 }
 
 export async function isAdmin(): Promise<boolean> {
+  if (!process.env.ADMIN_PASSCODE) return false;
   const t = verifyToken<AdminToken>((await cookies()).get(ADMIN_COOKIE)?.value);
   return !!t && t.adm === 1 && t.ph === passcodeHash();
 }

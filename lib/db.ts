@@ -6,15 +6,34 @@ declare global {
   var __ctrSql: postgres.Sql | undefined;
 }
 
-function create() {
-  // POSTGRES_URL is what the Vercel ↔ Supabase integration sets automatically.
-  const url = process.env.DATABASE_URL || process.env.POSTGRES_URL;
-  if (!url) throw new Error("DATABASE_URL is not set");
+/** The connection string, from DATABASE_URL or (Vercel's Supabase integration) POSTGRES_URL. */
+export function databaseUrl(): string | undefined {
+  return process.env.DATABASE_URL || process.env.POSTGRES_URL || undefined;
+}
+
+/**
+ * Removes query parameters meant for other tools (e.g. `supa=`, `pgbouncer=` added by some Supabase/Vercel
+ * connection strings). The postgres driver would otherwise send them to the server as settings, which fails.
+ */
+export function cleanDatabaseUrl(raw: string): string {
+  try {
+    const u = new URL(raw);
+    for (const k of [...u.searchParams.keys()]) if (!["sslmode", "sslrootcert", "options", "application_name"].includes(k)) u.searchParams.delete(k);
+    return u.toString();
+  } catch {
+    return raw;
+  }
+}
+
+function create(): postgres.Sql {
+  const url = databaseUrl();
+  if (!url) throw new Error("No database connection: set DATABASE_URL (or connect Supabase in Vercel, which sets POSTGRES_URL), then redeploy.");
   // prepare:false is required for Supabase's transaction pooler.
-  return postgres(url, {
+  return postgres(cleanDatabaseUrl(url), {
     prepare: false,
     max: 5,
     idle_timeout: 20,
+    connect_timeout: 15,
     onnotice: () => {},
     // Return DATE columns as plain 'YYYY-MM-DD' strings (no time zone shifts).
     types: {
@@ -23,4 +42,16 @@ function create() {
   });
 }
 
-export const sql: postgres.Sql = globalThis.__ctrSql ?? (globalThis.__ctrSql = create());
+function client(): postgres.Sql {
+  return globalThis.__ctrSql ?? (globalThis.__ctrSql = create());
+}
+
+/** Connects on first use, so a missing setting shows a helpful page instead of crashing at import. */
+export const sql: postgres.Sql = new Proxy(function () {} as unknown as postgres.Sql, {
+  apply: (_t, _this, args) => (client() as unknown as (...a: unknown[]) => unknown)(...args),
+  get: (_t, prop) => {
+    const c = client() as unknown as Record<string | symbol, unknown>;
+    const v = c[prop];
+    return typeof v === "function" ? (v as (...a: unknown[]) => unknown).bind(c) : v;
+  },
+});

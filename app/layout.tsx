@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import { missingSettings } from "@/lib/setup";
+import { SetupNeeded } from "@/components/SetupNeeded";
 
 export const metadata: Metadata = {
   title: "CTR Onboarding Hub",
@@ -9,7 +11,9 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#4998A4" };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  // Show a plain-language setup page instead of crashing when required settings are missing.
+  const missing = missingSettings();
   return (
     <html lang="en">
       <head>
@@ -25,7 +29,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-white focus:p-3">
           Skip to content
         </a>
-        {children}
+        {missing.length ? <SetupNeeded missing={missing} /> : children}
       </body>
     </html>
   );

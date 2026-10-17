@@ -26,10 +26,25 @@ loadEnv();
 // POSTGRES_URL is what the Vercel <-> Supabase integration sets automatically.
 const DB_URL = process.env.DATABASE_URL || process.env.POSTGRES_URL;
 if (!DB_URL) {
+  if (process.argv[2] === "deploy") {
+    // Let the deploy finish so the site can show a "setup isn't finished" page naming what's missing.
+    console.warn("WARNING: no DATABASE_URL or POSTGRES_URL. Skipping database setup. Connect Supabase in Vercel, then redeploy.");
+    process.exit(0);
+  }
   console.error("DATABASE_URL is not set. Copy .env.example to .env.local and fill it in.");
   process.exit(1);
 }
-const sql = postgres(DB_URL, { prepare: false, onnotice: () => {} });
+// Drop query parameters meant for other tools (e.g. supa=, pgbouncer=); the driver would send them to the server.
+function cleanUrl(raw) {
+  try {
+    const u = new URL(raw);
+    for (const k of [...u.searchParams.keys()]) if (!["sslmode", "sslrootcert", "options", "application_name"].includes(k)) u.searchParams.delete(k);
+    return u.toString();
+  } catch {
+    return raw;
+  }
+}
+const sql = postgres(cleanUrl(DB_URL), { prepare: false, onnotice: () => {} });
 const json = (f) => JSON.parse(readFileSync(path.join(root, f), "utf8"));
 
 async function migrate() {

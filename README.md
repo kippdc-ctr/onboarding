@@ -42,6 +42,15 @@ Every push to a branch also gets its own preview link from Vercel (shown on the 
 To use a Supabase project you created yourself instead, set `DATABASE_URL` to its **Transaction pooler** connection string (port 6543).
 You can also run the database steps by hand: `npm run db:migrate`, `npm run db:seed`, `npm run db:seed-samples`.
 
+## Troubleshooting
+
+- **Open `/setup-check`** on your site. It lists any missing settings (names only, never values), tests the database
+  connection, and explains the problem in plain language.
+- **"Setup isn't finished" page:** add the settings it names in Vercel → Settings → Environment Variables, then **Redeploy**.
+  New or changed settings only take effect after a redeploy.
+- **Server logs:** Vercel → your project → **Logs**. Search for the error reference shown on the error page.
+- **Supabase paused:** free Supabase projects pause after a week with no traffic. Restore the project in the Supabase dashboard.
+
 ## Everyday admin tasks
 
 - **Add residents:** Admin → Roster → "Add one resident", or "Add many" and paste lines like `First, Last, Grade band[, Group, School]`.
