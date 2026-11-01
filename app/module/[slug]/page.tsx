@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
-import { Block, moduleChecklistItems } from "@/lib/content";
+import { Block, findActivity, mindsetStatements, moduleChecklistItems } from "@/lib/content";
 import { displayName, emptyBundle, getConfig, loadBundle } from "@/lib/data";
 import { formatDate, formatDateTime, todayISO } from "@/lib/dates";
 import { moduleState } from "@/lib/progress";
@@ -18,6 +18,12 @@ import { Quiz, Feedback } from "@/components/module/Quiz";
 import { Matching } from "@/components/module/Matching";
 import { Scenario } from "@/components/module/Scenario";
 import { Worksheet } from "@/components/module/Worksheet";
+import { Mindset } from "@/components/module/Mindset";
+import { PersonaQuiz } from "@/components/module/PersonaQuiz";
+import { PersonaResults } from "@/components/module/PersonaResults";
+import { IntroSlide } from "@/components/module/IntroSlide";
+import { ActivityPayload, personaLineFrom } from "@/lib/activities";
+import { scorePersonaQuiz, toPublic } from "@/lib/persona";
 import { videoEmbed } from "@/lib/embed";
 import { CompleteButton } from "@/components/module/CompleteButton";
 import { OpenTracker } from "@/components/module/OpenTracker";
@@ -41,6 +47,7 @@ export default async function ModulePage({ params }: { params: Promise<{ slug: s
 
   const reflections = new Map(b.reflections.filter((x) => x.module_slug === m.slug).map((x) => [x.prompt_id, x.response_text]));
   const activities = new Map(b.activities.filter((x) => x.module_slug === m.slug).map((x) => [x.activity_id, x]));
+  const answersOf = (id: string) => ((activities.get(id)?.payload_json as ActivityPayload | undefined)?.answers ?? {}) as Record<string, string>;
   const form = b.forms;
   const questions = m.quiz?.questions ?? [];
 
@@ -64,9 +71,19 @@ export default async function ModulePage({ params }: { params: Promise<{ slug: s
   for (const id of m.completion.checklist)
     reqs.push({ key: `chk:${id}`, label: `Tick "${items.find((i) => i.id === id)?.label ?? id}"`, done: !!st.checklist[id]?.checked });
   for (const id of m.completion.activities) {
-    const blk = m.sections.flatMap((s) => s.blocks).find((x) => (x.type === "matching" || x.type === "scenario" || x.type === "worksheet") && x.activityId === id);
+    const blk = findActivity(m, id);
     const label =
-      blk?.type === "matching" ? `Finish "${blk.title}"` : blk?.type === "worksheet" ? `Fill in "${blk.title ?? "the final task"}"` : "Save the scenario practice";
+      blk?.type === "matching"
+        ? `Finish "${blk.title}"`
+        : blk?.type === "worksheet"
+          ? `Fill in "${blk.title ?? "the final task"}"`
+          : blk?.type === "mindset"
+            ? `Rate the mindset statements (${blk.compareTo ? "after" : "before"})`
+            : blk?.type === "persona_quiz"
+              ? "Finish the Teacher Persona Quiz"
+              : blk?.type === "intro_slide"
+                ? "Finish your intro slide (headshot and persona line)"
+                : "Save the scenario practice";
     reqs.push({ key: `act:${id}`, label, done: !!activities.get(id)?.completed_at });
   }
 
@@ -156,6 +173,64 @@ export default async function ModulePage({ params }: { params: Promise<{ slug: s
             title={blk.title}
             fields={blk.fields}
             initial={((a?.payload_json as { answers?: Record<string, string> })?.answers ?? {}) as Record<string, string>}
+          />
+        );
+      }
+      case "mindset": {
+        const before = blk.compareTo ? (activities.get(blk.compareTo)?.payload_json as ActivityPayload | undefined)?.answers : null;
+        const src = blk.compareTo ? findActivity(m!, blk.compareTo) : blk;
+        return (
+          <Mindset
+            key={key}
+            moduleSlug={m!.slug}
+            activityId={blk.activityId}
+            statements={mindsetStatements(m!, blk)}
+            initial={answersOf(blk.activityId)}
+            before={before ?? (blk.compareTo ? {} : null)}
+            sample={src?.type === "mindset" && !!src.sample}
+          />
+        );
+      }
+      case "persona_quiz": {
+        const p = activities.get(blk.activityId)?.payload_json as ActivityPayload | undefined;
+        return (
+          <PersonaQuiz
+            key={key}
+            moduleSlug={m!.slug}
+            activityId={blk.activityId}
+            questions={toPublic(blk.questions)}
+            tiebreakers={toPublic(blk.tiebreakers)}
+            initial={p?.answers ?? {}}
+            initialResult={p ? (({ needsTiebreak, complete }) => ({ needsTiebreak, complete }))(scorePersonaQuiz(blk, p.answers ?? {})) : null}
+          />
+        );
+      }
+      case "persona_results": {
+        const quiz = findActivity(m!, blk.quizActivityId);
+        if (quiz?.type !== "persona_quiz") return null;
+        // Scored from the saved answers, so edits to the scoring grid apply right away.
+        const res = scorePersonaQuiz(quiz, (activities.get(blk.quizActivityId)?.payload_json as ActivityPayload | undefined)?.answers ?? {});
+        return <PersonaResults key={key} quiz={quiz} result={res.complete ? res : null} note={blk.note} />;
+      }
+      case "intro_slide": {
+        const p = activities.get(blk.activityId)?.payload_json as ActivityPayload | undefined;
+        const quizPayload = blk.quizActivityId ? (activities.get(blk.quizActivityId)?.payload_json as ActivityPayload | undefined) : undefined;
+        const defaults: Record<string, string> = {};
+        for (const f of blk.fields) {
+          if (f.prefill === "residentName" && r) defaults[f.id] = displayName(r);
+          if (f.prefill === "persona") defaults[f.id] = personaLineFrom(m!, blk.quizActivityId, quizPayload ?? null) ?? "";
+        }
+        return (
+          <IntroSlide
+            key={key}
+            moduleSlug={m!.slug}
+            activityId={blk.activityId}
+            fields={blk.fields}
+            photos={blk.photos}
+            initial={p?.answers ?? {}}
+            initialPhotos={p?.photos ?? {}}
+            defaults={defaults}
+            cohortYear={r?.cohort_year ?? 2028}
           />
         );
       }
@@ -344,7 +419,7 @@ export default async function ModulePage({ params }: { params: Promise<{ slug: s
               <StatusChip status={st.status} />
               <span>Due {formatDate(st.due, { weekday: true })}</span>
               <span className="text-muted">About {m.estimatedMinutes} minutes</span>
-              {m.indicator && <span className="text-muted">Evaluation indicator {m.indicator}</span>}
+              {m.indicator && <span className="text-muted">Evaluation indicator{m.indicator.includes(",") ? "s" : ""} {m.indicator}</span>}
             </div>
             {meta?.soft_due_date && m.softDueNote && (
               <p className="mt-3 rounded-xl bg-yellow-wash p-3 font-semibold">{m.softDueNote.replace("{softDue}", formatDateTime(meta.soft_due_date))}</p>

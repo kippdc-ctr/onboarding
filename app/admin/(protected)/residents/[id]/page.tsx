@@ -15,6 +15,7 @@ import {
   updateResident,
 } from "@/app/actions/admin";
 import { Flash } from "@/components/Flash";
+import { ActivityView } from "@/components/admin/ActivityView";
 import { PinCell } from "@/components/PinCell";
 import { ResidentFields } from "@/components/ResidentFields";
 import { StatusChip } from "@/components/StatusChip";
@@ -245,29 +246,16 @@ export default async function ResidentDetail({ params, searchParams }: { params:
                 );
               })}
 
-              {moduleActivities(m.content).map((a) => {
-                const res = b.activities.find((x) => x.activity_id === a.activityId);
-                const answers = ((res?.payload_json as { answers?: Record<string, string> })?.answers ?? {}) as Record<string, string>;
-                return (
-                  <div key={a.activityId} className="mt-3 rounded-xl bg-sand p-3">
-                    <p className="font-semibold">
-                      {a.type === "matching" ? a.title : a.type === "worksheet" ? (a.title ?? "Final task") : "Scenario practice"}: {res?.completed_at ? "Finished" : res ? "In progress" : "Not started"}
-                    </p>
-                    {a.type === "worksheet" &&
-                      a.fields.map((f) => (
-                        <p key={f.id} className="mt-1">
-                          <em>{f.label}:</em> {answers[f.id] || <span className="text-muted">—</span>}
-                        </p>
-                      ))}
-                    {a.type === "scenario" &&
-                      a.prompts.map((p) => (
-                        <p key={p.id} className="mt-1">
-                          <em>{p.prompt}</em> {answers[p.id] || <span className="text-muted">—</span>}
-                        </p>
-                      ))}
-                  </div>
-                );
-              })}
+              {moduleActivities(m.content).map((a) => (
+                <ActivityView
+                  key={a.activityId}
+                  m={m.content}
+                  a={a}
+                  row={b.activities.find((x) => x.module_slug === m.slug && x.activity_id === a.activityId)}
+                  all={b.activities.filter((x) => x.module_slug === m.slug)}
+                  cohortYear={r.cohort_year}
+                />
+              ))}
             </div>
           );
         })}

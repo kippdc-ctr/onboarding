@@ -83,7 +83,7 @@ export function FormRenderer({
                 {q.prompt} {q.required ? <span className="text-coral-ink" aria-label="required">*</span> : <span className="text-sm font-normal text-muted">(optional)</span>}
               </legend>
               {q.help && (
-                <p id={`${id}-help`} className="mt-1 text-muted">
+                <p id={`${id}-help`} className="mt-1 whitespace-pre-line text-muted">
                   {q.help}
                 </p>
               )}

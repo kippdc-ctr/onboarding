@@ -11,7 +11,8 @@ const NAV = [
   ["/admin/groups", "Groups"],
   ["/admin/praxis", "Praxis upload"],
   ["/admin/content", "Module content"],
-  ["/admin/forms/mentor-match", "Mentor Match"],
+  ["/admin/forms/mentor-match", "About You"],
+  ["/admin/slides", "Intro slides"],
   ["/admin/settings", "Settings"],
   ["/admin/flags", "Content flags"],
   ["/admin/data", "Data"],
@@ -21,7 +22,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
   await requireAdmin();
   return (
     <div className="min-h-screen bg-sand">
-      <header className="border-b border-gray-brand/30 bg-white">
+      <header className="border-b border-gray-brand/30 bg-white print:hidden">
         <div className="mx-auto flex max-w-[96rem] flex-wrap items-center justify-between gap-3 px-4 py-3">
           <Link href="/admin">
             <Logo compact />

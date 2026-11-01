@@ -6,7 +6,7 @@ import { randomUUID } from "node:crypto";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { sql } from "@/lib/db";
-import { Block, getModule, LINK_SETTINGS, ModuleContent } from "@/lib/content";
+import { Block, getModule, isActivity, LINK_SETTINGS, ModuleContent, PersonaQuestion } from "@/lib/content";
 import { hashOf, originalFor } from "@/lib/contentOverrides";
 import { requireAdmin } from "@/lib/session";
 import { deleteStored, MAX_AUDIO_BYTES, prepareUpload, PreparedUpload } from "@/lib/storage";
@@ -227,7 +227,7 @@ export async function saveActivity(slug: string, activityId: string, fd: FormDat
   const m = moduleOr404(slug);
   const anchor = `act-${activityId}`;
   const a = originalFor(m, `activity:${activityId}`) as Block | undefined;
-  if (!a || (a.type !== "matching" && a.type !== "scenario" && a.type !== "worksheet")) fail(slug, anchor, "Unknown activity.");
+  if (!a || !isActivity(a)) fail(slug, anchor, "Unknown activity.");
   const sample = fd.get("sample") === "on";
   if (a.type === "matching") {
     const categories = [...new Set(lines(fd, "categories"))];
@@ -244,6 +244,38 @@ export async function saveActivity(slug: string, activityId: string, fd: FormDat
     }
     if (cards.length < 2) fail(slug, anchor, "Add at least two cards.");
     await put(m, `activity:${activityId}`, { title: str(fd, "title", 300) || a.title, categories, cards, sample });
+  } else if (a.type === "mindset") {
+    if (!a.statements?.length) fail(slug, anchor, "Edit the statements on the \"before\" check.");
+    const statements = a.statements.map((st) => ({ id: st.id, text: str(fd, `st_${st.id}`, 500) || st.text }));
+    await put(m, `activity:${activityId}`, { statements, sample });
+  } else if (a.type === "persona_quiz") {
+    // Persona ids and question/option ids stay fixed; names, descriptions, wording, and the scoring grid are editable.
+    const ids = new Set(a.personas.map((p) => p.id));
+    const personas = a.personas.map((p) => ({
+      ...p,
+      name: str(fd, `p_${p.id}_name`, 100) || p.name,
+      move: str(fd, `p_${p.id}_move`, 300) || p.move,
+      strength: str(fd, `p_${p.id}_strength`, 2000) || undefined,
+      watchFor: str(fd, `p_${p.id}_watch`, 2000) || undefined,
+    }));
+    const editQ = (q: PersonaQuestion) => ({
+      id: q.id,
+      prompt: str(fd, `q_${q.id}_prompt`, 1000) || q.prompt,
+      options: q.options.map((o) => {
+        const persona = str(fd, `q_${q.id}_${o.id}_persona`, 40);
+        return { id: o.id, text: str(fd, `q_${q.id}_${o.id}_text`, 1000) || o.text, persona: ids.has(persona) ? persona : o.persona };
+      }),
+    });
+    const questions = a.questions.map(editQ);
+    const tiebreakers = a.tiebreakers.map(editQ);
+    for (const q of [...questions, ...tiebreakers])
+      if (new Set(q.options.map((o) => o.persona)).size !== q.options.length)
+        fail(slug, anchor, `Question "${q.prompt.slice(0, 50)}…" maps two answers to the same persona. Each answer should match a different persona.`);
+    await put(m, `activity:${activityId}`, JSON.parse(JSON.stringify({ personas, questions, tiebreakers })));
+  } else if (a.type === "intro_slide") {
+    const fields = a.fields.map((f) => ({ ...f, label: str(fd, `field_${f.id}_label`, 300) || f.label, help: str(fd, `field_${f.id}_help`, 1000) || undefined }));
+    const photos = a.photos.map((ph) => ({ ...ph, label: str(fd, `photo_${ph.id}_label`, 300) || ph.label, help: str(fd, `photo_${ph.id}_help`, 1000) || undefined }));
+    await put(m, `activity:${activityId}`, JSON.parse(JSON.stringify({ fields, photos })));
   } else if (a.type === "worksheet") {
     // Field ids stay fixed (saved answers hang off them); labels, help text, and dropdown choices are editable.
     const fields = a.fields.map((f) => {

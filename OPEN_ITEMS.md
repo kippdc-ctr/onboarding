@@ -29,6 +29,16 @@ The app runs with all of these blank or in draft. Admin → Content flags shows 
     Praxis info, background check checklist, Workday instructions, Summer Academy schedule, preview webinar link, HR action items.
 14. **Settings:** CTR contact email (for "Don't see your name?"), cleared background check due date, webinar date and time.
 
+## Module 2 (Your Story Matters), rebuilt from the November content file and the revised persona quiz
+
+- **Persona descriptions:** the quiz file says the descriptions on pages 12 and 13 of the original still apply, but those pages weren't included. Results show each persona's signature move (from your facilitator notes) and "Full persona description coming soon" until a Strength and Watch for are added. You can paste them in Admin → Module content → Your Story Matters → Teacher Persona Quiz → Personas.
+- **Mindset statements:** three sample statements are in place (marked "Sample statements, replace"). Send the real ones or edit them in Admin → Module content.
+- **Mentor Match merged into About You:** About You's fields come first (track, grade-band interest, feedback, communication style, goals, professional context), followed by the Mentor Match questions that weren't duplicates (placement school, first instinct, how you learn, the rating scales, hard-day need, identity preferences, anything else, teacher in mind). The name question was dropped since the app knows who is signed in. Existing responses carry over.
+- **Certification track** is collected in About You. Routing in Section 4 by track isn't built yet; it will need Section 4's content.
+- **Tiebreakers:** asked when the top two personas finish within one point (per the quiz). Per the "Reading your result" rules they only change the primary when two personas are tied for first; otherwise the leader stays primary and the runner-up is the secondary.
+- **Images still needed:** the five persona illustrations and the KIPP DC campus one-pager (link in Settings → url.m2.campus_onepager).
+- **Removed from Section 2:** the Padlet, Intro Slide and grade-band photo Google Forms, the Personal Why form link, and the Teaching Is Heart Work video. The status export's Personal Why, Intro Slide, and Gradeband columns now read from the in-app forms.
+
 ## Module 1 (Our City, Our Schools), rebuilt from the November content file
 
 - **Knowledge check:** the file says "Six questions" but the questions themselves weren't in it (they were interactive in the preview). The module keeps the 4 existing questions until the 6 arrive.

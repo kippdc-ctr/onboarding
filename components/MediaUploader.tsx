@@ -14,12 +14,15 @@ export function MediaUploader({
   label,
   accept,
   successText,
+  onDone,
 }: {
   prepare: (file: FileInfo) => Promise<{ ok: true; upload: PreparedUpload } | { ok: false; error: string }>;
   finish: (info: UploadInfo) => Promise<{ ok: boolean }>;
   label: string;
   accept: string;
   successText: string;
+  /** Called after a successful upload; defaults to refreshing the page. */
+  onDone?: (result: { ok: boolean } & Record<string, unknown>) => void;
 }) {
   const router = useRouter();
   const input = useRef<HTMLInputElement>(null);
@@ -65,7 +68,8 @@ export function MediaUploader({
     else {
       setDone(true);
       if (input.current) input.current.value = "";
-      router.refresh();
+      if (onDone) onDone(fin);
+      else router.refresh();
     }
   }
 

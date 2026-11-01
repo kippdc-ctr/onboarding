@@ -1,5 +1,7 @@
 import "server-only";
-import { moduleReflectionPrompts, moduleActivities } from "./content";
+import { mindsetStatements, moduleReflectionPrompts, moduleActivities } from "./content";
+import type { ActivityPayload } from "./activities";
+import { personaNames, scorePersonaQuiz } from "./persona";
 import type { Config, ProgressBundle, Resident } from "./data";
 import { displayName } from "./data";
 import { formatDate } from "./dates";
@@ -25,23 +27,34 @@ export function residentResponsesText(cfg: Config, r: Resident, b: ProgressBundl
       lines.push("");
     }
     for (const a of moduleActivities(m)) {
+      const p = b.activities.find((x) => x.activity_id === a.activityId)?.payload_json as ActivityPayload | undefined;
+      const ans = p?.answers ?? {};
       if (a.type === "matching") continue;
-      const ans = (b.activities.find((x) => x.activity_id === a.activityId)?.payload_json as { answers?: Record<string, string> })?.answers ?? {};
-      if (a.type === "worksheet") {
-        lines.push(a.title ?? "Final task");
+      if (a.type === "worksheet" || a.type === "intro_slide") {
+        lines.push(a.type === "intro_slide" ? "Intro slide" : (a.title ?? "Final task"));
         for (const f of a.fields) {
           lines.push(`> ${f.label}`);
-          lines.push(ans[f.id]?.trim() || (f.optional ? "(left blank)" : "(no response yet)"));
+          lines.push(f.kind === "checkbox" ? (ans[f.id] ? "Yes" : "No") : ans[f.id]?.trim() || (f.optional ? "(left blank)" : "(no response yet)"));
         }
         lines.push("");
-        continue;
+      } else if (a.type === "scenario") {
+        lines.push(`Scenario: ${a.scenario}`);
+        for (const q of a.prompts) {
+          lines.push(`> ${q.prompt}`);
+          lines.push(ans[q.id]?.trim() || "(no response yet)");
+        }
+        lines.push("");
+      } else if (a.type === "mindset") {
+        lines.push(`Mindset check${a.compareTo ? " (after)" : " (before)"}: 1 = strongly disagree, 5 = strongly agree`);
+        for (const st of mindsetStatements(m, a)) lines.push(`> ${st.text}: ${ans[st.id] ?? "(not rated)"}`);
+        lines.push("");
+      } else if (a.type === "persona_quiz") {
+        const r = scorePersonaQuiz(a, ans);
+        lines.push(`Teacher persona: ${r?.complete ? personaNames(a, r.primary) : "(quiz not finished)"}`);
+        if (r?.complete && r.secondary.length) lines.push(`Secondary: ${personaNames(a, r.secondary)}`);
+        if (r?.complete && r.stretch.length) lines.push(`Stretch area: ${personaNames(a, r.stretch)}`);
+        lines.push("");
       }
-      lines.push(`Scenario: ${a.scenario}`);
-      for (const p of a.prompts) {
-        lines.push(`> ${p.prompt}`);
-        lines.push(ans[p.id]?.trim() || "(no response yet)");
-      }
-      lines.push("");
     }
   }
   return lines.join("\n");

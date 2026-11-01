@@ -63,9 +63,12 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ kind
       const comp = (n: number) => (m(n) ? STATUS_LABEL[m(n)!.status] : "");
       const acc = (n: number) => (m(n) ? accuracyPercent(m(n)!) : "");
       const chk = (id: string) => yesNo(m(2)?.checklist[id]?.checked);
+      // Section 2's Personal Why and Intro Slide are in-app now; Gradeband = the optional grade-band photo on the slide.
+      const act = (id: string) => b.activities.find((a) => a.module_slug === "your-story-matters" && a.activity_id === id);
+      const slide = act("m2-intro-slide")?.payload_json as { photos?: Record<string, string> } | undefined;
       return [
         r.preferred_name?.trim() || r.first_name, `${s.prework}%`, b.praxis?.math ?? "", b.praxis?.reading ?? "", b.praxis?.writing ?? "",
-        comp(1), acc(1), comp(2), chk("personal-why"), chk("mentor-match"), chk("intro-slide"), chk("gradeband-photo"),
+        comp(1), acc(1), comp(2), yesNo(!!act("m2-personal-why")?.completed_at), chk("mentor-match"), yesNo(!!act("m2-intro-slide")?.completed_at), yesNo(!!slide?.photos?.grade_band),
         comp(3), acc(3), comp(4), acc(4), comp(5), acc(5),
         r.last_name, r.email ?? "", r.group_number ?? "",
       ];

@@ -68,7 +68,7 @@ export async function prepareUpload(storagePath: string, contentType: string): P
   if (mode === "local") {
     return {
       method: "POST",
-      uploadUrl: `/admin/media/upload?path=${encodeURIComponent(storagePath)}`,
+      uploadUrl: `/api/upload?path=${encodeURIComponent(storagePath)}`,
       headers: { "content-type": contentType },
       storagePath,
       publicUrl: `/media/${storagePath}`,

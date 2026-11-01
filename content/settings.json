@@ -80,33 +80,21 @@
       "default": "https://www.kippdc.org/about-kipp-dc/kipp-dc-story/"
     },
     {
-      "key": "url.m2.padlet",
+      "key": "url.m2.single_story",
       "group": "Module 2: Your Story Matters",
-      "label": "CTR Hometowns Padlet",
-      "default": ""
+      "label": "Optional watch: The Danger of a Single Story (TED · Facing History)",
+      "default": "https://www.facinghistory.org/resource-library/video/danger-single-story"
     },
     {
-      "key": "url.m2.intro_slide",
+      "key": "url.m2.kipp_schools",
       "group": "Module 2: Your Story Matters",
-      "label": "Intro Slide submission (Google Form)",
-      "default": "https://forms.gle/qU9ytxnEpe6pQyfj9"
+      "label": "About You form: every KIPP DC campus and school",
+      "default": "https://www.kippdc.org/schools"
     },
     {
-      "key": "url.m2.gradeband_photo",
+      "key": "url.m2.campus_onepager",
       "group": "Module 2: Your Story Matters",
-      "label": "Grade-band photo (Google Form)",
-      "default": "https://forms.gle/yGdX8zKAg35gfU7DA"
-    },
-    {
-      "key": "url.m2.heart_work_video",
-      "group": "Module 2: Your Story Matters",
-      "label": "Video: Teaching Is Heart Work (YouTube)",
-      "default": ""
-    },
-    {
-      "key": "url.m2.personal_why",
-      "group": "Module 2: Your Story Matters",
-      "label": "Personal Why submission form",
+      "label": "About You form: KIPP DC campus one-pager (image or PDF)",
       "default": ""
     },
     {

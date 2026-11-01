@@ -22,7 +22,7 @@ import {
 } from "@/app/actions/content";
 import { Flash } from "@/components/Flash";
 import { AudioPlayer, VideoPlayer } from "@/components/Media";
-import { MediaUploader } from "../MediaUploader";
+import { MediaUploader } from "@/components/MediaUploader";
 import { ScrollToSaved } from "../ScrollToSaved";
 import { Suspense } from "react";
 
@@ -208,6 +208,117 @@ export default async function EditModule({ params, searchParams }: { params: Pro
             <SaveBar />
           </form>,
         );
+      case "mindset": {
+        const t = `activity:${blk.activityId}`;
+        const aid = `act-${blk.activityId}`;
+        return (
+          <div key={anchor} id={aid} className="scroll-mt-24 rounded-xl border-2 border-teal-light p-3">
+            <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
+              <span className="text-sm font-bold uppercase tracking-wide text-muted">Mindset check ({blk.compareTo ? "after" : "before"})</span>
+              {blk.statements?.length ? <EditState st={st.get(t)} slug={slug} target={t} anchor={aid} /> : null}
+            </div>
+            {blk.statements?.length ? (
+              <form action={saveActivity.bind(null, slug, blk.activityId)} className="space-y-2">
+                {blk.statements.map((x, i) => (
+                  <input key={x.id} name={`st_${x.id}`} defaultValue={x.text} className="input" aria-label={`Statement ${i + 1}`} />
+                ))}
+                <label className="flex items-center gap-2 text-sm">
+                  <input type="checkbox" name="sample" defaultChecked={!!blk.sample} className="h-5 w-5 accent-teal-ink" /> Still sample statements
+                </label>
+                <SaveBar label="Save statements" />
+              </form>
+            ) : (
+              <p className="text-sm text-muted">Uses the same statements as the &quot;before&quot; check above. Edit them there.</p>
+            )}
+          </div>
+        );
+      }
+      case "persona_quiz": {
+        const t = `activity:${blk.activityId}`;
+        const aid = `act-${blk.activityId}`;
+        const qBlock = (q: (typeof blk.questions)[number], n: number) => (
+          <fieldset key={q.id} className="space-y-2 rounded-lg bg-sand p-2">
+            <legend className="text-sm font-semibold">Question {n}</legend>
+            <textarea name={`q_${q.id}_prompt`} defaultValue={q.prompt} rows={2} className="input font-semibold" aria-label={`Question ${n}`} />
+            {q.options.map((o) => (
+              <div key={o.id} className="grid gap-2 md:grid-cols-[2rem_1fr_10rem]">
+                <span className="self-center font-bold">{o.id}.</span>
+                <input name={`q_${q.id}_${o.id}_text`} defaultValue={o.text} className="input" aria-label={`Question ${n}, answer ${o.id}`} />
+                <select name={`q_${q.id}_${o.id}_persona`} defaultValue={o.persona} className="input" aria-label={`Question ${n}, answer ${o.id} counts toward`}>
+                  {blk.personas.map((p) => (
+                    <option key={p.id} value={p.id}>
+                      {p.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            ))}
+          </fieldset>
+        );
+        return (
+          <div key={anchor} id={aid} className="scroll-mt-24 rounded-xl border-2 border-teal-light p-3">
+            <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
+              <span className="text-sm font-bold uppercase tracking-wide text-muted">Teacher Persona Quiz</span>
+              <EditState st={st.get(t)} slug={slug} target={t} anchor={aid} />
+            </div>
+            <form action={saveActivity.bind(null, slug, blk.activityId)} className="space-y-4">
+              <details open>
+                <summary className="cursor-pointer font-semibold text-teal-ink">Personas (shown on the results)</summary>
+                <div className="mt-2 space-y-3">
+                  {blk.personas.map((p) => (
+                    <fieldset key={p.id} className="grid gap-2 rounded-lg bg-sand p-2 md:grid-cols-2">
+                      <input name={`p_${p.id}_name`} defaultValue={p.name} className="input font-semibold" aria-label="Persona name" />
+                      <input name={`p_${p.id}_move`} defaultValue={p.move} className="input" aria-label={`${p.name} signature move`} />
+                      <textarea name={`p_${p.id}_strength`} defaultValue={p.strength ?? ""} rows={2} placeholder="Strength" className="input" aria-label={`${p.name} strength`} />
+                      <textarea name={`p_${p.id}_watch`} defaultValue={p.watchFor ?? ""} rows={2} placeholder="Watch for" className="input" aria-label={`${p.name} watch for`} />
+                    </fieldset>
+                  ))}
+                </div>
+              </details>
+              <details>
+                <summary className="cursor-pointer font-semibold text-teal-ink">Questions 1 to {blk.questions.length} and the scoring grid</summary>
+                <p className="mt-2 text-sm text-muted">Each answer counts toward one persona; every answer in a question must point to a different persona.</p>
+                <div className="mt-2 space-y-3">{blk.questions.map((q, i) => qBlock(q, i + 1))}</div>
+              </details>
+              <details>
+                <summary className="cursor-pointer font-semibold text-teal-ink">Tiebreakers</summary>
+                <div className="mt-2 space-y-3">{blk.tiebreakers.map((q, i) => qBlock(q, blk.questions.length + i + 1))}</div>
+              </details>
+              <SaveBar label="Save quiz" />
+            </form>
+          </div>
+        );
+      }
+      case "persona_results":
+        return wrap("Quiz results", <p className="text-sm text-muted">Shows each resident&apos;s result. Edit persona names and descriptions in the quiz above.</p>);
+      case "intro_slide": {
+        const t = `activity:${blk.activityId}`;
+        const aid = `act-${blk.activityId}`;
+        return (
+          <div key={anchor} id={aid} className="scroll-mt-24 rounded-xl border-2 border-teal-light p-3">
+            <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
+              <span className="text-sm font-bold uppercase tracking-wide text-muted">Intro slide</span>
+              <EditState st={st.get(t)} slug={slug} target={t} anchor={aid} />
+            </div>
+            <form action={saveActivity.bind(null, slug, blk.activityId)} className="space-y-2">
+              {blk.fields.map((f) => (
+                <div key={f.id} className="grid gap-2 md:grid-cols-2">
+                  <input name={`field_${f.id}_label`} defaultValue={f.label} className="input" aria-label="Box label" />
+                  <input name={`field_${f.id}_help`} defaultValue={f.help ?? ""} placeholder="Helper text" className="input" aria-label="Helper text" />
+                </div>
+              ))}
+              {blk.photos.map((ph) => (
+                <div key={ph.id} className="grid gap-2 md:grid-cols-2">
+                  <input name={`photo_${ph.id}_label`} defaultValue={ph.label} className="input" aria-label="Photo label" />
+                  <input name={`photo_${ph.id}_help`} defaultValue={ph.help ?? ""} placeholder="Helper text" className="input" aria-label="Photo helper text" />
+                </div>
+              ))}
+              <p className="text-sm text-muted">Labels only; the slide layout stays the same. See every resident&apos;s slide in Admin → Intro slides.</p>
+              <SaveBar label="Save labels" />
+            </form>
+          </div>
+        );
+      }
       case "worksheet": {
         const t = `activity:${blk.activityId}`;
         return (
@@ -584,7 +695,7 @@ export default async function EditModule({ params, searchParams }: { params: Pro
       })}
 
       <p className="text-sm text-muted">
-        Adding, removing, or reordering sections and questions, and editing the Mentor Match survey, is done by asking Claude Code to edit the files in /content.
+        Adding, removing, or reordering sections and questions, and editing the About You form, is done by asking Claude Code to edit the files in /content.
       </p>
     </div>
   );

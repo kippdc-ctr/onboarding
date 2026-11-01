@@ -9,6 +9,7 @@ import { requireResident } from "@/lib/session";
 import { saveFormDraft, submitForm } from "@/app/actions/resident";
 import { ResidentHeader } from "@/components/ResidentHeader";
 import { ResidentForm } from "./ResidentForm";
+import { LinkButton } from "@/components/LinkButton";
 
 export const dynamic = "force-dynamic";
 
@@ -58,6 +59,13 @@ export default async function FormPage({ params }: { params: Promise<{ slug: str
         <h1 className="h1 mt-4">{form.title}</h1>
         <p className="mt-3 rounded-xl border-2 border-teal bg-teal-wash p-3 font-semibold">🔒 {form.visibilityNotice}</p>
         <p className="mt-4 text-lg">{form.intro}</p>
+        {form.links?.length ? (
+          <div className="mt-4 flex flex-wrap gap-3">
+            {form.links.map((l) => (
+              <LinkButton key={l.linkKey} href={settings[l.linkKey]} label={l.label} kind="article" variant="small" />
+            ))}
+          </div>
+        ) : null}
         <p className="mt-2 text-sm text-muted">Your answers save as a draft while you work. Questions marked * are required.</p>
         <div className="mt-6">
           <ResidentForm

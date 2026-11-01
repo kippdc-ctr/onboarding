@@ -2,77 +2,819 @@
   "slug": "your-story-matters",
   "number": 2,
   "title": "Your Story Matters",
-  "description": "Introduce yourself, develop your why, and tell us how you work best.",
-  "estimatedMinutes": 60,
+  "description": "Who are you, and why do you do this work? Start with your own story before you meet your students' stories.",
+  "estimatedMinutes": 45,
+  "indicator": "EP.P.2, CC.P.2, EP.P.1 (preview)",
   "geniallyLinkKey": "url.genially.your-story-matters",
   "softDueNote": "Intro and why submissions are requested by {softDue}.",
   "objectives": [
-    "Articulate a personal \"why\" for teaching that connects to your values, experiences, and commitment to students.",
-    "Identify your learning preferences and professional context in ways that inform your development during the residency.",
-    "Introduce yourself to the KIPP DC community in a way that reflects both your identity and your purpose."
+    "Articulate a personal \"why\" for teaching that connects to specific students, values, and experiences.",
+    "Identify your primary and secondary teacher persona, with one strength and one watch-for.",
+    "Share learning preferences and professional context in ways that inform mentor matching and coaching.",
+    "Describe how your background shapes what you notice in students, including your own norms for participation."
   ],
   "sections": [
     {
+      "id": "start",
+      "title": "Start here",
+      "audioUrl": "",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Great teaching begins with knowing yourself. This section asks you to name where you come from, why you chose teaching, and how you naturally lead a room. It also gives your school leader and teacher leader a head start on matching you with a mentor and building a relationship before you arrive."
+        },
+        {
+          "type": "table",
+          "columns": [
+            "Step",
+            "What you do",
+            "Time"
+          ],
+          "rows": [
+            [
+              "Form 2: Teacher Persona Quiz",
+              "12 scenarios, scored by the app",
+              "10 min"
+            ],
+            [
+              "Your results",
+              "Read your persona and your stretch area",
+              "5 min"
+            ],
+            [
+              "Form 1: About You and Form 4: Intro Slide",
+              "Track, mentor preferences, and your slide for onboarding week",
+              "15 min"
+            ],
+            [
+              "Mindset check",
+              "Rate three statements before and again after",
+              "5 min"
+            ],
+            [
+              "Form 3: Personal Why",
+              "Final task",
+              "10 min"
+            ]
+          ]
+        },
+        {
+          "type": "text",
+          "text": "Suggested order: mindset, About You, quiz, results, Personal Why, intro slide, mindset again. The page below follows that order."
+        }
+      ]
+    },
+    {
+      "id": "mindset-before",
+      "title": "Mindset check: before",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Not graded. Rate how much you agree with each statement right now. You will rate the same statements again at the end, and you can revisit both before your first evaluation period."
+        },
+        {
+          "type": "mindset",
+          "activityId": "m2-mindset-before",
+          "sample": true,
+          "statements": [
+            {
+              "id": "s1",
+              "text": "I can name how my own background shapes what I notice in students."
+            },
+            {
+              "id": "s2",
+              "text": "I know my natural style for leading a room, including its strengths and blind spots."
+            },
+            {
+              "id": "s3",
+              "text": "I can explain why I teach in a way that would sustain me on a hard day."
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "background",
-      "title": "Your Background: A Resource",
+      "title": "Your background",
       "audioUrl": "",
       "blocks": [
-        { "type": "text", "text": "Your personal, educational, and professional history shapes how you see students, how you build relationships, and what you bring to a classroom." },
-        { "type": "callout", "text": "Your reasons for choosing DC matter to this community." }
+        {
+          "type": "text",
+          "text": "Your personal, educational, and professional history is a resource. It shapes how you see students, how you build relationships, and what you bring to a classroom. The experiences that shaped your understanding of students, learning, and equity are part of your professional identity as a teacher."
+        },
+        {
+          "type": "text",
+          "text": "Your background also shapes what you notice and expect in students. Naming it is the first step in checking your assumptions. That includes the unwritten rules for participation you learned along the way: how a good student makes eye contact, speaks up, or waits a turn. These norms are learned at home and at school, and they differ across cultures and families."
+        },
+        {
+          "type": "text",
+          "text": "Your reasons for choosing DC matter too. The students and families you will serve are paying attention to who shows up and why."
+        },
+        {
+          "type": "reflection",
+          "promptId": "m2-norm-learned",
+          "prompt": "Name one norm for participation that you learned (for example, eye contact, speaking up, waiting a turn). Who taught it to you?",
+          "rows": 4
+        },
+        {
+          "type": "reflection",
+          "promptId": "m2-norm-check",
+          "prompt": "How might that norm shape what you notice in a student, and what could you do to check your assumption?",
+          "rows": 4
+        },
+        {
+          "type": "resource",
+          "linkKey": "url.m2.single_story",
+          "kind": "video",
+          "title": "The Danger of a Single Story",
+          "description": "Chimamanda Ngozi Adichie on how one story about a person or place shapes the way we see them. A good companion to the reflection above.",
+          "source": "TED · Facing History & Ourselves",
+          "minutes": 19,
+          "required": false
+        }
       ]
     },
     {
-      "id": "get-to-know-you",
-      "title": "Help Us Get To Know You",
-      "audioUrl": "",
+      "id": "about-you",
+      "title": "Form 1: About You",
       "blocks": [
-        { "type": "text", "text": "Complete each submission using the button, then tick it off here." },
-        { "type": "checklist", "items": [
-          { "id": "padlet", "label": "Hometown Padlet", "description": "CTR Hometowns: drop a pin and add a post with your name and something you love about your hometown.", "linkKey": "url.m2.padlet" },
-          { "id": "intro-slide", "label": "Intro Slide submission", "linkKey": "url.m2.intro_slide" },
-          { "id": "gradeband-photo", "label": "Grade-band photo", "optional": true, "linkKey": "url.m2.gradeband_photo" }
-        ] }
+        {
+          "type": "text",
+          "text": "Your answers help your school leader make a thoughtful mentor match and give your teacher leader a head start. Sharing a grade-band interest does not promise a placement."
+        },
+        {
+          "type": "form",
+          "formSlug": "mentor-match",
+          "checklistItemId": "mentor-match",
+          "label": "Form 1: About You"
+        }
       ]
     },
     {
-      "id": "heart-work",
-      "title": "Teaching Is Heart Work",
-      "audioUrl": "",
+      "id": "persona-quiz",
+      "title": "Form 2: Teacher Persona Quiz",
       "blocks": [
-        { "type": "link", "kind": "video", "label": "Watch: Teaching Is Heart Work (Teach For America)", "linkKey": "url.m2.heart_work_video" }
+        {
+          "type": "text",
+          "text": "There is no one right way to lead a classroom. This quiz places you by what you would do first, not by what sounds best. Read each scenario, picture yourself in it, and choose the one answer you reach for under pressure, even if you might do more than one."
+        },
+        {
+          "type": "image",
+          "src": "",
+          "alt": "Five simple illustrated figures side by side, each holding an object that suggests their style: a microphone, a lantern, a blueprint, a whistle, and a heart.",
+          "caption": "The five teacher personas: Emcee, Anchor, Engineer, Coach, and Nurturer.",
+          "sourceNote": "Commission or create in-house in the CTR palette. Avoid stock images of teachers that show only one race or age."
+        },
+        {
+          "type": "persona_quiz",
+          "activityId": "m2-persona",
+          "personas": [
+            {
+              "id": "emcee",
+              "name": "Emcee",
+              "move": "Shifts the room's energy."
+            },
+            {
+              "id": "anchor",
+              "name": "Anchor",
+              "move": "Slows down and resets."
+            },
+            {
+              "id": "engineer",
+              "name": "Engineer",
+              "move": "Adjusts the system or procedure."
+            },
+            {
+              "id": "coach",
+              "name": "Coach",
+              "move": "Raises the bar and rallies."
+            },
+            {
+              "id": "nurturer",
+              "name": "Nurturer",
+              "move": "Connects with the individual."
+            }
+          ],
+          "questions": [
+            {
+              "id": "pq1",
+              "prompt": "You are leading a group of volunteers at 8 a.m. on a long service day. People are tired and distracted. What is your first move?",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Start with the same simple opening ritual every time and let the group settle into it.",
+                  "persona": "anchor"
+                },
+                {
+                  "id": "B",
+                  "text": "Walk around and check in with each person about how they are doing.",
+                  "persona": "nurturer"
+                },
+                {
+                  "id": "C",
+                  "text": "Open with a story or a surprise that gets everyone laughing and leaning in.",
+                  "persona": "emcee"
+                },
+                {
+                  "id": "D",
+                  "text": "Work out what usually makes the first hour drag, then redesign the setup so people start moving without being told.",
+                  "persona": "engineer"
+                },
+                {
+                  "id": "E",
+                  "text": "Set a team goal for the first hour and challenge everyone to beat it.",
+                  "persona": "coach"
+                }
+              ]
+            },
+            {
+              "id": "pq2",
+              "prompt": "You are teaching a friend a new skill, like cooking a recipe, and they start losing focus. What is your first response?",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Change the pace with music or a playful challenge to bring the energy back.",
+                  "persona": "emcee"
+                },
+                {
+                  "id": "B",
+                  "text": "Figure out which step is tripping them up, then change how you are teaching it.",
+                  "persona": "engineer"
+                },
+                {
+                  "id": "C",
+                  "text": "Pause and quietly ask how they are feeling about it.",
+                  "persona": "nurturer"
+                },
+                {
+                  "id": "D",
+                  "text": "Slow down, stay beside them, and keep the same steady pattern until they find their footing.",
+                  "persona": "anchor"
+                },
+                {
+                  "id": "E",
+                  "text": "Tell them you know they can do it and expect to see another try.",
+                  "persona": "coach"
+                }
+              ]
+            },
+            {
+              "id": "pq3",
+              "prompt": "A fire drill eats ten minutes and students come back wired. What do you do?",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Rally the class: we lost ten minutes, so let's win them back with focus.",
+                  "persona": "coach"
+                },
+                {
+                  "id": "B",
+                  "text": "Pause for a collective breath, then walk students through the opening routine again.",
+                  "persona": "anchor"
+                },
+                {
+                  "id": "C",
+                  "text": "Check in with students who seem rattled before restarting.",
+                  "persona": "nurturer"
+                },
+                {
+                  "id": "D",
+                  "text": "Spin it into a quick story or bit and ride the energy into the lesson.",
+                  "persona": "emcee"
+                },
+                {
+                  "id": "E",
+                  "text": "Re-cut the plan on the spot so the objective still lands in the time left.",
+                  "persona": "engineer"
+                }
+              ]
+            },
+            {
+              "id": "pq4",
+              "prompt": "You are planning a big weekend event for friends or family. Where does most of your prep time go?",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "What each guest needs so everyone feels welcome and looked after.",
+                  "persona": "nurturer"
+                },
+                {
+                  "id": "B",
+                  "text": "The goal for the day, a role for everyone, and how we will know we hit it.",
+                  "persona": "coach"
+                },
+                {
+                  "id": "C",
+                  "text": "The big opening moment and the highlights people will remember.",
+                  "persona": "emcee"
+                },
+                {
+                  "id": "D",
+                  "text": "A simple schedule for each part of the day so nothing surprises anyone.",
+                  "persona": "anchor"
+                },
+                {
+                  "id": "E",
+                  "text": "The logistics and a backup plan so the event runs smoothly without me hands-on.",
+                  "persona": "engineer"
+                }
+              ]
+            },
+            {
+              "id": "pq5",
+              "prompt": "Your exit ticket data comes back weak. What is your first step?",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Study the results to find which step broke, then redesign that part of the system.",
+                  "persona": "engineer"
+                },
+                {
+                  "id": "B",
+                  "text": "Re-teach with a fresh demo or story so it lands differently.",
+                  "persona": "emcee"
+                },
+                {
+                  "id": "C",
+                  "text": "Share the gap with the class, set a re-try goal, and have students track growth.",
+                  "persona": "coach"
+                },
+                {
+                  "id": "D",
+                  "text": "Talk one-on-one with the students who struggled to learn what got in the way.",
+                  "persona": "nurturer"
+                },
+                {
+                  "id": "E",
+                  "text": "Revisit it next lesson using the same familiar routine at a steady pace.",
+                  "persona": "anchor"
+                }
+              ]
+            },
+            {
+              "id": "pq6",
+              "prompt": "A student looks at the task and says, \"I can't do this.\" What do you say or do?",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Say \"Take a breath; we will go one step at a time,\" and stay beside them as they begin.",
+                  "persona": "anchor"
+                },
+                {
+                  "id": "B",
+                  "text": "Say \"Not yet; I know you can, and I will be here for the next rep.\"",
+                  "persona": "coach"
+                },
+                {
+                  "id": "C",
+                  "text": "Break the task into labeled steps and have them choose the first one.",
+                  "persona": "engineer"
+                },
+                {
+                  "id": "D",
+                  "text": "Turn the task into a game or a story so it feels lighter.",
+                  "persona": "emcee"
+                },
+                {
+                  "id": "E",
+                  "text": "Ask how they are feeling and what is making it seem impossible.",
+                  "persona": "nurturer"
+                }
+              ]
+            },
+            {
+              "id": "pq7",
+              "prompt": "A student says \"This is pointless\" in front of the class. How do you respond?",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Name the expectation, say you believe they can meet it, and keep the class moving.",
+                  "persona": "coach"
+                },
+                {
+                  "id": "B",
+                  "text": "Respond briefly, then talk privately later to understand what is behind it.",
+                  "persona": "nurturer"
+                },
+                {
+                  "id": "C",
+                  "text": "Treat it as information: ask what makes the task feel pointless, then redesign it so the problem does not repeat.",
+                  "persona": "engineer"
+                },
+                {
+                  "id": "D",
+                  "text": "Stay even in tone, lower your voice, and offer a calm reset with a choice.",
+                  "persona": "anchor"
+                },
+                {
+                  "id": "E",
+                  "text": "Defuse it with humor and pull the room's attention back to the lesson.",
+                  "persona": "emcee"
+                }
+              ]
+            },
+            {
+              "id": "pq8",
+              "prompt": "A visitor watches your class for ten minutes. What do you most hope they notice?",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "How locked in and excited students are.",
+                  "persona": "emcee"
+                },
+                {
+                  "id": "B",
+                  "text": "How calm and predictable the room feels.",
+                  "persona": "anchor"
+                },
+                {
+                  "id": "C",
+                  "text": "How safe and connected students seem with one another and with me.",
+                  "persona": "nurturer"
+                },
+                {
+                  "id": "D",
+                  "text": "How independently students run routines and use tools.",
+                  "persona": "engineer"
+                },
+                {
+                  "id": "E",
+                  "text": "How hard students work and how they hold each other accountable.",
+                  "persona": "coach"
+                }
+              ]
+            },
+            {
+              "id": "pq9",
+              "prompt": "What do you find yourself praising most often?",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Following a procedure or using a tool independently.",
+                  "persona": "engineer"
+                },
+                {
+                  "id": "B",
+                  "text": "Kindness, courage in sharing, or looking out for a peer.",
+                  "persona": "nurturer"
+                },
+                {
+                  "id": "C",
+                  "text": "Effort, persistence, and visible improvement.",
+                  "persona": "coach"
+                },
+                {
+                  "id": "D",
+                  "text": "Bold participation and big ideas that lift the room.",
+                  "persona": "emcee"
+                },
+                {
+                  "id": "E",
+                  "text": "Self-control and steady, reliable habits.",
+                  "persona": "anchor"
+                }
+              ]
+            },
+            {
+              "id": "pq10",
+              "prompt": "Which of these is hardest for you, even when you know it is the right call?",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Easing the pressure on a student who is not ready for the challenge.",
+                  "persona": "coach"
+                },
+                {
+                  "id": "B",
+                  "text": "Holding a firm consequence when a student is hurting.",
+                  "persona": "nurturer"
+                },
+                {
+                  "id": "C",
+                  "text": "Letting students work quietly while I stay out of the spotlight.",
+                  "persona": "emcee"
+                },
+                {
+                  "id": "D",
+                  "text": "Setting the plan aside when a student's need does not fit the system.",
+                  "persona": "engineer"
+                },
+                {
+                  "id": "E",
+                  "text": "Dropping a planned routine mid-lesson to try something new.",
+                  "persona": "anchor"
+                }
+              ]
+            },
+            {
+              "id": "pq11",
+              "prompt": "Years from now, what do you hope a former student says about your class?",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "\"I felt like I mattered there.\"",
+                  "persona": "nurturer"
+                },
+                {
+                  "id": "B",
+                  "text": "\"That class taught me how to run my own learning.\"",
+                  "persona": "engineer"
+                },
+                {
+                  "id": "C",
+                  "text": "\"I always felt safe and knew what to expect.\"",
+                  "persona": "anchor"
+                },
+                {
+                  "id": "D",
+                  "text": "\"That teacher pushed me further than I thought I could go.\"",
+                  "persona": "coach"
+                },
+                {
+                  "id": "E",
+                  "text": "\"That was the class I never wanted to miss.\"",
+                  "persona": "emcee"
+                }
+              ]
+            },
+            {
+              "id": "pq12",
+              "prompt": "You are setting up group work. What do you do?",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Assign roles with a protocol and a checklist so groups run themselves.",
+                  "persona": "engineer"
+                },
+                {
+                  "id": "B",
+                  "text": "Set a group goal and a visible score so teams push each other.",
+                  "persona": "coach"
+                },
+                {
+                  "id": "C",
+                  "text": "Use the same group routine and norms every time.",
+                  "persona": "anchor"
+                },
+                {
+                  "id": "D",
+                  "text": "Build pairings so every student feels included and comfortable.",
+                  "persona": "nurturer"
+                },
+                {
+                  "id": "E",
+                  "text": "Add a share-out so each group performs for the class.",
+                  "persona": "emcee"
+                }
+              ]
+            }
+          ],
+          "tiebreakers": [
+            {
+              "id": "pq13",
+              "prompt": "If you could keep only one part of your teaching, which would it be?",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "The high bar and the belief that students can reach it.",
+                  "persona": "coach"
+                },
+                {
+                  "id": "B",
+                  "text": "The energy and presence that make students want to be there.",
+                  "persona": "emcee"
+                },
+                {
+                  "id": "C",
+                  "text": "The relationships where each student feels known.",
+                  "persona": "nurturer"
+                },
+                {
+                  "id": "D",
+                  "text": "The steady feeling students get when they walk in.",
+                  "persona": "anchor"
+                },
+                {
+                  "id": "E",
+                  "text": "The systems that let students run things without me.",
+                  "persona": "engineer"
+                }
+              ]
+            },
+            {
+              "id": "pq14",
+              "prompt": "Your school asks you to pilot a new approach to behavior. What do you push for?",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "Restorative check-ins before consequences.",
+                  "persona": "nurturer"
+                },
+                {
+                  "id": "B",
+                  "text": "A recognition ritual with flair, like shout-outs and class chants.",
+                  "persona": "emcee"
+                },
+                {
+                  "id": "C",
+                  "text": "A documented system with clear steps and data tracking.",
+                  "persona": "engineer"
+                },
+                {
+                  "id": "D",
+                  "text": "A simple set of consistent cues and responses.",
+                  "persona": "anchor"
+                },
+                {
+                  "id": "E",
+                  "text": "A team point goal with visible progress.",
+                  "persona": "coach"
+                }
+              ]
+            },
+            {
+              "id": "pq15",
+              "prompt": "Finish the sentence: my classroom works best when...",
+              "options": [
+                {
+                  "id": "A",
+                  "text": "everyone knows what comes next and stays regulated.",
+                  "persona": "anchor"
+                },
+                {
+                  "id": "B",
+                  "text": "students are pushing each other to improve.",
+                  "persona": "coach"
+                },
+                {
+                  "id": "C",
+                  "text": "every student feels they belong.",
+                  "persona": "nurturer"
+                },
+                {
+                  "id": "D",
+                  "text": "students are leaning in and the room has momentum.",
+                  "persona": "emcee"
+                },
+                {
+                  "id": "E",
+                  "text": "students can run it without needing me.",
+                  "persona": "engineer"
+                }
+              ]
+            }
+          ]
+        }
       ]
     },
     {
-      "id": "developing-why",
-      "title": "Developing Your Why",
-      "audioUrl": "",
+      "id": "results",
+      "title": "Your results",
       "blocks": [
-        { "type": "text", "text": "Take a few minutes with each of these questions:" },
-        { "type": "list", "items": ["Who are you?", "What do you value?", "What do you want to be true for students?", "Why does it matter?"] },
-        { "type": "reflection", "promptId": "m2-why-themes", "prompt": "Are any key themes emerging? Are there any words that you have an emotional response to or feel particularly drawn to?" },
-        { "type": "text", "text": "A good why statement is simple, short, and easy to understand. It has no \"whats\" and is clear without further explanation." },
-        { "type": "reflection", "promptId": "m2-why-tuesday", "prompt": "Will this sustain me on a hard Tuesday in October?" },
-        { "type": "reflection", "promptId": "m2-why-statement", "prompt": "Draft your why statement.", "rows": 3 },
-        { "type": "checklist", "items": [
-          { "id": "personal-why", "label": "Submitted Personal Why", "linkKey": "url.m2.personal_why" }
-        ] }
+        {
+          "type": "persona_results",
+          "quizActivityId": "m2-persona",
+          "note": "Your persona describes a starting tendency and is not scored on the evaluation rubric. Results are visible to you and the CTR team, and CTR may share them with mentor teachers as a conversation starter."
+        }
       ]
     },
     {
-      "id": "preferences",
-      "title": "Your Preferences and Context",
-      "audioUrl": "",
+      "id": "personal-why",
+      "title": "Form 3: Personal Why (final task)",
       "blocks": [
-        { "type": "text", "text": "Next, complete the Mentor Match survey. It asks about your feedback preferences, how you handle stress, your communication style, and your grade-band preference. Grade-band preferences are considered, but placement can't be promised." },
-        { "type": "form", "formSlug": "mentor-match", "checklistItemId": "mentor-match", "label": "Mentor Match survey" }
+        {
+          "type": "text",
+          "text": "A personal \"why\" is the anchor that keeps you grounded when the work gets hard. It works best when it connects to a specific student, value, or experience instead of an abstract ideal, so it can actually sustain you."
+        },
+        {
+          "type": "text",
+          "text": "**Task.** Write 150 to 250 words on why you teach, anchored in a specific student, value, or experience. Add one sentence on how your persona shows up in that why. Connecting your why to KIPP DC's mission is welcome and optional."
+        },
+        {
+          "type": "worksheet",
+          "activityId": "m2-personal-why",
+          "fields": [
+            {
+              "id": "why",
+              "label": "Your Personal Why",
+              "rows": 10,
+              "minWords": 150,
+              "maxWords": 250,
+              "sample": "When I was nine, my fourth-grade teacher noticed that I read the last page of every book first because I could not stand not knowing. Instead of correcting me, she gave me a stack of mysteries and said, \"Let's see what you figure out.\" That was the first time a teacher treated how I think as a strength. I teach because I want every child to have that moment of being seen for how they actually learn. I still read endings first, and I now use that instinct to plan lessons backward from what students should be able to do. My persona is Engineer, so I will show up for students by building clear systems and by staying ready to set the plan aside when a child needs me more.",
+              "sampleLabel": "Show a sample (written for this page, 123 words)"
+            },
+            {
+              "id": "persona_sentence",
+              "label": "One sentence: how does your persona show up in your why?"
+            },
+            {
+              "id": "mission",
+              "label": "Optional: I connected my why to KIPP DC's mission.",
+              "kind": "checkbox",
+              "optional": true
+            }
+          ]
+        },
+        {
+          "type": "quote",
+          "cite": "KIPP DC mission",
+          "text": "Together with families and communities, we create joyful, academically excellent schools that prepare students with the skills and confidence to pursue the paths they choose—college, career, and beyond—so they can lead fulfilling lives and build a more just world."
+        }
+      ]
+    },
+    {
+      "id": "intro-slide",
+      "title": "Form 4: Intro Slide and Photo",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "You will share this slide during onboarding week. A current headshot and the \"My teacher persona\" line are required. A second photo of you in the grade band you will teach is optional. If you add it, it appears on your slide as a tilted instant photo tucked beside your headshot."
+        },
+        {
+          "type": "intro_slide",
+          "activityId": "m2-intro-slide",
+          "quizActivityId": "m2-persona",
+          "fields": [
+            {
+              "id": "name",
+              "label": "Your name",
+              "prefill": "residentName"
+            },
+            {
+              "id": "persona",
+              "label": "My teacher persona",
+              "help": "Required. Filled in from your results; you can edit it.",
+              "prefill": "persona"
+            },
+            {
+              "id": "college",
+              "label": "Where I went to college",
+              "optional": true
+            },
+            {
+              "id": "hometown",
+              "label": "My hometown",
+              "optional": true
+            },
+            {
+              "id": "one_thing",
+              "label": "One thing to know about me",
+              "optional": true
+            },
+            {
+              "id": "why_dc",
+              "label": "What brought me to DC",
+              "optional": true
+            }
+          ],
+          "photos": [
+            {
+              "id": "headshot",
+              "label": "Current headshot",
+              "help": "A clear, recent photo of your face, front and center."
+            },
+            {
+              "id": "grade_band",
+              "label": "Photo of you in your grade band",
+              "help": "For example, you tutoring, student teaching, or visiting a classroom at the level you will teach.",
+              "optional": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mindset-after",
+      "title": "Mindset check: after",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Rate the same statements again. Your two ratings are saved so you can compare them before your first evaluation period."
+        },
+        {
+          "type": "mindset",
+          "activityId": "m2-mindset-after",
+          "compareTo": "m2-mindset-before"
+        }
       ]
     }
   ],
   "quiz": null,
   "completion": {
     "allQuestions": false,
-    "reflections": ["m2-why-themes", "m2-why-tuesday"],
-    "checklist": ["padlet", "intro-slide", "personal-why", "mentor-match"],
-    "activities": []
+    "reflections": [
+      "m2-norm-learned",
+      "m2-norm-check"
+    ],
+    "checklist": [
+      "mentor-match"
+    ],
+    "activities": [
+      "m2-mindset-before",
+      "m2-persona",
+      "m2-personal-why",
+      "m2-intro-slide",
+      "m2-mindset-after"
+    ]
   }
 }

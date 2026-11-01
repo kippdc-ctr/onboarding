@@ -37,10 +37,48 @@ export type Block =
       minutes?: number;
       required?: boolean;
     }
-  | { type: "worksheet"; activityId: string; title?: string; fields: WorksheetField[] };
+  | { type: "worksheet"; activityId: string; title?: string; fields: WorksheetField[] }
+  | {
+      /** Ungraded 1-5 agreement ratings. An "after" check sets compareTo and reuses the "before" statements. */
+      type: "mindset";
+      activityId: string;
+      statements?: { id: string; text: string }[];
+      compareTo?: string;
+      sample?: boolean;
+    }
+  | { type: "persona_quiz"; activityId: string; personas: Persona[]; questions: PersonaQuestion[]; tiebreakers: PersonaQuestion[] }
+  | { type: "persona_results"; quizActivityId: string; note?: string }
+  | {
+      /** Intro slide: text fields + photo uploads, with a live slide preview. */
+      type: "intro_slide";
+      activityId: string;
+      quizActivityId?: string;
+      fields: WorksheetField[];
+      photos: { id: string; label: string; help?: string; optional?: boolean }[];
+    };
 
-/** One answer box in a worksheet. `options` makes it a dropdown. */
-export type WorksheetField = { id: string; label: string; help?: string; options?: string[]; optional?: boolean; rows?: number };
+/**
+ * One answer box in a worksheet. `options` makes it a dropdown; kind "checkbox" makes it a tick box.
+ * minWords/maxWords show a word counter (minWords is required for completion); `sample` adds a "Show a sample" toggle.
+ */
+export type WorksheetField = {
+  id: string;
+  label: string;
+  help?: string;
+  options?: string[];
+  optional?: boolean;
+  rows?: number;
+  kind?: "text" | "checkbox";
+  minWords?: number;
+  maxWords?: number;
+  sample?: string;
+  sampleLabel?: string;
+  /** Intro slide only: prefill from the resident's name or quiz result. */
+  prefill?: "residentName" | "persona";
+};
+
+export type Persona = { id: string; name: string; move: string; strength?: string; watchFor?: string; symbol?: string };
+export type PersonaQuestion = { id: string; prompt: string; options: { id: string; text: string; persona: string }[] };
 
 export type ChecklistItem = { id: string; label: string; description?: string; linkKey?: string; optional?: boolean };
 
@@ -101,6 +139,7 @@ export type FormContent = {
   title: string;
   intro: string;
   visibilityNotice: string;
+  links?: { label: string; linkKey: string }[];
   linkedChecklist?: { moduleSlug: string; itemId: string };
   questions: FormQuestion[];
 };
@@ -136,11 +175,15 @@ export function moduleReflectionPrompts(m: ModuleContent): { promptId: string; p
   return out;
 }
 
-export type ActivityBlock = Extract<Block, { type: "matching" | "scenario" | "worksheet" }>;
+export type ActivityBlock = Extract<Block, { type: "matching" | "scenario" | "worksheet" | "mindset" | "persona_quiz" | "intro_slide" }>;
+const ACTIVITY_TYPES = new Set(["matching", "scenario", "worksheet", "mindset", "persona_quiz", "intro_slide"]);
+export function isActivity(b: Block): b is ActivityBlock {
+  return ACTIVITY_TYPES.has(b.type);
+}
 
 export function moduleActivities(m: ModuleContent) {
   const out: ActivityBlock[] = [];
-  for (const s of m.sections) for (const b of s.blocks) if (b.type === "matching" || b.type === "scenario" || b.type === "worksheet") out.push(b);
+  for (const s of m.sections) for (const b of s.blocks) if (isActivity(b)) out.push(b);
   return out;
 }
 
@@ -173,8 +216,27 @@ export function sampleContent(modules: ModuleContent[] = MODULES): string[] {
   for (const m of modules)
     for (const s of m.sections)
       for (const b of s.blocks)
-        if ((b.type === "matching" || b.type === "scenario" || b.type === "table") && b.sample)
-          out.push(`Module ${m.number}: ${s.title}${b.type === "matching" ? ` (${b.title})` : ""}`);
+        if ((b.type === "matching" || b.type === "scenario" || b.type === "table" || b.type === "mindset") && b.sample)
+          out.push(`Module ${m.number}: ${s.title}${b.type === "matching" ? ` (${b.title})` : b.type === "mindset" ? " (sample statements)" : ""}`);
+        else if (b.type === "persona_quiz" && b.personas.some((p) => !p.strength || !p.watchFor))
+          out.push(`Module ${m.number}: ${s.title}: persona descriptions (strength and watch-for) still needed`);
         else if (b.type === "image" && !b.src) out.push(`Module ${m.number}: ${s.title}: image still needed (${b.caption ?? b.alt})`);
   return out;
+}
+
+/** The activity block with this id anywhere in the module. */
+export function findActivity(m: ModuleContent, activityId: string): ActivityBlock | undefined {
+  for (const s of m.sections) for (const b of s.blocks) if (isActivity(b) && b.activityId === activityId) return b;
+  return undefined;
+}
+
+/** Mindset statements, following compareTo for an "after" check. */
+export function mindsetStatements(m: ModuleContent, b: Extract<Block, { type: "mindset" }>): { id: string; text: string }[] {
+  if (b.statements?.length) return b.statements;
+  const src = b.compareTo ? findActivity(m, b.compareTo) : undefined;
+  return src?.type === "mindset" ? (src.statements ?? []) : [];
+}
+
+export function wordCount(s: string): number {
+  return (s.trim().match(/\S+/g) ?? []).length;
 }

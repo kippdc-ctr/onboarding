@@ -4,8 +4,11 @@
 // Ids that arrive from the browser are content ids (module, question, item), validated against /content.
 import { revalidatePath } from "next/cache";
 import { sql } from "@/lib/db";
-import { getForm, moduleActivities, moduleChecklistItems, moduleReflectionPrompts } from "@/lib/content";
-import { getConfig, getResolvedContent, getSettings, loadBundle } from "@/lib/data";
+import { randomUUID } from "node:crypto";
+import { ActivityBlock, findActivity, getForm, ModuleContent, moduleActivities, moduleChecklistItems, moduleReflectionPrompts } from "@/lib/content";
+import { ActivityPayload, evaluateActivity, fieldsComplete, personaLineFrom } from "@/lib/activities";
+import { deleteStored, prepareUpload, PreparedUpload } from "@/lib/storage";
+import { displayName, getConfig, getResolvedContent, getSettings, loadBundle, Resident } from "@/lib/data";
 import { todayISO } from "@/lib/dates";
 import { itemStates, moduleState } from "@/lib/progress";
 import { requireResident } from "@/lib/session";
@@ -101,45 +104,117 @@ export async function saveReflection(moduleSlug: string, promptId: string, text:
   return { ok: true, savedAt: new Date().toISOString() };
 }
 
+async function activityPayload(residentId: string, slug: string, activityId: string): Promise<ActivityPayload | null> {
+  const [row] = await sql<{ payload_json: ActivityPayload }[]>`
+    select payload_json from activity_results where resident_id = ${residentId} and module_slug = ${slug} and activity_id = ${activityId}`;
+  return row?.payload_json ?? null;
+}
+
+async function storeActivity(residentId: string, slug: string, act: ActivityBlock, payload: ActivityPayload, complete: boolean) {
+  // Once a matching activity is finished it stays finished.
+  await sql`
+    insert into activity_results (resident_id, module_slug, activity_id, payload_json, completed_at, updated_at)
+    values (${residentId}, ${slug}, ${act.activityId}, ${sql.json(payload as never)}, ${complete ? sql`now()` : null}, now())
+    on conflict (resident_id, module_slug, activity_id) do update
+      set payload_json = excluded.payload_json, updated_at = now(),
+          completed_at = case when ${act.type === "matching"} then coalesce(activity_results.completed_at, excluded.completed_at)
+                              when excluded.completed_at is null then null
+                              else coalesce(activity_results.completed_at, excluded.completed_at) end`;
+}
+
+async function evaluateFor(r: Resident, m: ModuleContent, act: ActivityBlock, raw: Record<string, unknown>) {
+  const existing = await activityPayload(r.id, m.slug, act.activityId);
+  let personaLine: string | undefined;
+  if (act.type === "intro_slide" && act.quizActivityId)
+    personaLine = personaLineFrom(m, act.quizActivityId, await activityPayload(r.id, m.slug, act.quizActivityId));
+  return evaluateActivity(m, act, raw, existing, { residentName: displayName(r), personaLine });
+}
+
 export async function saveActivity(moduleSlug: string, activityId: string, payload: Record<string, unknown>) {
   const r = await requireResident();
   const m = await getModule(moduleSlug);
   const act = m && moduleActivities(m).find((a) => a.activityId === activityId);
   if (!m || !act) return { ok: false, complete: false };
-  let clean: Record<string, string>;
-  let complete: boolean;
-  if (act.type === "matching") {
-    const raw = (payload.answers ?? {}) as Record<string, unknown>;
-    clean = {};
-    for (const c of act.cards) if (typeof raw[c.id] === "string" && act.categories.includes(raw[c.id] as string)) clean[c.id] = raw[c.id] as string;
-    complete = act.cards.every((c) => clean[c.id] === c.answer);
-    payload = { answers: clean };
-  } else if (act.type === "worksheet") {
-    const raw = (payload.answers ?? {}) as Record<string, unknown>;
-    clean = {};
-    for (const f of act.fields) {
-      const v = String(raw[f.id] ?? "").slice(0, MAX_TEXT);
-      clean[f.id] = f.options && v && !f.options.includes(v) ? "" : v;
-    }
-    complete = act.fields.every((f) => f.optional || clean[f.id].trim().length > 0);
-    payload = { answers: clean };
-  } else {
-    const raw = (payload.answers ?? {}) as Record<string, unknown>;
-    clean = {};
-    for (const p of act.prompts) clean[p.id] = String(raw[p.id] ?? "").slice(0, MAX_TEXT);
-    complete = act.prompts.every((p) => clean[p.id].trim().length > 0);
-    payload = { answers: clean };
-  }
+  const raw = (payload.answers ?? {}) as Record<string, unknown>;
+  const res = await evaluateFor(r, m, act, raw);
   await touchModule(r.id, m.slug);
-  // Once a matching activity is finished it stays finished.
-  await sql`
-    insert into activity_results (resident_id, module_slug, activity_id, payload_json, completed_at, updated_at)
-    values (${r.id}, ${m.slug}, ${activityId}, ${sql.json(payload as never)}, ${complete ? sql`now()` : null}, now())
-    on conflict (resident_id, module_slug, activity_id) do update
-      set payload_json = excluded.payload_json, updated_at = now(),
-          completed_at = case when ${act.type === "matching"} then coalesce(activity_results.completed_at, excluded.completed_at)
-                              else excluded.completed_at end`;
-  return { ok: true, complete };
+  await storeActivity(r.id, m.slug, act, res.payload, res.complete);
+  return { ok: true, complete: res.complete, result: res.payload.result ?? null, answers: res.payload.answers };
+}
+
+// ---------- Resident photo uploads (intro slide) ----------
+
+const PHOTO_TYPES: Record<string, string> = { png: "image/png", jpg: "image/jpeg", jpeg: "image/jpeg", webp: "image/webp", gif: "image/gif" };
+const MAX_PHOTO_BYTES = 10 * 1024 * 1024;
+
+export async function preparePhotoUpload(
+  moduleSlug: string,
+  activityId: string,
+  photoId: string,
+  file: { name: string; type: string; size: number },
+): Promise<{ ok: true; upload: PreparedUpload } | { ok: false; error: string }> {
+  const r = await requireResident();
+  const m = await getModule(moduleSlug);
+  const act = m && findActivity(m, activityId);
+  if (act?.type !== "intro_slide" || !act.photos.some((p) => p.id === photoId)) return { ok: false, error: "Unknown photo slot." };
+  const ext = (file.name.split(".").pop() ?? "").toLowerCase();
+  const type = PHOTO_TYPES[ext];
+  if (!type) return { ok: false, error: "Please choose a photo: .jpg, .png, or .webp. (iPhone photos upload as .jpg from the photo picker.)" };
+  if (!(file.size > 0) || file.size > MAX_PHOTO_BYTES) return { ok: false, error: "Photos must be under 10 MB." };
+  try {
+    return { ok: true, upload: await prepareUpload(`residents/${r.id}/${randomUUID()}.${ext}`, type) };
+  } catch (e) {
+    return { ok: false, error: (e as Error).message };
+  }
+}
+
+export async function finishPhotoUpload(
+  moduleSlug: string,
+  activityId: string,
+  photoId: string,
+  info: { storagePath: string; publicUrl: string; filename: string; contentType: string; size: number },
+): Promise<{ ok: boolean; complete?: boolean; url?: string }> {
+  const r = await requireResident();
+  const m = await getModule(moduleSlug);
+  const act = m && findActivity(m, activityId);
+  const prefix = `residents/${r.id}/`;
+  if (!m || act?.type !== "intro_slide" || !act.photos.some((p) => p.id === photoId)) return { ok: false };
+  if (!info.storagePath.startsWith(prefix) || !/^[\w.-]+$/.test(info.storagePath.slice(prefix.length))) return { ok: false };
+  await sql`insert into media_files (storage_path, public_url, filename, content_type, size_bytes)
+            values (${info.storagePath}, ${info.publicUrl}, ${info.filename.slice(0, 200)}, ${info.contentType}, ${info.size})`;
+  const existing = await activityPayload(r.id, m.slug, act.activityId);
+  const old = existing?.photos?.[photoId];
+  const photos = { ...(existing?.photos ?? {}), [photoId]: info.publicUrl };
+  const res = await evaluateFor(r, m, act, existing?.answers ?? {});
+  res.payload.photos = photos;
+  const done = fieldsComplete(act.fields, res.payload.answers) && act.photos.every((p) => p.optional || !!photos[p.id]);
+  await touchModule(r.id, m.slug);
+  await storeActivity(r.id, m.slug, act, res.payload, done);
+  if (old) await removeStoredFile(old);
+  return { ok: true, complete: done, url: info.publicUrl };
+}
+
+export async function removePhoto(moduleSlug: string, activityId: string, photoId: string): Promise<{ ok: boolean; complete?: boolean }> {
+  const r = await requireResident();
+  const m = await getModule(moduleSlug);
+  const act = m && findActivity(m, activityId);
+  if (!m || act?.type !== "intro_slide") return { ok: false };
+  const existing = await activityPayload(r.id, m.slug, act.activityId);
+  const old = existing?.photos?.[photoId];
+  const photos = { ...(existing?.photos ?? {}) };
+  delete photos[photoId];
+  const answers = existing?.answers ?? {};
+  const done = fieldsComplete(act.fields, answers) && act.photos.every((p) => p.optional || !!photos[p.id]);
+  await storeActivity(r.id, m.slug, act, { answers, photos }, done);
+  if (old) await removeStoredFile(old);
+  return { ok: true, complete: done };
+}
+
+async function removeStoredFile(url: string) {
+  const [f] = await sql<{ id: string; storage_path: string }[]>`select id, storage_path from media_files where public_url = ${url}`;
+  if (!f) return;
+  await deleteStored(f.storage_path);
+  await sql`delete from media_files where id = ${f.id}`;
 }
 
 export async function completeModule(moduleSlug: string) {
