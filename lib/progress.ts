@@ -1,6 +1,7 @@
 // Pure status computations. No database access here, so the same logic drives the
 // resident dashboard, the admin grid, and the CSV exports.
-import { ModuleContent, moduleChecklistItems } from "./content";
+import { ModuleContent, moduleChecklistItems, questionsFor } from "./content";
+import { residentBand } from "./bands";
 import type { Config, PhaseItem, ProgressBundle, Resident } from "./data";
 import { addDays, isPast } from "./dates";
 
@@ -57,8 +58,8 @@ export type ModuleState = {
   checklist: Record<string, { checked: boolean; verified: boolean }>;
 };
 
-export function moduleState(cfg: Config, resident: Pick<Resident, "group_number">, b: ProgressBundle, m: ModuleContent): ModuleState {
-  const qs = m.quiz?.questions ?? [];
+export function moduleState(cfg: Config, resident: Pick<Resident, "group_number" | "grade_band">, b: ProgressBundle, m: ModuleContent): ModuleState {
+  const qs = questionsFor(m, residentBand(resident, b).band);
   const attempts = b.attempts.filter((a) => a.module_slug === m.slug);
   const answered = new Set(attempts.map((a) => a.question_id).filter((id) => qs.some((q) => q.id === id)));
   const byAttempt = new Map<number, number>();

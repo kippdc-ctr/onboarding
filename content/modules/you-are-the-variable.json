@@ -1,86 +1,600 @@
 {
   "slug": "you-are-the-variable",
-  "number": 4,
+  "number": 5,
   "title": "You Are the Variable",
-  "description": "Teacher self-efficacy, collective efficacy, and your own starting point.",
-  "estimatedMinutes": 45,
+  "description": "What you believe about your power to reach students, and about the power of a team, shapes what happens in your classroom. That belief can be built.",
+  "estimatedMinutes": 60,
+  "indicator": "EP.P.1",
   "geniallyLinkKey": "url.genially.you-are-the-variable",
   "objectives": [
-    "Define teacher self-efficacy and explain why it is one of the strongest predictors of student outcomes.",
-    "Distinguish between self-efficacy and collective efficacy and explain how both operate in a school community.",
-    "Identify specific actions and habits of mind that build and sustain efficacy over time.",
-    "Reflect on your own efficacy starting point and articulate a growth-oriented response."
+    "Define teacher self-efficacy and collective efficacy, and explain why both matter for student outcomes.",
+    "Recognize high-efficacy and low-efficacy responses in classroom scenarios.",
+    "Describe two strategies for emotional resilience on a hard day and one for staying flexible when a plan fails.",
+    "Name your own efficacy starting point and one concrete next step, using your persona's watch-for."
   ],
   "sections": [
     {
-      "id": "hattie-video",
-      "title": "Collective Teacher Efficacy according to John Hattie",
+      "id": "start",
+      "title": "Start here",
       "audioUrl": "",
       "blocks": [
-        { "type": "link", "kind": "video", "label": "Watch: Collective Teacher Efficacy (John Hattie)", "linkKey": "url.m4.hattie_video" }
+        {
+          "type": "text",
+          "text": "Hard days in teaching are a sign that the work matters. What separates teachers who grow through them from teachers who stall is often not talent. It is what they believe they can do next. This section gives you the research behind that belief, two tools for hard days, and a plan you will revisit before your first evaluation period. It also reinforces ideas from Section 4: self-efficacy, self-regulation, and motivation all appear on the Praxis PLT."
+        },
+        {
+          "type": "callout",
+          "title": "Your plan for the 60 minutes",
+          "text": "Content and required reading (33 min), knowledge check (10), mindset check (5), final task (15)."
+        }
       ]
     },
     {
-      "id": "teacher-is-variable",
-      "title": "The Teacher Is the Variable",
-      "audioUrl": "",
+      "id": "mindset-before",
+      "title": "Mindset check: before",
       "blocks": [
-        { "type": "text", "text": "John Hattie's Visible Learning synthesizes more than 1,700 studies. It identifies teacher self-efficacy as one of the most powerful predictors of student achievement." },
-        { "type": "text", "text": "Self-efficacy is not general confidence. It is belief in your capacity to produce outcomes through your specific actions in a particular situation." },
-        { "type": "table", "sample": true, "columns": ["High self-efficacy", "Low self-efficacy"], "rows": [
-          ["Persists when students struggle", "Gives up when strategies don't work right away"],
-          ["Looks for what to adjust in their own practice", "Attributes results to students or circumstances"],
-          ["Seeks feedback and support", "Avoids showing struggle"],
-          ["Sets high expectations and plans to meet them", "Lowers expectations to avoid failure"]
-        ] },
-        { "type": "text", "text": "Self-efficacy is developmental. No resident arrives with high efficacy in all areas." }
+        {
+          "type": "text",
+          "text": "Not graded. Rate how much you agree with each statement right now. You will rate the same statements again after the knowledge check. Your Hard-Day Plan and both sets of ratings become a baseline you will revisit before your first evaluation period."
+        },
+        {
+          "type": "mindset",
+          "activityId": "m5v-mindset-before",
+          "sample": true,
+          "statements": [
+            {
+              "id": "s1",
+              "text": "My specific actions can change how a struggling student does."
+            },
+            {
+              "id": "s2",
+              "text": "When a lesson fails, I can figure out what to adjust and try again."
+            },
+            {
+              "id": "s3",
+              "text": "Asking for help is part of taking ownership of my growth."
+            }
+          ]
+        }
       ]
     },
     {
-      "id": "callout",
-      "title": "A force, not a fact",
+      "id": "variable",
+      "title": "1. The teacher as the variable",
+      "audioUrl": "",
       "blocks": [
-        { "type": "callout", "text": "A teacher's belief about whether they can reach a student is not a neutral fact. It is a force that actively shapes what that student experiences in the classroom every day." }
+        {
+          "type": "text",
+          "text": "**Self-efficacy** is a person's belief in their capacity to produce outcomes through their specific actions. It is confidence about a particular situation, such as “I can get this class to understand fractions,” and goes beyond general confidence. The idea comes from psychologist Albert Bandura, whom you met in Section 4."
+        },
+        {
+          "type": "text",
+          "text": "Teachers with high self-efficacy tend to set more challenging goals, persist longer when students struggle, and recover faster when a lesson goes wrong. Teacher quality matters enormously for students, and what a teacher believes about their own power is part of that. John Hattie's *Visible Learning*, a synthesis of hundreds of meta-analyses, is a common starting point for this research."
+        },
+        {
+          "type": "heading",
+          "text": "Efficacy is built, not found"
+        },
+        {
+          "type": "text",
+          "text": "No resident is expected to arrive with high efficacy in every area. Bandura described four sources that build it, and each shows up in the residency:"
+        },
+        {
+          "type": "table",
+          "columns": [
+            "Source",
+            "What it means",
+            "Where you will find it"
+          ],
+          "rows": [
+            [
+              "Mastery experiences",
+              "Succeeding at something real and hard enough to matter",
+              "Co-teaching, small-group practice, your first successful reteach"
+            ],
+            [
+              "Observing others",
+              "Watching someone like you succeed",
+              "Classroom visits and videos of mentor teachers"
+            ],
+            [
+              "Feedback and encouragement",
+              "Specific, credible words from someone who has seen your work",
+              "Coaching conversations and evaluation feedback"
+            ],
+            [
+              "Managing your state",
+              "Reading stress and nerves as information, and steadying yourself",
+              "Your hard-day routine, later in this section"
+            ]
+          ]
+        },
+        {
+          "type": "callout",
+          "title": "Doubt is information, not a verdict",
+          "text": "Feeling unsure about a part of teaching you have not done yet does not mean you are unsuited to it. It tells you where to look for practice, a model, or feedback."
+        }
       ]
     },
     {
-      "id": "scenario-videos",
-      "title": "Efficacy in Action: Scenario Videos",
+      "id": "scenarios",
+      "title": "2. Efficacy in action: three scenarios",
       "audioUrl": "",
       "blocks": [
-        { "type": "text", "text": "Each video shows a high-efficacy and a low-efficacy response to the same moment. High-efficacy responses are not perfect; they are persistent, reflective, and growth-oriented." },
-        { "type": "link", "kind": "video", "label": "Watch: Ms. Rivera", "linkKey": "url.m4.rivera_video", "captionsLinkKey": "url.m4.rivera_captions" },
-        { "type": "link", "kind": "video", "label": "Watch: Ms. Kim", "linkKey": "url.m4.kim_video", "captionsLinkKey": "url.m4.kim_captions" },
-        { "type": "link", "kind": "video", "label": "Watch: Mr. Logan", "linkKey": "url.m4.logan_video", "captionsLinkKey": "url.m4.logan_captions" }
+        {
+          "type": "text",
+          "text": "Each scenario shows a real classroom situation twice, once with a high-efficacy response and once with a low-efficacy response. **High-efficacy responses** are persistent, reflective, and oriented toward growth. **Low-efficacy responses** are often subtle: giving up quickly on a struggling student, avoiding feedback conversations, or defaulting to blame when a lesson does not land. Recognizing a low-efficacy response in yourself is the first step toward changing it."
+        },
+        {
+          "type": "heading",
+          "text": "Scenario 1: Ms. Rivera"
+        },
+        {
+          "type": "text",
+          "text": "Her class scores lower than she expected on the mid-year assessment. Watch both responses."
+        },
+        {
+          "type": "resource",
+          "linkKey": "url.m4.rivera_video",
+          "kind": "video",
+          "title": "Ms. Rivera: a lower-than-expected mid-year assessment",
+          "description": "Watch both the high-efficacy and the low-efficacy response.",
+          "source": "Scenario video",
+          "required": true,
+          "captionsLinkKey": "url.m4.rivera_captions"
+        },
+        {
+          "type": "table",
+          "columns": [
+            "High-efficacy version",
+            "Low-efficacy version"
+          ],
+          "rows": [
+            [
+              "She finds which standards were missed, plans small-group reteaching, and asks her coach to observe the reteach.",
+              "She decides the students were not ready for the material and keeps her plan unchanged."
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Scenario 2: Ms. Kim"
+        },
+        {
+          "type": "text",
+          "text": "Ten minutes into a lesson, most students look confused."
+        },
+        {
+          "type": "resource",
+          "linkKey": "url.m4.kim_video",
+          "kind": "video",
+          "title": "Ms. Kim: a lesson that fails mid-class",
+          "description": "Watch both the high-efficacy and the low-efficacy response.",
+          "source": "Scenario video",
+          "required": true,
+          "captionsLinkKey": "url.m4.kim_captions"
+        },
+        {
+          "type": "table",
+          "columns": [
+            "High-efficacy version",
+            "Low-efficacy version"
+          ],
+          "rows": [
+            [
+              "She pauses, checks understanding, adjusts with a model, and reflects afterward.",
+              "She pushes through the plan and later says the class “wasn't listening.”"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Scenario 3: Mr. Logan"
+        },
+        {
+          "type": "text",
+          "text": "After a hard week, he starts to doubt whether teaching is for him."
+        },
+        {
+          "type": "resource",
+          "linkKey": "url.m4.logan_video",
+          "kind": "video",
+          "title": "Mr. Logan: “Maybe I'm just not cut out for this”",
+          "description": "Watch both the high-efficacy and the low-efficacy response.",
+          "source": "Scenario video",
+          "required": true,
+          "captionsLinkKey": "url.m4.logan_captions"
+        },
+        {
+          "type": "table",
+          "columns": [
+            "High-efficacy version",
+            "Low-efficacy version"
+          ],
+          "rows": [
+            [
+              "He names the doubt, asks his mentor for support, and picks one next step.",
+              "He keeps it to himself and avoids the feedback conversation on Friday."
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Try it: spot the response"
+        },
+        {
+          "type": "text",
+          "text": "Read each thought or action and choose whether it shows **high** or **low** efficacy. Not graded."
+        },
+        {
+          "type": "matching",
+          "activityId": "m5v-spot",
+          "title": "Spot the response",
+          "sample": true,
+          "categories": [
+            "High efficacy",
+            "Low efficacy"
+          ],
+          "cards": [
+            {
+              "id": "rivera-lo",
+              "text": "She decides the students were not ready for the material and keeps her plan unchanged.",
+              "answer": "Low efficacy"
+            },
+            {
+              "id": "kim-hi",
+              "text": "She pauses, checks understanding, adjusts with a model, and reflects afterward.",
+              "answer": "High efficacy"
+            },
+            {
+              "id": "logan-lo",
+              "text": "He keeps it to himself and avoids the feedback conversation on Friday.",
+              "answer": "Low efficacy"
+            },
+            {
+              "id": "rivera-hi",
+              "text": "She finds which standards were missed, plans small-group reteaching, and asks her coach to observe the reteach.",
+              "answer": "High efficacy"
+            },
+            {
+              "id": "kim-lo",
+              "text": "She pushes through the plan and later says the class “wasn't listening.”",
+              "answer": "Low efficacy"
+            },
+            {
+              "id": "logan-hi",
+              "text": "He names the doubt, asks his mentor for support, and picks one next step.",
+              "answer": "High efficacy"
+            }
+          ]
+        }
       ]
     },
     {
-      "id": "collective-efficacy",
-      "title": "Collective Efficacy: The Power of the Team",
+      "id": "collective",
+      "title": "3. Collective efficacy",
       "audioUrl": "",
       "blocks": [
-        { "type": "text", "text": "Collective efficacy is a team's shared belief in its ability to produce positive outcomes for students." },
-        { "type": "list", "items": [
-          "It has one of the highest effect sizes in Hattie's research: higher than socioeconomic status, prior achievement, or home environment.",
-          "It is not the same as morale.",
-          "It is built through shared goals, shared language, shared accountability, and repeated evidence that efforts make a difference."
-        ] }
+        {
+          "type": "text",
+          "text": "**Collective efficacy** is a team's shared belief in its ability to produce positive outcomes for students together. Where self-efficacy is “I can,” collective efficacy is “we can.” In Hattie's research it has one of the highest effect sizes he reports (d = 1.57, compared with an average of 0.40 for all influences in education). In a summary by Donohoo, Hattie, and Eells (2018), it was described as more than three times as powerful as socioeconomic status in predicting student achievement, and stronger than home environment and parental involvement."
+        },
+        {
+          "type": "text",
+          "text": "Collective efficacy is not about making teachers feel good. It is built through four things: **shared goals**, **shared language**, **shared accountability**, and **repeated evidence** that the team's efforts are making a difference. Evidence of impact is the primary input: a team that sees its students grow starts to believe it can make them grow."
+        },
+        {
+          "type": "text",
+          "text": "As a resident, you both contribute to and draw from the collective efficacy of your school. Bring your student data and your questions to your team, and notice when a colleague's idea works for your students too."
+        },
+        {
+          "type": "resource",
+          "linkKey": "url.m4.hattie_video",
+          "kind": "video",
+          "title": "What Is Collective Efficacy?",
+          "description": "Watch for what Hattie says collective efficacy is and is not.",
+          "source": "John Hattie",
+          "required": true,
+          "captionsLinkKey": "url.m4.hattie_captions"
+        }
       ]
     },
     {
-      "id": "starting-point",
-      "title": "Your Efficacy Starting Point",
+      "id": "resilience",
+      "title": "4. Resilience and flexibility",
       "audioUrl": "",
       "blocks": [
-        { "type": "text", "text": "Naming your strengths and anticipated doubts is a prerequisite for targeted growth." },
-        { "type": "callout", "text": "When doubt shows up, the high-efficacy response is to name it, seek support, and take one concrete next step." },
-        { "type": "reflection", "promptId": "m4-efficacy", "prompt": "Where do you feel most capable as a teacher right now? Where do you anticipate doubt, and what is one thing you will do when it shows up?" }
+        {
+          "type": "heading",
+          "text": "A hard-day routine in four steps"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "**Name what is happening.** “I am overwhelmed, and my last class went badly.”",
+            "**Steady yourself.** Take a slow breath, drink water, step outside for two minutes, or reset your shoulders before the next class.",
+            "**Ask for support.** Text your mentor, find a colleague at lunch, or book time with your coach.",
+            "**Take one next step.** Pick one small action for tomorrow, such as reteaching one skill or opening class with a clearer routine."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "When a plan fails, stay flexible"
+        },
+        {
+          "type": "text",
+          "text": "Flexible teachers do three things: **diagnose** what happened (was the task too hard, the directions unclear, the timing off?), **adjust**, and **try again**. A failed lesson is information about the plan, not a verdict on you."
+        },
+        {
+          "type": "heading",
+          "text": "Your persona's watch-for is a flexibility prompt"
+        },
+        {
+          "type": "text",
+          "text": "In Section 2 you saw a “watch for” note with your persona. Each one tells you where flexibility will matter most for you."
+        },
+        {
+          "type": "table",
+          "columns": [
+            "Persona",
+            "Watch for",
+            "A flexibility move"
+          ],
+          "rows": [
+            [
+              "Emcee",
+              "Entertainment can crowd out learning.",
+              "Build in quiet reflection and independent work so students can process."
+            ],
+            [
+              "Anchor",
+              "Routine can harden into a rut.",
+              "Add a spark of novelty or a change of pace when students need it."
+            ],
+            [
+              "Engineer",
+              "Some moments call for setting the plan aside.",
+              "Leave room in the lesson for relationships and real-time needs."
+            ],
+            [
+              "Coach",
+              "Not every student responds to pressure or competition.",
+              "Personalize the push to each student's pace and needs."
+            ],
+            [
+              "Nurturer",
+              "Do not carry every burden alone.",
+              "Set gentle, firm boundaries that sustain your care over time."
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "startpoint",
+      "title": "5. Your efficacy starting point",
+      "audioUrl": "",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Every resident enters the year with a different efficacy profile, with areas of genuine strength and areas of anticipated doubt. Both are useful. Naming where you feel capable and where you expect to struggle is the first step toward targeted growth. The residency builds efficacy through deliberate practice, frequent feedback, and a team that has done this work. When doubt shows up, the high-efficacy response is to name it, seek support, and take one concrete next step."
+        },
+        {
+          "type": "heading",
+          "text": "Quick check: where do you feel capable right now?"
+        },
+        {
+          "type": "text",
+          "text": "Rate each area from 1 (not yet confident) to 5 (very confident). This is for you, ungraded, and it helps you write your plan."
+        },
+        {
+          "type": "mindset",
+          "activityId": "m5v-quick-check",
+          "sample": true,
+          "labels": [
+            "Not yet confident",
+            "A little confident",
+            "Somewhat confident",
+            "Confident",
+            "Very confident"
+          ],
+          "statements": [
+            {
+              "id": "a1",
+              "text": "Giving clear directions"
+            },
+            {
+              "id": "a2",
+              "text": "Building relationships with students"
+            },
+            {
+              "id": "a3",
+              "text": "Planning a lesson that lands"
+            },
+            {
+              "id": "a4",
+              "text": "Responding when students struggle"
+            },
+            {
+              "id": "a5",
+              "text": "Using feedback from a coach"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Professional growth sources"
+        },
+        {
+          "type": "text",
+          "text": "Professional growth is part of the role, and seeking help when you need it is part of taking ownership of it. Choose the source that fits the need."
+        },
+        {
+          "type": "table",
+          "columns": [
+            "Source",
+            "Best for",
+            "Example"
+          ],
+          "rows": [
+            [
+              "Coach",
+              "Specific feedback on your own practice",
+              "An observation of your directions, followed by one next step"
+            ],
+            [
+              "Workshop",
+              "Learning a new skill or strategy",
+              "A session on questioning techniques you can try the next day"
+            ],
+            [
+              "Professional learning community",
+              "Solving a shared problem with colleagues and student data",
+              "A grade-level team analyzing a common assessment"
+            ],
+            [
+              "Professional organization",
+              "The wider field, standards, and a network beyond your school",
+              "A national or state teaching association for your content area or grade band"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "core",
+      "title": "Core resources",
+      "audioUrl": "",
+      "blocks": [
+        {
+          "type": "resource",
+          "linkKey": "url.m4.ascd_collective",
+          "kind": "article",
+          "title": "The Power of Collective Efficacy",
+          "description": "Donohoo, Hattie, and Eells on what collective efficacy is, why it matters, and what builds it. As you read, note one condition you can contribute to as a resident.",
+          "source": "Educational Leadership (ASCD)",
+          "minutes": 5,
+          "required": true
+        },
+        {
+          "type": "resource",
+          "linkKey": "url.m4.cte_summary",
+          "kind": "article",
+          "title": "Collective Teacher Efficacy (CTE) according to John Hattie",
+          "description": "A short summary of the effect size and what it means.",
+          "source": "Visible Learning",
+          "required": false
+        },
+        {
+          "type": "resource",
+          "linkKey": "url.m4.hattie_keynote",
+          "kind": "video",
+          "title": "John Hattie's keynote on collaborative impact",
+          "description": "A longer talk for residents who want to hear the research in Hattie's words.",
+          "source": "Visible Learning",
+          "required": false
+        },
+        {
+          "type": "resource",
+          "linkKey": "url.m4.bandura_sources",
+          "kind": "article",
+          "title": "Bandura's sources and preservice teachers' self-efficacy",
+          "description": "A research article on how the four sources predict changes in new teachers' confidence. Also on the CTR reading list: Hattie (2009), *Visible Learning: A Synthesis of Over 800 Meta-Analyses Relating to Achievement*.",
+          "source": "Research",
+          "required": false
+        }
       ]
     },
     {
       "id": "knowledge-check",
       "title": "Knowledge check",
-      "blocks": [{ "type": "quiz" }]
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Your answers are scored and shared with the CTR team. Pick an answer to see the explanation."
+        },
+        {
+          "type": "quiz"
+        }
+      ]
+    },
+    {
+      "id": "mindset-after",
+      "title": "Mindset check: after",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Rate the same statements again. Your two ratings are saved so you can compare them before your first evaluation period."
+        },
+        {
+          "type": "mindset",
+          "activityId": "m5v-mindset-after",
+          "compareTo": "m5v-mindset-before"
+        }
+      ]
+    },
+    {
+      "id": "final-task",
+      "title": "Final task: Hard-Day Plan",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Write a short plan in five parts. You will revisit this plan and your mindset checks before your first evaluation period, so think of it as a baseline."
+        },
+        {
+          "type": "worksheet",
+          "activityId": "m5v-hard-day-plan",
+          "title": "Your Hard-Day Plan",
+          "fields": [
+            {
+              "id": "capable",
+              "label": "1. Where I feel most capable right now",
+              "help": "Use your quick check above. Name a specific skill or situation."
+            },
+            {
+              "id": "doubt",
+              "label": "2. Where I anticipate doubt",
+              "help": "Be honest; this is information for your growth, not a grade."
+            },
+            {
+              "id": "hard_name",
+              "label": "3. What I will do on a hard day: Name it",
+              "help": "What I will tell myself is happening."
+            },
+            {
+              "id": "hard_ask",
+              "label": "Who I will ask",
+              "help": "A person and how I will reach them."
+            },
+            {
+              "id": "hard_step",
+              "label": "One next step",
+              "help": "A small action for the next day."
+            },
+            {
+              "id": "persona",
+              "label": "4. My persona",
+              "help": "Choose your persona, then use its watch-for.",
+              "options": [
+                "Emcee",
+                "Anchor",
+                "Engineer",
+                "Coach",
+                "Nurturer"
+              ]
+            },
+            {
+              "id": "adjust",
+              "label": "One thing I will adjust when a plan fails"
+            },
+            {
+              "id": "growth_source",
+              "label": "5. One professional growth source I will use"
+            }
+          ]
+        }
+      ]
     }
   ],
   "quiz": {
@@ -89,10 +603,22 @@
         "id": "m4-q1",
         "prompt": "How does John Hattie's Visible Learning research describe the role of teacher self-efficacy?",
         "options": [
-          { "id": "A", "text": "It primarily affects teacher job satisfaction, not student outcomes" },
-          { "id": "B", "text": "It is one factor among many, roughly equal in importance to curriculum and school funding" },
-          { "id": "C", "text": "It is one of the most powerful predictors of student achievement identified across more than 1,700 studies" },
-          { "id": "D", "text": "Its effect on student outcomes is limited to students in early elementary grades" }
+          {
+            "id": "A",
+            "text": "It primarily affects teacher job satisfaction, not student outcomes"
+          },
+          {
+            "id": "B",
+            "text": "It is one factor among many, roughly equal in importance to curriculum and school funding"
+          },
+          {
+            "id": "C",
+            "text": "It is one of the most powerful predictors of student achievement identified across more than 1,700 studies"
+          },
+          {
+            "id": "D",
+            "text": "Its effect on student outcomes is limited to students in early elementary grades"
+          }
         ],
         "correct": "C",
         "explanation": "Across 1,700+ studies, teacher self-efficacy stands out as one of the strongest predictors of achievement."
@@ -101,10 +627,22 @@
         "id": "m4-q2",
         "prompt": "A teacher's class scores lower than expected on a mid-year assessment. Which response best reflects high self-efficacy?",
         "options": [
-          { "id": "A", "text": "\"I'll mention this to my coach but keep doing what I'm doing. One assessment isn't everything.\"" },
-          { "id": "B", "text": "\"The assessment probably wasn't a fair measure of what I taught.\"" },
-          { "id": "C", "text": "\"I need to look at where the gaps are and adjust my approach for the next unit.\"" },
-          { "id": "D", "text": "\"These students just aren't putting in the effort. I can't make them care.\"" }
+          {
+            "id": "A",
+            "text": "\"I'll mention this to my coach but keep doing what I'm doing. One assessment isn't everything.\""
+          },
+          {
+            "id": "B",
+            "text": "\"The assessment probably wasn't a fair measure of what I taught.\""
+          },
+          {
+            "id": "C",
+            "text": "\"I need to look at where the gaps are and adjust my approach for the next unit.\""
+          },
+          {
+            "id": "D",
+            "text": "\"These students just aren't putting in the effort. I can't make them care.\""
+          }
         ],
         "correct": "C",
         "explanation": "High efficacy means owning the result and adjusting your own practice."
@@ -113,10 +651,22 @@
         "id": "m4-q3",
         "prompt": "What is the key difference between self-efficacy and collective efficacy?",
         "options": [
-          { "id": "A", "text": "Collective efficacy is another term for school culture and has no specific definition in research" },
-          { "id": "B", "text": "Self-efficacy decreases as teachers gain experience; collective efficacy increases" },
-          { "id": "C", "text": "Self-efficacy applies to teachers; collective efficacy applies only to school leaders" },
-          { "id": "D", "text": "Self-efficacy is about believing you can impact outcomes on your own; collective efficacy is a team's shared belief in its ability to produce results together" }
+          {
+            "id": "A",
+            "text": "Collective efficacy is another term for school culture and has no specific definition in research"
+          },
+          {
+            "id": "B",
+            "text": "Self-efficacy decreases as teachers gain experience; collective efficacy increases"
+          },
+          {
+            "id": "C",
+            "text": "Self-efficacy applies to teachers; collective efficacy applies only to school leaders"
+          },
+          {
+            "id": "D",
+            "text": "Self-efficacy is about believing you can impact outcomes on your own; collective efficacy is a team's shared belief in its ability to produce results together"
+          }
         ],
         "correct": "D",
         "explanation": "Self-efficacy is individual belief; collective efficacy is a team's shared belief."
@@ -125,10 +675,22 @@
         "id": "m4-q4",
         "prompt": "According to Hattie's research, collective efficacy has an effect size higher than which of the following factors?",
         "options": [
-          { "id": "A", "text": "Student access to technology in the classroom" },
-          { "id": "B", "text": "Class size and student-to-teacher ratio" },
-          { "id": "C", "text": "Teacher credentials and certification status" },
-          { "id": "D", "text": "Socioeconomic status, prior student achievement, and home environment" }
+          {
+            "id": "A",
+            "text": "Student access to technology in the classroom"
+          },
+          {
+            "id": "B",
+            "text": "Class size and student-to-teacher ratio"
+          },
+          {
+            "id": "C",
+            "text": "Teacher credentials and certification status"
+          },
+          {
+            "id": "D",
+            "text": "Socioeconomic status, prior student achievement, and home environment"
+          }
         ],
         "correct": "D",
         "explanation": "Collective efficacy outranks socioeconomic status, prior achievement, and home environment."
@@ -137,10 +699,22 @@
         "id": "m4-q5",
         "prompt": "A resident teacher struggles in the first few weeks and begins to think, \"Maybe I'm just not cut out for this.\" Which of the following best reflects a high-efficacy response to this moment?",
         "options": [
-          { "id": "A", "text": "Push through independently and avoid showing vulnerability to colleagues or coaches" },
-          { "id": "B", "text": "Focus only on lessons that are going well to rebuild confidence before addressing areas of struggle" },
-          { "id": "C", "text": "Name the doubt, seek support from your coach or team, and identify one concrete next step" },
-          { "id": "D", "text": "Accept that some people are natural teachers and others are not, and adjust expectations accordingly" }
+          {
+            "id": "A",
+            "text": "Push through independently and avoid showing vulnerability to colleagues or coaches"
+          },
+          {
+            "id": "B",
+            "text": "Focus only on lessons that are going well to rebuild confidence before addressing areas of struggle"
+          },
+          {
+            "id": "C",
+            "text": "Name the doubt, seek support from your coach or team, and identify one concrete next step"
+          },
+          {
+            "id": "D",
+            "text": "Accept that some people are natural teachers and others are not, and adjust expectations accordingly"
+          }
         ],
         "correct": "C",
         "explanation": "Name it, seek support, take one concrete next step."
@@ -149,8 +723,12 @@
   },
   "completion": {
     "allQuestions": true,
-    "reflections": ["m4-efficacy"],
+    "reflections": [],
     "checklist": [],
-    "activities": []
+    "activities": [
+      "m5v-mindset-before",
+      "m5v-mindset-after",
+      "m5v-hard-day-plan"
+    ]
   }
 }

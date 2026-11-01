@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
-import { Block, findActivity, mindsetStatements, moduleChecklistItems } from "@/lib/content";
+import { Block, findActivity, mindsetStatements, moduleChecklistItems, questionsFor } from "@/lib/content";
+import { BAND_LABEL, BANDS, bandFromText, NEIGHBOR, residentBand } from "@/lib/bands";
 import { displayName, emptyBundle, getConfig, loadBundle } from "@/lib/data";
 import { formatDate, formatDateTime, todayISO } from "@/lib/dates";
 import { moduleState } from "@/lib/progress";
@@ -20,6 +21,8 @@ import { Scenario } from "@/components/module/Scenario";
 import { Worksheet } from "@/components/module/Worksheet";
 import { Mindset } from "@/components/module/Mindset";
 import { Reveal } from "@/components/module/Reveal";
+import { BandPicker } from "@/components/module/BandPicker";
+import { Printable } from "@/components/module/Printable";
 import { PersonaQuiz } from "@/components/module/PersonaQuiz";
 import { PersonaResults } from "@/components/module/PersonaResults";
 import { IntroSlide } from "@/components/module/IntroSlide";
@@ -31,8 +34,9 @@ import { OpenTracker } from "@/components/module/OpenTracker";
 
 export const dynamic = "force-dynamic";
 
-export default async function ModulePage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function ModulePage({ params, searchParams }: { params: Promise<{ slug: string }>; searchParams: Promise<Record<string, string | undefined>> }) {
   const { slug } = await params;
+  const sp = await searchParams;
   const r = await currentResident();
   // Admins (not signed in as a resident) get a read-only preview with nothing saved.
   const preview = !r && (await isAdmin());
@@ -43,14 +47,18 @@ export default async function ModulePage({ params }: { params: Promise<{ slug: s
   const meta = cfg.modules.find((x) => x.slug === m.slug);
   if (meta && !meta.enabled) notFound();
   const b = r ? await loadBundle(r.id) : emptyBundle();
-  const st = moduleState(cfg, r ?? { group_number: null }, b, m);
+  const st = moduleState(cfg, r ?? { group_number: null, grade_band: null }, b, m);
   const settings = cfg.settings;
 
   const reflections = new Map(b.reflections.filter((x) => x.module_slug === m.slug).map((x) => [x.prompt_id, x.response_text]));
   const activities = new Map(b.activities.filter((x) => x.module_slug === m.slug).map((x) => [x.activity_id, x]));
   const answersOf = (id: string) => ((activities.get(id)?.payload_json as ActivityPayload | undefined)?.answers ?? {}) as Record<string, string>;
   const form = b.forms;
-  const questions = m.quiz?.questions ?? [];
+  // Grade band (Section 4): residents are routed by their About You track; admins can preview any band.
+  const hasBands = m.sections.some((x) => x.band);
+  const bandInfo = r ? residentBand(r, b) : { band: bandFromText(sp.band), source: null };
+  const band = bandInfo.band;
+  const questions = questionsFor(m, band);
 
   // Current attempt's feedback (so a reload keeps what they've answered this round).
   const attemptRows = b.attempts.filter((a) => a.module_slug === m.slug && a.attempt_no === st.currentAttempt);
@@ -102,16 +110,20 @@ export default async function ModulePage({ params }: { params: Promise<{ slug: s
             {blk.text}
           </h3>
         );
-      case "list":
+      case "list": {
+        const ListTag = blk.ordered ? "ol" : "ul";
         return (
-          <ul key={key} className="list-disc space-y-1 pl-6 text-lg">
+          <ListTag key={key} className={`${blk.ordered ? "list-decimal" : "list-disc"} space-y-1 pl-6 text-lg`}>
             {blk.items.map((it, i) => (
               <li key={i}>
                 <RichText text={it} />
               </li>
             ))}
-          </ul>
+          </ListTag>
         );
+      }
+      case "printable":
+        return <Printable key={key} title={blk.title} intro={blk.intro} items={blk.items} note={blk.note} />;
       case "callout":
         return (
           <div key={key} className="rounded-2xl border-l-8 border-yellow bg-yellow-wash p-4 text-lg">
@@ -156,9 +168,12 @@ export default async function ModulePage({ params }: { params: Promise<{ slug: s
             )}
             <div className="mt-3">
               {blk.kind === "video" && videoEmbed(url) ? (
-                <VideoPlayer url={url} title={blk.title} />
+                <VideoPlayer url={url} title={blk.title} captionsUrl={blk.captionsLinkKey ? settings[blk.captionsLinkKey] : undefined} />
               ) : (
-                <LinkButton href={url} label={`${verb}: ${blk.source ?? "open"}`} kind={blk.kind} variant="small" />
+                <div className="flex flex-wrap gap-2">
+                  <LinkButton href={url} label={`${verb}: ${blk.source ?? "open"}`} kind={blk.kind} variant="small" />
+                  {blk.captionsLinkKey && <LinkButton href={settings[blk.captionsLinkKey]} label="Captions / transcript" variant="small" />}
+                </div>
               )}
             </div>
           </div>
@@ -199,8 +214,10 @@ export default async function ModulePage({ params }: { params: Promise<{ slug: s
           </div>
         );
       }
+      case "band_picker":
+        return <BandPicker key={key} moduleSlug={m!.slug} activityId={blk.activityId} band={band} source={bandInfo.source} />;
       case "reveal":
-        return <Reveal key={key} items={blk.items} revealLabel={blk.revealLabel} sample={blk.sample} />;
+        return <Reveal key={key} items={blk.items} revealLabel={blk.revealLabel} inputLabel={blk.inputLabel} sample={blk.sample} />;
       case "mindset": {
         const before = blk.compareTo ? (activities.get(blk.compareTo)?.payload_json as ActivityPayload | undefined)?.answers : null;
         const src = blk.compareTo ? findActivity(m!, blk.compareTo) : blk;
@@ -210,6 +227,7 @@ export default async function ModulePage({ params }: { params: Promise<{ slug: s
             moduleSlug={m!.slug}
             activityId={blk.activityId}
             statements={mindsetStatements(m!, blk)}
+            labels={(src?.type === "mindset" ? src.labels : undefined) ?? blk.labels}
             initial={answersOf(blk.activityId)}
             before={before ?? (blk.compareTo ? {} : null)}
             sample={src?.type === "mindset" && !!src.sample}
@@ -422,6 +440,16 @@ export default async function ModulePage({ params }: { params: Promise<{ slug: s
           <Link href={`/admin/content/${m.slug}`} className="underline">
             Back to the editor
           </Link>
+          {hasBands && (
+            <span className="mt-1 block text-sm">
+              Preview grade band:{" "}
+              {BANDS.map((x) => (
+                <Link key={x} href={`/module/${m.slug}?band=${x}`} className={`mx-1 underline ${band === x ? "font-bold" : "font-normal"}`}>
+                  {BAND_LABEL[x]}
+                </Link>
+              ))}
+            </span>
+          )}
         </div>
       )}
       <ModuleProgressProvider initial={reqs}>
@@ -455,7 +483,7 @@ export default async function ModulePage({ params }: { params: Promise<{ slug: s
           {m.sections.length > 4 && (
             <nav aria-label="Sections in this module" className="mt-5">
               <ul className="flex flex-wrap gap-2">
-                {m.sections.map((sec) => (
+                {m.sections.filter((sec) => !sec.band || sec.band === band).map((sec) => (
                   <li key={sec.id}>
                     <a href={`#${sec.id}`} className="block rounded-full border-2 border-teal px-3 py-1 text-sm font-semibold text-teal-ink hover:bg-teal-wash">
                       {sec.title}
@@ -477,23 +505,62 @@ export default async function ModulePage({ params }: { params: Promise<{ slug: s
             </ul>
           </section>
 
-          {m.sections.map((s, si) => (
-            <section key={s.id} id={s.id} className="card mt-6 scroll-mt-32 space-y-4" aria-labelledby={`${s.id}-h`}>
-              <h2 id={`${s.id}-h`} className="h2">
-                {s.title}
-              </h2>
-              {s.audioUrl && <AudioPlayer url={s.audioUrl} transcript={s.audioTranscript} />}
-              {s.video?.url && <VideoPlayer url={s.video.url} title={s.video.title || "Video"} captionsUrl={s.video.captionsUrl} />}
-              {s.blocks.map((blk, bi) => renderBlock(blk, `${si}-${bi}`))}
-            </section>
-          ))}
+          {m.sections.map((s, si) => {
+            if (s.band) {
+              // Only the resident's own branch shows; the first branch slot explains how to choose when the band is unknown.
+              const firstBand = m.sections.find((x) => x.band)?.id === s.id;
+              if (!band) {
+                return firstBand ? (
+                  <section key="band-unknown" id="branch" className="card mt-6 scroll-mt-32 space-y-3">
+                    <h2 className="h2">Part 3. Your grade band</h2>
+                    <p>Choose your grade band in <a href="#start" className="link">Start here</a> (or finish About You in Section 2), and your branch will appear here.</p>
+                  </section>
+                ) : null;
+              }
+              if (s.band !== band) return null;
+              const neighbor = m.sections.find((x) => x.band === NEIGHBOR[band]);
+              return (
+                <section key={s.id} id={s.id} className="card mt-6 scroll-mt-32 space-y-4" aria-labelledby={`${s.id}-h`}>
+                  <h2 id={`${s.id}-h`} className="h2">
+                    {s.title}
+                  </h2>
+                  {s.audioUrl && <AudioPlayer url={s.audioUrl} transcript={s.audioTranscript} />}
+                  {s.video?.url && <VideoPlayer url={s.video.url} title={s.video.title || "Video"} captionsUrl={s.video.captionsUrl} />}
+                  {s.blocks.map((blk, bi) => renderBlock(blk, `${si}-${bi}`))}
+                  {neighbor && (
+                    <details className="rounded-2xl border-2 border-gray-brand/30 p-4">
+                      <summary className="cursor-pointer font-semibold text-teal-ink">
+                        Optional · Neighboring-band review: {BAND_LABEL[NEIGHBOR[band]]} (10 min, outside the required time)
+                      </summary>
+                      <div className="mt-3 space-y-4">
+                        <p className="text-muted">
+                          Some residents are placed outside their certification band. If that could be you, take a quick look at the adjacent band.
+                        </p>
+                        {neighbor.blocks.map((blk, bi) => renderBlock(blk, `nb-${bi}`))}
+                      </div>
+                    </details>
+                  )}
+                </section>
+              );
+            }
+            return (
+              <section key={s.id} id={s.id} className="card mt-6 scroll-mt-32 space-y-4" aria-labelledby={`${s.id}-h`}>
+                <h2 id={`${s.id}-h`} className="h2">
+                  {s.title}
+                </h2>
+                {s.audioUrl && <AudioPlayer url={s.audioUrl} transcript={s.audioTranscript} />}
+                {s.video?.url && <VideoPlayer url={s.video.url} title={s.video.title || "Video"} captionsUrl={s.video.captionsUrl} />}
+                {s.blocks.map((blk, bi) => renderBlock(blk, `${si}-${bi}`))}
+              </section>
+            );
+          })}
 
           <div className="mt-8">
             <CompleteButton moduleSlug={m.slug} completed={st.status === "complete"} />
           </div>
 
           <p className="mt-6 text-center">
-            {settings[m.geniallyLinkKey] ? (
+            {m.geniallyLinkKey && settings[m.geniallyLinkKey] ? (
               <a className="link" href={settings[m.geniallyLinkKey]} target="_blank" rel="noopener noreferrer">
                 {m.geniallyLabel ?? "View original on Genially"} ↗
               </a>

@@ -71,6 +71,8 @@ export type ProgressBundle = {
   moduleProgress: { module_slug: string; started_at: Date | null; completed_at: Date | null; last_active_at: Date | null }[];
   praxis: { stage: number | null; math: string | null; reading: string | null; writing: string | null; updated_at: Date } | null;
   forms: { form_slug: string; status: "draft" | "submitted"; submitted_at: Date | null }[];
+  /** Certification track from About You (draft or submitted), used for Section 4's grade-band branch. */
+  track: string | null;
 };
 
 export const getSettings = cache(async (): Promise<Record<string, string>> => {
@@ -109,7 +111,7 @@ export async function getResidentById(id: string): Promise<Resident | null> {
 }
 
 export function emptyBundle(): ProgressBundle {
-  return { itemChecks: [], checklist: [], attempts: [], reflections: [], activities: [], moduleProgress: [], praxis: null, forms: [] };
+  return { itemChecks: [], checklist: [], attempts: [], reflections: [], activities: [], moduleProgress: [], praxis: null, forms: [], track: null };
 }
 
 /** Load progress for many residents at once (admin grid, exports). */
@@ -126,10 +128,10 @@ export async function loadBundles(residentIds: string[]): Promise<Map<string, Pr
     sql`select resident_id, module_slug, activity_id, payload_json, completed_at from activity_results where resident_id = any(${ids}::uuid[])`,
     sql`select resident_id, module_slug, started_at, completed_at, last_active_at from module_progress where resident_id = any(${ids}::uuid[])`,
     sql`select resident_id, stage, math, reading, writing, updated_at from praxis_status where resident_id = any(${ids}::uuid[])`,
-    sql`select resident_id, form_slug, status, submitted_at from form_responses where resident_id = any(${ids}::uuid[])`,
+    sql`select resident_id, form_slug, status, submitted_at, answers_json->>'track' as track from form_responses where resident_id = any(${ids}::uuid[])`,
   ]);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const push = (rows: any[], key: Exclude<keyof ProgressBundle, "praxis">) => {
+  const push = (rows: any[], key: Exclude<keyof ProgressBundle, "praxis" | "track">) => {
     for (const { resident_id, ...rest } of rows) map.get(resident_id)?.[key].push(rest as never);
   };
   push(ic, "itemChecks");
@@ -138,7 +140,8 @@ export async function loadBundles(residentIds: string[]): Promise<Map<string, Pr
   push(rf, "reflections");
   push(ac, "activities");
   push(mp, "moduleProgress");
-  push(fr, "forms");
+  push(fr.map(({ track: _t, ...rest }) => rest), "forms");
+  for (const row of fr) if (row.form_slug === "mentor-match" && row.track) map.get(row.resident_id)!.track = row.track;
   for (const { resident_id, ...rest } of px) {
     const b = map.get(resident_id);
     if (b) b.praxis = rest as ProgressBundle["praxis"];

@@ -1,0 +1,868 @@
+{
+  "slug": "meet-your-students",
+  "number": 4,
+  "title": "Meet Your Students",
+  "description": "Learn how the children and teens in your grade band think, feel, and grow, so that your first routines and relationships fit the students in front of you.",
+  "estimatedMinutes": 95,
+  "indicator": "CC.P.2, CC.P.3, CC.A.6 (preview)",
+  "objectives": [
+    "Describe typical cognitive, social-emotional, physical, and language development for your grade band, and tell developmental behavior from a real concern.",
+    "Explain why behavior is communication, and what children in your grade band need to feel known and safe.",
+    "Name routines and directions that students in your grade band can reasonably carry out independently.",
+    "Use core PLT vocabulary to explain student behavior and plan scaffolds.",
+    "Describe how prior knowledge, language, culture, and learning preferences affect learning, how English learners acquire language, and how areas of exceptionality, IDEA, Section 504, and FERPA shape support.",
+    "Set a few positive rules and routines as clear steps, and reinforce expectations with specific praise and non-verbal cues that fit your students' age."
+  ],
+  "sections": [
+    {
+      "id": "start",
+      "title": "Start here",
+      "audioUrl": "",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "In Cycle 1 you will walk into a classroom and design routines and relationship plans for a specific age group. You need a working picture of those children first. This section gives you that picture, plus the vocabulary behind the Praxis Principles of Learning and Teaching (PLT) exam that you will study in Cycle 2. (It exists because the current cohort asked for it; about 85% of the 48 residents who responded wanted child development content, classroom culture content, or both.)"
+        },
+        {
+          "type": "callout",
+          "title": "Your plan for the 95 minutes",
+          "text": "Shared core (23 min), every learner (12), your grade-band branch (28), knowledge check (12), mindset check (5), final task (15). The optional neighboring-band review takes 10 more minutes and sits outside this time."
+        },
+        {
+          "type": "band_picker",
+          "activityId": "band-choice"
+        }
+      ]
+    },
+    {
+      "id": "mindset-before",
+      "title": "Mindset check: before",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Not graded. Rate how much you agree with each statement right now. You will rate the same statements again after the knowledge check."
+        },
+        {
+          "type": "mindset",
+          "activityId": "m4s-mindset-before",
+          "sample": true,
+          "statements": [
+            {
+              "id": "s1",
+              "text": "I can describe how students in my grade band typically think, feel, and grow."
+            },
+            {
+              "id": "s2",
+              "text": "When a student's behavior puzzles me, I ask what need it might be communicating."
+            },
+            {
+              "id": "s3",
+              "text": "I can name routines students in my grade band can carry out on their own."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "core",
+      "title": "Part 1. The shared core: how children learn",
+      "audioUrl": "",
+      "blocks": [
+        {
+          "type": "heading",
+          "text": "Development is a range"
+        },
+        {
+          "type": "text",
+          "text": "Children develop across four connected domains. Knowing the typical range for each helps you tell ordinary behavior from a real concern."
+        },
+        {
+          "type": "table",
+          "columns": [
+            "Domain",
+            "What it covers",
+            "What it can look like"
+          ],
+          "rows": [
+            [
+              "Cognitive",
+              "Thinking, memory, problem solving, attention",
+              "A first grader counts on fingers; a seventh grader starts to argue both sides of an issue."
+            ],
+            [
+              "Social-emotional",
+              "Relationships, identity, managing feelings",
+              "A four-year-old needs an adult to calm down; a ninth grader cares intensely about how peers see them."
+            ],
+            [
+              "Physical",
+              "Gross and fine motor skills, energy, growth, sleep",
+              "A kindergartener needs to move every few minutes; a tenth grader is exhausted by an early start time."
+            ],
+            [
+              "Language",
+              "Vocabulary, grammar, listening, speaking, reading, writing",
+              "A preschooler says “I goed”; a middle schooler code-switches between friends and class."
+            ]
+          ]
+        },
+        {
+          "type": "callout",
+          "title": "Typical or a concern?",
+          "text": "Ask three questions. Is this common for the age? Does it persist over weeks and across settings? Does it get in the way of learning or relationships? If the answers point toward a concern, tell your mentor and the support team. Your job is to notice and report, not to diagnose."
+        },
+        {
+          "type": "heading",
+          "text": "Learning theories in one table"
+        },
+        {
+          "type": "text",
+          "text": "These are the names and ideas the PLT exam expects. You do not need to memorize dates; you need to recognize each idea in a classroom example."
+        },
+        {
+          "type": "table",
+          "columns": [
+            "Idea",
+            "The big idea",
+            "In a classroom"
+          ],
+          "rows": [
+            [
+              "Behaviorism (Skinner)",
+              "Learning is a change in behavior shaped by consequences. Reinforced behavior is more likely to recur.",
+              "A student earns a point for starting work right away, and starts work faster the next day."
+            ],
+            [
+              "Constructivism",
+              "Learners build knowledge from experience and prior understanding.",
+              "Students test which objects sink or float, then build and revise an explanation."
+            ],
+            [
+              "Piaget",
+              "Four stages of cognitive development: sensorimotor, preoperational, concrete operational, formal operational.",
+              "Elementary students reason best with objects and examples; adolescents can start to reason with abstract ideas."
+            ],
+            [
+              "Vygotsky",
+              "The zone of proximal development is what a learner can do with support but not yet alone.",
+              "A student solves a problem when you ask guiding questions, then solves a similar one alone."
+            ],
+            [
+              "Scaffolding",
+              "Give a task just beyond what a student can do alone, add support, and remove it as skill grows.",
+              "Model a paragraph, write one together, offer a sentence frame, then take the frame away."
+            ],
+            [
+              "Maslow",
+              "Basic needs, such as food, safety, and belonging, come before esteem and self-actualization.",
+              "A hungry or frightened student cannot give full attention to a lesson."
+            ],
+            [
+              "Erikson",
+              "Each age faces a central psychosocial challenge, such as industry versus inferiority in the elementary years and identity versus role confusion in adolescence.",
+              "A third grader who is praised for effort feels capable; a teenager tries on identities in the clothes and groups they choose."
+            ],
+            [
+              "Kohlberg",
+              "Moral reasoning moves through three levels: preconventional, conventional, and postconventional.",
+              "A young child follows a rule to avoid punishment; an older student cites fairness and shared expectations."
+            ],
+            [
+              "Bruner",
+              "Discovery learning and scaffolding: students learn deeply when they explore ideas with guidance.",
+              "Students sort shapes and discover the rule for themselves before you name it."
+            ],
+            [
+              "Bandura",
+              "People learn by observing others, and self-efficacy, the belief “I can do this,” shapes effort.",
+              "A student watches a peer solve a problem and then tries it, because success looks possible."
+            ]
+          ]
+        },
+        {
+          "type": "text",
+          "text": "Three more terms join them on your PLT Starter Sheet: **metacognition** (thinking about your own thinking), **self-regulation** (managing your own attention, emotions, and behavior), and **intrinsic versus extrinsic motivation** (doing something because it is rewarding in itself versus for an outside reward)."
+        },
+        {
+          "type": "image",
+          "src": "",
+          "alt": "A horizontal timeline from age 3 to 18 with Piaget's and Erikson's stages stacked above it, and four shaded bands for ECE, elementary, middle, and high school.",
+          "caption": "Where your grade band sits in Piaget's and Erikson's stages.",
+          "sourceNote": "Build in-house from the stage definitions above."
+        },
+        {
+          "type": "heading",
+          "text": "Watch: five domains of development"
+        },
+        {
+          "type": "text",
+          "text": "These five short videos show development as it looks in real children. Watch all five, and as you watch, jot down one milestone you would expect to see in your own grade band for each domain. You will use those notes in the next activity."
+        },
+        {
+          "type": "resource",
+          "linkKey": "url.mys.video_social",
+          "kind": "video",
+          "title": "Social development",
+          "description": "Watch for how friendships, play, and the importance of peers change with age.",
+          "source": "Video",
+          "required": true,
+          "captionsLinkKey": "url.mys.video_social_captions"
+        },
+        {
+          "type": "resource",
+          "linkKey": "url.mys.video_emotional",
+          "kind": "video",
+          "title": "Emotional development",
+          "description": "Watch for how children name feelings and learn to calm themselves, and what adults do to help.",
+          "source": "Video",
+          "required": true,
+          "captionsLinkKey": "url.mys.video_emotional_captions"
+        },
+        {
+          "type": "resource",
+          "linkKey": "url.mys.video_moral",
+          "kind": "video",
+          "title": "Moral development",
+          "description": "Watch for how reasoning about rules and fairness shifts from avoiding punishment to weighing shared principles (Kohlberg).",
+          "source": "Video",
+          "required": true,
+          "captionsLinkKey": "url.mys.video_moral_captions"
+        },
+        {
+          "type": "resource",
+          "linkKey": "url.mys.video_physical",
+          "kind": "video",
+          "title": "Physical development",
+          "description": "Watch for growth in motor skills, the need for movement, and the changes of puberty.",
+          "source": "Video",
+          "required": true,
+          "captionsLinkKey": "url.mys.video_physical_captions"
+        },
+        {
+          "type": "resource",
+          "linkKey": "url.mys.video_cognitive",
+          "kind": "video",
+          "title": "Cognitive development",
+          "description": "Watch for how thinking moves from concrete to abstract (Piaget) and how support helps (Vygotsky).",
+          "source": "Video",
+          "required": true,
+          "captionsLinkKey": "url.mys.video_cognitive_captions"
+        },
+        {
+          "type": "heading",
+          "text": "Try it: sort the milestones"
+        },
+        {
+          "type": "text",
+          "text": "Sort each milestone into the domain it belongs to. Ages are typical ranges, not deadlines. Not graded."
+        },
+        {
+          "type": "matching",
+          "activityId": "m4s-sort-milestones",
+          "title": "Sort the milestones",
+          "sample": true,
+          "categories": [
+            "Cognitive",
+            "Social-emotional",
+            "Physical",
+            "Language"
+          ],
+          "cards": [
+            {
+              "id": "cog1",
+              "text": "A first grader counts on fingers.",
+              "answer": "Cognitive"
+            },
+            {
+              "id": "soc2",
+              "text": "A ninth grader cares intensely about how peers see them.",
+              "answer": "Social-emotional"
+            },
+            {
+              "id": "phy2",
+              "text": "A tenth grader is exhausted by an early start time.",
+              "answer": "Physical"
+            },
+            {
+              "id": "soc1",
+              "text": "A four-year-old needs an adult to calm down.",
+              "answer": "Social-emotional"
+            },
+            {
+              "id": "lan1",
+              "text": "A preschooler says “I goed”.",
+              "answer": "Language"
+            },
+            {
+              "id": "cog2",
+              "text": "A seventh grader starts to argue both sides of an issue.",
+              "answer": "Cognitive"
+            },
+            {
+              "id": "phy1",
+              "text": "A kindergartener needs to move every few minutes.",
+              "answer": "Physical"
+            },
+            {
+              "id": "lan2",
+              "text": "A middle schooler code-switches between friends and class.",
+              "answer": "Language"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Try it: match the idea"
+        },
+        {
+          "type": "text",
+          "text": "Read each classroom moment, name the idea, then reveal one answer. Not graded."
+        },
+        {
+          "type": "reveal",
+          "sample": true,
+          "inputLabel": "Which idea is this?",
+          "revealLabel": "Reveal the answer",
+          "items": [
+            {
+              "statement": "A student solves a problem when you ask guiding questions, then solves a similar one alone.",
+              "reveal": "Vygotsky"
+            },
+            {
+              "statement": "A hungry or frightened student cannot give full attention to a lesson.",
+              "reveal": "Maslow"
+            },
+            {
+              "statement": "Students sort shapes and discover the rule for themselves before you name it.",
+              "reveal": "Bruner"
+            },
+            {
+              "statement": "A student watches a peer solve a problem and then tries it, because success looks possible.",
+              "reveal": "Bandura"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Behavior is communication"
+        },
+        {
+          "type": "text",
+          "text": "Behavior tells you about a need. A second grader who tears up her worksheet every time writing starts may be telling you the task feels too hard, not that she is defiant. Start by asking *what need might this behavior be communicating, and how can I check?* before asking *how do I stop this?* In Cycle 1 you will learn the least-invasive strategies that follow from that question."
+        },
+        {
+          "type": "text",
+          "text": "At every age, children need to feel **known** (someone notices who they are), **safe** (they can predict what will happen and take risks), and **invested in** (an adult believes they can succeed). This is the heart of indicator CC.P.2."
+        },
+        {
+          "type": "resource",
+          "linkKey": "url.mys.serve_return",
+          "kind": "video",
+          "title": "5 Steps for Brain-Building Serve and Return",
+          "description": "A short video on the back-and-forth interactions that build young children's brains. Useful if you are in ECE or Elementary, and a good picture of what “knowing a child” looks like.",
+          "source": "Harvard Center on the Developing Child",
+          "required": false
+        },
+        {
+          "type": "resource",
+          "linkKey": "url.mys.quick_walk",
+          "kind": "video",
+          "title": "Taking a quick walk to de-escalate",
+          "description": "A teacher uses a calm walk to reset with a student. Watch for what she does before she says anything.",
+          "source": "Edutopia",
+          "required": false
+        },
+        {
+          "type": "heading",
+          "text": "Routines, rules, and independence"
+        },
+        {
+          "type": "text",
+          "text": "Predictable routines protect learning time, and a child's age shapes what they can do on their own (CC.P.3). Teach a few positive rules and routines as **clear steps**, practice them with students, and apply consequences consistently. “Be respectful” is a value; “Eyes on the speaker, hands still, voice off” is a routine a child can follow."
+        },
+        {
+          "type": "text",
+          "text": "Reinforce expectations with **specific praise** (“You put every block on the shelf”) and **non-verbal cues** such as proximity, a gesture, or eye contact. Both should fit the age. A song works for a four-year-old and would embarrass a fourteen-year-old."
+        },
+        {
+          "type": "heading",
+          "text": "Your PLT Starter Sheet"
+        },
+        {
+          "type": "text",
+          "text": "Keep this one-page reference. You will use it again in Cycle 2, when formal PLT prep begins with a diagnostic practice test."
+        },
+        {
+          "type": "printable",
+          "title": "PLT Starter Sheet: vocabulary and exam categories",
+          "intro": "**Exam categories:** Students as Learners · Instructional Process · Assessment · Professional Development, Leadership, and Community. This section covers the first and previews motivation and learning environment topics.",
+          "items": [
+            "**Behaviorism / Skinner:** reinforced behavior recurs.",
+            "**Constructivism:** learners build knowledge from experience.",
+            "**Piaget:** sensorimotor, preoperational, concrete operational, formal operational.",
+            "**Vygotsky:** zone of proximal development; scaffolding.",
+            "**Maslow:** basic needs before esteem and self-actualization.",
+            "**Erikson:** psychosocial stages (industry vs. inferiority; identity vs. role confusion).",
+            "**Kohlberg:** preconventional, conventional, postconventional moral reasoning.",
+            "**Bruner:** discovery learning, scaffolding.",
+            "**Bandura:** observational learning, self-efficacy.",
+            "**Also:** metacognition, self-regulation, intrinsic and extrinsic motivation.",
+            "**Every learner:** English learner stages; IDEA, FAPE, LRE, IEP; Section 504; FERPA."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "every-learner",
+      "title": "Part 2. Every learner",
+      "audioUrl": "",
+      "blocks": [
+        {
+          "type": "heading",
+          "text": "What students bring"
+        },
+        {
+          "type": "text",
+          "text": "Prior knowledge, home language, culture, and experience all affect how a student takes in new learning. Start from what students know. Section 3 gave you the mindset; here it becomes instruction."
+        },
+        {
+          "type": "callout",
+          "title": "Learning preferences exist, and strong instruction comes first",
+          "text": "Students may say they prefer to see, hear, or do. Researchers have not found that matching teaching to a single preferred “style” improves learning. What helps every student is clear explanations, modeling, practice, and feedback, delivered in a way that offers more than one way in."
+        },
+        {
+          "type": "heading",
+          "text": "English learners acquire language in stages"
+        },
+        {
+          "type": "text",
+          "text": "Teachers adjust their support to the stage while keeping the content rigorous. A student in an early stage is learning English, not struggling to learn."
+        },
+        {
+          "type": "table",
+          "columns": [
+            "Stage",
+            "What you may notice",
+            "What helps"
+          ],
+          "rows": [
+            [
+              "Preproduction",
+              "Listens and watches; may say little or nothing (a silent period)",
+              "Pictures, gestures, and actions; yes/no and pointing responses; a welcoming peer buddy"
+            ],
+            [
+              "Early production",
+              "One-word and short-phrase answers",
+              "Questions answered with a word or phrase; word banks; visuals"
+            ],
+            [
+              "Speech emergence",
+              "Simple sentences, with errors",
+              "Sentence frames; modeling correct phrasing without correcting every error"
+            ],
+            [
+              "Intermediate fluency",
+              "More complex sentences; still learning academic language",
+              "Explicit academic vocabulary; chances to discuss and write"
+            ],
+            [
+              "Advanced fluency",
+              "Near-native conversation; academic language still developing",
+              "Rigorous tasks with continued vocabulary and writing support"
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Areas of exceptionality"
+        },
+        {
+          "type": "text",
+          "text": "Students may have learning disabilities, speech or language impairments, autism, or emotional disturbance, and some students are identified as gifted. Each affects learning differently, and every student in any of these groups can learn and grow. Your role is to know what supports a student has, deliver them, and notice what is working."
+        },
+        {
+          "type": "heading",
+          "text": "The laws behind the supports"
+        },
+        {
+          "type": "table",
+          "columns": [
+            "Law",
+            "What it does",
+            "What you will see"
+          ],
+          "rows": [
+            [
+              "IDEA",
+              "Guarantees a free appropriate public education (FAPE) in the least restrictive environment (LRE) to eligible students with disabilities.",
+              "An individualized education program (IEP) with goals, services, and accommodations."
+            ],
+            [
+              "Section 504",
+              "Requires schools to provide accommodations so that students with disabilities can access learning.",
+              "A 504 plan, such as a rest-break plan for a student with asthma."
+            ],
+            [
+              "FERPA",
+              "Protects the privacy of student education records.",
+              "What you learn from a student's file or family stays with the people who need it to support the student."
+            ]
+          ]
+        },
+        {
+          "type": "resource",
+          "linkKey": "url.mys.language_acquisition",
+          "kind": "article",
+          "title": "Language Acquisition: An Overview",
+          "description": "A plain-language overview of how English learners acquire a new language. Pick one stage and write down what you would say to a student at that stage.",
+          "source": "Colorín Colorado",
+          "minutes": 8,
+          "required": true
+        },
+        {
+          "type": "resource",
+          "linkKey": "url.mys.idea_504",
+          "kind": "article",
+          "title": "Understanding Differences Between IDEA and Section 504",
+          "description": "A short comparison if you want the two laws side by side.",
+          "source": "LD OnLine",
+          "required": false
+        }
+      ]
+    },
+    {
+      "id": "branch-ece",
+      "band": "ece",
+      "title": "Part 3. Your grade band: ECE",
+      "audioUrl": "",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Every branch has the same four parts, and each includes a classroom example. Read yours closely, then skim the optional neighboring-band review below if you may be placed outside your certification band."
+        },
+        {
+          "type": "callout",
+          "title": "Coming soon",
+          "text": "The four parts of the ECE branch, with a classroom example, will appear here."
+        }
+      ]
+    },
+    {
+      "id": "branch-elementary",
+      "band": "elementary",
+      "title": "Part 3. Your grade band: Elementary",
+      "audioUrl": "",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Every branch has the same four parts, and each includes a classroom example. Read yours closely, then skim the optional neighboring-band review below if you may be placed outside your certification band."
+        },
+        {
+          "type": "callout",
+          "title": "Coming soon",
+          "text": "The four parts of the Elementary branch, with a classroom example, will appear here."
+        }
+      ]
+    },
+    {
+      "id": "branch-middle",
+      "band": "middle",
+      "title": "Part 3. Your grade band: Middle",
+      "audioUrl": "",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Every branch has the same four parts, and each includes a classroom example. Read yours closely, then skim the optional neighboring-band review below if you may be placed outside your certification band."
+        },
+        {
+          "type": "callout",
+          "title": "Coming soon",
+          "text": "The four parts of the Middle branch, with a classroom example, will appear here."
+        }
+      ]
+    },
+    {
+      "id": "branch-high",
+      "band": "high",
+      "title": "Part 3. Your grade band: High School",
+      "audioUrl": "",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Every branch has the same four parts, and each includes a classroom example. Read yours closely, then skim the optional neighboring-band review below if you may be placed outside your certification band."
+        },
+        {
+          "type": "callout",
+          "title": "Coming soon",
+          "text": "The four parts of the High School branch, with a classroom example, will appear here."
+        }
+      ]
+    },
+    {
+      "id": "plt",
+      "title": "Praxis PLT bridge",
+      "audioUrl": "",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "ECE and Elementary residents take the Early Childhood PLT. Middle and High School residents take the Grades 7-12 PLT. Each exam is 2 hours with 70 selected-response and 4 constructed-response questions, and “Students as Learners” is 22.5% of each. This section covers that category and previews motivation and learning environment topics. Formal prep begins in Cycle 2 with a diagnostic practice test; this section gives you the vocabulary before you see it."
+        },
+        {
+          "type": "resource",
+          "linkKey": "url.mys.plt_5621",
+          "kind": "article",
+          "title": "Early Childhood PLT (5621)",
+          "description": "Test specifications for the Early Childhood PLT. Check the length and question counts here, since they can change.",
+          "source": "ETS Praxis",
+          "required": false
+        },
+        {
+          "type": "resource",
+          "linkKey": "url.mys.plt_5624",
+          "kind": "article",
+          "title": "Grades 7-12 PLT (5624), study companion",
+          "description": "Test specifications for the Grades 7-12 PLT. Check the length and question counts here, since they can change.",
+          "source": "ETS Praxis",
+          "required": false
+        }
+      ]
+    },
+    {
+      "id": "knowledge-check",
+      "title": "Knowledge check",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Your answers are scored and shared with the CTR team. Pick an answer to see the explanation."
+        },
+        {
+          "type": "quiz"
+        }
+      ]
+    },
+    {
+      "id": "mindset-after",
+      "title": "Mindset check: after",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Rate the same statements again. Your two ratings are saved so you can compare them before your first evaluation period."
+        },
+        {
+          "type": "mindset",
+          "activityId": "m4s-mindset-after",
+          "compareTo": "m4s-mindset-before"
+        }
+      ]
+    },
+    {
+      "id": "final-task",
+      "title": "Final task: Grade-Band Student Profile",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Create a one-page profile of the students you will teach. Type directly into the boxes. Use at least two ideas from this section, and close with two sentences on how your primary persona will build relationships with these students. This task previews Setting the Foundation, Part II (student relationships)."
+        },
+        {
+          "type": "worksheet",
+          "activityId": "m4s-profile",
+          "title": "Your Grade-Band Student Profile",
+          "fields": [
+            {
+              "id": "outline",
+              "label": "Which outline matches your students?",
+              "options": [
+                "ECE (PreK3 to K)",
+                "Elementary (1 to 4)",
+                "Middle (5 to 8)",
+                "High School (9 to 12)"
+              ]
+            },
+            {
+              "id": "cognitive",
+              "label": "Cognitive"
+            },
+            {
+              "id": "social_emotional",
+              "label": "Social-emotional"
+            },
+            {
+              "id": "physical",
+              "label": "Physical"
+            },
+            {
+              "id": "language",
+              "label": "Language"
+            },
+            {
+              "id": "safe_known",
+              "label": "What helps them feel safe and known"
+            },
+            {
+              "id": "independent",
+              "label": "What they can do on their own"
+            },
+            {
+              "id": "routine",
+              "label": "One routine I would teach as clear steps",
+              "rows": 3
+            },
+            {
+              "id": "joy",
+              "label": "What brings them joy"
+            },
+            {
+              "id": "praise_cue",
+              "label": "One specific praise and one non-verbal cue that fit their age"
+            },
+            {
+              "id": "two_ideas",
+              "label": "Two ideas from this section that I used"
+            },
+            {
+              "id": "persona_note",
+              "label": "Persona note",
+              "help": "Two sentences on how your primary persona will build relationships with these students.",
+              "rows": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "id": "mys-s1",
+        "prompt": "A third grader reads two grade levels above, but struggles to share and take turns. What does this best illustrate?",
+        "options": [
+          {
+            "id": "A",
+            "text": "The student has a developmental delay across all domains"
+          },
+          {
+            "id": "B",
+            "text": "Development is asynchronous, so a student can be advanced in one domain and still growing in another"
+          },
+          {
+            "id": "C",
+            "text": "Milestones are strict deadlines"
+          },
+          {
+            "id": "D",
+            "text": "The student should skip a grade"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Development is uneven across domains; that is typical, not a red flag."
+      },
+      {
+        "id": "mys-s2",
+        "prompt": "A 9-year-old can reason logically about concrete objects and understands conservation. Which Piaget stage is this?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Sensorimotor"
+          },
+          {
+            "id": "B",
+            "text": "Preoperational"
+          },
+          {
+            "id": "C",
+            "text": "Concrete operational"
+          },
+          {
+            "id": "D",
+            "text": "Formal operational"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Logical reasoning about concrete objects and conservation mark the concrete operational stage (7–11)."
+      },
+      {
+        "id": "mys-s3",
+        "prompt": "What is the Zone of Proximal Development (Vygotsky)?",
+        "options": [
+          {
+            "id": "A",
+            "text": "The gap between a student's grade level and their reading level"
+          },
+          {
+            "id": "B",
+            "text": "The gap between what a learner can do alone and what they can do with help"
+          },
+          {
+            "id": "C",
+            "text": "The physical area of the classroom where students work with a teacher"
+          },
+          {
+            "id": "D",
+            "text": "The stage at which students can think abstractly"
+          }
+        ],
+        "correct": "B",
+        "explanation": "The ZPD is the space between independent and supported performance, where scaffolding helps most."
+      },
+      {
+        "id": "mys-s4",
+        "prompt": "According to Erikson, which crisis best matches students ages 6 to 11?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Initiative vs. guilt"
+          },
+          {
+            "id": "B",
+            "text": "Industry vs. inferiority"
+          },
+          {
+            "id": "C",
+            "text": "Identity vs. role confusion"
+          },
+          {
+            "id": "D",
+            "text": "Trust vs. mistrust"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Ages 6–11 is industry vs. inferiority: building competence and a sense of accomplishment."
+      },
+      {
+        "id": "mys-s5",
+        "prompt": "A student who is hungry, feels unsafe, or feels excluded is struggling to focus on learning. Which idea explains this best?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Maslow's hierarchy: lower needs must be reasonably met before higher ones drive behavior"
+          },
+          {
+            "id": "B",
+            "text": "Bruner's spiral curriculum"
+          },
+          {
+            "id": "C",
+            "text": "Kohlberg's conventional stage"
+          },
+          {
+            "id": "D",
+            "text": "Skinner's shaping"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Maslow: physiological, safety, and belonging needs come before learning."
+      }
+    ]
+  },
+  "completion": {
+    "allQuestions": true,
+    "reflections": [],
+    "checklist": [],
+    "activities": [
+      "m4s-mindset-before",
+      "m4s-mindset-after",
+      "m4s-profile"
+    ]
+  }
+}

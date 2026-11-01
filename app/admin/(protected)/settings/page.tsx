@@ -42,7 +42,7 @@ export default async function Settings({ searchParams }: { searchParams: Promise
         <h2 className="h2">Module due dates</h2>
         <p className="text-muted">Same for every group unless a group override is set on the Groups page.</p>
         <div className="grid gap-4 md:grid-cols-2">
-          {cfg.modules.map((m) => (
+          {cfg.modules.filter((m) => m.enabled).map((m) => (
             <fieldset key={m.slug} className="rounded-xl border border-gray-brand/30 p-3">
               <legend className="px-1 font-bold">
                 {m.sort_order}. {m.title}

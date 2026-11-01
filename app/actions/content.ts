@@ -180,6 +180,9 @@ export async function saveBlock(slug: string, sectionId: string, index: number, 
     case "form":
       value = { label: str(fd, "label", 300) || b.label };
       break;
+    case "printable":
+      value = { title: str(fd, "title", 300) || b.title, intro: str(fd, "intro", 2000) || undefined, items: lines(fd, "items"), note: str(fd, "note", 1000) || undefined };
+      break;
     case "place":
       value = { title: str(fd, "title", 200) || b.title, description: str(fd, "description", 1000) || undefined };
       break;
@@ -301,7 +304,7 @@ export async function saveActivity(slug: string, activityId: string, fd: FormDat
       return next;
     });
     await put(m, `activity:${activityId}`, JSON.parse(JSON.stringify({ title: str(fd, "title", 300) || a.title, fields })));
-  } else {
+  } else if (a.type === "scenario") {
     const scenario = str(fd, "scenario", 5000);
     if (!scenario) fail(slug, anchor, "The scenario can't be empty.");
     const prompts = a.prompts.map((p) => ({ id: p.id, prompt: str(fd, `prompt_${p.id}`, 1000) || p.prompt }));

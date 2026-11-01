@@ -92,7 +92,7 @@ export default async function Groups({ searchParams }: { searchParams: Promise<R
                       <span className="label">Phase 1 (all items)</span>
                       <input type="date" name={`ov__${n}__phase1`} defaultValue={ov(n, "phase1")} className="input" />
                     </label>
-                    {cfg.modules.map((m) => (
+                    {cfg.modules.filter((m) => m.enabled).map((m) => (
                       <label key={m.slug}>
                         <span className="label">
                           Module: {m.title} <span className="font-normal text-muted">(std {formatDate(m.due_date, { year: false })})</span>

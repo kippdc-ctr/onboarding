@@ -23,6 +23,7 @@ import {
 import { Flash } from "@/components/Flash";
 import { AudioPlayer, VideoPlayer } from "@/components/Media";
 import { MediaUploader } from "@/components/MediaUploader";
+import { BAND_LABEL } from "@/lib/bands";
 import { ScrollToSaved } from "../ScrollToSaved";
 import { Suspense } from "react";
 
@@ -197,6 +198,7 @@ export default async function EditModule({ params, searchParams }: { params: Pro
               </label>
             </div>
             <UrlField settingKey={blk.linkKey} value={settings[blk.linkKey] ?? ""} video={blk.kind === "video"} />
+            {blk.captionsLinkKey && <UrlField settingKey={blk.captionsLinkKey} value={settings[blk.captionsLinkKey] ?? ""} />}
             <label className="block max-w-xs">
               <span className="label">Label</span>
               <select name="required" defaultValue={blk.required === true ? "required" : blk.required === false ? "optional" : ""} className="input">
@@ -289,6 +291,18 @@ export default async function EditModule({ params, searchParams }: { params: Pro
           </div>
         );
       }
+      case "printable":
+        return wrap(
+          "Printable reference sheet",
+          <form action={action} className="space-y-2">
+            <input name="title" defaultValue={blk.title} className="input font-semibold" aria-label="Title" />
+            <textarea name="intro" defaultValue={blk.intro ?? ""} rows={2} placeholder="Intro (optional)" className="input" aria-label="Intro" />
+            <textarea name="items" defaultValue={blk.items.join("\n")} rows={Math.max(4, blk.items.length + 1)} className="input" aria-label="Lines, one per line" />
+            <input name="note" defaultValue={blk.note ?? ""} placeholder="Note (optional)" className="input" aria-label="Note" />
+            <p className="text-xs text-muted">One line per bullet. **Bold** works.</p>
+            <SaveBar />
+          </form>,
+        );
       case "place":
         return wrap(
           "Neighborhood card",
@@ -658,7 +672,10 @@ export default async function EditModule({ params, searchParams }: { params: Pro
           <section key={sec.id} className="card space-y-4">
             <div id={anchor} className="scroll-mt-24 space-y-3 rounded-xl bg-teal-wash p-3">
               <div className="flex flex-wrap items-center justify-between gap-2">
-                <h2 className="h2">{sec.title}</h2>
+                <h2 className="h2">
+                  {sec.title}
+                  {sec.band && <span className="ml-2 rounded-full bg-yellow px-2 py-0.5 align-middle text-sm font-bold text-ink">Only for {BAND_LABEL[sec.band]}</span>}
+                </h2>
                 <EditState st={st.get(target)} slug={slug} target={target} anchor={anchor} />
               </div>
               <form action={saveSection.bind(null, slug, sec.id)} className="space-y-3">

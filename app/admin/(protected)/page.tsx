@@ -24,7 +24,7 @@ const ITEM_SHORT: Record<string, string> = {
   "p3-webinar": "Webinar (opt.)",
   "p3-summer-schedule": "SA schedule",
 };
-const MODULE_SHORT: Record<number, string> = { 1: "Our City", 2: "Your Story", 3: "What We Believe", 4: "The Variable", 5: "Child Dev." };
+const MODULE_SHORT: Record<number, string> = { 1: "Our City", 2: "Your Story", 3: "What We Believe", 4: "Meet Students", 5: "The Variable" };
 const SHORT: Record<Status, string> = { not_started: "—", in_progress: "In prog.", complete: "Done", overdue: "Overdue" };
 
 function ItemCell({ rid, it, today }: { rid: string; it: ItemState; today: string }) {

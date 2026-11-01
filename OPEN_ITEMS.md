@@ -29,6 +29,26 @@ The app runs with all of these blank or in draft. Admin → Content flags shows 
     Praxis info, background check checklist, Workday instructions, Summer Academy schedule, preview webinar link, HR action items.
 14. **Settings:** CTR contact email (for "Don't see your name?"), cleared background check due date, webinar date and time.
 
+## Module 4 (Meet Your Students), new; replaces Child Development
+
+- **Order is now:** 1 Our City, 2 Your Story, 3 What We Believe, 4 Meet Your Students, 5 You Are the Variable. Child Development is retired (hidden; any saved answers stay in the database). The status export's "4." and "5." columns now mean Meet Your Students and You Are the Variable.
+- **Routing:** each resident sees only their grade-band branch, chosen from (1) the track in About You, (2) a choice on the Section 4 page if About You has no track, then (3) the roster's grade band. The adjacent band shows as an optional "Neighboring-band review." Admins can preview any band from the module preview.
+- **Still needed:**
+  - The four grade-band branches (ECE, Elementary, Middle, High School; four parts and a classroom example each). Each currently shows "Coming soon."
+  - The knowledge check: 8 shared + 5 per grade band. Until then, 5 shared placeholder questions from the retired Child Development quiz (Claude-drafted; asynchronous development, Piaget, ZPD, Erikson, Maslow). Grade-band questions are supported: each question can be tagged with a band.
+  - The milestone sorting cards (currently 8 sample cards built from the domain table's examples) and the "match the idea" moments (4 samples from the theory table).
+  - Mindset statements (3 samples).
+  - Five development videos and their captions (Settings → Module 4).
+  - The Piaget/Erikson timeline image.
+- **PLT Starter Sheet:** check the exam category names against the current ETS test specifications before launch (Admin → Module content → Printable reference sheet).
+
+## Module 5 (You Are the Variable), rebuilt from the November content file
+
+- **Time:** set to 60 minutes as requested. The plan line's parts still add up to 63 (content 33, knowledge check 10, mindset 5, final task 15); say which part to trim.
+- **Videos:** the Ms. Rivera, Ms. Kim, Mr. Logan, and Hattie slots reuse the existing links, so anything already entered carries over. The Hattie slot is pre-filled with vimeo.com/267382804 only if it was blank; confirm it's the right clip.
+- **Still needed:** the 7-question knowledge check (the 5 existing questions stay until then), mindset statements (3 samples), the "spot the response" items (6 samples from the scenario versions), and the quick-check areas (5 samples).
+- **Removed:** the old efficacy reflection; the Hard-Day Plan is the final task.
+
 ## Module 1: "Our students' neighborhoods" section (added before the final task)
 
 - Six neighborhood cards, each with a YouTube video (plays in the page) and a Google Maps link. Add the names and links in Admin → Module content → Our City, Our Schools → Our students' neighborhoods. Empty links show "link coming soon."

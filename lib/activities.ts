@@ -2,6 +2,7 @@
 // Pure: the server action loads the data and saves the result.
 import { ActivityBlock, ModuleContent, findActivity, mindsetStatements, wordCount, WorksheetField } from "./content";
 import { personaNames, scorePersonaQuiz, PersonaResult } from "./persona";
+import { bandFromText } from "./bands";
 
 const MAX_TEXT = 20_000;
 
@@ -64,6 +65,10 @@ export function evaluateActivity(
       }
       const result = scorePersonaQuiz(act, answers);
       return { payload: { answers, result }, complete: result.complete };
+    }
+    case "band_picker": {
+      const band = bandFromText(String(raw.band ?? ""));
+      return { payload: { answers: band ? { band } : {} }, complete: !!band };
     }
     case "intro_slide": {
       const answers = cleanFields(act.fields, raw);

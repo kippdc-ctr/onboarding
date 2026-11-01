@@ -4,16 +4,17 @@ import ourCity from "@/content/modules/our-city-our-schools.json";
 import yourStory from "@/content/modules/your-story-matters.json";
 import whatWeBelieve from "@/content/modules/what-we-believe.json";
 import variable from "@/content/modules/you-are-the-variable.json";
-import childDev from "@/content/modules/child-development.json";
+import meetYourStudents from "@/content/modules/meet-your-students.json";
 import mentorMatch from "@/content/forms/mentor-match.json";
 import settingsRegistry from "@/content/settings.json";
+import type { Band } from "./bands";
 
 export type LinkKind = "video" | "article" | "audio" | "form" | "map";
 
 export type Block =
   | { type: "text"; text: string }
   | { type: "heading"; text: string }
-  | { type: "list"; items: string[] }
+  | { type: "list"; items: string[]; ordered?: boolean }
   | { type: "callout"; text: string; title?: string }
   | { type: "quote"; text: string; cite?: string }
   | { type: "image"; src: string; alt: string; caption?: string; sourceNote?: string }
@@ -36,6 +37,8 @@ export type Block =
       source?: string;
       minutes?: number;
       required?: boolean;
+      /** Settings key for a captions or transcript link (videos). */
+      captionsLinkKey?: string;
     }
   | { type: "worksheet"; activityId: string; title?: string; fields: WorksheetField[] }
   | {
@@ -44,10 +47,17 @@ export type Block =
       activityId: string;
       statements?: { id: string; text: string }[];
       compareTo?: string;
+      /** Five labels for the 1-5 scale (default: Strongly disagree ... Strongly agree). */
+      labels?: string[];
       sample?: boolean;
     }
   | { type: "persona_quiz"; activityId: string; personas: Persona[]; questions: PersonaQuestion[]; tiebreakers: PersonaQuestion[] }
   | { type: "persona_results"; quizActivityId: string; note?: string }
+  | {
+      /** Shows the resident's grade band (from About You) or lets them choose one. Drives band sections and questions. */
+      type: "band_picker";
+      activityId: string;
+    }
   | {
       /** A neighborhood card: title, short description, a video that plays in the page, and a map link. */
       type: "place";
@@ -61,7 +71,17 @@ export type Block =
       type: "reveal";
       items: { statement: string; reveal: string }[];
       revealLabel?: string;
+      /** Label above the resident's own try (default "Your reframe"). */
+      inputLabel?: string;
       sample?: boolean;
+    }
+  | {
+      /** A one-page reference residents can print or save as PDF (e.g. the PLT Starter Sheet). */
+      type: "printable";
+      title: string;
+      intro?: string;
+      items: string[];
+      note?: string;
     }
   | {
       /** Intro slide: text fields + photo uploads, with a live slide preview. */
@@ -104,6 +124,8 @@ export type SectionVideo = { title: string; url: string; captionsUrl?: string };
 export type Section = {
   id: string;
   title: string;
+  /** Grade-band branch: shown only to residents in this band (Section 4). */
+  band?: Band;
   audioUrl?: string;
   audioTranscript?: string;
   /** Optional video added in the admin content editor, shown at the top of the section. */
@@ -113,6 +135,8 @@ export type Section = {
 
 export type Question = {
   id: string;
+  /** Grade-band question: asked only of residents in this band. Untagged questions are for everyone. */
+  band?: Band;
   prompt: string;
   options: { id: string; text: string }[];
   correct: string;
@@ -128,7 +152,7 @@ export type ModuleContent = {
   indicator?: string;
   description: string;
   estimatedMinutes: number;
-  geniallyLinkKey: string;
+  geniallyLinkKey?: string;
   geniallyLabel?: string;
   softDueNote?: string;
   objectives: string[];
@@ -161,7 +185,7 @@ export type FormContent = {
   questions: FormQuestion[];
 };
 
-export const MODULES: ModuleContent[] = ([ourCity, yourStory, whatWeBelieve, variable, childDev] as unknown as ModuleContent[]).sort(
+export const MODULES: ModuleContent[] = ([ourCity, yourStory, whatWeBelieve, meetYourStudents, variable] as unknown as ModuleContent[]).sort(
   (a, b) => a.number - b.number,
 );
 
@@ -192,8 +216,8 @@ export function moduleReflectionPrompts(m: ModuleContent): { promptId: string; p
   return out;
 }
 
-export type ActivityBlock = Extract<Block, { type: "matching" | "scenario" | "worksheet" | "mindset" | "persona_quiz" | "intro_slide" }>;
-const ACTIVITY_TYPES = new Set(["matching", "scenario", "worksheet", "mindset", "persona_quiz", "intro_slide"]);
+export type ActivityBlock = Extract<Block, { type: "matching" | "scenario" | "worksheet" | "mindset" | "persona_quiz" | "intro_slide" | "band_picker" }>;
+const ACTIVITY_TYPES = new Set(["matching", "scenario", "worksheet", "mindset", "persona_quiz", "intro_slide", "band_picker"]);
 export function isActivity(b: Block): b is ActivityBlock {
   return ACTIVITY_TYPES.has(b.type);
 }
@@ -208,14 +232,17 @@ export function moduleActivities(m: ModuleContent) {
 export function contentLinkKeys(): { key: string; where: string }[] {
   const out: { key: string; where: string }[] = [];
   for (const m of MODULES) {
-    out.push({ key: m.geniallyLinkKey, where: `Module ${m.number}` });
+    if (m.geniallyLinkKey) out.push({ key: m.geniallyLinkKey, where: `Module ${m.number}` });
     for (const s of m.sections)
       for (const b of s.blocks) {
         if (b.type === "link") {
           out.push({ key: b.linkKey, where: `Module ${m.number}: ${s.title}` });
           if (b.captionsLinkKey) out.push({ key: b.captionsLinkKey, where: `Module ${m.number}: ${s.title} (captions)` });
         }
-        if (b.type === "resource") out.push({ key: b.linkKey, where: `Module ${m.number}: ${s.title}` });
+        if (b.type === "resource") {
+          out.push({ key: b.linkKey, where: `Module ${m.number}: ${s.title}` });
+          if (b.captionsLinkKey) out.push({ key: b.captionsLinkKey, where: `Module ${m.number}: ${s.title} (captions)` });
+        }
         if (b.type === "place") {
           out.push({ key: b.videoLinkKey, where: `Module ${m.number}: ${s.title} (${b.title} video)` });
           out.push({ key: b.mapLinkKey, where: `Module ${m.number}: ${s.title} (${b.title} map)` });
@@ -260,4 +287,9 @@ export function mindsetStatements(m: ModuleContent, b: Extract<Block, { type: "m
 
 export function wordCount(s: string): number {
   return (s.trim().match(/\S+/g) ?? []).length;
+}
+
+/** The quiz questions a resident in this band answers (shared questions plus their band's). */
+export function questionsFor(m: ModuleContent, band: Band | null): Question[] {
+  return (m.quiz?.questions ?? []).filter((q) => !q.band || q.band === band);
 }

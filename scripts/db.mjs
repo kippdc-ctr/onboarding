@@ -58,7 +58,9 @@ async function seed() {
     await sql`insert into groups ${sql(g)} on conflict (number) do nothing`;
   }
   for (const m of s.modules) {
-    await sql`insert into modules ${sql(m)} on conflict (slug) do nothing`;
+    // Due dates are edited in /admin and never overwritten; order, title, and enabled follow the content files.
+    await sql`insert into modules ${sql(m)} on conflict (slug) do update
+      set sort_order = excluded.sort_order, title = excluded.title, enabled = excluded.enabled`;
   }
   for (const it of s.phase_items) {
     await sql`insert into phase_items ${sql(it)} on conflict (id) do nothing`;

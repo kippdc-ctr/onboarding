@@ -206,52 +206,172 @@
       "default": "https://doi.org/10.3102/00028312032003465"
     },
     {
-      "key": "url.m4.hattie_video",
-      "group": "Module 4: You Are the Variable",
-      "label": "Video: Collective Teacher Efficacy, John Hattie (YouTube)",
+      "key": "url.mys.video_social",
+      "group": "Module 4: Meet Your Students",
+      "label": "Video: Social development",
       "default": ""
     },
     {
+      "key": "url.mys.video_social_captions",
+      "group": "Module 4: Meet Your Students",
+      "label": "Captions/transcript: Social development",
+      "default": ""
+    },
+    {
+      "key": "url.mys.video_emotional",
+      "group": "Module 4: Meet Your Students",
+      "label": "Video: Emotional development",
+      "default": ""
+    },
+    {
+      "key": "url.mys.video_emotional_captions",
+      "group": "Module 4: Meet Your Students",
+      "label": "Captions/transcript: Emotional development",
+      "default": ""
+    },
+    {
+      "key": "url.mys.video_moral",
+      "group": "Module 4: Meet Your Students",
+      "label": "Video: Moral development",
+      "default": ""
+    },
+    {
+      "key": "url.mys.video_moral_captions",
+      "group": "Module 4: Meet Your Students",
+      "label": "Captions/transcript: Moral development",
+      "default": ""
+    },
+    {
+      "key": "url.mys.video_physical",
+      "group": "Module 4: Meet Your Students",
+      "label": "Video: Physical development",
+      "default": ""
+    },
+    {
+      "key": "url.mys.video_physical_captions",
+      "group": "Module 4: Meet Your Students",
+      "label": "Captions/transcript: Physical development",
+      "default": ""
+    },
+    {
+      "key": "url.mys.video_cognitive",
+      "group": "Module 4: Meet Your Students",
+      "label": "Video: Cognitive development",
+      "default": ""
+    },
+    {
+      "key": "url.mys.video_cognitive_captions",
+      "group": "Module 4: Meet Your Students",
+      "label": "Captions/transcript: Cognitive development",
+      "default": ""
+    },
+    {
+      "key": "url.mys.serve_return",
+      "group": "Module 4: Meet Your Students",
+      "label": "Optional watch: 5 Steps for Brain-Building Serve and Return (Harvard Center on the Developing Child)",
+      "default": "https://bettercarenetwork.org/library/principles-of-good-care-practices/child-development/how-to-video-5-steps-for-brain-building-serve-and-return"
+    },
+    {
+      "key": "url.mys.quick_walk",
+      "group": "Module 4: Meet Your Students",
+      "label": "Optional watch: Taking a quick walk to de-escalate (Edutopia)",
+      "default": "https://edutopia.org/video/taking-quick-walk-de-escalate"
+    },
+    {
+      "key": "url.mys.language_acquisition",
+      "group": "Module 4: Meet Your Students",
+      "label": "Required read: Language Acquisition: An Overview (Colorín Colorado)",
+      "default": "https://www.colorincolorado.org/article/language-acquisition-overview"
+    },
+    {
+      "key": "url.mys.idea_504",
+      "group": "Module 4: Meet Your Students",
+      "label": "Optional read: Understanding Differences Between IDEA and Section 504 (LD OnLine)",
+      "default": "https://www.ldonline.org/ld-topics/special-education/understanding-differences-between-idea-and-section-504"
+    },
+    {
+      "key": "url.mys.plt_5621",
+      "group": "Module 4: Meet Your Students",
+      "label": "Early Childhood PLT (5621) test page (ETS)",
+      "default": "https://praxis.ets.org/test/5621.html"
+    },
+    {
+      "key": "url.mys.plt_5624",
+      "group": "Module 4: Meet Your Students",
+      "label": "Grades 7-12 PLT (5624) study companion (ETS)",
+      "default": "https://www.ets.org/pdfs/praxis/5624.pdf"
+    },
+    {
+      "key": "url.m4.hattie_video",
+      "group": "Module 5: You Are the Variable",
+      "label": "Video: What Is Collective Efficacy? (John Hattie)",
+      "default": "https://vimeo.com/267382804"
+    },
+    {
       "key": "url.m4.rivera_video",
-      "group": "Module 4: You Are the Variable",
+      "group": "Module 5: You Are the Variable",
       "label": "Scenario video: Ms. Rivera",
       "default": ""
     },
     {
       "key": "url.m4.rivera_captions",
-      "group": "Module 4: You Are the Variable",
+      "group": "Module 5: You Are the Variable",
       "label": "Captions/transcript: Ms. Rivera",
       "default": ""
     },
     {
       "key": "url.m4.kim_video",
-      "group": "Module 4: You Are the Variable",
+      "group": "Module 5: You Are the Variable",
       "label": "Scenario video: Ms. Kim",
       "default": ""
     },
     {
       "key": "url.m4.kim_captions",
-      "group": "Module 4: You Are the Variable",
+      "group": "Module 5: You Are the Variable",
       "label": "Captions/transcript: Ms. Kim",
       "default": ""
     },
     {
       "key": "url.m4.logan_video",
-      "group": "Module 4: You Are the Variable",
+      "group": "Module 5: You Are the Variable",
       "label": "Scenario video: Mr. Logan",
       "default": ""
     },
     {
       "key": "url.m4.logan_captions",
-      "group": "Module 4: You Are the Variable",
+      "group": "Module 5: You Are the Variable",
       "label": "Captions/transcript: Mr. Logan",
       "default": ""
     },
     {
-      "key": "url.m5.milestones_guide",
-      "group": "Module 5: Child Development",
-      "label": "Developmental milestones quick reference guide",
+      "key": "url.m4.hattie_captions",
+      "group": "Module 5: You Are the Variable",
+      "label": "Captions/transcript: What Is Collective Efficacy?",
       "default": ""
+    },
+    {
+      "key": "url.m4.ascd_collective",
+      "group": "Module 5: You Are the Variable",
+      "label": "Required read: The Power of Collective Efficacy (ASCD)",
+      "default": "https://ascd.org/el/articles/the-power-of-collective-efficacy"
+    },
+    {
+      "key": "url.m4.cte_summary",
+      "group": "Module 5: You Are the Variable",
+      "label": "Optional read: Collective Teacher Efficacy according to John Hattie (Visible Learning)",
+      "default": "https://visible-learning.org/2018/03/collective-teacher-efficacy-hattie/"
+    },
+    {
+      "key": "url.m4.hattie_keynote",
+      "group": "Module 5: You Are the Variable",
+      "label": "Optional watch: John Hattie's keynote on collaborative impact (Visible Learning)",
+      "default": "https://visible-learning.org/2017/05/video-john-hattie-collaborative-impact/"
+    },
+    {
+      "key": "url.m4.bandura_sources",
+      "group": "Module 5: You Are the Variable",
+      "label": "Optional read: Bandura's sources and preservice teachers' self-efficacy",
+      "default": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5070217/"
     },
     {
       "key": "url.genially.our-city-our-schools",
@@ -275,12 +395,6 @@
       "key": "url.genially.you-are-the-variable",
       "group": "Genially originals",
       "label": "Original on Genially: You Are the Variable",
-      "default": ""
-    },
-    {
-      "key": "url.genially.child-development",
-      "group": "Genially originals",
-      "label": "Original slides: Child Development",
       "default": ""
     },
     {

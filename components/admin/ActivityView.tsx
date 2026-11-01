@@ -10,6 +10,7 @@ const TITLE: Record<ActivityBlock["type"], string> = {
   mindset: "Mindset check",
   persona_quiz: "Teacher Persona Quiz",
   intro_slide: "Intro slide",
+  band_picker: "Grade band chosen on the page",
 };
 
 export function slideData(payload: ActivityPayload | undefined, cohortYear: number) {
@@ -58,6 +59,7 @@ export function ActivityView({
             {f.kind === "checkbox" ? (ans[f.id] ? "Yes" : "No") : <span className="whitespace-pre-wrap">{ans[f.id] || <span className="text-muted">—</span>}</span>}
           </div>
         ))}
+      {a.type === "band_picker" && ans.band && <p className="mt-1">{ans.band}</p>}
       {a.type === "scenario" &&
         a.prompts.map((q) => (
           <p key={q.id} className="mt-1">

@@ -4,7 +4,7 @@ import { useState, useTransition } from "react";
 import { saveActivity } from "@/app/actions/resident";
 import { useModuleProgress } from "./ProgressContext";
 
-const LABELS = ["Strongly disagree", "Disagree", "Not sure", "Agree", "Strongly agree"];
+const DEFAULT_LABELS = ["Strongly disagree", "Disagree", "Not sure", "Agree", "Strongly agree"];
 
 /** Ungraded 1-5 ratings. For the "after" check, `before` holds the earlier ratings to compare against. */
 export function Mindset({
@@ -14,6 +14,7 @@ export function Mindset({
   initial,
   before,
   sample,
+  labels,
 }: {
   moduleSlug: string;
   activityId: string;
@@ -21,7 +22,9 @@ export function Mindset({
   initial: Record<string, string>;
   before?: Record<string, string> | null;
   sample?: boolean;
+  labels?: string[];
 }) {
+  const LABELS = labels?.length === 5 ? labels : DEFAULT_LABELS;
   const [answers, setAnswers] = useState<Record<string, string>>(initial);
   const [status, setStatus] = useState<"idle" | "saving" | "saved" | "error">(Object.keys(initial).length ? "saved" : "idle");
   const [, start] = useTransition();
