@@ -19,6 +19,7 @@ import { Matching } from "@/components/module/Matching";
 import { Scenario } from "@/components/module/Scenario";
 import { Worksheet } from "@/components/module/Worksheet";
 import { Mindset } from "@/components/module/Mindset";
+import { Reveal } from "@/components/module/Reveal";
 import { PersonaQuiz } from "@/components/module/PersonaQuiz";
 import { PersonaResults } from "@/components/module/PersonaResults";
 import { IntroSlide } from "@/components/module/IntroSlide";
@@ -176,6 +177,8 @@ export default async function ModulePage({ params }: { params: Promise<{ slug: s
           />
         );
       }
+      case "reveal":
+        return <Reveal key={key} items={blk.items} revealLabel={blk.revealLabel} sample={blk.sample} />;
       case "mindset": {
         const before = blk.compareTo ? (activities.get(blk.compareTo)?.payload_json as ActivityPayload | undefined)?.answers : null;
         const src = blk.compareTo ? findActivity(m!, blk.compareTo) : blk;

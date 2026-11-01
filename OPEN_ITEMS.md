@@ -29,6 +29,15 @@ The app runs with all of these blank or in draft. Admin → Content flags shows 
     Praxis info, background check checklist, Workday instructions, Summer Academy schedule, preview webinar link, HR action items.
 14. **Settings:** CTR contact email (for "Don't see your name?"), cleared background check due date, webinar date and time.
 
+## Module 3 (What We Believe), rebuilt from the November content file
+
+- **Knowledge check:** the file says "Eight questions" but the questions weren't in it. The module keeps its 5 existing questions (asset-based teaching, Pygmalion, deficit thinking, Ladson-Billings, families), which still match the content, until the 8 arrive.
+- **Mindset statements:** three sample statements, marked "Sample statements, replace."
+- **"Try it: reframe it":** the statements weren't in the file. It starts with the one example from the text ("He is a low reader"), marked sample. Add more in Admin → Module content → What We Believe → Reframe practice.
+- **Image still needed:** the three-pillar diagram.
+- **Final task message** has a hard 100-word limit; the module can't be marked complete until it's under.
+- **Removed:** the four-domains video and the old child-development sections (child development now lives in Module 5).
+
 ## Module 2 (Your Story Matters), rebuilt from the November content file and the revised persona quiz
 
 - **Persona descriptions:** the quiz file says the descriptions on pages 12 and 13 of the original still apply, but those pages weren't included. Results show each persona's signature move (from your facilitator notes) and "Full persona description coming soon" until a Strength and Watch for are added. You can paste them in Admin → Module content → Your Story Matters → Teacher Persona Quiz → Personas.

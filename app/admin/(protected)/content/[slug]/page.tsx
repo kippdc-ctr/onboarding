@@ -289,6 +289,25 @@ export default async function EditModule({ params, searchParams }: { params: Pro
           </div>
         );
       }
+      case "reveal": {
+        const rows = [...blk.items, ...Array.from({ length: 3 }, () => ({ statement: "", reveal: "" }))];
+        return wrap(
+          "Reframe practice (not graded)",
+          <form action={action} className="space-y-3">
+            <p className="text-sm text-muted">Clear both boxes to remove a statement; fill a blank pair to add one.</p>
+            {rows.map((it, ii) => (
+              <fieldset key={ii} className="grid gap-2 rounded-lg bg-sand p-2 md:grid-cols-2">
+                <textarea name={`item_${ii}_statement`} defaultValue={it.statement} rows={2} placeholder="Deficit statement" className="input" aria-label={`Statement ${ii + 1}`} />
+                <textarea name={`item_${ii}_reveal`} defaultValue={it.reveal} rows={2} placeholder="One possible reframe" className="input" aria-label={`Reframe ${ii + 1}`} />
+              </fieldset>
+            ))}
+            <label className="flex items-center gap-2 text-sm">
+              <input type="checkbox" name="sample" defaultChecked={!!blk.sample} className="h-5 w-5 accent-teal-ink" /> Still sample statements
+            </label>
+            <SaveBar />
+          </form>,
+        );
+      }
       case "persona_results":
         return wrap("Quiz results", <p className="text-sm text-muted">Shows each resident&apos;s result. Edit persona names and descriptions in the quiz above.</p>);
       case "intro_slide": {

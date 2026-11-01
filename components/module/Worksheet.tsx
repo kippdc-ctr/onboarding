@@ -111,8 +111,8 @@ export function WorksheetInput({ idPrefix, field: f, value, onChange }: { idPref
       )}
       {(f.minWords || f.maxWords) && (
         <p className={`mt-1 text-sm font-semibold ${under || over ? "text-coral-ink" : "text-teal-ink"}`} aria-live="polite">
-          {words} word{words === 1 ? "" : "s"} (target {f.minWords ?? 0} to {f.maxWords ?? "any"})
-          {over && " · a little over the target; trimming is optional"}
+          {words} word{words === 1 ? "" : "s"} {f.hardMax ? `(limit ${f.maxWords})` : `(target ${f.minWords ?? 0} to ${f.maxWords ?? "any"})`}
+          {over && (f.hardMax ? " · over the limit; trim it to finish" : " · a little over the target; trimming is optional")}
         </p>
       )}
     </div>

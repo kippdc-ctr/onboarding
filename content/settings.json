@@ -98,10 +98,40 @@
       "default": ""
     },
     {
-      "key": "url.m3.four_domains_video",
+      "key": "url.m3.rosenthal_podcast",
       "group": "Module 3: What We Believe",
-      "label": "Video: The Four Domains (YouTube)",
-      "default": ""
+      "label": "Optional listen: Robert Rosenthal on self-fulfilling prophecies (Stanford Psychology Podcast)",
+      "default": "https://stanfordpsypod.substack.com/p/39-robert-rosenthal-self-fulfilling-7d3"
+    },
+    {
+      "key": "url.m3.ladson_billings_video",
+      "group": "Module 3: What We Believe",
+      "label": "Optional watch: Show Me The Evidence, Dr. Gloria Ladson-Billings (Vimeo)",
+      "default": "https://vimeo.com/745453968"
+    },
+    {
+      "key": "url.m3.home_visits_webinar",
+      "group": "Module 3: What We Believe",
+      "label": "Optional watch: Engaging Families Through Home Visits (Learning for Justice)",
+      "default": "https://learningforjustice.org/professional-development/webinars/engaging-families-through-home-visits"
+    },
+    {
+      "key": "url.m3.cultural_wealth",
+      "group": "Module 3: What We Believe",
+      "label": "Required read: Recognizing community cultural wealth in classrooms (EdNC)",
+      "default": "https://www.ednc.org/recognizing-community-cultural-wealth-classrooms/"
+    },
+    {
+      "key": "url.m3.parent_partnership",
+      "group": "Module 3: What We Believe",
+      "label": "Required read: Parent partnership: how family engagement works (Edutopia)",
+      "default": "https://www.edutopia.org/blog/family-engagement-works-parent-teacher-home-visits-anne-obrien"
+    },
+    {
+      "key": "url.m3.ladson_billings_1995",
+      "group": "Module 3: What We Believe",
+      "label": "Optional read: Ladson-Billings (1995), Toward a Theory of Culturally Relevant Pedagogy",
+      "default": "https://doi.org/10.3102/00028312032003465"
     },
     {
       "key": "url.m4.hattie_video",

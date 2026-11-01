@@ -2,87 +2,398 @@
   "slug": "what-we-believe",
   "number": 3,
   "title": "What We Believe",
-  "description": "Child development, asset-based thinking, and how we see students and families.",
-  "estimatedMinutes": 45,
+  "description": "What you believe about children and families shows up in every decision you make, starting with the first message you send home.",
+  "estimatedMinutes": 65,
+  "indicator": "CC.P.1, EP.P.2",
   "geniallyLinkKey": "url.genially.what-we-believe",
   "objectives": [
-    "Identify the domains of child development and explain how developmental stages influence student learning and behavior.",
     "Define asset-based thinking and contrast it with deficit-based approaches to students and families.",
-    "Identify specific ways deficit narratives show up in schools: in language, policy, and practice.",
-    "Apply asset-based framing to realistic classroom and family engagement scenarios.",
+    "Identify how deficit narratives show up in schools, in language, policy, and practice, and reframe them.",
+    "Name how your own background and cultural lens shape what you notice, and describe ways to engage respectfully across difference.",
+    "Choose family-partnership actions that treat families as experts on their own children.",
+    "Share a student's strengths and areas of growth with a family in plain, strengths-based language, and use what families share to shape classroom decisions.",
     "Connect asset-based mindsets to KIPP DC's mission and your own personal why."
   ],
   "sections": [
     {
-      "id": "four-domains",
-      "title": "The Four Domains",
+      "id": "start",
+      "title": "Start here",
       "audioUrl": "",
       "blocks": [
-        { "type": "link", "kind": "video", "label": "Watch: The Four Domains", "linkKey": "url.m3.four_domains_video" },
-        { "type": "list", "items": [
-          "**Cognitive:** knowledge and intellectual skills.",
-          "**Physical:** body growth and movement.",
-          "**Social:** interactions with people and the environment.",
-          "**Emotional:** processing and understanding feelings."
-        ] }
+        {
+          "type": "text",
+          "text": "Every teacher holds beliefs about children, whether or not they have ever said them out loud. Some of those beliefs were handed to you by your own schooling, by the media, or by the neighborhood you grew up in. This section helps you name them, check them against research, and turn the ones worth keeping into things you actually do, especially with families."
+        },
+        {
+          "type": "callout",
+          "title": "Your plan for the 65 minutes",
+          "text": "Content and required readings (35 min), knowledge check (10), mindset check (5), final task (15). Optional videos, podcasts, and articles are marked and are not part of the time estimate."
+        }
       ]
     },
     {
-      "id": "why-it-matters",
-      "title": "Why does this matter?",
-      "audioUrl": "",
+      "id": "mindset-before",
+      "title": "Mindset check: before",
       "blocks": [
-        { "type": "text", "text": "Understanding child development gives asset-based thinking its foundation. A child who pushes back, shuts down, or moves through big emotions loudly is not a problem; they are a child doing what children at their developmental stage do." },
-        { "type": "callout", "text": "It shifts the first question from \"What is wrong with this child?\" to \"What does this child need right now?\"" }
+        {
+          "type": "text",
+          "text": "Not graded. Rate how much you agree with each statement right now. You will rate the same statements again after the knowledge check, and you can revisit both before your first evaluation period."
+        },
+        {
+          "type": "mindset",
+          "activityId": "m3-mindset-before",
+          "sample": true,
+          "statements": [
+            {
+              "id": "s1",
+              "text": "I start from what a student can already do before I plan support."
+            },
+            {
+              "id": "s2",
+              "text": "Families who seem distant from school still care deeply about their children's education."
+            },
+            {
+              "id": "s3",
+              "text": "I can describe a student's growth area to a family in plain, strengths-based language."
+            }
+          ]
+        }
       ]
     },
     {
       "id": "whole-child",
-      "title": "Seeing the Whole Child: Asset-Based Thinking",
+      "title": "1. Seeing the whole child",
       "audioUrl": "",
       "blocks": [
-        { "type": "text", "text": "Asset-based thinking focuses on students' strengths, knowledge, and cultural resources rather than on what they lack." },
-        { "type": "text", "text": "**Deficit ideology** (Gorski, 2011) does the opposite: it locates the cause of inequity in students, families, and communities instead of in the systems around them." },
-        { "type": "text", "text": "**The Pygmalion Effect** (Rosenthal & Jacobson, 1968): students tend to rise or fall to the level of belief their teacher holds about them." }
+        {
+          "type": "text",
+          "text": "**Asset-based thinking** starts with the strengths, knowledge, and cultural resources children bring into your classroom, rather than starting with what they lack. A child who translates for a grandparent, runs a younger sibling's morning, or knows every bus route in the city already has skills you can teach from. Asset-based thinking does not mean ignoring gaps or lowering the bar. It means beginning from what is there so that you can build toward rigorous work."
+        },
+        {
+          "type": "heading",
+          "text": "The deficit ideology it pushes against"
+        },
+        {
+          "type": "text",
+          "text": "Much of U.S. public education has been shaped by what scholar Paul Gorski calls **deficit ideology**: the belief that low achievement is caused by what students and families lack, such as motivation, language, or values, instead of by the structural inequalities around them (Gorski, 2011). Notice how this connects to Section 1. The story of DC's schools is a story of systems, not of families who did not care."
+        },
+        {
+          "type": "heading",
+          "text": "Why expectations matter"
+        },
+        {
+          "type": "text",
+          "text": "In 1968, Robert Rosenthal and Lenore Jacobson told elementary teachers that certain students had been identified as likely to show big intellectual gains. The students had actually been chosen at random. At the end of the year, those students had gained more on a test than their classmates. The finding became known as the **Pygmalion effect**: teacher expectations can work like a self-fulfilling prophecy. (Later research has found that expectation effects are real but usually smaller and less consistent than the original study suggested, which is a good reminder to hold any single study loosely.)"
+        },
+        {
+          "type": "heading",
+          "text": "What strong teachers of Black students do"
+        },
+        {
+          "type": "text",
+          "text": "Gloria Ladson-Billings studied successful teachers of African American students and found that they held high expectations, validated students' cultural identities, and treated differences as assets. She named three pillars of **culturally relevant teaching** (Ladson-Billings, 1995):"
+        },
+        {
+          "type": "table",
+          "columns": [
+            "Pillar",
+            "What it sounds like in a classroom"
+          ],
+          "rows": [
+            [
+              "Academic success",
+              "\"I expect you to do this work, and I will not let you coast. Here is the support.\""
+            ],
+            [
+              "Cultural competence",
+              "A teacher uses a student's neighborhood, language, or family tradition as a way into the lesson, and students do not have to leave their identity at the door."
+            ],
+            [
+              "Sociopolitical consciousness",
+              "Students learn to ask who benefits from the way something is, and they use their learning to take on real problems in their communities."
+            ]
+          ]
+        },
+        {
+          "type": "image",
+          "src": "",
+          "alt": "Three columns labeled Academic success, Cultural competence, and Sociopolitical consciousness, each with a short classroom example beneath it.",
+          "caption": "The three pillars of culturally relevant teaching.",
+          "sourceNote": "Build in-house from Ladson-Billings (1995)."
+        },
+        {
+          "type": "resource",
+          "linkKey": "url.m3.rosenthal_podcast",
+          "kind": "audio",
+          "title": "Robert Rosenthal on self-fulfilling prophecies",
+          "description": "The researcher behind the Pygmalion study explains what he found and what he thinks it means for classrooms.",
+          "source": "Stanford Psychology Podcast",
+          "required": false
+        },
+        {
+          "type": "resource",
+          "linkKey": "url.m3.ladson_billings_video",
+          "kind": "video",
+          "title": "Show Me The Evidence: Culturally Relevant Pedagogy and Primary Sources",
+          "description": "Ladson-Billings talks through what culturally relevant teaching looks like in practice. Good if you want to hear the idea in her own voice.",
+          "source": "Dr. Gloria Ladson-Billings",
+          "required": false
+        }
       ]
     },
     {
-      "id": "ladson-billings",
-      "title": "Gloria Ladson-Billings: Culturally Relevant Pedagogy (1995)",
+      "id": "deficit",
+      "title": "2. Naming and interrupting deficit thinking",
       "audioUrl": "",
       "blocks": [
-        { "type": "text", "text": "Culturally relevant pedagogy rests on three pillars:" },
-        { "type": "list", "items": ["**Academic Success**", "**Cultural Competence**", "**Sociopolitical Consciousness**"] },
-        { "type": "callout", "text": "All three pillars require an asset-based orientation." }
-      ]
-    },
-    {
-      "id": "deficit-thinking",
-      "title": "Naming and Interrupting Deficit Thinking",
-      "audioUrl": "",
-      "blocks": [
-        { "type": "text", "text": "Deficit thinking shows up in:" },
-        { "type": "list", "items": [
-          "**Language:** \"those kids,\" \"at-risk,\" \"low.\"",
-          "**Tracking** that sorts students by perceived ability.",
-          "**Discipline policies** that disproportionately exclude Black, brown, and low-income students."
-        ] },
-        { "type": "callout", "text": "Shift the question to: \"What does this student know, and how do I build on it?\"" }
+        {
+          "type": "text",
+          "text": "**Deficit thinking** focuses on what is wrong with a student, a family, or a community: what they lack, cannot do, or do not have. It rarely sounds hostile. More often it sounds tired, practical, or even caring."
+        },
+        {
+          "type": "text",
+          "text": "It shows up in three places:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Language.** Phrases like \"those kids,\" \"at-risk,\" and \"low\" describe a child by a label, not by what the child knows.",
+            "**Policy.** Tracking systems limit access to rigorous content, and discipline policies exclude Black, brown, and low-income students at higher rates.",
+            "**Practice.** A teacher plans a simpler task for a group of students before checking what they can already do."
+          ]
+        },
+        {
+          "type": "text",
+          "text": "The language adults use matters well beyond one conversation. It shapes the beliefs other adults hold, and over time it shapes the beliefs students hold about themselves. The shift is a change in the question you ask: from *\"What is wrong with this student?\"* to *\"What does this student know, and how do I build on it?\"*"
+        },
+        {
+          "type": "callout",
+          "title": "A reframe is not a spin",
+          "text": "Asset-based language still names real needs. \"He is a low reader\" and \"He decodes accurately, loves nonfiction, and needs support with fluency\" describe the same child; the second tells you what to do on Monday."
+        },
+        {
+          "type": "heading",
+          "text": "Try it: reframe it"
+        },
+        {
+          "type": "text",
+          "text": "Read each statement, decide how you would reframe it, then reveal one possible version. Not graded."
+        },
+        {
+          "type": "reveal",
+          "sample": true,
+          "items": [
+            {
+              "statement": "He is a low reader.",
+              "reveal": "He decodes accurately, loves nonfiction, and needs support with fluency."
+            }
+          ]
+        }
       ]
     },
     {
       "id": "families",
-      "title": "Families as Partners",
+      "title": "3. Families as partners",
       "audioUrl": "",
       "blocks": [
-        { "type": "text", "text": "Skepticism from historically underserved families is a response to institutional failure, not a lack of value for learning (Ladson-Billings, 2017)." },
-        { "type": "text", "text": "Treat caregivers as experts on their own children. KIPP DC's mission begins \"Together with families and communities.\"" }
+        {
+          "type": "text",
+          "text": "When some families seem distant from school, it is easy to read that as not caring. The research says otherwise. Skepticism toward schools among historically underserved families is a response to institutional failure, and it comes from families who care deeply about their children's education (Ladson-Billings, 2017). Studies consistently find that Black and low-income families are deeply invested in education and see school as one of the most reliable pathways to opportunity."
+        },
+        {
+          "type": "text",
+          "text": "Asset-based family engagement treats parents and caregivers as **experts on their own children** and as partners in the work. KIPP DC's mission begins with the words \"Together with families and communities,\" and that is a structural commitment, not a slogan."
+        },
+        {
+          "type": "heading",
+          "text": "Belief shows up in action"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Start with listening.** Make your first contact a question, such as \"What should I know about your child?\" and not a report.",
+            "**Offer more than one way in.** Try calls, texts, notes home, and in-person moments, and ask each family what works best.",
+            "**Share good news early.** A family whose first call is a positive one will pick up the next call."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Share strengths first and growth second"
+        },
+        {
+          "type": "text",
+          "text": "Use plain words a family can use at home. Skip jargon and labels."
+        },
+        {
+          "type": "table",
+          "columns": [
+            "Less helpful",
+            "More helpful"
+          ],
+          "rows": [
+            [
+              "\"Maya is below grade level in reading and needs intervention.\"",
+              "\"Maya reads aloud with expression; next we are working on finishing her sentences. At home, you can ask her to read you one page and tell you what happened.\""
+            ],
+            [
+              "\"Jaylen is disruptive during group work.\"",
+              "\"Jaylen has great ideas and speaks up quickly. We are practicing waiting for a teammate to finish before he adds his.\""
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Use what families tell you"
+        },
+        {
+          "type": "text",
+          "text": "What a family shares about their child, routines, and goals is **information**, not a favor. Use it to shape seating, grouping, communication, and the supports you offer. A parent who says her son is up late helping with a younger sibling has just told you something about when to schedule his hardest work."
+        },
+        {
+          "type": "resource",
+          "linkKey": "url.m3.home_visits_webinar",
+          "kind": "video",
+          "title": "Engaging Families Through Home Visits",
+          "description": "A recorded webinar on building relationships with families by starting from their expertise. The home-visit model is one of several ways to make a first contact.",
+          "source": "Learning for Justice",
+          "required": false
+        }
+      ]
+    },
+    {
+      "id": "lens",
+      "title": "4. Your lens, their context",
+      "audioUrl": "",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Everyone brings a **cultural lens** shaped by their own background, and that lens shapes what they notice and expect. You are not a blank slate, and neither is any teacher. Naming your lens is not a confession; it is a professional skill."
+        },
+        {
+          "type": "text",
+          "text": "Engaging respectfully across difference comes down to three habits: **ask before assuming**, **learn from families and communities**, and **check generalizations** against the person in front of you."
+        },
+        {
+          "type": "text",
+          "text": "You already thought about this in Section 2. Norms for participation, such as eye contact, personal space, and turn-taking, vary across cultures. A student who looks down or waits before speaking may be showing respect or thinking carefully, not disengaging. The first move is a question, not a conclusion."
+        },
+        {
+          "type": "reflection",
+          "promptId": "m3-lens",
+          "prompt": "Think of a time you misread someone because of your own lens. What did you assume, and what would have helped you check?",
+          "rows": 5
+        }
+      ]
+    },
+    {
+      "id": "core",
+      "title": "Core resources",
+      "audioUrl": "",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Complete both readings. Together they take about 15 minutes and are counted in the 35 minutes of content."
+        },
+        {
+          "type": "resource",
+          "linkKey": "url.m3.cultural_wealth",
+          "kind": "article",
+          "title": "Recognizing community cultural wealth in classrooms",
+          "description": "An accessible introduction to Tara Yosso's idea that students bring forms of cultural wealth, such as aspirational, linguistic, familial, and resistant capital, that schools often overlook. As you read, write down one example from your own experience.",
+          "source": "EdNC",
+          "minutes": 8,
+          "required": true
+        },
+        {
+          "type": "resource",
+          "linkKey": "url.m3.parent_partnership",
+          "kind": "article",
+          "title": "Parent partnership: how family engagement works",
+          "description": "A teacher's account of home visits and family engagement built around listening first. Notice the first question she asks families.",
+          "source": "Edutopia",
+          "minutes": 7,
+          "required": true
+        },
+        {
+          "type": "resource",
+          "linkKey": "url.m3.ladson_billings_1995",
+          "kind": "article",
+          "title": "Ladson-Billings (1995), Toward a Theory of Culturally Relevant Pedagogy",
+          "description": "The original article behind the three pillars. Also on the CTR reading list: Rosenthal & Jacobson (1968), *Pygmalion in the Classroom*, and Gorski (2017), *Reaching and Teaching Students in Poverty*.",
+          "source": "Research",
+          "required": false
+        }
       ]
     },
     {
       "id": "knowledge-check",
       "title": "Knowledge check",
-      "blocks": [{ "type": "quiz" }]
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Your answers are scored and shared with the CTR team. Pick an answer to see the explanation."
+        },
+        {
+          "type": "quiz"
+        }
+      ]
+    },
+    {
+      "id": "mindset-after",
+      "title": "Mindset check: after",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Rate the same statements again. Your two ratings are saved so you can compare them before your first evaluation period."
+        },
+        {
+          "type": "mindset",
+          "activityId": "m3-mindset-after",
+          "compareTo": "m3-mindset-before"
+        }
+      ]
+    },
+    {
+      "id": "final-task",
+      "title": "Final task: First Outreach",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "**The situation.** A family has missed two conferences and has not returned your calls. No reason has been given. This task previews Setting the Foundation, Part III (family communication)."
+        },
+        {
+          "type": "worksheet",
+          "activityId": "m3-first-outreach",
+          "title": "Your First Outreach",
+          "fields": [
+            {
+              "id": "message",
+              "label": "1. The first message you would send",
+              "help": "Under 100 words. Use plain, strengths-based language and name one thing the student does well.",
+              "rows": 5,
+              "maxWords": 100,
+              "hardMax": true
+            },
+            {
+              "id": "other_ways",
+              "label": "2. Two other ways you would try to connect",
+              "rows": 3
+            },
+            {
+              "id": "classroom_decision",
+              "label": "3. One classroom decision you would adjust if the family shared something useful",
+              "help": "For example, seating, grouping, communication, or supports.",
+              "rows": 3
+            },
+            {
+              "id": "lens",
+              "label": "4. Your lens",
+              "help": "Two or three sentences on what your own lens might lead you to assume about this family, and how you would check.",
+              "rows": 3
+            }
+          ]
+        }
+      ]
     }
   ],
   "quiz": {
@@ -91,10 +402,22 @@
         "id": "m3-q1",
         "prompt": "Which of the following best describes an asset-based approach to teaching?",
         "options": [
-          { "id": "A", "text": "Celebrating cultural differences during designated heritage months while maintaining standard instruction" },
-          { "id": "B", "text": "Avoiding any acknowledgment of academic gaps so students do not feel discouraged" },
-          { "id": "C", "text": "Focusing on what students know and can do, and building instruction from those strengths" },
-          { "id": "D", "text": "Lowering academic expectations so that all students can experience success" }
+          {
+            "id": "A",
+            "text": "Celebrating cultural differences during designated heritage months while maintaining standard instruction"
+          },
+          {
+            "id": "B",
+            "text": "Avoiding any acknowledgment of academic gaps so students do not feel discouraged"
+          },
+          {
+            "id": "C",
+            "text": "Focusing on what students know and can do, and building instruction from those strengths"
+          },
+          {
+            "id": "D",
+            "text": "Lowering academic expectations so that all students can experience success"
+          }
         ],
         "correct": "C",
         "explanation": "Asset-based teaching starts from students' strengths and builds instruction from them, without lowering expectations."
@@ -103,10 +426,22 @@
         "id": "m3-q2",
         "prompt": "What does Rosenthal and Jacobson's 1968 Pygmalion research demonstrate about teacher expectations?",
         "options": [
-          { "id": "A", "text": "Students tend to rise or fall to the level of belief their teacher holds about them, regardless of their actual starting point" },
-          { "id": "B", "text": "Positive expectations only benefit students who already have a strong academic foundation" },
-          { "id": "C", "text": "Only the expectations of highly experienced teachers influence student performance" },
-          { "id": "D", "text": "Teacher expectations have no measurable impact on student outcomes once students reach middle school" }
+          {
+            "id": "A",
+            "text": "Students tend to rise or fall to the level of belief their teacher holds about them, regardless of their actual starting point"
+          },
+          {
+            "id": "B",
+            "text": "Positive expectations only benefit students who already have a strong academic foundation"
+          },
+          {
+            "id": "C",
+            "text": "Only the expectations of highly experienced teachers influence student performance"
+          },
+          {
+            "id": "D",
+            "text": "Teacher expectations have no measurable impact on student outcomes once students reach middle school"
+          }
         ],
         "correct": "A",
         "explanation": "The Pygmalion Effect shows that teacher beliefs shape student outcomes, whatever the starting point."
@@ -115,10 +450,22 @@
         "id": "m3-q3",
         "prompt": "A teacher looks at a student's cumulative file before the year begins and thinks, \"This student has a lot of absences and low test scores. This is going to be a challenging year.\" Which of the following best describes this kind of thinking?",
         "options": [
-          { "id": "A", "text": "Neutral: reviewing records is standard practice and does not reflect a mindset" },
-          { "id": "B", "text": "Deficit thinking: the teacher is starting with what the student lacks rather than what they bring" },
-          { "id": "C", "text": "Culturally relevant: the teacher is using data to inform their instruction" },
-          { "id": "D", "text": "Asset-based: the teacher is being realistic about the student's needs" }
+          {
+            "id": "A",
+            "text": "Neutral: reviewing records is standard practice and does not reflect a mindset"
+          },
+          {
+            "id": "B",
+            "text": "Deficit thinking: the teacher is starting with what the student lacks rather than what they bring"
+          },
+          {
+            "id": "C",
+            "text": "Culturally relevant: the teacher is using data to inform their instruction"
+          },
+          {
+            "id": "D",
+            "text": "Asset-based: the teacher is being realistic about the student's needs"
+          }
         ],
         "correct": "B",
         "explanation": "Starting from what a student lacks, before meeting them, is deficit thinking."
@@ -127,10 +474,22 @@
         "id": "m3-q4",
         "prompt": "According to Ladson-Billings' research, what do effective teachers of Black students consistently do?",
         "options": [
-          { "id": "A", "text": "Avoid discussing race and culture in class to maintain a neutral environment" },
-          { "id": "B", "text": "Hold high expectations, validate students' cultural identities, and view student differences as assets" },
-          { "id": "C", "text": "Focus exclusively on academic content and leave cultural competence to other staff" },
-          { "id": "D", "text": "Lower expectations to reduce stress and build confidence gradually" }
+          {
+            "id": "A",
+            "text": "Avoid discussing race and culture in class to maintain a neutral environment"
+          },
+          {
+            "id": "B",
+            "text": "Hold high expectations, validate students' cultural identities, and view student differences as assets"
+          },
+          {
+            "id": "C",
+            "text": "Focus exclusively on academic content and leave cultural competence to other staff"
+          },
+          {
+            "id": "D",
+            "text": "Lower expectations to reduce stress and build confidence gradually"
+          }
         ],
         "correct": "B",
         "explanation": "Effective teachers pair high expectations with cultural validation and see differences as assets."
@@ -139,10 +498,22 @@
         "id": "m3-q5",
         "prompt": "A parent misses a school event and doesn't respond to a teacher's phone call. Which response reflects an asset-based approach to families?",
         "options": [
-          { "id": "A", "text": "\"I've done my part. It's up to them to show up.\"" },
-          { "id": "B", "text": "\"This family is clearly not invested in their child's education.\"" },
-          { "id": "C", "text": "\"I should report this to administration so they can follow up.\"" },
-          { "id": "D", "text": "\"I'll try a different way of reaching out. They may have barriers I don't know about, and they deserve my effort.\"" }
+          {
+            "id": "A",
+            "text": "\"I've done my part. It's up to them to show up.\""
+          },
+          {
+            "id": "B",
+            "text": "\"This family is clearly not invested in their child's education.\""
+          },
+          {
+            "id": "C",
+            "text": "\"I should report this to administration so they can follow up.\""
+          },
+          {
+            "id": "D",
+            "text": "\"I'll try a different way of reaching out. They may have barriers I don't know about, and they deserve my effort.\""
+          }
         ],
         "correct": "D",
         "explanation": "An asset-based response assumes good intent, considers barriers, and keeps reaching out."
@@ -151,8 +522,14 @@
   },
   "completion": {
     "allQuestions": true,
-    "reflections": [],
+    "reflections": [
+      "m3-lens"
+    ],
     "checklist": [],
-    "activities": []
+    "activities": [
+      "m3-mindset-before",
+      "m3-mindset-after",
+      "m3-first-outreach"
+    ]
   }
 }

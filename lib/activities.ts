@@ -22,7 +22,9 @@ export function fieldsComplete(fields: WorksheetField[], answers: Record<string,
     if (f.kind === "checkbox" || f.optional) return true;
     const v = (answers[f.id] ?? "").trim();
     if (!v) return false;
-    return !f.minWords || wordCount(v) >= f.minWords;
+    const n = wordCount(v);
+    if (f.minWords && n < f.minWords) return false;
+    return !(f.hardMax && f.maxWords && n > f.maxWords);
   });
 }
 

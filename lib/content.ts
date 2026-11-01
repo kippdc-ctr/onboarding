@@ -49,6 +49,13 @@ export type Block =
   | { type: "persona_quiz"; activityId: string; personas: Persona[]; questions: PersonaQuestion[]; tiebreakers: PersonaQuestion[] }
   | { type: "persona_results"; quizActivityId: string; note?: string }
   | {
+      /** Ungraded practice: read a statement, think, then reveal one possible version. */
+      type: "reveal";
+      items: { statement: string; reveal: string }[];
+      revealLabel?: string;
+      sample?: boolean;
+    }
+  | {
       /** Intro slide: text fields + photo uploads, with a live slide preview. */
       type: "intro_slide";
       activityId: string;
@@ -71,6 +78,8 @@ export type WorksheetField = {
   kind?: "text" | "checkbox";
   minWords?: number;
   maxWords?: number;
+  /** maxWords is a hard limit (needed to finish), not just a target. */
+  hardMax?: boolean;
   sample?: string;
   sampleLabel?: string;
   /** Intro slide only: prefill from the resident's name or quiz result. */
@@ -216,7 +225,7 @@ export function sampleContent(modules: ModuleContent[] = MODULES): string[] {
   for (const m of modules)
     for (const s of m.sections)
       for (const b of s.blocks)
-        if ((b.type === "matching" || b.type === "scenario" || b.type === "table" || b.type === "mindset") && b.sample)
+        if ((b.type === "matching" || b.type === "scenario" || b.type === "table" || b.type === "mindset" || b.type === "reveal") && b.sample)
           out.push(`Module ${m.number}: ${s.title}${b.type === "matching" ? ` (${b.title})` : b.type === "mindset" ? " (sample statements)" : ""}`);
         else if (b.type === "persona_quiz" && b.personas.some((p) => !p.strength || !p.watchFor))
           out.push(`Module ${m.number}: ${s.title}: persona descriptions (strength and watch-for) still needed`);

@@ -180,6 +180,17 @@ export async function saveBlock(slug: string, sectionId: string, index: number, 
     case "form":
       value = { label: str(fd, "label", 300) || b.label };
       break;
+    case "reveal": {
+      const items: { statement: string; reveal: string }[] = [];
+      for (let i = 0; i < 30; i++) {
+        const statement = str(fd, `item_${i}_statement`, 1000);
+        const reveal = str(fd, `item_${i}_reveal`, 2000);
+        if (statement && reveal) items.push({ statement, reveal });
+      }
+      if (!items.length) fail(slug, anchor, "Add at least one statement with its reframe.");
+      value = { items, sample: fd.get("sample") === "on" };
+      break;
+    }
     default:
       fail(slug, anchor, "This block is edited elsewhere on the page.");
   }
