@@ -29,6 +29,12 @@ The app runs with all of these blank or in draft. Admin → Content flags shows 
     Praxis info, background check checklist, Workday instructions, Summer Academy schedule, preview webinar link, HR action items.
 14. **Settings:** CTR contact email (for "Don't see your name?"), cleared background check due date, webinar date and time.
 
+## Module 1: "Our students' neighborhoods" section (added before the final task)
+
+- Six neighborhood cards, each with a YouTube video (plays in the page) and a Google Maps link. Add the names and links in Admin → Module content → Our City, Our Schools → Our students' neighborhoods. Empty links show "link coming soon."
+- To show a map inside the page instead of a button, use Google Maps → Share → Embed a map and paste the src="…" link.
+- Not part of the completion rule (it's a showcase).
+
 ## Module 3 (What We Believe), rebuilt from the November content file
 
 - **Knowledge check:** the file says "Eight questions" but the questions weren't in it. The module keeps its 5 existing questions (asset-based teaching, Pygmalion, deficit thinking, Ladson-Billings, families), which still match the content, until the 8 arrive.

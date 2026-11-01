@@ -247,6 +247,53 @@
       ]
     },
     {
+      "id": "neighborhoods",
+      "title": "Our students' neighborhoods",
+      "audioUrl": "",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Take a closer look at the neighborhoods our students call home. Watch each video, then open the map to explore the streets, schools, and places nearby."
+        },
+        {
+          "type": "place",
+          "title": "Neighborhood 1",
+          "videoLinkKey": "url.m1.hood1_video",
+          "mapLinkKey": "url.m1.hood1_map"
+        },
+        {
+          "type": "place",
+          "title": "Neighborhood 2",
+          "videoLinkKey": "url.m1.hood2_video",
+          "mapLinkKey": "url.m1.hood2_map"
+        },
+        {
+          "type": "place",
+          "title": "Neighborhood 3",
+          "videoLinkKey": "url.m1.hood3_video",
+          "mapLinkKey": "url.m1.hood3_map"
+        },
+        {
+          "type": "place",
+          "title": "Neighborhood 4",
+          "videoLinkKey": "url.m1.hood4_video",
+          "mapLinkKey": "url.m1.hood4_map"
+        },
+        {
+          "type": "place",
+          "title": "Neighborhood 5",
+          "videoLinkKey": "url.m1.hood5_video",
+          "mapLinkKey": "url.m1.hood5_map"
+        },
+        {
+          "type": "place",
+          "title": "Neighborhood 6",
+          "videoLinkKey": "url.m1.hood6_video",
+          "mapLinkKey": "url.m1.hood6_map"
+        }
+      ]
+    },
+    {
       "id": "final-task",
       "title": "Final task: Community Strengths Snapshot",
       "blocks": [

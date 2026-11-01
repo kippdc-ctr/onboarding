@@ -180,6 +180,9 @@ export async function saveBlock(slug: string, sectionId: string, index: number, 
     case "form":
       value = { label: str(fd, "label", 300) || b.label };
       break;
+    case "place":
+      value = { title: str(fd, "title", 200) || b.title, description: str(fd, "description", 1000) || undefined };
+      break;
     case "reveal": {
       const items: { statement: string; reveal: string }[] = [];
       for (let i = 0; i < 30; i++) {

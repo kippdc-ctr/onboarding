@@ -139,7 +139,7 @@ export default async function ModulePage({ params }: { params: Promise<{ slug: s
           </figure>
         );
       case "resource": {
-        const verb = { video: "Watch", audio: "Listen", article: "Read", form: "Open" }[blk.kind];
+        const verb = { video: "Watch", audio: "Listen", article: "Read", form: "Open", map: "Explore" }[blk.kind];
         const url = settings[blk.linkKey];
         const tag = [blk.required === true ? "Required" : blk.required === false ? "Optional" : null, verb, blk.minutes ? `${blk.minutes} min` : null].filter(Boolean).join(" · ");
         return (
@@ -175,6 +175,28 @@ export default async function ModulePage({ params }: { params: Promise<{ slug: s
             fields={blk.fields}
             initial={((a?.payload_json as { answers?: Record<string, string> })?.answers ?? {}) as Record<string, string>}
           />
+        );
+      }
+      case "place": {
+        const video = settings[blk.videoLinkKey];
+        const map = settings[blk.mapLinkKey];
+        return (
+          <div key={key} className="space-y-3 rounded-2xl border-2 border-teal-light p-4">
+            <h3 className="h3">{blk.title}</h3>
+            {blk.description && (
+              <p>
+                <RichText text={blk.description} />
+              </p>
+            )}
+            {video ? <VideoPlayer url={video} title={`${blk.title} video`} /> : <LinkButton href={video} label="Video" kind="video" variant="small" />}
+            {map && map.includes("/maps/embed") ? (
+              <div className="aspect-video overflow-hidden rounded-2xl border border-gray-brand/30">
+                <iframe src={map} title={`Map of ${blk.title}`} className="h-full w-full" loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
+              </div>
+            ) : (
+              <LinkButton href={map} label="Open in Google Maps" kind="map" variant="small" />
+            )}
+          </div>
         );
       }
       case "reveal":

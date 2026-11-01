@@ -1,6 +1,6 @@
 import type { LinkKind } from "@/lib/content";
 
-const KIND_ICON: Record<LinkKind, string> = { video: "▶", article: "📄", audio: "🎧", form: "✎" };
+const KIND_ICON: Record<LinkKind, string> = { video: "▶", article: "📄", audio: "🎧", form: "✎", map: "📍" };
 
 /** External link that degrades to a disabled "Link coming soon" button when the URL is blank. */
 export function LinkButton({

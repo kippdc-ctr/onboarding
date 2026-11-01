@@ -8,7 +8,7 @@ import childDev from "@/content/modules/child-development.json";
 import mentorMatch from "@/content/forms/mentor-match.json";
 import settingsRegistry from "@/content/settings.json";
 
-export type LinkKind = "video" | "article" | "audio" | "form";
+export type LinkKind = "video" | "article" | "audio" | "form" | "map";
 
 export type Block =
   | { type: "text"; text: string }
@@ -48,6 +48,14 @@ export type Block =
     }
   | { type: "persona_quiz"; activityId: string; personas: Persona[]; questions: PersonaQuestion[]; tiebreakers: PersonaQuestion[] }
   | { type: "persona_results"; quizActivityId: string; note?: string }
+  | {
+      /** A neighborhood card: title, short description, a video that plays in the page, and a map link. */
+      type: "place";
+      title: string;
+      description?: string;
+      videoLinkKey: string;
+      mapLinkKey: string;
+    }
   | {
       /** Ungraded practice: read a statement, think, then reveal one possible version. */
       type: "reveal";
@@ -208,6 +216,10 @@ export function contentLinkKeys(): { key: string; where: string }[] {
           if (b.captionsLinkKey) out.push({ key: b.captionsLinkKey, where: `Module ${m.number}: ${s.title} (captions)` });
         }
         if (b.type === "resource") out.push({ key: b.linkKey, where: `Module ${m.number}: ${s.title}` });
+        if (b.type === "place") {
+          out.push({ key: b.videoLinkKey, where: `Module ${m.number}: ${s.title} (${b.title} video)` });
+          out.push({ key: b.mapLinkKey, where: `Module ${m.number}: ${s.title} (${b.title} map)` });
+        }
         if (b.type === "cards") for (const c of b.cards) out.push({ key: c.linkKey, where: `Module ${m.number}: ${s.title}` });
         if (b.type === "checklist") for (const i of b.items) if (i.linkKey) out.push({ key: i.linkKey, where: `Module ${m.number}: ${s.title}` });
       }

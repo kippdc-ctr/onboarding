@@ -80,6 +80,78 @@
       "default": "https://www.kippdc.org/about-kipp-dc/kipp-dc-story/"
     },
     {
+      "key": "url.m1.hood1_video",
+      "group": "Module 1: Our students' neighborhoods",
+      "label": "Neighborhood 1: video (YouTube)",
+      "default": ""
+    },
+    {
+      "key": "url.m1.hood1_map",
+      "group": "Module 1: Our students' neighborhoods",
+      "label": "Neighborhood 1: map (Google Maps)",
+      "default": ""
+    },
+    {
+      "key": "url.m1.hood2_video",
+      "group": "Module 1: Our students' neighborhoods",
+      "label": "Neighborhood 2: video (YouTube)",
+      "default": ""
+    },
+    {
+      "key": "url.m1.hood2_map",
+      "group": "Module 1: Our students' neighborhoods",
+      "label": "Neighborhood 2: map (Google Maps)",
+      "default": ""
+    },
+    {
+      "key": "url.m1.hood3_video",
+      "group": "Module 1: Our students' neighborhoods",
+      "label": "Neighborhood 3: video (YouTube)",
+      "default": ""
+    },
+    {
+      "key": "url.m1.hood3_map",
+      "group": "Module 1: Our students' neighborhoods",
+      "label": "Neighborhood 3: map (Google Maps)",
+      "default": ""
+    },
+    {
+      "key": "url.m1.hood4_video",
+      "group": "Module 1: Our students' neighborhoods",
+      "label": "Neighborhood 4: video (YouTube)",
+      "default": ""
+    },
+    {
+      "key": "url.m1.hood4_map",
+      "group": "Module 1: Our students' neighborhoods",
+      "label": "Neighborhood 4: map (Google Maps)",
+      "default": ""
+    },
+    {
+      "key": "url.m1.hood5_video",
+      "group": "Module 1: Our students' neighborhoods",
+      "label": "Neighborhood 5: video (YouTube)",
+      "default": ""
+    },
+    {
+      "key": "url.m1.hood5_map",
+      "group": "Module 1: Our students' neighborhoods",
+      "label": "Neighborhood 5: map (Google Maps)",
+      "default": ""
+    },
+    {
+      "key": "url.m1.hood6_video",
+      "group": "Module 1: Our students' neighborhoods",
+      "label": "Neighborhood 6: video (YouTube)",
+      "default": ""
+    },
+    {
+      "key": "url.m1.hood6_map",
+      "group": "Module 1: Our students' neighborhoods",
+      "label": "Neighborhood 6: map (Google Maps)",
+      "default": ""
+    },
+    {
       "key": "url.m2.single_story",
       "group": "Module 2: Your Story Matters",
       "label": "Optional watch: The Danger of a Single Story (TED · Facing History)",

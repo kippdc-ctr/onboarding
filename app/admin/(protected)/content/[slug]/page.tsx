@@ -289,6 +289,26 @@ export default async function EditModule({ params, searchParams }: { params: Pro
           </div>
         );
       }
+      case "place":
+        return wrap(
+          "Neighborhood card",
+          <form action={action} className="space-y-2">
+            <label className="block">
+              <span className="label">Neighborhood name</span>
+              <input name="title" defaultValue={blk.title} className="input" />
+            </label>
+            <label className="block">
+              <span className="label">Short description (optional)</span>
+              <textarea name="description" defaultValue={blk.description ?? ""} rows={2} className="input" />
+            </label>
+            <UrlField settingKey={blk.videoLinkKey} value={settings[blk.videoLinkKey] ?? ""} video />
+            <UrlField settingKey={blk.mapLinkKey} value={settings[blk.mapLinkKey] ?? ""} />
+            <p className="text-sm text-muted">
+              Any Google Maps link works as a button. To show the map right on the page instead, use Google Maps → Share → Embed a map, and paste the link inside src=&quot;…&quot;.
+            </p>
+            <SaveBar />
+          </form>,
+        );
       case "reveal": {
         const rows = [...blk.items, ...Array.from({ length: 3 }, () => ({ statement: "", reveal: "" }))];
         return wrap(
