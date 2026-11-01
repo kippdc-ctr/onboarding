@@ -7,7 +7,7 @@ export async function POST(req: NextRequest) {
   if (!(await isAdmin())) return new Response("Not signed in", { status: 401 });
   if (storageMode() !== "local") return new Response("Not available", { status: 404 });
   const p = req.nextUrl.searchParams.get("path") ?? "";
-  if (!/^audio\/[\w.-]+$/.test(p)) return new Response("Bad path", { status: 400 });
+  if (!/^(audio|images)\/[\w.-]+$/.test(p)) return new Response("Bad path", { status: 400 });
   const buf = Buffer.from(await req.arrayBuffer());
   if (buf.length > MAX_AUDIO_BYTES) return new Response("Too large", { status: 413 });
   await writeLocal(p, buf);

@@ -251,8 +251,14 @@ export default async function ResidentDetail({ params, searchParams }: { params:
                 return (
                   <div key={a.activityId} className="mt-3 rounded-xl bg-sand p-3">
                     <p className="font-semibold">
-                      {a.type === "matching" ? a.title : "Scenario practice"}: {res?.completed_at ? "Finished" : res ? "In progress" : "Not started"}
+                      {a.type === "matching" ? a.title : a.type === "worksheet" ? (a.title ?? "Final task") : "Scenario practice"}: {res?.completed_at ? "Finished" : res ? "In progress" : "Not started"}
                     </p>
+                    {a.type === "worksheet" &&
+                      a.fields.map((f) => (
+                        <p key={f.id} className="mt-1">
+                          <em>{f.label}:</em> {answers[f.id] || <span className="text-muted">—</span>}
+                        </p>
+                      ))}
                     {a.type === "scenario" &&
                       a.prompts.map((p) => (
                         <p key={p.id} className="mt-1">

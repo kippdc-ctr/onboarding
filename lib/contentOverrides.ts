@@ -32,7 +32,7 @@ export function originalFor(m: ModuleContent, target: string): unknown {
   if (kind === "block") return m.sections.find((x) => x.id === a)?.blocks[Number(b)];
   if (kind === "question") return m.quiz?.questions.find((q) => q.id === a);
   if (kind === "activity") {
-    for (const s of m.sections) for (const bl of s.blocks) if ((bl.type === "matching" || bl.type === "scenario") && bl.activityId === a) return bl;
+    for (const s of m.sections) for (const bl of s.blocks) if ((bl.type === "matching" || bl.type === "scenario" || bl.type === "worksheet") && bl.activityId === a) return bl;
   }
   if (kind === "reflection") {
     for (const s of m.sections) for (const bl of s.blocks) if (bl.type === "reflection" && bl.promptId === a) return bl;
@@ -82,7 +82,7 @@ export function applyOverrides(original: ModuleContent, rows: OverrideRow[]): { 
     } else if (kind === "activity" || kind === "reflection") {
       for (const s of m.sections)
         s.blocks = s.blocks.map((bl) => {
-          if (kind === "activity" && (bl.type === "matching" || bl.type === "scenario") && bl.activityId === a) {
+          if (kind === "activity" && (bl.type === "matching" || bl.type === "scenario" || bl.type === "worksheet") && bl.activityId === a) {
             return { ...bl, ...v, type: bl.type, activityId: bl.activityId } as Block;
           }
           if (kind === "reflection" && bl.type === "reflection" && bl.promptId === a) {

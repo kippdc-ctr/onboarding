@@ -2,98 +2,382 @@
   "slug": "our-city-our-schools",
   "number": 1,
   "title": "Our City, Our Schools",
-  "description": "Washington, DC's history, neighborhoods, and schools, and where KIPP DC fits in.",
-  "estimatedMinutes": 60,
+  "description": "Before you teach in Washington, DC, learn the story of the place and the schools your students come from.",
+  "estimatedMinutes": 68,
+  "indicator": "EP.P.2",
   "geniallyLinkKey": "url.genially.our-city-our-schools",
   "objectives": [
-    "Describe the demographic, economic, and cultural context of Washington, DC.",
-    "Summarize the history of DC's public education system and the consequences of systemic under-investment.",
-    "Explain DC's dual education landscape and what research says about student outcomes.",
-    "Identify KIPP DC's origins, mission, and role in the broader DC education ecosystem.",
-    "Articulate why historical knowledge of DC is relevant to your daily work as a resident teacher."
+    "Describe the social, economic, and political context of Washington, DC.",
+    "Explain how segregation, desegregation, and disinvestment shaped DC schools, including the loss of Black educators.",
+    "Describe the dual landscape of DCPS and public charter schools, and the origins and mission of KIPP DC.",
+    "Say why knowing DC matters for your work with students and families."
   ],
   "sections": [
     {
-      "id": "city-of-contrasts",
-      "title": "A City of Contrasts",
+      "id": "start",
+      "title": "Start here",
       "audioUrl": "",
       "blocks": [
-        { "type": "text", "text": "Washington, DC is the seat of federal power. It is also a predominantly Black city with a deep history of resistance." },
-        { "type": "list", "items": [
-          "DC has no voting representation in Congress, despite having a larger population than two states.",
-          "The city is majority-minority.",
-          "DC has one of the highest income inequality rates of any major American city.",
-          "Nearly 1 in 5 DC children lives in poverty."
-        ] },
-        { "type": "callout", "text": "This is the city your students are growing up in. Understanding it is part of your job." }
+        {
+          "type": "text",
+          "text": "You are about to teach children in a city with a long, specific, and often painful education history. Your students and their families know that history in their bodies, even if no one has ever taught it to them as a story. This section gives you the outline so that you can listen better once you meet them."
+        },
+        {
+          "type": "callout",
+          "title": "Your plan for the 68 minutes",
+          "text": "Content (47 min), knowledge check (6), mindset check (5), final task (10). The audio episode is required and takes 31 minutes, so plan to listen in one sitting."
+        }
       ]
     },
     {
-      "id": "neighborhoods",
-      "title": "Neighborhoods",
+      "id": "dc",
+      "title": "Part 1. Washington, DC",
       "audioUrl": "",
       "blocks": [
-        { "type": "text", "text": "Wards east of the Anacostia River have historically been under-resourced, over-policed, and underserved by public institutions, including schools." },
-        { "type": "callout", "text": "This doesn't mean your students are defined by their zip codes." }
+        {
+          "type": "text",
+          "text": "Washington is two cities that share a map. It is the seat of the federal government, a place of monuments and marble. It is also home to roughly 700,000 residents, a majority of whom are people of color, who live in neighborhoods with very different access to money, health care, grocery stores, and good schools."
+        },
+        {
+          "type": "text",
+          "text": "Two facts frame everything else in this section."
+        },
+        {
+          "type": "text",
+          "text": "**Wealth and poverty sit within a few miles of each other.** DC has some of the highest household incomes and some of the widest income gaps in the country. A family in a Northwest townhouse and a family in a Southeast apartment can live less than ten minutes apart and have almost nothing in common in resources. The Anacostia River has long been the dividing line in people's minds. Neighborhoods east of the river, in Wards 7 and 8, have received far less public and private investment."
+        },
+        {
+          "type": "text",
+          "text": "**DC residents pay federal taxes but have no voting member of Congress.** The District has a mayor and a council, but Congress can overrule its laws and budget. You will see this show up in school funding, in policy debates, and on license plates that read \"Taxation Without Representation.\""
+        },
+        {
+          "type": "text",
+          "text": "**Participation looks different across communities.** Norms for eye contact, personal space, and turn-taking differ across cultures and families. A student who looks down while an adult speaks, or waits a few seconds before answering, may be showing respect or thinking carefully. You will meet students from many DC communities, so the habit to build is simple: notice, ask, and learn before you decide what a behavior means."
+        },
+        {
+          "type": "image",
+          "src": "",
+          "alt": "Map of Washington, DC divided into eight wards, with the Anacostia River separating Wards 7 and 8 from the rest of the city, and dots showing KIPP DC campuses.",
+          "caption": "The eight wards of Washington, DC, with the Anacostia River and KIPP DC campuses marked.",
+          "sourceNote": "Build in-house from the DC Open Data ward boundaries (opendata.dc.gov) and the campus table in the final task."
+        },
+        {
+          "type": "resource",
+          "linkKey": "url.m1.statehood_video",
+          "kind": "video",
+          "title": "How Washington, D.C., could become a state, and why it probably won't",
+          "description": "A short news segment from June 2020, when the House passed a DC statehood bill. It explains why a city of this size has no voting senator or representative. Watch for how the arguments are about power, not just geography.",
+          "source": "PBS NewsHour"
+        },
+        {
+          "type": "callout",
+          "title": "Pause and think",
+          "text": "Where does your own family's story touch a city's rules about who gets a vote? Hold that thought. You will use it in Section 2."
+        }
       ]
     },
     {
-      "id": "reflect-neighborhood",
-      "title": "Reflect",
+      "id": "history",
+      "title": "Part 2. How DC's schools got here",
+      "audioUrl": "",
       "blocks": [
-        { "type": "reflection", "promptId": "m1-neighborhood", "prompt": "Think about the neighborhood where your school is located. What do you already know about it? What do you want to know?" }
+        {
+          "type": "heading",
+          "text": "Schools of excellence, built by Black Washington"
+        },
+        {
+          "type": "text",
+          "text": "Long before Brown v. Board of Education, Black Washingtonians built a school system under segregation and made it excellent. The best known example is the school that began in a church basement in 1870, five years after the Civil War. It became the M Street School and later Paul Laurence Dunbar High School, widely described as the first public high school for Black students in the United States. Its teachers held advanced degrees, many from top universities that would not hire them, and its graduates went on to Harvard, Oberlin, and Howard."
+        },
+        {
+          "type": "image",
+          "src": "",
+          "alt": "Black-and-white photograph of students seated in rows in a classroom at the M Street High School in Washington, DC.",
+          "caption": "Students and teachers at the M Street School, later Dunbar High School.",
+          "sourceNote": "Search the Library of Congress Prints & Photographs collection (loc.gov/pictures) and the Washingtonian collection at DC Public Library. Confirm \"no known restrictions\" before use."
+        },
+        {
+          "type": "resource",
+          "linkKey": "url.m1.dunbar_video",
+          "kind": "video",
+          "title": "The Nation's First Black Public High School Is Still Teaching in Washington, D.C.",
+          "description": "A one-minute introduction to Dunbar High School and where it started.",
+          "source": "PBS · WETA Boundary Stones",
+          "minutes": 1
+        },
+        {
+          "type": "heading",
+          "text": "Desegregation and the loss of Black teachers"
+        },
+        {
+          "type": "text",
+          "text": "In 1954, Brown v. Board of Education ruled that segregated public schools are unconstitutional. It also set off one of the largest losses of Black professionals in American history. As Black schools closed or merged, thousands of Black teachers and principals were demoted, pushed out, or passed over for jobs. One researcher counts about 38,000 Black teachers displaced across the South alone in the decade after Brown. DC was not the same as the Deep South, but the national pattern left a long shadow on who stands at the front of classrooms."
+        },
+        {
+          "type": "text",
+          "text": "This matters for your students today. Research reported by Chalkbeat finds that Black students who have even one Black teacher by third grade are more likely to graduate high school and enroll in college, and the effect grows with a second Black teacher. You may or may not be a Black teacher. Either way, you are entering a profession shaped by this history, and your students' families may remember it."
+        },
+        {
+          "type": "heading",
+          "text": "\"Educationally and managerially bankrupt\""
+        },
+        {
+          "type": "text",
+          "text": "By the 1990s, DC Public Schools was in crisis. Reports described a system with crumbling buildings, patronage hiring, mismanaged money, and unreliable basic services. In 1996 a federal control board labeled it \"educationally and managerially bankrupt.\" Decades of disinvestment, much of it in the neighborhoods that most needed support, had caught up with the children in them."
+        },
+        {
+          "type": "heading",
+          "text": "The reform era"
+        },
+        {
+          "type": "text",
+          "text": "Between 2007 and 2010, Mayor Adrian Fenty and Chancellor Michelle Rhee led an aggressive overhaul of DCPS: closing under-enrolled schools, changing teacher evaluation, and raising test-score expectations. Supporters point to real gains in test scores and enrollment. Critics point to school closures that hit Black neighborhoods hardest, teacher firings, and a testing scandal. Both things are part of the record, and you will meet educators and families who hold each view."
+        },
+        {
+          "type": "resource",
+          "linkKey": "url.m1.rhee_documentary",
+          "kind": "video",
+          "title": "The Education of Michelle Rhee",
+          "description": "A 2013 documentary from correspondent John Merrow, who had rare access to Rhee as chancellor. Not required, but excellent if you want to see the reform years up close.",
+          "source": "PBS FRONTLINE",
+          "minutes": 54,
+          "required": false
+        },
+        {
+          "type": "resource",
+          "linkKey": "url.m1.black_teachers_article",
+          "kind": "article",
+          "title": "Why did so many Black teachers lose their jobs after the Brown v. Board ruling?",
+          "description": "Source of the figures above, with the research on students' outcomes.",
+          "source": "Chalkbeat",
+          "minutes": 8,
+          "required": false
+        }
       ]
     },
     {
-      "id": "choose-adventure",
-      "title": "Choose your own adventure: DC neighborhoods",
+      "id": "landscape",
+      "title": "Part 3. DC's education landscape and KIPP DC",
       "audioUrl": "",
       "blocks": [
-        { "type": "text", "text": "Pick one or more neighborhoods to explore. Each is near a KIPP DC campus." },
-        { "type": "cards", "cards": [
-          { "title": "Anacostia", "subtitle": "Near KIPP DC Douglass", "linkKey": "url.m1.neighborhood.anacostia", "kind": "video" },
-          { "title": "Hillcrest", "subtitle": "Near KIPP DC Benning", "linkKey": "url.m1.neighborhood.hillcrest", "kind": "video" },
-          { "title": "Congress Heights", "subtitle": "Near KIPP DC Wheeler and Legacy College Prep", "linkKey": "url.m1.neighborhood.congress_heights", "kind": "article" },
-          { "title": "Deanwood", "subtitle": "Near KIPP DC Smilow", "linkKey": "url.m1.neighborhood.deanwood", "kind": "video" },
-          { "title": "H St. Corridor", "subtitle": "Near KIPP DC Webb and KIPP DC College Prep", "linkKey": "url.m1.neighborhood.h_street", "kind": "video" },
-          { "title": "Shaw & U Street", "subtitle": "Near KIPP DC Shaw", "linkKey": "url.m1.neighborhood.shaw_u", "kind": "video" }
-        ] }
+        {
+          "type": "text",
+          "text": "In 1996, Congress and the District created the DC Public Charter School Board. Public charter schools are tuition-free public schools that are run independently of the traditional school district. Today almost half of DC's public school students attend charter schools, which makes DC one of the most charter-heavy cities in the country."
+        },
+        {
+          "type": "text",
+          "text": "That \"dual landscape\" shapes what you will hear. Supporters credit charters with new options and strong results for many students. Critics point to closures, families being displaced from neighborhood schools, and a fragmented system in which families must navigate a lottery. It is also hard to compare DCPS and charters fairly, because they serve slightly different groups of students under different rules. Hold both perspectives. Your students' families have likely used both kinds of schools."
+        },
+        {
+          "type": "heading",
+          "text": "Where KIPP DC comes in"
+        },
+        {
+          "type": "text",
+          "text": "KIPP DC opened in 2001 with one school, KEY Academy, and 80 fifth graders. It began in a church basement in Anacostia, in Southeast DC. The founding belief was simple: a child's zip code should not decide their destiny. Over two decades the network has grown to serve more than 7,000 students from pre-K through 12th grade across campuses in Wards 2, 5, 7, and 8, and it started the Capital Teaching Residency so that new teachers could learn to teach here, with coaching, before leading a classroom alone."
+        },
+        {
+          "type": "quote",
+          "cite": "KIPP DC mission",
+          "text": "Together with families and communities, we create joyful, academically excellent schools that prepare students with the skills and confidence to pursue the paths they choose—college, career, and beyond—so they can lead fulfilling lives and build a more just world."
+        },
+        {
+          "type": "text",
+          "text": "Notice two phrases. *Together with families and communities* says the work is done with people, not to them. *The paths they choose* says the goal is student choice, not a single route."
+        },
+        {
+          "type": "image",
+          "src": "",
+          "alt": "Horizontal timeline starting in 2001 with KEY Academy's 80 fifth graders and ending with today's network of more than 7,000 students.",
+          "caption": "Key moments in KIPP DC's history.",
+          "sourceNote": "Build in-house from the KIPP DC story page (kippdc.org). Use KIPP DC's own campus photography if available."
+        }
       ]
     },
     {
-      "id": "education-in-district",
-      "title": "Education in the District",
+      "id": "core",
+      "title": "Core resources",
       "audioUrl": "",
       "blocks": [
-        { "type": "heading", "text": "Before Brown" },
-        { "type": "text", "text": "DC ran a segregated school system. Black schools were sites of excellence, staffed by highly educated Black teachers who knew their students and communities." },
-        { "type": "heading", "text": "Brown v. Board (1954) and what was lost" },
-        { "type": "text", "text": "Desegregation was a landmark victory, and it came at a cost, including the mass dismissal of Black teachers." },
-        { "type": "link", "kind": "audio", "label": "Listen: Revisionist History, \"Miss Buchanan's Period of Adjustment\" (Malcolm Gladwell)", "linkKey": "url.m1.revisionist_history" },
-        { "type": "heading", "text": "The 1990s collapse of DCPS" },
-        { "type": "text", "text": "By the 1990s, DCPS was described as \"educationally and managerially bankrupt.\"" },
-        { "type": "heading", "text": "DC charter history" },
-        { "type": "text", "text": "1996 legislation created the DC Public Charter School Board. Charters served over 27% of students by 2007 and close to half today." },
-        { "type": "heading", "text": "The Reform Era" },
-        { "type": "text", "text": "In 2007, Mayor Adrian Fenty and Chancellor Michelle Rhee launched an era of reform, including the IMPACT teacher evaluation system." },
-        { "type": "link", "kind": "article", "label": "Read: A Tale of Two Systems", "linkKey": "url.m1.tale_of_two_systems" },
-        { "type": "callout", "title": "Key Idea", "text": "Reform in DC was never just about data. It was always about race, power, and who gets to decide what's best for children." }
-      ]
-    },
-    {
-      "id": "kipp-dc",
-      "title": "KIPP and KIPP DC",
-      "audioUrl": "",
-      "blocks": [
-        { "type": "text", "text": "KIPP was founded in 1994 by Mike Feinberg and Dave Levin. KIPP DC opened its first school in 2001." },
-        { "type": "link", "kind": "video", "label": "Watch: Celebrating 25 Years of KIPP DC Public Schools", "linkKey": "url.m1.kipp25_video" },
-        { "type": "quote", "cite": "KIPP DC mission", "text": "Together with families and communities, we create joyful, academically excellent schools that prepare students with the skills and confidence to pursue the paths they choose — college, career, and beyond — so they can lead fulfilling lives and build a more just world." }
+        {
+          "type": "text",
+          "text": "Complete these in order. Together they take about 45 minutes with the lesson text above."
+        },
+        {
+          "type": "resource",
+          "linkKey": "url.m1.tale_of_two_systems",
+          "kind": "article",
+          "title": "A Tale of Two Systems: Education Reform in Washington, DC (excerpt)",
+          "description": "A 2015 report on DC's dual system. It comes from a policy group that favors charters, so read it as one perspective. As you read, jot down one claim you want to check against what you hear in the audio.",
+          "source": "Progressive Policy Institute",
+          "required": true
+        },
+        {
+          "type": "resource",
+          "linkKey": "url.m1.revisionist_history",
+          "kind": "audio",
+          "title": "Miss Buchanan's Period of Adjustment",
+          "description": "Season 2, Episode 3. The story of what Brown v. Board meant for the Black teachers who did not get to enter the new, integrated schools. It is the most powerful 31 minutes in this section.",
+          "source": "Revisionist History · Malcolm Gladwell",
+          "minutes": 31,
+          "required": true
+        },
+        {
+          "type": "resource",
+          "linkKey": "url.m1.kipp_dc_history",
+          "kind": "article",
+          "title": "KIPP DC's History",
+          "description": "Skim the timeline of the network's growth, from 80 students in 2001 to today.",
+          "source": "KIPP DC",
+          "required": true
+        }
       ]
     },
     {
       "id": "knowledge-check",
       "title": "Knowledge check",
-      "blocks": [{ "type": "quiz" }]
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Your answers are scored and shared with the CTR team. Pick an answer to see the explanation."
+        },
+        {
+          "type": "quiz"
+        }
+      ]
+    },
+    {
+      "id": "final-task",
+      "title": "Final task: Community Strengths Snapshot",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Choose the community your school sits in, using the table below. Then write three community strengths, one historical fact, and one question you would like to ask a family who lives there. Your question will come back in Cycle 1 when you interview families."
+        },
+        {
+          "type": "callout",
+          "title": "If you are placed at College Preparatory or Shaw",
+          "text": "Many students at these schools do not live in the school's neighborhood. Study the neighborhood where the school sits, and add one sentence about why students travel from other parts of the city to attend."
+        },
+        {
+          "type": "table",
+          "columns": [
+            "Campus",
+            "Address",
+            "Ward",
+            "Community",
+            "Schools"
+          ],
+          "rows": [
+            [
+              "Benning",
+              "4801 Benning Rd SE",
+              "7",
+              "Benning Ridge",
+              "LEAP, Promise, KEY"
+            ],
+            [
+              "Smilow",
+              "5300 Blaine St NE",
+              "7",
+              "Deanwood",
+              "Arts & Technology, Quest, Valor"
+            ],
+            [
+              "Douglass",
+              "2600 Douglass Rd SE",
+              "8",
+              "Anacostia",
+              "Discover, Heights, AIM"
+            ],
+            [
+              "Wheeler",
+              "3301 Wheeler Rd SE",
+              "8",
+              "Bellevue",
+              "Pride, Inspire, Honor, The Learning Center"
+            ],
+            [
+              "Highlands",
+              "3999 8th St SE",
+              "8",
+              "Washington Highlands",
+              "Legacy College Prep"
+            ],
+            [
+              "Webb",
+              "1375 Mount Olivet Rd NE",
+              "5",
+              "Trinidad / Ivy City",
+              "Connect, Spring, Northeast"
+            ],
+            [
+              "College Preparatory",
+              "1405 Brentwood Pkwy NE",
+              "5",
+              "Brentwood",
+              "KIPP DC College Preparatory"
+            ],
+            [
+              "Shaw",
+              "421 P St NW",
+              "2",
+              "Shaw",
+              "Grow, Lead, WILL"
+            ]
+          ]
+        },
+        {
+          "type": "worksheet",
+          "activityId": "m1-community-snapshot",
+          "title": "Your Community Strengths Snapshot",
+          "fields": [
+            {
+              "id": "community",
+              "label": "Your community",
+              "options": [
+                "Benning Ridge (Benning campus, Ward 7)",
+                "Deanwood (Smilow campus, Ward 7)",
+                "Anacostia (Douglass campus, Ward 8)",
+                "Bellevue (Wheeler campus, Ward 8)",
+                "Washington Highlands (Highlands campus, Ward 8)",
+                "Trinidad / Ivy City (Webb campus, Ward 5)",
+                "Brentwood (College Preparatory campus, Ward 5)",
+                "Shaw (Shaw campus, Ward 2)"
+              ]
+            },
+            {
+              "id": "strength1",
+              "label": "Strength 1",
+              "help": "Something this community has or does well. Name a person, place, or tradition."
+            },
+            {
+              "id": "strength2",
+              "label": "Strength 2"
+            },
+            {
+              "id": "strength3",
+              "label": "Strength 3"
+            },
+            {
+              "id": "historical_fact",
+              "label": "One historical fact",
+              "help": "Include where you found it."
+            },
+            {
+              "id": "family_question",
+              "label": "One question to ask a family",
+              "help": "Open-ended, curious, and respectful. Not \"why don't…\"."
+            },
+            {
+              "id": "why_travel",
+              "label": "Why students travel to this school",
+              "help": "College Preparatory or Shaw only: one sentence about why students travel from other parts of the city to attend.",
+              "optional": true
+            }
+          ]
+        }
+      ]
     }
   ],
   "quiz": {
@@ -102,9 +386,18 @@
         "id": "m1-q1",
         "prompt": "Which of the following best describes the economic landscape of Washington, DC?",
         "options": [
-          { "id": "A", "text": "DC's poverty rate is lower than most major American cities" },
-          { "id": "B", "text": "DC has high income inequality, with extreme wealth and concentrated poverty coexisting" },
-          { "id": "C", "text": "DC is a uniformly wealthy city with few low-income residents" }
+          {
+            "id": "A",
+            "text": "DC's poverty rate is lower than most major American cities"
+          },
+          {
+            "id": "B",
+            "text": "DC has high income inequality, with extreme wealth and concentrated poverty coexisting"
+          },
+          {
+            "id": "C",
+            "text": "DC is a uniformly wealthy city with few low-income residents"
+          }
         ],
         "correct": "B",
         "explanation": "DC has one of the highest income inequality rates of any major American city."
@@ -113,9 +406,18 @@
         "id": "m1-q2",
         "prompt": "What does research tell us about the impact of having a Black teacher on Black students?",
         "options": [
-          { "id": "A", "text": "There is no measurable difference in outcomes based on teacher race" },
-          { "id": "B", "text": "Black students with at least one Black teacher are significantly more likely to graduate from high school and aspire to college" },
-          { "id": "C", "text": "The impact only applies to students in elementary school" }
+          {
+            "id": "A",
+            "text": "There is no measurable difference in outcomes based on teacher race"
+          },
+          {
+            "id": "B",
+            "text": "Black students with at least one Black teacher are significantly more likely to graduate from high school and aspire to college"
+          },
+          {
+            "id": "C",
+            "text": "The impact only applies to students in elementary school"
+          }
         ],
         "correct": "B",
         "explanation": "Having even one Black teacher raises Black students' graduation rates and college aspirations."
@@ -124,9 +426,18 @@
         "id": "m1-q3",
         "prompt": "According to A Tale of Two Systems, what was the primary reason DCPS was labeled \"educationally and managerially bankrupt\" in the 1990s?",
         "options": [
-          { "id": "A", "text": "Significant underfunding relative to other major American cities" },
-          { "id": "B", "text": "Decades of political corruption, patronage hiring, and systemic disinvestment in students" },
-          { "id": "C", "text": "A lack of student motivation and family engagement in DC communities" }
+          {
+            "id": "A",
+            "text": "Significant underfunding relative to other major American cities"
+          },
+          {
+            "id": "B",
+            "text": "Decades of political corruption, patronage hiring, and systemic disinvestment in students"
+          },
+          {
+            "id": "C",
+            "text": "A lack of student motivation and family engagement in DC communities"
+          }
         ],
         "correct": "B",
         "explanation": "The reading points to political corruption, patronage hiring, and systemic disinvestment, not students or families."
@@ -135,9 +446,18 @@
         "id": "m1-q4",
         "prompt": "What does KIPP DC's mission mean when it says \"the paths they choose\"?",
         "options": [
-          { "id": "A", "text": "KIPP DC guides all students toward four-year college as the primary pathway" },
-          { "id": "B", "text": "KIPP DC gives students skills and confidence to pursue their own paths: college, career, and beyond" },
-          { "id": "C", "text": "KIPP DC allows students to opt out of academic expectations based on personal preference" }
+          {
+            "id": "A",
+            "text": "KIPP DC guides all students toward four-year college as the primary pathway"
+          },
+          {
+            "id": "B",
+            "text": "KIPP DC gives students skills and confidence to pursue their own paths: college, career, and beyond"
+          },
+          {
+            "id": "C",
+            "text": "KIPP DC allows students to opt out of academic expectations based on personal preference"
+          }
         ],
         "correct": "B",
         "explanation": "The mission is about students choosing their own paths, with the skills and confidence to pursue them."
@@ -146,8 +466,10 @@
   },
   "completion": {
     "allQuestions": true,
-    "reflections": ["m1-neighborhood"],
+    "reflections": [],
     "checklist": [],
-    "activities": []
+    "activities": [
+      "m1-community-snapshot"
+    ]
   }
 }

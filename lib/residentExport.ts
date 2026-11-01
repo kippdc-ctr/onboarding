@@ -25,8 +25,17 @@ export function residentResponsesText(cfg: Config, r: Resident, b: ProgressBundl
       lines.push("");
     }
     for (const a of moduleActivities(m)) {
-      if (a.type !== "scenario") continue;
+      if (a.type === "matching") continue;
       const ans = (b.activities.find((x) => x.activity_id === a.activityId)?.payload_json as { answers?: Record<string, string> })?.answers ?? {};
+      if (a.type === "worksheet") {
+        lines.push(a.title ?? "Final task");
+        for (const f of a.fields) {
+          lines.push(`> ${f.label}`);
+          lines.push(ans[f.id]?.trim() || (f.optional ? "(left blank)" : "(no response yet)"));
+        }
+        lines.push("");
+        continue;
+      }
       lines.push(`Scenario: ${a.scenario}`);
       for (const p of a.prompts) {
         lines.push(`> ${p.prompt}`);

@@ -65,9 +65,12 @@ async function seed() {
   }
   const reg = json("content/settings.json");
   for (const r of [...reg.links, ...reg.values]) {
-    await sql`insert into settings (key, value) values (${r.key}, ${r.default ?? ""}) on conflict (key) do nothing`;
+    // New settings get their default; an existing setting is only filled in if it is still blank,
+    // so nothing edited in /admin is ever overwritten.
+    await sql`insert into settings (key, value) values (${r.key}, ${r.default ?? ""})
+      on conflict (key) do update set value = excluded.value where settings.value = '' and excluded.value <> ''`;
   }
-  console.log("Seed data inserted (existing rows left unchanged).");
+  console.log("Seed data inserted (existing rows left unchanged; blank settings filled with defaults).");
 }
 
 async function samples() {

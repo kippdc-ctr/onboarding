@@ -29,6 +29,14 @@ The app runs with all of these blank or in draft. Admin → Content flags shows 
     Praxis info, background check checklist, Workday instructions, Summer Academy schedule, preview webinar link, HR action items.
 14. **Settings:** CTR contact email (for "Don't see your name?"), cleared background check due date, webinar date and time.
 
+## Module 1 (Our City, Our Schools), rebuilt from the November content file
+
+- **Knowledge check:** the file says "Seven questions" but the questions themselves weren't in it (they were interactive in the preview). The module keeps the 4 existing questions until the 7 arrive.
+- **Mindset check:** the file describes it (ungraded agree/disagree ratings, repeated after the section and before the first evaluation period) but the statements weren't in it. Send the statements and say whether residents should see their earlier ratings.
+- **Images:** three image slots (ward map, M Street/Dunbar photo, KIPP DC timeline) are hidden until an image is uploaded in Admin → Module content. Content flags lists them.
+- **Timing:** the header says 68 minutes and the plan line said 65; the parts add up to 68, so the app says 68. The plan line still mentions the mindset check.
+- **Completion rule changed:** knowledge check + the Community Strengths Snapshot (the old neighborhood reflection was removed; any earlier answers stay in the database).
+
 ## Content editor notes
 
 - Most items above (answer keys, Module 5 cards and scenario, draft tables, wording) can now be fixed directly in **Admin → Module content**.

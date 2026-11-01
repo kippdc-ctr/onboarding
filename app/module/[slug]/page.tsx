@@ -17,6 +17,8 @@ import { Reflection } from "@/components/module/Reflection";
 import { Quiz, Feedback } from "@/components/module/Quiz";
 import { Matching } from "@/components/module/Matching";
 import { Scenario } from "@/components/module/Scenario";
+import { Worksheet } from "@/components/module/Worksheet";
+import { videoEmbed } from "@/lib/embed";
 import { CompleteButton } from "@/components/module/CompleteButton";
 import { OpenTracker } from "@/components/module/OpenTracker";
 
@@ -62,8 +64,9 @@ export default async function ModulePage({ params }: { params: Promise<{ slug: s
   for (const id of m.completion.checklist)
     reqs.push({ key: `chk:${id}`, label: `Tick "${items.find((i) => i.id === id)?.label ?? id}"`, done: !!st.checklist[id]?.checked });
   for (const id of m.completion.activities) {
-    const blk = m.sections.flatMap((s) => s.blocks).find((x) => (x.type === "matching" || x.type === "scenario") && x.activityId === id);
-    const label = blk?.type === "matching" ? `Finish "${blk.title}"` : "Save the scenario practice";
+    const blk = m.sections.flatMap((s) => s.blocks).find((x) => (x.type === "matching" || x.type === "scenario" || x.type === "worksheet") && x.activityId === id);
+    const label =
+      blk?.type === "matching" ? `Finish "${blk.title}"` : blk?.type === "worksheet" ? `Fill in "${blk.title ?? "the final task"}"` : "Save the scenario practice";
     reqs.push({ key: `act:${id}`, label, done: !!activities.get(id)?.completed_at });
   }
 
@@ -108,8 +111,54 @@ export default async function ModulePage({ params }: { params: Promise<{ slug: s
           </figure>
         );
       case "image":
-        // eslint-disable-next-line @next/next/no-img-element
-        return <img key={key} src={blk.src} alt={blk.alt} className="w-full rounded-2xl" />;
+        // Image slots stay hidden until an image is added in the content editor.
+        if (!blk.src) return null;
+        return (
+          <figure key={key}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={blk.src} alt={blk.alt} className="w-full rounded-2xl border border-gray-brand/20" />
+            {blk.caption && <figcaption className="mt-2 text-sm text-muted">{blk.caption}</figcaption>}
+          </figure>
+        );
+      case "resource": {
+        const verb = { video: "Watch", audio: "Listen", article: "Read", form: "Open" }[blk.kind];
+        const url = settings[blk.linkKey];
+        const tag = [blk.required === true ? "Required" : blk.required === false ? "Optional" : null, verb, blk.minutes ? `${blk.minutes} min` : null].filter(Boolean).join(" · ");
+        return (
+          <div key={key} className={`rounded-2xl border-2 p-4 ${blk.required ? "border-teal" : "border-gray-brand/30"}`}>
+            <p className="flex flex-wrap justify-between gap-2 text-sm font-bold uppercase tracking-wide">
+              <span className={blk.required ? "text-teal-ink" : "text-muted"}>{tag}</span>
+              {blk.source && <span className="text-muted normal-case tracking-normal">{blk.source}</span>}
+            </p>
+            <h3 className="h3 mt-1">{blk.title}</h3>
+            {blk.description && (
+              <p className="mt-1">
+                <RichText text={blk.description} />
+              </p>
+            )}
+            <div className="mt-3">
+              {blk.kind === "video" && videoEmbed(url) ? (
+                <VideoPlayer url={url} title={blk.title} />
+              ) : (
+                <LinkButton href={url} label={`${verb}: ${blk.source ?? "open"}`} kind={blk.kind} variant="small" />
+              )}
+            </div>
+          </div>
+        );
+      }
+      case "worksheet": {
+        const a = activities.get(blk.activityId);
+        return (
+          <Worksheet
+            key={key}
+            moduleSlug={m!.slug}
+            activityId={blk.activityId}
+            title={blk.title}
+            fields={blk.fields}
+            initial={((a?.payload_json as { answers?: Record<string, string> })?.answers ?? {}) as Record<string, string>}
+          />
+        );
+      }
       case "link":
         if (blk.kind === "video")
           return <VideoPlayer key={key} url={settings[blk.linkKey]} title={blk.label.replace(/^Watch:\s*/, "")} captionsUrl={blk.captionsLinkKey ? settings[blk.captionsLinkKey] : null} />;
@@ -295,12 +344,27 @@ export default async function ModulePage({ params }: { params: Promise<{ slug: s
               <StatusChip status={st.status} />
               <span>Due {formatDate(st.due, { weekday: true })}</span>
               <span className="text-muted">About {m.estimatedMinutes} minutes</span>
+              {m.indicator && <span className="text-muted">Evaluation indicator {m.indicator}</span>}
             </div>
             {meta?.soft_due_date && m.softDueNote && (
               <p className="mt-3 rounded-xl bg-yellow-wash p-3 font-semibold">{m.softDueNote.replace("{softDue}", formatDateTime(meta.soft_due_date))}</p>
             )}
             <p className="mt-3 text-sm text-muted">Your reflections and answers are visible only to you and the CTR team.</p>
           </header>
+
+          {m.sections.length > 4 && (
+            <nav aria-label="Sections in this module" className="mt-5">
+              <ul className="flex flex-wrap gap-2">
+                {m.sections.map((sec) => (
+                  <li key={sec.id}>
+                    <a href={`#${sec.id}`} className="block rounded-full border-2 border-teal px-3 py-1 text-sm font-semibold text-teal-ink hover:bg-teal-wash">
+                      {sec.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          )}
 
           <section className="card mt-6" aria-labelledby="obj-h">
             <h2 id="obj-h" className="h3">

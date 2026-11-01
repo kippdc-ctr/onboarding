@@ -148,8 +148,19 @@ export async function saveBlock(slug: string, sectionId: string, index: number, 
       value = { text: str(fd, "text"), cite: str(fd, "cite", 200) || undefined };
       break;
     case "image":
-      value = { alt: str(fd, "alt", 500) };
+      value = { src: cleanUrlOrPath(str(fd, "src", 2000)), alt: str(fd, "alt", 500), caption: str(fd, "caption", 500) || undefined };
       break;
+    case "resource": {
+      const minutes = Number(str(fd, "minutes", 6));
+      value = {
+        title: str(fd, "title", 300) || b.title,
+        description: str(fd, "description", 2000) || undefined,
+        source: str(fd, "source", 200) || undefined,
+        minutes: Number.isInteger(minutes) && minutes > 0 ? minutes : undefined,
+        required: fd.get("required") === "required" ? true : fd.get("required") === "optional" ? false : undefined,
+      };
+      break;
+    }
     case "table": {
       const rows = lines(fd, "table").map((l) => l.split("|").map((c) => c.trim()));
       if (rows.length < 2) fail(slug, anchor, "A table needs a header line and at least one row.");
@@ -216,7 +227,7 @@ export async function saveActivity(slug: string, activityId: string, fd: FormDat
   const m = moduleOr404(slug);
   const anchor = `act-${activityId}`;
   const a = originalFor(m, `activity:${activityId}`) as Block | undefined;
-  if (!a || (a.type !== "matching" && a.type !== "scenario")) fail(slug, anchor, "Unknown activity.");
+  if (!a || (a.type !== "matching" && a.type !== "scenario" && a.type !== "worksheet")) fail(slug, anchor, "Unknown activity.");
   const sample = fd.get("sample") === "on";
   if (a.type === "matching") {
     const categories = [...new Set(lines(fd, "categories"))];
@@ -233,6 +244,17 @@ export async function saveActivity(slug: string, activityId: string, fd: FormDat
     }
     if (cards.length < 2) fail(slug, anchor, "Add at least two cards.");
     await put(m, `activity:${activityId}`, { title: str(fd, "title", 300) || a.title, categories, cards, sample });
+  } else if (a.type === "worksheet") {
+    // Field ids stay fixed (saved answers hang off them); labels, help text, and dropdown choices are editable.
+    const fields = a.fields.map((f) => {
+      const next = { ...f, label: str(fd, `field_${f.id}_label`, 300) || f.label, help: str(fd, `field_${f.id}_help`, 1000) || undefined };
+      if (f.options) {
+        const opts = lines(fd, `field_${f.id}_options`);
+        next.options = opts.length ? opts : f.options;
+      }
+      return next;
+    });
+    await put(m, `activity:${activityId}`, JSON.parse(JSON.stringify({ title: str(fd, "title", 300) || a.title, fields })));
   } else {
     const scenario = str(fd, "scenario", 5000);
     if (!scenario) fail(slug, anchor, "The scenario can't be empty.");
@@ -293,6 +315,52 @@ export async function removeAudio(slug: string, sectionId: string) {
   await removeMediaFile(prev.audioUrl as string | undefined);
   await put(m, target, { ...orig, ...prev, audioUrl: "", audioTranscript: "" });
   done(slug, `sec-${sectionId}`, "Audio removed.");
+}
+
+// ---------- Image upload (for image blocks) ----------
+
+const IMAGE_TYPES: Record<string, string> = { png: "image/png", jpg: "image/jpeg", jpeg: "image/jpeg", webp: "image/webp", gif: "image/gif" };
+const MAX_IMAGE_BYTES = 10 * 1024 * 1024;
+
+export async function prepareImageUpload(
+  slug: string,
+  sectionId: string,
+  index: number,
+  file: { name: string; type: string; size: number },
+): Promise<{ ok: true; upload: PreparedUpload } | { ok: false; error: string }> {
+  await requireAdmin();
+  const m = moduleOr404(slug);
+  const b = originalFor(m, `block:${sectionId}:${index}`) as Block | undefined;
+  if (b?.type !== "image") return { ok: false, error: "Unknown image slot." };
+  const ext = (file.name.split(".").pop() ?? "").toLowerCase();
+  const type = IMAGE_TYPES[ext];
+  if (!type) return { ok: false, error: "Please choose an image: .png, .jpg, .webp, or .gif." };
+  if (!(file.size > 0) || file.size > MAX_IMAGE_BYTES) return { ok: false, error: "Images must be under 10 MB." };
+  const safe = file.name.replace(/\.[^.]+$/, "").replace(/[^\w-]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 40) || "image";
+  try {
+    return { ok: true, upload: await prepareUpload(`images/${randomUUID()}-${safe}.${ext}`, type) };
+  } catch (e) {
+    return { ok: false, error: (e as Error).message };
+  }
+}
+
+export async function finishImageUpload(
+  slug: string,
+  sectionId: string,
+  index: number,
+  info: { storagePath: string; publicUrl: string; filename: string; contentType: string; size: number },
+): Promise<{ ok: boolean }> {
+  await requireAdmin();
+  const m = moduleOr404(slug);
+  const target = `block:${sectionId}:${index}`;
+  const b = originalFor(m, target) as Block | undefined;
+  if (b?.type !== "image" || !/^images\/[\w.-]+$/.test(info.storagePath)) return { ok: false };
+  await sql`insert into media_files (storage_path, public_url, filename, content_type, size_bytes)
+            values (${info.storagePath}, ${info.publicUrl}, ${info.filename.slice(0, 200)}, ${info.contentType}, ${info.size})`;
+  const prev = await existing(slug, target);
+  await removeMediaFile(prev.src as string | undefined);
+  await put(m, target, JSON.parse(JSON.stringify({ src: info.publicUrl, alt: (prev.alt as string) ?? b.alt, caption: (prev.caption as string) ?? b.caption })));
+  return { ok: true };
 }
 
 /** Deletes an uploaded file we stored (never touches pasted links to other sites). */

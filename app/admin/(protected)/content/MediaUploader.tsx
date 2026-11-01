@@ -2,9 +2,25 @@
 
 import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
-import { finishAudioUpload, prepareAudioUpload } from "@/app/actions/content";
+import type { PreparedUpload } from "@/lib/storage";
 
-export function AudioUploader({ slug, sectionId, hasAudio }: { slug: string; sectionId: string; hasAudio: boolean }) {
+type FileInfo = { name: string; type: string; size: number };
+type UploadInfo = { storagePath: string; publicUrl: string; filename: string; contentType: string; size: number };
+
+/** Uploads one file straight to storage with a progress bar. `prepare` and `finish` are server actions bound to the target. */
+export function MediaUploader({
+  prepare,
+  finish,
+  label,
+  accept,
+  successText,
+}: {
+  prepare: (file: FileInfo) => Promise<{ ok: true; upload: PreparedUpload } | { ok: false; error: string }>;
+  finish: (info: UploadInfo) => Promise<{ ok: boolean }>;
+  label: string;
+  accept: string;
+  successText: string;
+}) {
   const router = useRouter();
   const input = useRef<HTMLInputElement>(null);
   const [progress, setProgress] = useState<number | null>(null);
@@ -15,7 +31,7 @@ export function AudioUploader({ slug, sectionId, hasAudio }: { slug: string; sec
     setError(null);
     setDone(false);
     setProgress(0);
-    const prep = await prepareAudioUpload(slug, sectionId, { name: file.name, type: file.type, size: file.size });
+    const prep = await prepare({ name: file.name, type: file.type, size: file.size });
     if (!prep.ok) {
       setError(prep.error);
       setProgress(null);
@@ -37,7 +53,7 @@ export function AudioUploader({ slug, sectionId, hasAudio }: { slug: string; sec
       setProgress(null);
       return;
     }
-    const fin = await finishAudioUpload(slug, sectionId, {
+    const fin = await finish({
       storagePath: u.storagePath,
       publicUrl: u.publicUrl,
       filename: file.name,
@@ -45,7 +61,7 @@ export function AudioUploader({ slug, sectionId, hasAudio }: { slug: string; sec
       size: file.size,
     });
     setProgress(null);
-    if (!fin.ok) setError("Uploaded, but couldn't attach it to this section. Try again.");
+    if (!fin.ok) setError("Uploaded, but couldn't attach it here. Try again.");
     else {
       setDone(true);
       if (input.current) input.current.value = "";
@@ -56,11 +72,11 @@ export function AudioUploader({ slug, sectionId, hasAudio }: { slug: string; sec
   return (
     <div className="space-y-2">
       <label className="block">
-        <span className="label">{hasAudio ? "Replace with a new audio file" : "Upload an audio file"} (.mp3, .m4a, .wav; up to 50 MB)</span>
+        <span className="label">{label}</span>
         <input
           ref={input}
           type="file"
-          accept=".mp3,.m4a,.wav,.ogg,.aac,audio/*"
+          accept={accept}
           disabled={progress !== null}
           onChange={(e) => e.target.files?.[0] && upload(e.target.files[0])}
           className="block w-full text-base file:mr-3 file:rounded-full file:border-2 file:border-teal file:bg-white file:px-4 file:py-2 file:font-semibold file:text-teal-ink"
@@ -73,7 +89,7 @@ export function AudioUploader({ slug, sectionId, hasAudio }: { slug: string; sec
       )}
       <p aria-live="polite" className="text-sm">
         {progress !== null && <span className="text-muted">Uploading… {progress}%</span>}
-        {done && <span className="font-semibold text-teal-ink">✓ Uploaded. Residents can listen now.</span>}
+        {done && <span className="font-semibold text-teal-ink">✓ {successText}</span>}
         {error && <span className="font-semibold text-coral-ink">{error}</span>}
       </p>
     </div>

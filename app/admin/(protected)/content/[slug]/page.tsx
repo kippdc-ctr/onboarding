@@ -7,6 +7,10 @@ import { videoEmbed } from "@/lib/embed";
 import { storageMode } from "@/lib/storage";
 import type { OverrideStatus } from "@/lib/contentOverrides";
 import {
+  finishAudioUpload,
+  finishImageUpload,
+  prepareAudioUpload,
+  prepareImageUpload,
   removeAudio,
   resetTarget,
   saveActivity,
@@ -18,7 +22,7 @@ import {
 } from "@/app/actions/content";
 import { Flash } from "@/components/Flash";
 import { AudioPlayer, VideoPlayer } from "@/components/Media";
-import { AudioUploader } from "../AudioUploader";
+import { MediaUploader } from "../MediaUploader";
 import { ScrollToSaved } from "../ScrollToSaved";
 import { Suspense } from "react";
 
@@ -138,12 +142,109 @@ export default async function EditModule({ params, searchParams }: { params: Pro
         );
       case "image":
         return wrap(
-          "Image",
-          <form action={action}>
-            <input name="alt" defaultValue={blk.alt} className="input" aria-label="Image description (alt text)" />
+          blk.src ? "Image" : "Image (not shown to residents until you add one)",
+          <div className="space-y-3">
+            {blk.src ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={blk.src} alt={blk.alt} className="max-h-64 rounded-xl border border-gray-brand/30" />
+            ) : (
+              blk.sourceNote && <p className="rounded-lg bg-yellow-wash p-2 text-sm">Where to find it: {blk.sourceNote}</p>
+            )}
+            <MediaUploader
+              prepare={prepareImageUpload.bind(null, slug, sec.id, i)}
+              finish={finishImageUpload.bind(null, slug, sec.id, i)}
+              label={`${blk.src ? "Replace the image" : "Upload an image"} (.png, .jpg, .webp; up to 10 MB)`}
+              accept=".png,.jpg,.jpeg,.webp,.gif,image/*"
+              successText="Uploaded. Residents can see it now."
+            />
+            <form action={action} className="space-y-2">
+              <label className="block">
+                <span className="label">…or paste an image link</span>
+                <input name="src" defaultValue={blk.src} placeholder="https://…/image.png" className="input" />
+              </label>
+              <label className="block">
+                <span className="label">Description for screen readers (alt text)</span>
+                <input name="alt" defaultValue={blk.alt} className="input" />
+              </label>
+              <label className="block">
+                <span className="label">Caption (shown under the image)</span>
+                <input name="caption" defaultValue={blk.caption ?? ""} className="input" />
+              </label>
+              <SaveBar />
+            </form>
+          </div>,
+        );
+      case "resource":
+        return wrap(
+          blk.required === true ? "Required resource" : blk.required === false ? "Optional resource" : "Resource",
+          <form action={action} className="space-y-2">
+            <label className="block">
+              <span className="label">Title</span>
+              <input name="title" defaultValue={blk.title} className="input" />
+            </label>
+            <label className="block">
+              <span className="label">Description</span>
+              <textarea name="description" defaultValue={blk.description ?? ""} rows={2} className="input" />
+            </label>
+            <div className="grid gap-2 md:grid-cols-[1fr_8rem]">
+              <label className="block">
+                <span className="label">Source (e.g. PBS NewsHour)</span>
+                <input name="source" defaultValue={blk.source ?? ""} className="input" />
+              </label>
+              <label className="block">
+                <span className="label">Minutes</span>
+                <input name="minutes" type="number" min={1} defaultValue={blk.minutes ?? ""} className="input" />
+              </label>
+            </div>
+            <UrlField settingKey={blk.linkKey} value={settings[blk.linkKey] ?? ""} video={blk.kind === "video"} />
+            <label className="block max-w-xs">
+              <span className="label">Label</span>
+              <select name="required" defaultValue={blk.required === true ? "required" : blk.required === false ? "optional" : ""} className="input">
+                <option value="">No label</option>
+                <option value="required">Required</option>
+                <option value="optional">Optional</option>
+              </select>
+            </label>
             <SaveBar />
           </form>,
         );
+      case "worksheet": {
+        const t = `activity:${blk.activityId}`;
+        return (
+          <div key={anchor} id={`act-${blk.activityId}`} className="scroll-mt-24 rounded-xl border-2 border-teal-light p-3">
+            <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
+              <span className="text-sm font-bold uppercase tracking-wide text-muted">Worksheet</span>
+              <EditState st={st.get(t)} slug={slug} target={t} anchor={`act-${blk.activityId}`} />
+            </div>
+            <form action={saveActivity.bind(null, slug, blk.activityId)} className="space-y-3">
+              <label className="block">
+                <span className="label">Title</span>
+                <input name="title" defaultValue={blk.title ?? ""} className="input" />
+              </label>
+              {blk.fields.map((f, fi) => (
+                <fieldset key={f.id} className="space-y-2 rounded-lg bg-sand p-2">
+                  <legend className="text-sm font-semibold">
+                    Box {fi + 1}
+                    {f.optional ? " (optional)" : ""}
+                  </legend>
+                  <input name={`field_${f.id}_label`} defaultValue={f.label} className="input" aria-label={`Box ${fi + 1} label`} />
+                  <input name={`field_${f.id}_help`} defaultValue={f.help ?? ""} placeholder="Helper text (optional)" className="input" aria-label={`Box ${fi + 1} helper text`} />
+                  {f.options && (
+                    <textarea
+                      name={`field_${f.id}_options`}
+                      defaultValue={f.options.join("\n")}
+                      rows={Math.min(10, f.options.length + 1)}
+                      className="input"
+                      aria-label={`Box ${fi + 1} dropdown choices, one per line`}
+                    />
+                  )}
+                </fieldset>
+              ))}
+              <SaveBar label="Save worksheet" />
+            </form>
+          </div>
+        );
+      }
       case "table":
         return wrap(
           "Table",
@@ -462,7 +563,13 @@ export default async function EditModule({ params, searchParams }: { params: Pro
                     in the meantime.
                   </p>
                 ) : (
-                  <AudioUploader slug={slug} sectionId={sec.id} hasAudio={!!sec.audioUrl} />
+                  <MediaUploader
+                    prepare={prepareAudioUpload.bind(null, slug, sec.id)}
+                    finish={finishAudioUpload.bind(null, slug, sec.id)}
+                    label={`${sec.audioUrl ? "Replace with a new audio file" : "Upload an audio file"} (.mp3, .m4a, .wav; up to 50 MB)`}
+                    accept=".mp3,.m4a,.wav,.ogg,.aac,audio/*"
+                    successText="Uploaded. Residents can listen now."
+                  />
                 )}
                 {sec.audioUrl && (
                   <form action={removeAudio.bind(null, slug, sec.id)} className="mt-2">

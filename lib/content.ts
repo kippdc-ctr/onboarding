@@ -16,7 +16,7 @@ export type Block =
   | { type: "list"; items: string[] }
   | { type: "callout"; text: string; title?: string }
   | { type: "quote"; text: string; cite?: string }
-  | { type: "image"; src: string; alt: string }
+  | { type: "image"; src: string; alt: string; caption?: string; sourceNote?: string }
   | { type: "link"; label: string; linkKey: string; kind?: LinkKind; captionsLinkKey?: string }
   | { type: "cards"; cards: { title: string; subtitle?: string; linkKey: string; kind?: LinkKind }[] }
   | { type: "table"; columns: string[]; rows: string[][]; sample?: boolean }
@@ -25,7 +25,22 @@ export type Block =
   | { type: "quiz" }
   | { type: "matching"; activityId: string; title: string; categories: string[]; cards: { id: string; text: string; answer: string }[]; sample?: boolean }
   | { type: "scenario"; activityId: string; scenario: string; prompts: { id: string; prompt: string }[]; sample?: boolean }
-  | { type: "form"; formSlug: string; checklistItemId: string; label: string };
+  | { type: "form"; formSlug: string; checklistItemId: string; label: string }
+  | {
+      /** A card for an outside resource: "Required · Listen · 31 min" + source, title, description, button. */
+      type: "resource";
+      linkKey: string;
+      kind: LinkKind;
+      title: string;
+      description?: string;
+      source?: string;
+      minutes?: number;
+      required?: boolean;
+    }
+  | { type: "worksheet"; activityId: string; title?: string; fields: WorksheetField[] };
+
+/** One answer box in a worksheet. `options` makes it a dropdown. */
+export type WorksheetField = { id: string; label: string; help?: string; options?: string[]; optional?: boolean; rows?: number };
 
 export type ChecklistItem = { id: string; label: string; description?: string; linkKey?: string; optional?: boolean };
 
@@ -54,6 +69,8 @@ export type ModuleContent = {
   number: number;
   title: string;
   badge?: string;
+  /** Evaluation indicator this module supports, e.g. "EP.P.2". */
+  indicator?: string;
   description: string;
   estimatedMinutes: number;
   geniallyLinkKey: string;
@@ -119,9 +136,11 @@ export function moduleReflectionPrompts(m: ModuleContent): { promptId: string; p
   return out;
 }
 
+export type ActivityBlock = Extract<Block, { type: "matching" | "scenario" | "worksheet" }>;
+
 export function moduleActivities(m: ModuleContent) {
-  const out: (Extract<Block, { type: "matching" }> | Extract<Block, { type: "scenario" }>)[] = [];
-  for (const s of m.sections) for (const b of s.blocks) if (b.type === "matching" || b.type === "scenario") out.push(b);
+  const out: ActivityBlock[] = [];
+  for (const s of m.sections) for (const b of s.blocks) if (b.type === "matching" || b.type === "scenario" || b.type === "worksheet") out.push(b);
   return out;
 }
 
@@ -136,6 +155,7 @@ export function contentLinkKeys(): { key: string; where: string }[] {
           out.push({ key: b.linkKey, where: `Module ${m.number}: ${s.title}` });
           if (b.captionsLinkKey) out.push({ key: b.captionsLinkKey, where: `Module ${m.number}: ${s.title} (captions)` });
         }
+        if (b.type === "resource") out.push({ key: b.linkKey, where: `Module ${m.number}: ${s.title}` });
         if (b.type === "cards") for (const c of b.cards) out.push({ key: c.linkKey, where: `Module ${m.number}: ${s.title}` });
         if (b.type === "checklist") for (const i of b.items) if (i.linkKey) out.push({ key: i.linkKey, where: `Module ${m.number}: ${s.title}` });
       }
@@ -155,5 +175,6 @@ export function sampleContent(modules: ModuleContent[] = MODULES): string[] {
       for (const b of s.blocks)
         if ((b.type === "matching" || b.type === "scenario" || b.type === "table") && b.sample)
           out.push(`Module ${m.number}: ${s.title}${b.type === "matching" ? ` (${b.title})` : ""}`);
+        else if (b.type === "image" && !b.src) out.push(`Module ${m.number}: ${s.title}: image still needed (${b.caption ?? b.alt})`);
   return out;
 }

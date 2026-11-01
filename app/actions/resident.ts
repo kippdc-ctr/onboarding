@@ -114,6 +114,15 @@ export async function saveActivity(moduleSlug: string, activityId: string, paylo
     for (const c of act.cards) if (typeof raw[c.id] === "string" && act.categories.includes(raw[c.id] as string)) clean[c.id] = raw[c.id] as string;
     complete = act.cards.every((c) => clean[c.id] === c.answer);
     payload = { answers: clean };
+  } else if (act.type === "worksheet") {
+    const raw = (payload.answers ?? {}) as Record<string, unknown>;
+    clean = {};
+    for (const f of act.fields) {
+      const v = String(raw[f.id] ?? "").slice(0, MAX_TEXT);
+      clean[f.id] = f.options && v && !f.options.includes(v) ? "" : v;
+    }
+    complete = act.fields.every((f) => f.optional || clean[f.id].trim().length > 0);
+    payload = { answers: clean };
   } else {
     const raw = (payload.answers ?? {}) as Record<string, unknown>;
     clean = {};
