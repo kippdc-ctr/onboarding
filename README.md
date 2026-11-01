@@ -49,7 +49,9 @@ You can also run the database steps by hand: `npm run db:migrate`, `npm run db:s
 - **"Setup isn't finished" page:** add the settings it names in Vercel → Settings → Environment Variables, then **Redeploy**.
   New or changed settings only take effect after a redeploy.
 - **Server logs:** Vercel → your project → **Logs**. Search for the error reference shown on the error page.
-- **Supabase paused:** free Supabase projects pause after a week with no traffic. Restore the project in the Supabase dashboard.
+- **Supabase paused:** free Supabase projects pause after a week with no database activity. Restore the project in the Supabase dashboard
+  (Vercel → Storage → your database → Open in Supabase → Restore). A daily Vercel cron job (`vercel.json` → `/api/keepalive`)
+  runs a tiny query to keep the project awake.
 
 ## Everyday admin tasks
 
