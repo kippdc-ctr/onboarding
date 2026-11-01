@@ -3,7 +3,7 @@
   "number": 1,
   "title": "Our City, Our Schools",
   "description": "Before you teach in Washington, DC, learn the story of the place and the schools your students come from.",
-  "estimatedMinutes": 68,
+  "estimatedMinutes": 65,
   "indicator": "EP.P.2",
   "geniallyLinkKey": "url.genially.our-city-our-schools",
   "objectives": [
@@ -24,7 +24,7 @@
         },
         {
           "type": "callout",
-          "title": "Your plan for the 68 minutes",
+          "title": "Your plan for the 65 minutes",
           "text": "Content (47 min), knowledge check (6), mindset check (5), final task (10). The audio episode is required and takes 31 minutes, so plan to listen in one sitting."
         }
       ]
@@ -123,7 +123,7 @@
         },
         {
           "type": "text",
-          "text": "By the 1990s, DC Public Schools was in crisis. Reports described a system with crumbling buildings, patronage hiring, mismanaged money, and unreliable basic services. In 1996 a federal control board labeled it \"educationally and managerially bankrupt.\" Decades of disinvestment, much of it in the neighborhoods that most needed support, had caught up with the children in them."
+          "text": "By the 1990s, DC Public Schools was in crisis. Reports described a system with crumbling buildings, patronage hiring, mismanaged money, and unreliable basic services. In 1996 the federal control board that oversaw DC's finances issued a report calling the schools \"in a state of crisis,\" and the system came to be described as \"educationally and managerially bankrupt.\" Decades of disinvestment, much of it in the neighborhoods that most needed support, had caught up with the children in them."
         },
         {
           "type": "heading",
