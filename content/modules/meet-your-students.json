@@ -16,7 +16,7 @@
   "sections": [
     {
       "id": "start",
-      "title": "Start here",
+      "title": "Start Here",
       "audioUrl": "",
       "blocks": [
         {
@@ -36,7 +36,7 @@
     },
     {
       "id": "mindset-before",
-      "title": "Mindset check: before",
+      "title": "Mindset Check: Before",
       "blocks": [
         {
           "type": "text",
@@ -45,19 +45,22 @@
         {
           "type": "mindset",
           "activityId": "m4s-mindset-before",
-          "sample": true,
           "statements": [
             {
               "id": "s1",
-              "text": "I can describe how students in my grade band typically think, feel, and grow."
+              "text": "Student behavior communicates a need."
             },
             {
               "id": "s2",
-              "text": "When a student's behavior puzzles me, I ask what need it might be communicating."
+              "text": "Typical development for a child’s age is not misbehavior."
             },
             {
               "id": "s3",
-              "text": "I can name routines students in my grade band can carry out on their own."
+              "text": "Students at every age need to feel safe before they will take academic risks."
+            },
+            {
+              "id": "s4",
+              "text": "My students can take on more responsibility than I might first expect."
             }
           ]
         }
@@ -65,55 +68,214 @@
     },
     {
       "id": "core",
-      "title": "Part 1. The shared core: how children learn",
+      "title": "Part 1. The Shared Core: How Children Learn",
       "audioUrl": "",
       "blocks": [
         {
           "type": "heading",
-          "text": "Development is a range"
+          "text": "Development Is a Range"
         },
         {
           "type": "text",
-          "text": "Children develop across four connected domains. Knowing the typical range for each helps you tell ordinary behavior from a real concern."
+          "text": "Children develop across four connected domains, the same four the Praxis PLT uses. Knowing the typical range for each helps you tell ordinary behavior from a real concern."
         },
         {
           "type": "table",
           "columns": [
             "Domain",
-            "What it covers",
-            "What it can look like"
+            "What It Covers",
+            "What It Can Look Like"
           ],
           "rows": [
             [
-              "Cognitive",
-              "Thinking, memory, problem solving, attention",
+              "1. Cognitive",
+              "Thinking, memory, problem solving, and attention",
               "A first grader counts on fingers; a seventh grader starts to argue both sides of an issue."
             ],
             [
-              "Social-emotional",
-              "Relationships, identity, managing feelings",
-              "A four-year-old needs an adult to calm down; a ninth grader cares intensely about how peers see them."
-            ],
-            [
-              "Physical",
-              "Gross and fine motor skills, energy, growth, sleep",
+              "2. Physical",
+              "Gross and fine motor skills, energy, growth, and sleep",
               "A kindergartener needs to move every few minutes; a tenth grader is exhausted by an early start time."
             ],
             [
-              "Language",
-              "Vocabulary, grammar, listening, speaking, reading, writing",
-              "A preschooler says “I goed”; a middle schooler code-switches between friends and class."
+              "3. Social",
+              "Relationships and identity, including emotional development and managing feelings",
+              "A four-year-old needs an adult to calm down; a ninth grader cares intensely about how peers see them."
+            ],
+            [
+              "4. Moral",
+              "Reasoning about rules, fairness, and right and wrong",
+              "A young child follows a rule to avoid punishment; an older student cites fairness and shared expectations."
             ]
           ]
         },
         {
           "type": "callout",
-          "title": "Typical or a concern?",
+          "title": "Typical or a Concern?",
           "text": "Ask three questions. Is this common for the age? Does it persist over weeks and across settings? Does it get in the way of learning or relationships? If the answers point toward a concern, tell your mentor and the support team. Your job is to notice and report, not to diagnose."
         },
         {
+          "type": "callout",
+          "title": "Where Did Emotional and Language Development Go?",
+          "text": "The PLT groups emotional development under social development, and it assesses language within cognitive development and learner differences (Part 2). You will still hear “social-emotional” and “language” in classrooms, so keep using them with your students."
+        },
+        {
           "type": "heading",
-          "text": "Learning theories in one table"
+          "text": "Watch: Five Videos on Development"
+        },
+        {
+          "type": "text",
+          "text": "These five short videos show development as it looks in real children. Emotional development is part of social development on the PLT, so the emotional video sits with the social one. Watch all five, and as you watch, jot down one milestone you would expect to see in your own grade band for each. You will use those notes in the next activity."
+        },
+        {
+          "type": "resource",
+          "linkKey": "url.mys.video_cognitive",
+          "kind": "video",
+          "title": "Cognitive Development",
+          "description": "Watch for how thinking moves from concrete to abstract (Piaget) and how support helps (Vygotsky).",
+          "source": "Video",
+          "required": true,
+          "captionsLinkKey": "url.mys.video_cognitive_captions"
+        },
+        {
+          "type": "resource",
+          "linkKey": "url.mys.video_physical",
+          "kind": "video",
+          "title": "Physical Development",
+          "description": "Watch for growth in motor skills, the need for movement, and the changes of puberty.",
+          "source": "Video",
+          "required": true,
+          "captionsLinkKey": "url.mys.video_physical_captions"
+        },
+        {
+          "type": "resource",
+          "linkKey": "url.mys.video_social",
+          "kind": "video",
+          "title": "Social Development",
+          "description": "Watch for how friendships, play, and the importance of peers change with age.",
+          "source": "Video",
+          "required": true,
+          "captionsLinkKey": "url.mys.video_social_captions"
+        },
+        {
+          "type": "resource",
+          "linkKey": "url.mys.video_emotional",
+          "kind": "video",
+          "title": "Emotional Development (Part of Social)",
+          "description": "Part of social development on the PLT. Watch for how children name feelings and learn to calm themselves, and what adults do to help.",
+          "source": "Video",
+          "required": true,
+          "captionsLinkKey": "url.mys.video_emotional_captions"
+        },
+        {
+          "type": "resource",
+          "linkKey": "url.mys.video_moral",
+          "kind": "video",
+          "title": "Moral Development",
+          "description": "Watch for how reasoning about rules and fairness shifts from avoiding punishment to weighing shared principles (Kohlberg).",
+          "source": "Video",
+          "required": true,
+          "captionsLinkKey": "url.mys.video_moral_captions"
+        },
+        {
+          "type": "heading",
+          "text": "Try It: Sort the Milestones"
+        },
+        {
+          "type": "text",
+          "text": "Sort each milestone into one of the four domains. Emotional milestones belong under social. Ages are typical ranges, not deadlines. Not graded."
+        },
+        {
+          "type": "matching",
+          "activityId": "m4s-sort-milestones",
+          "title": "Sort the Milestones",
+          "categories": [
+            "Cognitive",
+            "Physical",
+            "Social",
+            "Moral"
+          ],
+          "cards": [
+            {
+              "id": "ms1",
+              "text": "Plays side by side with peers, then starts taking turns (about 3 to 4)",
+              "answer": "Social"
+            },
+            {
+              "id": "ms2",
+              "text": "Forms close friendships and cares about group rules (about 6 to 10)",
+              "answer": "Social"
+            },
+            {
+              "id": "ms3",
+              "text": "Peer belonging becomes central, and what friends think matters a great deal (about 11 to 14)",
+              "answer": "Social"
+            },
+            {
+              "id": "ms4",
+              "text": "Names basic feelings such as happy, sad, and mad, with an adult’s help (about 3 to 5)",
+              "answer": "Social"
+            },
+            {
+              "id": "ms5",
+              "text": "Uses simple strategies to calm down, such as taking a breath (about 6 to 9)",
+              "answer": "Social"
+            },
+            {
+              "id": "ms6",
+              "text": "Has intense mood shifts and begins to manage them more independently (about 12 to 15)",
+              "answer": "Social"
+            },
+            {
+              "id": "ms7",
+              "text": "Follows rules to avoid getting in trouble (preconventional, about 4 to 9)",
+              "answer": "Moral"
+            },
+            {
+              "id": "ms8",
+              "text": "Follows rules to be seen as good and to keep others’ approval (conventional, about 10 through adolescence)",
+              "answer": "Moral"
+            },
+            {
+              "id": "ms9",
+              "text": "Weighs fairness and shared principles, sometimes beyond the rules (postconventional, later adolescence or adulthood, and not everyone)",
+              "answer": "Moral"
+            },
+            {
+              "id": "ms10",
+              "text": "Hops, climbs, and gains control with crayons and scissors (about 3 to 5)",
+              "answer": "Physical"
+            },
+            {
+              "id": "ms11",
+              "text": "Grows steadily, coordination improves, and movement is needed often (about 6 to 11)",
+              "answer": "Physical"
+            },
+            {
+              "id": "ms12",
+              "text": "Growth spurts and puberty begin, and sleep needs are high (about 11 to 15)",
+              "answer": "Physical"
+            },
+            {
+              "id": "ms13",
+              "text": "Counts objects and understands the last number said is the total (about 4 to 5)",
+              "answer": "Cognitive"
+            },
+            {
+              "id": "ms14",
+              "text": "Solves multi-step problems with concrete objects or examples (about 7 to 11)",
+              "answer": "Cognitive"
+            },
+            {
+              "id": "ms15",
+              "text": "Argues both sides of an issue using abstract ideas (about 12 and older)",
+              "answer": "Cognitive"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Learning Theories in One Table"
         },
         {
           "type": "text",
@@ -192,127 +354,7 @@
         },
         {
           "type": "heading",
-          "text": "Watch: five domains of development"
-        },
-        {
-          "type": "text",
-          "text": "These five short videos show development as it looks in real children. Watch all five, and as you watch, jot down one milestone you would expect to see in your own grade band for each domain. You will use those notes in the next activity."
-        },
-        {
-          "type": "resource",
-          "linkKey": "url.mys.video_social",
-          "kind": "video",
-          "title": "Social development",
-          "description": "Watch for how friendships, play, and the importance of peers change with age.",
-          "source": "Video",
-          "required": true,
-          "captionsLinkKey": "url.mys.video_social_captions"
-        },
-        {
-          "type": "resource",
-          "linkKey": "url.mys.video_emotional",
-          "kind": "video",
-          "title": "Emotional development",
-          "description": "Watch for how children name feelings and learn to calm themselves, and what adults do to help.",
-          "source": "Video",
-          "required": true,
-          "captionsLinkKey": "url.mys.video_emotional_captions"
-        },
-        {
-          "type": "resource",
-          "linkKey": "url.mys.video_moral",
-          "kind": "video",
-          "title": "Moral development",
-          "description": "Watch for how reasoning about rules and fairness shifts from avoiding punishment to weighing shared principles (Kohlberg).",
-          "source": "Video",
-          "required": true,
-          "captionsLinkKey": "url.mys.video_moral_captions"
-        },
-        {
-          "type": "resource",
-          "linkKey": "url.mys.video_physical",
-          "kind": "video",
-          "title": "Physical development",
-          "description": "Watch for growth in motor skills, the need for movement, and the changes of puberty.",
-          "source": "Video",
-          "required": true,
-          "captionsLinkKey": "url.mys.video_physical_captions"
-        },
-        {
-          "type": "resource",
-          "linkKey": "url.mys.video_cognitive",
-          "kind": "video",
-          "title": "Cognitive development",
-          "description": "Watch for how thinking moves from concrete to abstract (Piaget) and how support helps (Vygotsky).",
-          "source": "Video",
-          "required": true,
-          "captionsLinkKey": "url.mys.video_cognitive_captions"
-        },
-        {
-          "type": "heading",
-          "text": "Try it: sort the milestones"
-        },
-        {
-          "type": "text",
-          "text": "Sort each milestone into the domain it belongs to. Ages are typical ranges, not deadlines. Not graded."
-        },
-        {
-          "type": "matching",
-          "activityId": "m4s-sort-milestones",
-          "title": "Sort the milestones",
-          "sample": true,
-          "categories": [
-            "Cognitive",
-            "Social-emotional",
-            "Physical",
-            "Language"
-          ],
-          "cards": [
-            {
-              "id": "cog1",
-              "text": "A first grader counts on fingers.",
-              "answer": "Cognitive"
-            },
-            {
-              "id": "soc2",
-              "text": "A ninth grader cares intensely about how peers see them.",
-              "answer": "Social-emotional"
-            },
-            {
-              "id": "phy2",
-              "text": "A tenth grader is exhausted by an early start time.",
-              "answer": "Physical"
-            },
-            {
-              "id": "soc1",
-              "text": "A four-year-old needs an adult to calm down.",
-              "answer": "Social-emotional"
-            },
-            {
-              "id": "lan1",
-              "text": "A preschooler says “I goed”.",
-              "answer": "Language"
-            },
-            {
-              "id": "cog2",
-              "text": "A seventh grader starts to argue both sides of an issue.",
-              "answer": "Cognitive"
-            },
-            {
-              "id": "phy1",
-              "text": "A kindergartener needs to move every few minutes.",
-              "answer": "Physical"
-            },
-            {
-              "id": "lan2",
-              "text": "A middle schooler code-switches between friends and class.",
-              "answer": "Language"
-            }
-          ]
-        },
-        {
-          "type": "heading",
-          "text": "Try it: match the idea"
+          "text": "Try It: Match the Idea"
         },
         {
           "type": "text",
@@ -320,31 +362,30 @@
         },
         {
           "type": "reveal",
-          "sample": true,
           "inputLabel": "Which idea is this?",
           "revealLabel": "Reveal the answer",
           "items": [
             {
-              "statement": "A student solves a problem when you ask guiding questions, then solves a similar one alone.",
-              "reveal": "Vygotsky"
+              "statement": "A student earns a point each time she starts work within one minute, and starts work faster each day.",
+              "reveal": "Behaviorism. The point reinforces the behavior, so it is more likely to recur."
             },
             {
-              "statement": "A hungry or frightened student cannot give full attention to a lesson.",
-              "reveal": "Maslow"
+              "statement": "A fifth grader can solve fraction problems with a number line beside her but not on a blank page.",
+              "reveal": "Zone of proximal development. She can do it with support but not yet alone; scaffolding fits."
             },
             {
-              "statement": "Students sort shapes and discover the rule for themselves before you name it.",
-              "reveal": "Bruner"
+              "statement": "A teenager changes friend groups and clothes while deciding who he is.",
+              "reveal": "Erikson’s identity versus role confusion, the central task of adolescence."
             },
             {
-              "statement": "A student watches a peer solve a problem and then tries it, because success looks possible.",
-              "reveal": "Bandura"
+              "statement": "A student tries a new strategy after watching a classmate use it successfully.",
+              "reveal": "Bandura’s observational learning and self-efficacy: seeing it work makes “I can” feel possible."
             }
           ]
         },
         {
           "type": "heading",
-          "text": "Behavior is communication"
+          "text": "Behavior Is Communication"
         },
         {
           "type": "text",
@@ -367,14 +408,14 @@
           "type": "resource",
           "linkKey": "url.mys.quick_walk",
           "kind": "video",
-          "title": "Taking a quick walk to de-escalate",
+          "title": "Taking a Quick Walk to De-Escalate",
           "description": "A teacher uses a calm walk to reset with a student. Watch for what she does before she says anything.",
           "source": "Edutopia",
           "required": false
         },
         {
           "type": "heading",
-          "text": "Routines, rules, and independence"
+          "text": "Routines, Rules, and Independence"
         },
         {
           "type": "text",
@@ -394,7 +435,7 @@
         },
         {
           "type": "printable",
-          "title": "PLT Starter Sheet: vocabulary and exam categories",
+          "title": "PLT Starter Sheet: Vocabulary and Exam Categories",
           "intro": "**Exam categories:** Students as Learners · Instructional Process · Assessment · Professional Development, Leadership, and Community. This section covers the first and previews motivation and learning environment topics.",
           "items": [
             "**Behaviorism / Skinner:** reinforced behavior recurs.",
@@ -407,6 +448,7 @@
             "**Bruner:** discovery learning, scaffolding.",
             "**Bandura:** observational learning, self-efficacy.",
             "**Also:** metacognition, self-regulation, intrinsic and extrinsic motivation.",
+            "**Domains:** cognitive, physical, social (including emotional), moral.",
             "**Every learner:** English learner stages; IDEA, FAPE, LRE, IEP; Section 504; FERPA."
           ]
         }
@@ -414,12 +456,12 @@
     },
     {
       "id": "every-learner",
-      "title": "Part 2. Every learner",
+      "title": "Part 2. Every Learner",
       "audioUrl": "",
       "blocks": [
         {
           "type": "heading",
-          "text": "What students bring"
+          "text": "What Students Bring"
         },
         {
           "type": "text",
@@ -432,7 +474,7 @@
         },
         {
           "type": "heading",
-          "text": "English learners acquire language in stages"
+          "text": "English Learners Acquire Language in Stages"
         },
         {
           "type": "text",
@@ -475,7 +517,7 @@
         },
         {
           "type": "heading",
-          "text": "Areas of exceptionality"
+          "text": "Areas of Exceptionality"
         },
         {
           "type": "text",
@@ -483,7 +525,7 @@
         },
         {
           "type": "heading",
-          "text": "The laws behind the supports"
+          "text": "The Laws Behind the Supports"
         },
         {
           "type": "table",
@@ -534,74 +576,262 @@
     {
       "id": "branch-ece",
       "band": "ece",
-      "title": "Part 3. Your grade band: ECE",
+      "title": "Part 3. Your Grade Band: ECE",
       "audioUrl": "",
       "blocks": [
         {
           "type": "text",
-          "text": "Every branch has the same four parts, and each includes a classroom example. Read yours closely, then skim the optional neighboring-band review below if you may be placed outside your certification band."
+          "text": "Every branch has the same four parts, and each includes a classroom example. Ages: about 3 to 5. Your exam: Early Childhood PLT. Read yours closely, then skim the optional neighboring-band review if you may be placed outside your certification band."
+        },
+        {
+          "type": "heading",
+          "text": "1. Who They Are"
+        },
+        {
+          "type": "text",
+          "text": "Young children learn through play and hands-on exploration, and imaginative thinking is part of how they make sense of the world. Their attention for adult-led tasks is short. Feelings are big and still need an adult to help calm them (co-regulation). Fine motor skills are developing, and they need to move often. Vocabulary grows fast; “I goed” shows a child applying a grammar rule."
         },
         {
           "type": "callout",
-          "title": "Coming soon",
-          "text": "The four parts of the ECE branch, with a classroom example, will appear here."
+          "title": "Classroom Example",
+          "text": "Mateo bursts into tears when the block tower falls. His teacher crouches beside him, says, “You worked hard on that. You feel sad,” and sits with him until his breathing slows. Then they rebuild together."
+        },
+        {
+          "type": "heading",
+          "text": "2. What Helps Them Feel Known (CC.P.2)"
+        },
+        {
+          "type": "text",
+          "text": "Greet every child by name at their eye level. Learn the songs, words, and routines their families use. Name feelings out loud (“You look frustrated”) and stay close while a child recovers."
+        },
+        {
+          "type": "callout",
+          "title": "Classroom Example",
+          "text": "At drop-off, Ms. Ali kneels, says “Good morning, Ana,” and does the same three-step goodbye each day: a hug, a wave at the window, and a puzzle at the table. By the second week Ana waves first."
+        },
+        {
+          "type": "heading",
+          "text": "3. What They Can Do on Their Own (CC.P.3)"
+        },
+        {
+          "type": "text",
+          "text": "With practice, most four-year-olds can hang up a backpack, wash hands using a picture sequence, follow one or two steps given with a visual, and clean up to a song. Teach each rule as a picture-supported step, such as “Walking feet,” and practice it before you need it."
+        },
+        {
+          "type": "callout",
+          "title": "Classroom Example",
+          "text": "A picture chart by the sink shows five steps. Ms. Ali practices them with the whole class on day one, then points at the picture instead of repeating the directions."
+        },
+        {
+          "type": "heading",
+          "text": "4. What Joy and High Expectations Sound Like (CC.A.6 Preview)"
+        },
+        {
+          "type": "text",
+          "text": "Use a warm, clear voice. Make praise specific (“You put every block on the shelf”) and pair it with a thumbs up, a smile, or moving close. Hold high expectations with support: “Let’s try the first one together, then you try the next.”"
+        },
+        {
+          "type": "callout",
+          "title": "Classroom Example",
+          "text": "A child says, “I can’t do it.” His teacher answers, “I’ll sit with you. We’ll do the first one together, and then it’s your turn.” He finishes the second one alone and looks up for a thumbs up."
         }
       ]
     },
     {
       "id": "branch-elementary",
       "band": "elementary",
-      "title": "Part 3. Your grade band: Elementary",
+      "title": "Part 3. Your Grade Band: Elementary",
       "audioUrl": "",
       "blocks": [
         {
           "type": "text",
-          "text": "Every branch has the same four parts, and each includes a classroom example. Read yours closely, then skim the optional neighboring-band review below if you may be placed outside your certification band."
+          "text": "Every branch has the same four parts, and each includes a classroom example. Ages: about 5 to 11. Your exam: Early Childhood PLT. Read yours closely, then skim the optional neighboring-band review if you may be placed outside your certification band."
+        },
+        {
+          "type": "heading",
+          "text": "1. Who They Are"
+        },
+        {
+          "type": "text",
+          "text": "Elementary students think concretely: they reason best with objects, pictures, and examples. Rules and fairness matter a great deal (“That’s not fair!”). Stamina and competence are growing, which is Erikson’s industry versus inferiority. Friendships form and shift. In K-2, students need more adult guidance and shorter tasks; by grades 3-5 they take on more independence and begin comparing themselves to peers. Reading shifts from learning to read toward reading to learn."
         },
         {
           "type": "callout",
-          "title": "Coming soon",
-          "text": "The four parts of the Elementary branch, with a classroom example, will appear here."
+          "title": "Classroom Example",
+          "text": "In a first-grade class a student calls out, “He got more than me!” when counters are handed out. The teacher counts them aloud with the class to show they are equal. In fifth grade a student hides a quiz and says, “Everybody else got it.”"
+        },
+        {
+          "type": "heading",
+          "text": "2. What Helps Them Feel Known (CC.P.2)"
+        },
+        {
+          "type": "text",
+          "text": "Use a greeting routine and a morning meeting. Notice effort and strategies, not just answers. Remember what students tell you about their lives. Explain how you decide things so that fairness is visible."
+        },
+        {
+          "type": "callout",
+          "title": "Classroom Example",
+          "text": "Every Monday Mr. Reyes asks two students a question about their weekend and writes it in his notes. On Friday he follows up with one: “Did the soccer game go the way you hoped?”"
+        },
+        {
+          "type": "heading",
+          "text": "3. What They Can Do on Their Own (CC.P.3)"
+        },
+        {
+          "type": "text",
+          "text": "K-2 students can follow two-step directions, move between centers, and use a turn-and-talk with a partner. Third through fifth graders can follow three steps, manage a notebook, gather materials, and start a warm-up without prompting. Teach routines as steps, practice them, and give feedback."
+        },
+        {
+          "type": "callout",
+          "title": "Classroom Example",
+          "text": "A third-grade teacher posts three steps on the board: “Take out your notebook. Copy the date and prompt. Begin the warm-up quietly.” After a week of practice, she stops giving the directions aloud."
+        },
+        {
+          "type": "heading",
+          "text": "4. What Joy and High Expectations Sound Like (CC.A.6 Preview)"
+        },
+        {
+          "type": "text",
+          "text": "Praise effort and strategy specifically (“You sounded it out chunk by chunk”) and use a nod, a hand signal, or proximity. Keep the bar high with “not yet” language: “You haven’t got it yet; show me what you tried.” Celebrate small wins with energy and humor."
+        },
+        {
+          "type": "callout",
+          "title": "Classroom Example",
+          "text": "A third grader erases a math answer and says, “I’m just bad at this.” His teacher kneels and says, “Not yet. Show me what you tried, and let’s find the step to fix.” They find it together, and he gets a quiet thumbs up."
         }
       ]
     },
     {
       "id": "branch-middle",
       "band": "middle",
-      "title": "Part 3. Your grade band: Middle",
+      "title": "Part 3. Your Grade Band: Middle",
       "audioUrl": "",
       "blocks": [
         {
           "type": "text",
-          "text": "Every branch has the same four parts, and each includes a classroom example. Read yours closely, then skim the optional neighboring-band review below if you may be placed outside your certification band."
+          "text": "Every branch has the same four parts, and each includes a classroom example. Ages: about 11 to 14. Your exam: Grades 7-12 PLT. Read yours closely, then skim the optional neighboring-band review if you may be placed outside your certification band."
+        },
+        {
+          "type": "heading",
+          "text": "1. Who They Are"
+        },
+        {
+          "type": "text",
+          "text": "Middle schoolers care intensely about peers and identity. They are sensitive to being corrected in public and may push on limits to test what is real. Abstract thinking is emerging and uneven. Puberty brings wide variation in height, energy, and mood within a single class. Students also need autonomy and respect. Language includes slang and code-switching, while schoolwork demands more academic vocabulary."
         },
         {
           "type": "callout",
-          "title": "Coming soon",
-          "text": "The four parts of the Middle branch, with a classroom example, will appear here."
+          "title": "Classroom Example",
+          "text": "Two seventh graders stop talking after one posts something online. In class one slumps and the other rolls his eyes at a correction. The teacher sees a social problem and a safety need before a behavior problem."
+        },
+        {
+          "type": "heading",
+          "text": "2. What Helps Them Feel Known (CC.P.2)"
+        },
+        {
+          "type": "text",
+          "text": "Correct privately and briefly. Check in with a quick conversation about something they care about. Honor their identities and give real choices. Be fair and consistent so that students trust you; use “I noticed” statements instead of labels."
+        },
+        {
+          "type": "callout",
+          "title": "Classroom Example",
+          "text": "When Dani rolls her eyes during a correction, Ms. Okafor waits until independent work, crouches by her desk, and says, “I noticed you seemed frustrated earlier. What was going on?”"
+        },
+        {
+          "type": "heading",
+          "text": "3. What They Can Do on Their Own (CC.P.3)"
+        },
+        {
+          "type": "text",
+          "text": "Middle schoolers can keep a planner, gather materials, start independent work from a posted entry task, follow multi-step directions, and work in a group with clear norms. Reteach routines when students need a reset, and do not assume last year’s habits will carry."
+        },
+        {
+          "type": "callout",
+          "title": "Classroom Example",
+          "text": "A posted entry task on the board lets students start without waiting. When a student asks what to do, Mr. Hill points to the board and says, “It’s up there. I’ll check in at three minutes.”"
+        },
+        {
+          "type": "heading",
+          "text": "4. What Joy and High Expectations Sound Like (CC.A.6 Preview)"
+        },
+        {
+          "type": "text",
+          "text": "Speak with respect, not baby talk. Praise specific actions, often quietly or privately, and use a nod, proximity, or a brief note. Use humor that never targets a student. Keep expectations clear and high: “This is worth redoing, because you can do better.”"
+        },
+        {
+          "type": "callout",
+          "title": "Classroom Example",
+          "text": "A student turns in a weak draft and says, “Whatever, it’s fine.” His teacher says, “I think you can do better. This part is strong, and here is where it can grow,” and gives him a day to revise."
         }
       ]
     },
     {
       "id": "branch-high",
       "band": "high",
-      "title": "Part 3. Your grade band: High School",
+      "title": "Part 3. Your Grade Band: High School",
       "audioUrl": "",
       "blocks": [
         {
           "type": "text",
-          "text": "Every branch has the same four parts, and each includes a classroom example. Read yours closely, then skim the optional neighboring-band review below if you may be placed outside your certification band."
+          "text": "Every branch has the same four parts, and each includes a classroom example. Ages: about 14 to 18. Your exam: Grades 7-12 PLT. Read yours closely, then skim the optional neighboring-band review if you may be placed outside your certification band."
+        },
+        {
+          "type": "heading",
+          "text": "1. Who They Are"
+        },
+        {
+          "type": "text",
+          "text": "High school students can reason abstractly and want what they learn to matter. They are building identity and thinking about their futures. Many carry adult responsibilities outside school, such as jobs and caring for siblings. They need more sleep than they usually get. They are alert to being treated like children, and they use academic and multiple languages across settings."
         },
         {
           "type": "callout",
-          "title": "Coming soon",
-          "text": "The four parts of the High School branch, with a classroom example, will appear here."
+          "title": "Classroom Example",
+          "text": "A junior is late three times in a week and mentions his shift at a family restaurant. A senior asks, “Why does this matter?” Both are signals about purpose and responsibility, not only about behavior."
+        },
+        {
+          "type": "heading",
+          "text": "2. What Helps Them Feel Known (CC.P.2)"
+        },
+        {
+          "type": "text",
+          "text": "Treat students as young adults: ask about goals and what they handle outside school, and talk privately. Explain the purpose of the work. Offer flexibility in how a student meets expectations without lowering the expectations themselves."
+        },
+        {
+          "type": "callout",
+          "title": "Classroom Example",
+          "text": "Mr. Banks asks the late junior to stay for one minute and says, “Tell me about your schedule so we can find a plan.” They agree on a check-in each Monday and a plan to catch up on missed notes."
+        },
+        {
+          "type": "heading",
+          "text": "3. What They Can Do on Their Own (CC.P.3)"
+        },
+        {
+          "type": "text",
+          "text": "Most high schoolers can plan their time across a multi-week project, take notes independently, lead a discussion, follow multi-step lab procedures, and advocate for themselves. Teach the routine and the reason, and check progress on a schedule."
+        },
+        {
+          "type": "callout",
+          "title": "Classroom Example",
+          "text": "A posted lab checklist tells students how to set up, run, and clean up, and why each step matters. The teacher spot-checks stations at the end of class instead of cleaning them herself."
+        },
+        {
+          "type": "heading",
+          "text": "4. What Joy and High Expectations Sound Like (CC.A.6 Preview)"
+        },
+        {
+          "type": "text",
+          "text": "Use a respectful, adult tone. Tie praise to reasoning and effort (“Your counterexample made the claim sharper”) and use a nod or brief eye contact. Connect high expectations to students’ futures, and be honest about the quality of their work."
+        },
+        {
+          "type": "callout",
+          "title": "Classroom Example",
+          "text": "A senior says, “Why does this even matter?” Her teacher says, “Fair question. Here’s how this skill shows up in the work you want to do, and here’s what I expect you to do with it.”"
         }
       ]
     },
     {
       "id": "plt",
-      "title": "Praxis PLT bridge",
+      "title": "Praxis PLT Bridge",
       "audioUrl": "",
       "blocks": [
         {
@@ -621,7 +851,7 @@
           "type": "resource",
           "linkKey": "url.mys.plt_5624",
           "kind": "article",
-          "title": "Grades 7-12 PLT (5624), study companion",
+          "title": "Grades 7-12 PLT (5624), Study Companion",
           "description": "Test specifications for the Grades 7-12 PLT. Check the length and question counts here, since they can change.",
           "source": "ETS Praxis",
           "required": false
@@ -630,7 +860,7 @@
     },
     {
       "id": "knowledge-check",
-      "title": "Knowledge check",
+      "title": "Knowledge Check",
       "blocks": [
         {
           "type": "text",
@@ -643,7 +873,7 @@
     },
     {
       "id": "mindset-after",
-      "title": "Mindset check: after",
+      "title": "Mindset Check: After",
       "blocks": [
         {
           "type": "text",
@@ -658,7 +888,7 @@
     },
     {
       "id": "final-task",
-      "title": "Final task: Grade-Band Student Profile",
+      "title": "Final Task: Grade-Band Student Profile",
       "blocks": [
         {
           "type": "text",
@@ -734,124 +964,696 @@
   "quiz": {
     "questions": [
       {
-        "id": "mys-s1",
-        "prompt": "A third grader reads two grade levels above, but struggles to share and take turns. What does this best illustrate?",
+        "id": "mys-kc-s1",
+        "prompt": "A teacher gives a student a math problem he can solve only when she sits beside him and asks guiding questions. Which concept names the gap between what he can do with help and what he can do alone?",
         "options": [
           {
             "id": "A",
-            "text": "The student has a developmental delay across all domains"
+            "text": "Negative reinforcement, the removal of an unpleasant condition once a behavior occurs again"
           },
           {
             "id": "B",
-            "text": "Development is asynchronous, so a student can be advanced in one domain and still growing in another"
+            "text": "Concrete operational thinking, the stage in which logic works best with physical objects"
           },
           {
             "id": "C",
-            "text": "Milestones are strict deadlines"
+            "text": "Zone of proximal development, tasks a learner can do with support but not yet alone"
           },
           {
             "id": "D",
-            "text": "The student should skip a grade"
-          }
-        ],
-        "correct": "B",
-        "explanation": "Development is uneven across domains; that is typical, not a red flag."
-      },
-      {
-        "id": "mys-s2",
-        "prompt": "A 9-year-old can reason logically about concrete objects and understands conservation. Which Piaget stage is this?",
-        "options": [
-          {
-            "id": "A",
-            "text": "Sensorimotor"
-          },
-          {
-            "id": "B",
-            "text": "Preoperational"
-          },
-          {
-            "id": "C",
-            "text": "Concrete operational"
-          },
-          {
-            "id": "D",
-            "text": "Formal operational"
+            "text": "Self-actualization, the highest need in the hierarchy once other needs have been met"
           }
         ],
         "correct": "C",
-        "explanation": "Logical reasoning about concrete objects and conservation mark the concrete operational stage (7–11)."
+        "explanation": "Vygotsky’s zone of proximal development is what a learner can do with support but not yet alone. The guiding questions are the support."
       },
       {
-        "id": "mys-s3",
-        "prompt": "What is the Zone of Proximal Development (Vygotsky)?",
+        "id": "mys-kc-s2",
+        "prompt": "A teacher wants a student to write paragraphs on his own. Which sequence best reflects scaffolding?",
         "options": [
           {
             "id": "A",
-            "text": "The gap between a student's grade level and their reading level"
+            "text": "Model a paragraph, write one together, give a sentence frame, then remove the frame"
           },
           {
             "id": "B",
-            "text": "The gap between what a learner can do alone and what they can do with help"
+            "text": "Assign a full paragraph first and offer help only after he has struggled for a while"
           },
           {
             "id": "C",
-            "text": "The physical area of the classroom where students work with a teacher"
+            "text": "Give the same sentence frame all year so that he always finishes the paragraph correctly"
           },
           {
             "id": "D",
-            "text": "The stage at which students can think abstractly"
-          }
-        ],
-        "correct": "B",
-        "explanation": "The ZPD is the space between independent and supported performance, where scaffolding helps most."
-      },
-      {
-        "id": "mys-s4",
-        "prompt": "According to Erikson, which crisis best matches students ages 6 to 11?",
-        "options": [
-          {
-            "id": "A",
-            "text": "Initiative vs. guilt"
-          },
-          {
-            "id": "B",
-            "text": "Industry vs. inferiority"
-          },
-          {
-            "id": "C",
-            "text": "Identity vs. role confusion"
-          },
-          {
-            "id": "D",
-            "text": "Trust vs. mistrust"
-          }
-        ],
-        "correct": "B",
-        "explanation": "Ages 6–11 is industry vs. inferiority: building competence and a sense of accomplishment."
-      },
-      {
-        "id": "mys-s5",
-        "prompt": "A student who is hungry, feels unsafe, or feels excluded is struggling to focus on learning. Which idea explains this best?",
-        "options": [
-          {
-            "id": "A",
-            "text": "Maslow's hierarchy: lower needs must be reasonably met before higher ones drive behavior"
-          },
-          {
-            "id": "B",
-            "text": "Bruner's spiral curriculum"
-          },
-          {
-            "id": "C",
-            "text": "Kohlberg's conventional stage"
-          },
-          {
-            "id": "D",
-            "text": "Skinner's shaping"
+            "text": "Have him copy strong paragraphs daily until the correct form becomes a habit for him"
           }
         ],
         "correct": "A",
-        "explanation": "Maslow: physiological, safety, and belonging needs come before learning."
+        "explanation": "Scaffolding adds support just beyond what a student can do alone and removes it as skill grows."
+      },
+      {
+        "id": "mys-kc-s3",
+        "prompt": "A student keeps falling asleep and shows little interest in the lesson. His teacher learns he has not eaten since lunch yesterday. Which need most directly blocks his learning?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Esteem, because he has not yet had enough chances to feel successful at school"
+          },
+          {
+            "id": "B",
+            "text": "Self-actualization, because the lesson has not yet been connected to his own goals"
+          },
+          {
+            "id": "C",
+            "text": "Belonging, because he has not yet formed strong friendships with his classmates"
+          },
+          {
+            "id": "D",
+            "text": "A basic physiological need, which comes before esteem and self-actualization"
+          }
+        ],
+        "correct": "D",
+        "explanation": "Maslow’s hierarchy puts basic needs such as food and safety first. Instruction cannot fully reach a student whose basic needs are unmet."
+      },
+      {
+        "id": "mys-kc-s4",
+        "prompt": "A second grader tears up her worksheet every time the class starts writing. What is the most useful first question for her teacher?",
+        "options": [
+          {
+            "id": "A",
+            "text": "What consequence would make her stop tearing up her work before it happens again in class?"
+          },
+          {
+            "id": "B",
+            "text": "What need might she be communicating, such as a task that feels too hard, and how can I check?"
+          },
+          {
+            "id": "C",
+            "text": "What reward could I offer so that she is motivated to finish her writing tasks each day?"
+          },
+          {
+            "id": "D",
+            "text": "Which classmate does she copy when she tears up her paper during writing time each morning?"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Behavior is communication about a need. Ask what the behavior tells you before deciding how to respond."
+      },
+      {
+        "id": "mys-kc-s5",
+        "prompt": "A kindergartener struggles to sit still during a 20-minute lesson. Which response best separates typical development from a real concern?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Refer him for an evaluation right away, since he cannot sit through a full lesson yet this year"
+          },
+          {
+            "id": "B",
+            "text": "Assume the cause is a lack of discipline at home and send a note home about expectations"
+          },
+          {
+            "id": "C",
+            "text": "Treat short stamina as typical, shorten the task, and watch whether it persists across settings"
+          },
+          {
+            "id": "D",
+            "text": "Require him to sit for the full lesson every day so that his stamina builds through repetition"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Short stamina is typical at this age. A pattern that persists across settings and interferes with learning is a reason to consult the support team."
+      },
+      {
+        "id": "mys-kc-s6",
+        "prompt": "Which classroom example best reflects constructivism?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Students test which objects sink or float, then revise an explanation from their results"
+          },
+          {
+            "id": "B",
+            "text": "Students earn a sticker for each correct answer on a drill sheet during the morning"
+          },
+          {
+            "id": "C",
+            "text": "The teacher states a rule and students memorize it and recite it back in unison"
+          },
+          {
+            "id": "D",
+            "text": "Students copy notes in silence while the teacher lectures about the day’s topic"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Constructivism says learners build knowledge from experience. The sticker chart is behaviorism."
+      },
+      {
+        "id": "mys-kc-s7",
+        "prompt": "A new student, in the U.S. for two months, nods and points but rarely speaks. Which support best fits his stage of language acquisition?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Require full-sentence answers so that he gets speaking practice with every single question"
+          },
+          {
+            "id": "B",
+            "text": "Simplify the content to fewer ideas until his English catches up with the rest of the class"
+          },
+          {
+            "id": "C",
+            "text": "Wait until he speaks on his own before including him in group work with his classmates"
+          },
+          {
+            "id": "D",
+            "text": "Use pictures and gestures, and welcome pointing and one-word answers to easy questions"
+          }
+        ],
+        "correct": "D",
+        "explanation": "Students in early stages often go through a silent period. Visuals and low-speech responses keep the content rigorous and let them participate."
+      },
+      {
+        "id": "mys-kc-s8",
+        "prompt": "A teacher reads a student’s IEP, and a colleague in the hallway asks what the student’s diagnosis is. What best reflects FERPA?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Share it with any colleague, since every staff member in the building carry the same duties to students"
+          },
+          {
+            "id": "B",
+            "text": "Share only with staff who need the information to support the student, and keep the rest private"
+          },
+          {
+            "id": "C",
+            "text": "Share it once the student’s classmates have been told, so that no one is caught off guard"
+          },
+          {
+            "id": "D",
+            "text": "Share it freely inside the building, but never with the student’s own family members at home"
+          }
+        ],
+        "correct": "B",
+        "explanation": "FERPA protects student records. What you learn from a student’s file stays with those who need it to support the student."
+      },
+      {
+        "id": "mys-kc-ece1",
+        "band": "ece",
+        "prompt": "Which task can most four-year-olds reasonably do on their own after practice?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Read a printed list of five directions and complete each one in the correct order"
+          },
+          {
+            "id": "B",
+            "text": "Hang a backpack on a labeled hook and wash hands by following a picture sequence"
+          },
+          {
+            "id": "C",
+            "text": "Settle a conflict over a toy by agreeing on a fair plan without an adult nearby"
+          },
+          {
+            "id": "D",
+            "text": "Sit through a 20-minute teacher-led lesson without needing to move around at all"
+          }
+        ],
+        "correct": "B",
+        "explanation": "With practice and visual supports, young children can handle short, concrete routines. They cannot yet read directions or hold attention for long adult-led tasks."
+      },
+      {
+        "id": "mys-kc-ece2",
+        "band": "ece",
+        "prompt": "A child cries at drop-off and clings to a parent. Which move best helps her feel known and safe?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Tell her that big kids do not cry, so that she learns to be brave at school quickly"
+          },
+          {
+            "id": "B",
+            "text": "Ask the parent to leave quickly while she is distracted by a toy across the room"
+          },
+          {
+            "id": "C",
+            "text": "Wait to speak to her until she calms down, so that crying does not get her attention"
+          },
+          {
+            "id": "D",
+            "text": "Kneel, greet her by name, and use a goodbye routine she can predict each day"
+          }
+        ],
+        "correct": "D",
+        "explanation": "Young children need predictable, warm routines and an adult who stays close. Co-regulation comes before independence."
+      },
+      {
+        "id": "mys-kc-ece3",
+        "band": "ece",
+        "prompt": "A child puts away the blocks. Which response best pairs specific praise with a non-verbal cue?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Smile and give a thumbs up while saying, “You put every block on the shelf”"
+          },
+          {
+            "id": "B",
+            "text": "Say, “You are the best helper in the whole class!” from across the room"
+          },
+          {
+            "id": "C",
+            "text": "Give a sticker at the end of the day without any comment about the blocks"
+          },
+          {
+            "id": "D",
+            "text": "Say, “Nice work!” and then move right on to the next group of children"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Specific praise names what the child did, and a close, visible cue like a thumbs up fits the age."
+      },
+      {
+        "id": "mys-kc-ece4",
+        "band": "ece",
+        "prompt": "Transitions to the carpet take five minutes and end in chaos. Which routine fits this age, and why?",
+        "options": [
+          {
+            "id": "A",
+            "text": "A posted list of five written steps, since children learn best by reading directions"
+          },
+          {
+            "id": "B",
+            "text": "A silent countdown from ten, since quiet signals teach self-control faster than songs"
+          },
+          {
+            "id": "C",
+            "text": "A short clean-up song and a picture schedule, since young children follow clear cues"
+          },
+          {
+            "id": "D",
+            "text": "A timed race between tables, since competition is what motivates children this age"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Songs and pictures give young children predictable cues. They cannot yet use written lists."
+      },
+      {
+        "id": "mys-kc-ece5",
+        "band": "ece",
+        "prompt": "A four-year-old says, “I can’t do it.” Which response sounds like joy and high expectations?",
+        "options": [
+          {
+            "id": "A",
+            "text": "“You can do it by yourself, and I am not going to help you with it this time.”"
+          },
+          {
+            "id": "B",
+            "text": "“That is okay, I will do it for you so that you do not get frustrated and upset.”"
+          },
+          {
+            "id": "C",
+            "text": "“Everyone else is already finished, so you need to hurry up and try harder now.”"
+          },
+          {
+            "id": "D",
+            "text": "“I will sit with you. Let’s try the first one together, then you try the next one.”"
+          }
+        ],
+        "correct": "D",
+        "explanation": "High expectations with support: the adult believes the child can do it and stays close while the child tries."
+      },
+      {
+        "id": "mys-kc-elementary1",
+        "band": "elementary",
+        "prompt": "Which direction can most third graders reasonably follow on their own after practice?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Plan and pace a week-long project, checking your own progress without any reminders"
+          },
+          {
+            "id": "B",
+            "text": "Keep a calendar of every assignment in all subjects with no teacher check-ins at all"
+          },
+          {
+            "id": "C",
+            "text": "Take out your notebook, copy the date and prompt, and begin the warm-up quietly"
+          },
+          {
+            "id": "D",
+            "text": "Settle a conflict with a classmate without any adult help, prompts, or reminders"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Third graders can follow three concrete steps they have practiced. Long-range planning and independent conflict resolution take more support."
+      },
+      {
+        "id": "mys-kc-elementary2",
+        "band": "elementary",
+        "prompt": "A fourth grader says, “That’s not fair!” when a classmate gets a second chance on an assignment. Which move best fits the age?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Listen, then explain how you decide what each student needs and that he will be treated fairly"
+          },
+          {
+            "id": "B",
+            "text": "Tell him that life is not always fair and ask him to stop complaining about it in class"
+          },
+          {
+            "id": "C",
+            "text": "Give him a second chance too, so that every student always gets exactly the same thing"
+          },
+          {
+            "id": "D",
+            "text": "Ignore the comment so that the whole class does not start focusing on who gets what"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Fairness matters a great deal at this age. Explaining your reasoning respects the concern."
+      },
+      {
+        "id": "mys-kc-elementary3",
+        "band": "elementary",
+        "prompt": "A second grader keeps trying a hard word until she reads it. Which response best pairs specific praise with a non-verbal cue?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Say, “You are so smart!” and move on to the next student in the reading group"
+          },
+          {
+            "id": "B",
+            "text": "Give her a high five with no words, so that she is not embarrassed in front of others"
+          },
+          {
+            "id": "C",
+            "text": "Announce to the class that she is the best reader in the room after all that effort"
+          },
+          {
+            "id": "D",
+            "text": "Stand near her, nod, and say, “You sounded it out chunk by chunk until you got it”"
+          }
+        ],
+        "correct": "D",
+        "explanation": "Praise the strategy and effort. Proximity and a nod reinforce it without singling her out for comparison."
+      },
+      {
+        "id": "mys-kc-elementary4",
+        "band": "elementary",
+        "prompt": "Students call out answers during discussion. Which routine best fits elementary students, and why?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Silence unless called on, since students this age can sit still for long stretches of time each day"
+          },
+          {
+            "id": "B",
+            "text": "A turn-and-talk and a quiet hand signal, since students this age can learn turn-taking in steps"
+          },
+          {
+            "id": "C",
+            "text": "Letting students call out, since concrete thinkers learn best when no rules limit them"
+          },
+          {
+            "id": "D",
+            "text": "A student monitor who records every call-out, since peer pressure is the strongest tool"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Elementary students can learn turn-taking when it is taught as steps and practiced."
+      },
+      {
+        "id": "mys-kc-elementary5",
+        "band": "elementary",
+        "prompt": "A third grader erases a math answer and says, “I’m just bad at this.” Which response sounds like high expectations?",
+        "options": [
+          {
+            "id": "A",
+            "text": "“Math is hard for lots of people, so let’s skip it for today and come back to it later.”"
+          },
+          {
+            "id": "B",
+            "text": "“You are not bad at math, so just stop saying that and go ahead and try the next problem.”"
+          },
+          {
+            "id": "C",
+            "text": "“You haven’t got it yet. Show me what you tried, and we’ll find the step to fix.”"
+          },
+          {
+            "id": "D",
+            "text": "“Let me finish this problem for you, so that you do not feel upset about it any longer.”"
+          }
+        ],
+        "correct": "C",
+        "explanation": "“Not yet” language keeps the bar high and names a next step. Skipping or finishing the work lowers expectations."
+      },
+      {
+        "id": "mys-kc-middle1",
+        "band": "middle",
+        "prompt": "Which routine can most seventh graders reasonably manage on their own?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Record homework in a planner, gather materials, and start independent work as class begins"
+          },
+          {
+            "id": "B",
+            "text": "Plan and carry out a long research project without any teacher checkpoints along the way"
+          },
+          {
+            "id": "C",
+            "text": "Resolve peer conflicts alone, since students this age no longer need any adult guidance"
+          },
+          {
+            "id": "D",
+            "text": "Remember every procedure from the first week without ever having to review it again"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Middle schoolers can manage planners and entry routines. They still need checkpoints and reteaching."
+      },
+      {
+        "id": "mys-kc-middle2",
+        "band": "middle",
+        "prompt": "A student rolls his eyes when corrected in front of friends. Which move best fits this age?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Correct him again publicly so that his peers see the rules apply to everyone equally"
+          },
+          {
+            "id": "B",
+            "text": "Overlook it for the entire week so that he does not feel singled out by the teacher"
+          },
+          {
+            "id": "C",
+            "text": "Send a referral so that an administrator can handle the disrespect without delay"
+          },
+          {
+            "id": "D",
+            "text": "Hold the correction for a quiet moment, then check in privately and say what you noticed"
+          }
+        ],
+        "correct": "D",
+        "explanation": "Public correction can feel humiliating at this age. A private check-in protects the relationship and keeps the expectation."
+      },
+      {
+        "id": "mys-kc-middle3",
+        "band": "middle",
+        "prompt": "Which pairing of specific praise and a non-verbal cue best fits a middle schooler who helped a classmate during group work?",
+        "options": [
+          {
+            "id": "A",
+            "text": "A loud cheer and “Everyone look at how kind he is!” in front of the whole class"
+          },
+          {
+            "id": "B",
+            "text": "A quiet nod and a private note: “Thanks for explaining that step to Jordan”"
+          },
+          {
+            "id": "C",
+            "text": "A sticker on his desk and a cheerful “Great job!” said in a bright voice across the room"
+          },
+          {
+            "id": "D",
+            "text": "A thumbs up from across the room with no words at all, offered every single time"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Middle schoolers often prefer low-key, private recognition that names what they did."
+      },
+      {
+        "id": "mys-kc-middle4",
+        "band": "middle",
+        "prompt": "Class starts slowly because students socialize at the door. Which routine fits this age, and why?",
+        "options": [
+          {
+            "id": "A",
+            "text": "A teacher-led song to start class, since it brings everyone together in one shared voice"
+          },
+          {
+            "id": "B",
+            "text": "A seating chart rotated daily, since separating friends is the best way to stop socializing"
+          },
+          {
+            "id": "C",
+            "text": "A posted entry task students start on their own, since they want autonomy and clarity"
+          },
+          {
+            "id": "D",
+            "text": "A five-minute talk on respect each day, since students respond well to adult lectures"
+          }
+        ],
+        "correct": "C",
+        "explanation": "An entry task gives clear expectations and some autonomy. Songs and lectures tend to backfire at this age."
+      },
+      {
+        "id": "mys-kc-middle5",
+        "band": "middle",
+        "prompt": "A student turns in a weak draft and says, “Whatever, it’s fine.” Which response sounds like respect and high expectations?",
+        "options": [
+          {
+            "id": "A",
+            "text": "“I think you can do better. This part is strong, and here is where it can grow.”"
+          },
+          {
+            "id": "B",
+            "text": "“If this is fine with you, I will just record the grade and then we can move on.”"
+          },
+          {
+            "id": "C",
+            "text": "“You are capable of so much more, so I am honestly very disappointed in this draft.”"
+          },
+          {
+            "id": "D",
+            "text": "“Let me rewrite the weak part for you so that you can see what a good draft looks like.”"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Specific, respectful feedback with a clear next step keeps the bar high without shaming the student."
+      },
+      {
+        "id": "mys-kc-high1",
+        "band": "high",
+        "prompt": "Which task can most eleventh graders reasonably manage on their own?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Choose their own graduation requirements without any guidance from an adult at all"
+          },
+          {
+            "id": "B",
+            "text": "Stay focused for a full 90 minutes with no breaks, movement, or transitions in class"
+          },
+          {
+            "id": "C",
+            "text": "Know every school procedure without it ever being taught, posted, or reviewed with them"
+          },
+          {
+            "id": "D",
+            "text": "Plan time across a multi-week project and ask for help before the deadline arrives"
+          }
+        ],
+        "correct": "D",
+        "explanation": "High school students can plan over weeks and self-advocate when the expectation and supports are clear."
+      },
+      {
+        "id": "mys-kc-high2",
+        "band": "high",
+        "prompt": "A junior is often late and mentions working evenings at a family business. Which move best helps him feel known?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Tell him that work is not an excuse and apply the late policy with no exceptions at all"
+          },
+          {
+            "id": "B",
+            "text": "Talk privately, ask about his schedule, and work out a plan that keeps expectations high"
+          },
+          {
+            "id": "C",
+            "text": "Excuse the lateness entirely so that he does not feel judged about his family’s business"
+          },
+          {
+            "id": "D",
+            "text": "Ask his friends whether his job is the real reason that he is late so often each week"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Treating students as young adults means asking and problem-solving together, without lowering expectations."
+      },
+      {
+        "id": "mys-kc-high3",
+        "band": "high",
+        "prompt": "Which response best pairs specific praise and a non-verbal cue for a student who made a strong argument in a seminar?",
+        "options": [
+          {
+            "id": "A",
+            "text": "A big smile and a loud “Awesome!” said to the whole class in front of the other students"
+          },
+          {
+            "id": "B",
+            "text": "A fist bump and “You are so smart!” as they leave the room at the end of the period"
+          },
+          {
+            "id": "C",
+            "text": "A nod and brief eye contact, then: “Your counterexample made the claim sharper”"
+          },
+          {
+            "id": "D",
+            "text": "No comment during class, followed by a note in the gradebook about it later in the week"
+          }
+        ],
+        "correct": "C",
+        "explanation": "Specific praise tied to reasoning, with a quiet adult-level cue, fits the age."
+      },
+      {
+        "id": "mys-kc-high4",
+        "band": "high",
+        "prompt": "Students leave lab stations messy. Which routine fits this age, and why?",
+        "options": [
+          {
+            "id": "A",
+            "text": "A posted checklist and a quick station check, since students can own routines they understand"
+          },
+          {
+            "id": "B",
+            "text": "A teacher who cleans stations at the end of the day, so that students can focus on learning"
+          },
+          {
+            "id": "C",
+            "text": "A group reward for the cleanest station, since competition is what drives older students most"
+          },
+          {
+            "id": "D",
+            "text": "A spoken reminder at the end of each class, since older students follow oral directions best"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Older students can handle multi-step routines when they understand the purpose and the standard is visible."
+      },
+      {
+        "id": "mys-kc-high5",
+        "band": "high",
+        "prompt": "A senior says, “Why does this even matter?” Which response sounds like respect and high expectations?",
+        "options": [
+          {
+            "id": "A",
+            "text": "“Because it is on the exam, and you need to pass it in order to graduate this spring, so please focus.”"
+          },
+          {
+            "id": "B",
+            "text": "“Fair question. Here is how this skill shows up in the work you want to do, and what I expect.”"
+          },
+          {
+            "id": "C",
+            "text": "“If it does not matter to you, it is fine to do the minimum this one time and then move forward.”"
+          },
+          {
+            "id": "D",
+            "text": "“We have a lot to cover today, so please save that question for office hours later in the week.”"
+          }
+        ],
+        "correct": "B",
+        "explanation": "Older students want purpose. Answer the question honestly and keep the expectation."
       }
     ]
   },

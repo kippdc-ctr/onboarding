@@ -17,7 +17,7 @@
   "sections": [
     {
       "id": "start",
-      "title": "Start here",
+      "title": "Start Here",
       "audioUrl": "",
       "blocks": [
         {
@@ -33,7 +33,7 @@
     },
     {
       "id": "mindset-before",
-      "title": "Mindset check: before",
+      "title": "Mindset Check: Before",
       "blocks": [
         {
           "type": "text",
@@ -42,19 +42,22 @@
         {
           "type": "mindset",
           "activityId": "m3-mindset-before",
-          "sample": true,
           "statements": [
             {
               "id": "s1",
-              "text": "I start from what a student can already do before I plan support."
+              "text": "Every family I serve wants the best for their child, even when it looks different from what I expect."
             },
             {
               "id": "s2",
-              "text": "Families who seem distant from school still care deeply about their children's education."
+              "text": "When a family does not respond, my first move is to change my approach."
             },
             {
               "id": "s3",
-              "text": "I can describe a student's growth area to a family in plain, strengths-based language."
+              "text": "What I believe about a student shapes what I expect from them."
+            },
+            {
+              "id": "s4",
+              "text": "I can build trust with families whose backgrounds differ from mine."
             }
           ]
         }
@@ -62,7 +65,7 @@
     },
     {
       "id": "whole-child",
-      "title": "1. Seeing the whole child",
+      "title": "1. Seeing the Whole Child",
       "audioUrl": "",
       "blocks": [
         {
@@ -71,7 +74,7 @@
         },
         {
           "type": "heading",
-          "text": "The deficit ideology it pushes against"
+          "text": "The Deficit Ideology It Pushes Against"
         },
         {
           "type": "text",
@@ -79,7 +82,7 @@
         },
         {
           "type": "heading",
-          "text": "Why expectations matter"
+          "text": "Why Expectations Matter"
         },
         {
           "type": "text",
@@ -87,7 +90,7 @@
         },
         {
           "type": "heading",
-          "text": "What strong teachers of Black students do"
+          "text": "What Strong Teachers of Black Students Do"
         },
         {
           "type": "text",
@@ -125,7 +128,7 @@
           "type": "resource",
           "linkKey": "url.m3.rosenthal_podcast",
           "kind": "audio",
-          "title": "Robert Rosenthal on self-fulfilling prophecies",
+          "title": "Robert Rosenthal on Self-Fulfilling Prophecies",
           "description": "The researcher behind the Pygmalion study explains what he found and what he thinks it means for classrooms.",
           "source": "Stanford Psychology Podcast",
           "required": false
@@ -134,7 +137,7 @@
           "type": "resource",
           "linkKey": "url.m3.ladson_billings_video",
           "kind": "video",
-          "title": "Show Me The Evidence: Culturally Relevant Pedagogy and Primary Sources",
+          "title": "Show Me the Evidence: Culturally Relevant Pedagogy and Primary Sources",
           "description": "Ladson-Billings talks through what culturally relevant teaching looks like in practice. Good if you want to hear the idea in her own voice.",
           "source": "Dr. Gloria Ladson-Billings",
           "required": false
@@ -143,7 +146,7 @@
     },
     {
       "id": "deficit",
-      "title": "2. Naming and interrupting deficit thinking",
+      "title": "2. Naming and Interrupting Deficit Thinking",
       "audioUrl": "",
       "blocks": [
         {
@@ -173,7 +176,7 @@
         },
         {
           "type": "heading",
-          "text": "Try it: reframe it"
+          "text": "Try It: Reframe It"
         },
         {
           "type": "text",
@@ -181,19 +184,32 @@
         },
         {
           "type": "reveal",
-          "sample": true,
           "items": [
             {
-              "statement": "He is a low reader.",
-              "reveal": "He decodes accurately, loves nonfiction, and needs support with fluency."
+              "statement": "“Those kids can’t handle a rigorous text.”",
+              "reveal": "“These students know a lot about this topic already. What supports will make the text reachable so they can do the same thinking as anyone?”"
+            },
+            {
+              "statement": "“She’s at-risk.”",
+              "reveal": "“She is facing real obstacles, and she has strengths I can name. What does she need from us, and what can we build on?”"
+            },
+            {
+              "statement": "“His parents never come to anything.”",
+              "reveal": "“What might get in the way of coming, and what other ways can we connect that fit their schedule?”"
+            },
+            {
+              "statement": "“He’s a low reader.”",
+              "reveal": "“He decodes accurately, loves nonfiction, and needs support with fluency. Here is my plan for Monday.”"
             }
-          ]
+          ],
+          "inputLabel": "How would you reframe it?",
+          "revealLabel": "Show one reframe"
         }
       ]
     },
     {
       "id": "families",
-      "title": "3. Families as partners",
+      "title": "3. Families as Partners",
       "audioUrl": "",
       "blocks": [
         {
@@ -206,7 +222,7 @@
         },
         {
           "type": "heading",
-          "text": "Belief shows up in action"
+          "text": "Belief Shows up in Action"
         },
         {
           "type": "list",
@@ -218,7 +234,7 @@
         },
         {
           "type": "heading",
-          "text": "Share strengths first and growth second"
+          "text": "Share Strengths First and Growth Second"
         },
         {
           "type": "text",
@@ -243,7 +259,7 @@
         },
         {
           "type": "heading",
-          "text": "Use what families tell you"
+          "text": "Use What Families Tell You"
         },
         {
           "type": "text",
@@ -262,7 +278,7 @@
     },
     {
       "id": "lens",
-      "title": "4. Your lens, their context",
+      "title": "4. Your Lens, Their Context",
       "audioUrl": "",
       "blocks": [
         {
@@ -287,7 +303,7 @@
     },
     {
       "id": "core",
-      "title": "Core resources",
+      "title": "Core Resources",
       "audioUrl": "",
       "blocks": [
         {
@@ -298,7 +314,7 @@
           "type": "resource",
           "linkKey": "url.m3.cultural_wealth",
           "kind": "article",
-          "title": "Recognizing community cultural wealth in classrooms",
+          "title": "Recognizing Community Cultural Wealth in Classrooms",
           "description": "An accessible introduction to Tara Yosso's idea that students bring forms of cultural wealth, such as aspirational, linguistic, familial, and resistant capital, that schools often overlook. As you read, write down one example from your own experience.",
           "source": "EdNC",
           "minutes": 8,
@@ -308,7 +324,7 @@
           "type": "resource",
           "linkKey": "url.m3.parent_partnership",
           "kind": "article",
-          "title": "Parent partnership: how family engagement works",
+          "title": "Parent Partnership: How Family Engagement Works",
           "description": "A teacher's account of home visits and family engagement built around listening first. Notice the first question she asks families.",
           "source": "Edutopia",
           "minutes": 7,
@@ -327,7 +343,7 @@
     },
     {
       "id": "knowledge-check",
-      "title": "Knowledge check",
+      "title": "Knowledge Check",
       "blocks": [
         {
           "type": "text",
@@ -340,7 +356,7 @@
     },
     {
       "id": "mindset-after",
-      "title": "Mindset check: after",
+      "title": "Mindset Check: After",
       "blocks": [
         {
           "type": "text",
@@ -355,7 +371,7 @@
     },
     {
       "id": "final-task",
-      "title": "Final task: First Outreach",
+      "title": "Final Task: First Outreach",
       "blocks": [
         {
           "type": "text",
@@ -399,124 +415,196 @@
   "quiz": {
     "questions": [
       {
-        "id": "m3-q1",
-        "prompt": "Which of the following best describes an asset-based approach to teaching?",
+        "id": "m3-kc1",
+        "prompt": "During planning, a teacher is asked to describe her approach to students in one sentence. Which best describes asset-based teaching?",
         "options": [
           {
             "id": "A",
-            "text": "Celebrating cultural differences during designated heritage months while maintaining standard instruction"
+            "text": "Setting aside academic gaps so students feel successful and confident each day."
           },
           {
             "id": "B",
-            "text": "Avoiding any acknowledgment of academic gaps so students do not feel discouraged"
+            "text": "Starting from what students know and can do, then building toward rigorous grade-level work."
           },
           {
             "id": "C",
-            "text": "Focusing on what students know and can do, and building instruction from those strengths"
+            "text": "Matching tasks to each student’s background so no one is asked to stretch too far."
           },
           {
             "id": "D",
-            "text": "Lowering academic expectations so that all students can experience success"
+            "text": "Praising every student’s strengths regularly and leaving areas of growth for later in the year."
           }
         ],
-        "correct": "C",
-        "explanation": "Asset-based teaching starts from students' strengths and builds instruction from them, without lowering expectations."
+        "correct": "B",
+        "explanation": "Asset-based teaching starts from students’ strengths and keeps the bar high. It does not ignore gaps or lower expectations; it uses what students bring to build toward rigorous work."
       },
       {
-        "id": "m3-q2",
-        "prompt": "What does Rosenthal and Jacobson's 1968 Pygmalion research demonstrate about teacher expectations?",
+        "id": "m3-kc2",
+        "prompt": "A colleague says, “Expectations don’t matter as long as the instruction is good.” Which finding from Rosenthal and Jacobson best responds?",
         "options": [
           {
             "id": "A",
-            "text": "Students tend to rise or fall to the level of belief their teacher holds about them, regardless of their actual starting point"
+            "text": "Students whose teachers expected growth gained more, so expectations can become self-fulfilling."
           },
           {
             "id": "B",
-            "text": "Positive expectations only benefit students who already have a strong academic foundation"
+            "text": "Students labeled as high potential gained more only when their parents were told the labels as well."
           },
           {
             "id": "C",
-            "text": "Only the expectations of highly experienced teachers influence student performance"
+            "text": "Teacher expectations raised scores only for older students, who could sense what teachers believed."
           },
           {
             "id": "D",
-            "text": "Teacher expectations have no measurable impact on student outcomes once students reach middle school"
+            "text": "Students whose teachers expected less learned the same, because instruction did not differ in the room."
           }
         ],
         "correct": "A",
-        "explanation": "The Pygmalion Effect shows that teacher beliefs shape student outcomes, whatever the starting point."
+        "explanation": "In the 1968 study, students randomly identified as likely to bloom gained more than their classmates. Later research finds the effect is real but smaller and less consistent than first reported."
       },
       {
-        "id": "m3-q3",
-        "prompt": "A teacher looks at a student's cumulative file before the year begins and thinks, \"This student has a lot of absences and low test scores. This is going to be a challenging year.\" Which of the following best describes this kind of thinking?",
+        "id": "m3-kc3",
+        "prompt": "Before school starts, a teacher reads a student’s cumulative file and tells a colleague, “This is going to be a rough year.” What is the best description of what is happening?",
         "options": [
           {
             "id": "A",
-            "text": "Neutral: reviewing records is standard practice and does not reflect a mindset"
+            "text": "Preparation: knowing a student’s history lets the teacher plan supports before problems arise."
           },
           {
             "id": "B",
-            "text": "Deficit thinking: the teacher is starting with what the student lacks rather than what they bring"
+            "text": "Pattern recognition: the teacher is correctly spotting trends that will repeat for this student."
           },
           {
             "id": "C",
-            "text": "Culturally relevant: the teacher is using data to inform their instruction"
+            "text": "Deficit thinking: the teacher is predicting a year from what is wrong before meeting the child."
           },
           {
             "id": "D",
-            "text": "Asset-based: the teacher is being realistic about the student's needs"
+            "text": "Realism: honest expectations protect students from tasks that might be too hard for them."
           }
         ],
-        "correct": "B",
-        "explanation": "Starting from what a student lacks, before meeting them, is deficit thinking."
+        "correct": "C",
+        "explanation": "A prediction made from a file, before meeting the child, centers what is lacking. Records can inform support, but they should not set the ceiling."
       },
       {
-        "id": "m3-q4",
-        "prompt": "According to Ladson-Billings' research, what do effective teachers of Black students consistently do?",
+        "id": "m3-kc4",
+        "prompt": "A principal asks what Ladson-Billings found that effective teachers of Black students consistently did. Which answer fits her research?",
         "options": [
           {
             "id": "A",
-            "text": "Avoid discussing race and culture in class to maintain a neutral environment"
+            "text": "They used a single approach for everyone so that every student was held to the same expectations."
           },
           {
             "id": "B",
-            "text": "Hold high expectations, validate students' cultural identities, and view student differences as assets"
+            "text": "They slowed the pace of content at first so students could build confidence before facing rigor."
           },
           {
             "id": "C",
-            "text": "Focus exclusively on academic content and leave cultural competence to other staff"
+            "text": "They focused on rules and behavior first, then added cultural content once order was in place."
           },
           {
             "id": "D",
-            "text": "Lower expectations to reduce stress and build confidence gradually"
-          }
-        ],
-        "correct": "B",
-        "explanation": "Effective teachers pair high expectations with cultural validation and see differences as assets."
-      },
-      {
-        "id": "m3-q5",
-        "prompt": "A parent misses a school event and doesn't respond to a teacher's phone call. Which response reflects an asset-based approach to families?",
-        "options": [
-          {
-            "id": "A",
-            "text": "\"I've done my part. It's up to them to show up.\""
-          },
-          {
-            "id": "B",
-            "text": "\"This family is clearly not invested in their child's education.\""
-          },
-          {
-            "id": "C",
-            "text": "\"I should report this to administration so they can follow up.\""
-          },
-          {
-            "id": "D",
-            "text": "\"I'll try a different way of reaching out. They may have barriers I don't know about, and they deserve my effort.\""
+            "text": "They kept expectations high, affirmed students’ identities, and saw differences as strengths."
           }
         ],
         "correct": "D",
-        "explanation": "An asset-based response assumes good intent, considers barriers, and keeps reaching out."
+        "explanation": "Her three pillars are academic success, cultural competence, and sociopolitical consciousness. High expectations and cultural affirmation go together."
+      },
+      {
+        "id": "m3-kc5",
+        "prompt": "A parent has not returned two calls about a student’s missing assignments. A teacher says, “They just don’t care.” What is the best asset-based response?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Send a formal letter documenting both calls so the school has a clear record of its outreach."
+          },
+          {
+            "id": "B",
+            "text": "Try another channel, such as a text or note home, and ask what works best for the family."
+          },
+          {
+            "id": "C",
+            "text": "Ask a colleague who knows the family to find out why the parent is avoiding school contact."
+          },
+          {
+            "id": "D",
+            "text": "Wait for conferences, since a parent who truly cares will come when the school asks in person."
+          }
+        ],
+        "correct": "B",
+        "explanation": "When a family does not respond, the first move is to change your approach. Distance is often a response to past experiences with schools, not a lack of care."
+      },
+      {
+        "id": "m3-kc6",
+        "prompt": "A teacher notices that one family arrives late to every school event and thinks, “They don’t value school.” What should the teacher do next?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Remind the family of start times in the weekly newsletter so the expectation is clear to everyone."
+          },
+          {
+            "id": "B",
+            "text": "Share the pattern with the principal so the school can decide whether outreach is needed."
+          },
+          {
+            "id": "C",
+            "text": "Hold the family to the same expectations and avoid making exceptions for any one family."
+          },
+          {
+            "id": "D",
+            "text": "Name the assumption, then ask the family about their schedule and what would help."
+          }
+        ],
+        "correct": "D",
+        "explanation": "Everyone’s lens shapes what they notice. Asking before assuming, and checking a generalization against the family in front of you, replaces a guess with information."
+      },
+      {
+        "id": "m3-kc7",
+        "prompt": "Which message to a family best shares a student’s reading progress in plain, strengths-based language?",
+        "options": [
+          {
+            "id": "A",
+            "text": "“Maya reads aloud with expression; next we are working on finishing her sentences.”"
+          },
+          {
+            "id": "B",
+            "text": "“Maya is a below-grade-level reader, but she is working hard and has a great attitude.”"
+          },
+          {
+            "id": "C",
+            "text": "“Maya is strong in fluency, with a decoding deficit we are addressing through Tier 2 support.”"
+          },
+          {
+            "id": "D",
+            "text": "“Maya is doing fine overall, and there is nothing to worry about at this point in the year.”"
+          }
+        ],
+        "correct": "A",
+        "explanation": "Strengths come first, growth comes second, and the words are ones a family can use at home. The other options use labels or jargon, or leave out what is next."
+      },
+      {
+        "id": "m3-kc8",
+        "prompt": "A parent tells the teacher that her son stays up late helping with a younger sibling and is most alert in the afternoon. What is the best use of this information?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Note it in his file in case it is useful, and keep the schedule the same for fairness."
+          },
+          {
+            "id": "B",
+            "text": "Excuse him from morning work and send assignments home so he can keep up on his own."
+          },
+          {
+            "id": "C",
+            "text": "Schedule his hardest tasks later in the day and check in privately on tired mornings."
+          },
+          {
+            "id": "D",
+            "text": "Tell his other teachers so everyone knows to expect lower energy from him early in the day."
+          }
+        ],
+        "correct": "C",
+        "explanation": "What families share is information to act on. Changing when the hardest work happens keeps expectations high while using what the parent knows about her child."
       }
     ]
   },
