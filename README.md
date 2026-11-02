@@ -42,6 +42,24 @@ Every push to a branch also gets its own preview link from Vercel (shown on the 
 To use a Supabase project you created yourself instead, set `DATABASE_URL` to its **Transaction pooler** connection string (port 6543).
 You can also run the database steps by hand: `npm run db:migrate`, `npm run db:seed`, `npm run db:seed-samples`.
 
+## Hosting on Render (instead of Vercel)
+
+`render.yaml` sets everything up. The database stays on Supabase.
+
+1. Render → **New → Blueprint** → choose `kippdc-ctr/onboarding` (branch `claude/app-creation-spec-v8iknw`).
+2. Render asks for six values. Copy them from Vercel (project → Settings → Environment Variables) or Supabase:
+   - `DATABASE_URL`: Vercel's `POSTGRES_URL`, or Supabase → Connect → **Transaction pooler** string (port 6543).
+   - `ADMIN_PASSCODE`, `SESSION_SECRET`: same as Vercel (or new values).
+   - `PIN_ENCRYPTION_KEY`: **exactly** the Vercel value, or saved PINs can't be read (residents would need PIN resets).
+   - `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`: Supabase → Project Settings → API (needed for audio and photo uploads).
+3. Click **Apply**. The first build creates/updates the tables, then the site is live at `https://ctr-onboarding-hub.onrender.com` (or similar).
+4. Open `/setup-check` on the new address. Then sign in to `/admin` and spot-check a module.
+5. Every push to the branch redeploys automatically. Custom domain: Render service → Settings → Custom Domains.
+
+On Render the app pings the database twice a day (`instrumentation.ts`) so a free Supabase project doesn't pause.
+Keep the Supabase database connected in Vercel until you've moved it to your own Supabase account; removing the
+Vercel integration can delete the database.
+
 ## Troubleshooting
 
 - **Open `/setup-check`** on your site. It lists any missing settings (names only, never values), tests the database

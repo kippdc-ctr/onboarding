@@ -1,0 +1,28 @@
+# Render Blueprint for the CTR Onboarding Hub (Render → New → Blueprint → pick this repo).
+# The database stays on Supabase; paste its connection string and the other secrets when Render asks.
+services:
+  - type: web
+    name: ctr-onboarding-hub
+    runtime: node
+    plan: starter # always on; the free plan sleeps after 15 idle minutes
+    region: virginia
+    buildCommand: npm ci && node scripts/db.mjs deploy && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: APP_TIME_ZONE
+        value: America/New_York
+      # Copy these from Vercel (Settings → Environment Variables) or Supabase. Render asks for each one.
+      - key: DATABASE_URL # Supabase Transaction pooler connection string (port 6543)
+        sync: false
+      - key: ADMIN_PASSCODE
+        sync: false
+      - key: SESSION_SECRET
+        sync: false
+      - key: PIN_ENCRYPTION_KEY # must be the SAME value as on Vercel, or saved PINs can't be read
+        sync: false
+      - key: SUPABASE_URL # for audio and photo uploads
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
