@@ -52,6 +52,7 @@ Only admins (Ashley by default; Settings → Observers) change settings, the lib
 | `INITIAL_ACCESS_KEY` | Optional. The key for the private link, used only if you turn the link on in Settings. |
 | `INITIAL_PASSCODE` | Recommended. The shared passcode. If blank, the first visitor to the app creates it, so open the app right after deploying. |
 | `SEED_SAMPLE_DATA` | Optional. `true` adds 18 fake "Sample" residents with observations, for trying the app. Delete them in Settings before launch. |
+| `APP_ENABLED` | **The on/off switch.** The app is turned off (every page shows "Turned off for now") unless this is `true`. Change it, then redeploy. |
 | `APP_TIME_ZONE` | Optional. Defaults to `America/New_York`. |
 
 ## Deploy (first time)
