@@ -33,20 +33,19 @@ The app runs with all of these blank or in draft. Admin → Content flags shows 
 
 - **Order is now:** 1 Our City, 2 Your Story, 3 What We Believe, 4 Meet Your Students, 5 You Are the Variable. Child Development is retired (hidden; any saved answers stay in the database). The status export's "4." and "5." columns now mean Meet Your Students and You Are the Variable.
 - **Routing:** each resident sees only their grade-band branch, chosen from (1) the track in About You, (2) a choice on the Section 4 page if About You has no track, then (3) the roster's grade band. The adjacent band shows as an optional "Neighboring-band review." Admins can preview any band from the module preview.
+- **Filled in (Nov 1 draft, please review):** the four grade-band branches (four parts and a classroom example each), the knowledge check (8 shared + 5 per band, all tagged), the 15 milestone sorting cards in the four PLT domains (cognitive, physical, social, moral; emotional sits under social), the four "match the idea" moments, and the four mindset statements. The core now runs: domains table, five development videos, milestone sort, theorists table, match the idea.
+- **Domains follow the PLT.** Learning objective 1, the learning-objectives list, and the Grade-Band Student Profile still say "cognitive, social-emotional, physical, and language." Decide whether to switch them to the PLT four.
 - **Still needed:**
-  - The four grade-band branches (ECE, Elementary, Middle, High School; four parts and a classroom example each). Each currently shows "Coming soon."
-  - The knowledge check: 8 shared + 5 per grade band. Until then, 5 shared placeholder questions from the retired Child Development quiz (Claude-drafted; asynchronous development, Piaget, ZPD, Erikson, Maslow). Grade-band questions are supported: each question can be tagged with a band.
-  - The milestone sorting cards (currently 8 sample cards built from the domain table's examples) and the "match the idea" moments (4 samples from the theory table).
-  - Mindset statements (3 samples).
-  - Five development videos and their captions (Settings → Module 4).
+  - Optional classroom-example video clips for each branch (none yet).
   - The Piaget/Erikson timeline image.
+- **Time:** the five videos and the sort add to the shared core's 23 minutes; set the real total once the video lengths are known.
 - **PLT Starter Sheet:** check the exam category names against the current ETS test specifications before launch (Admin → Module content → Printable reference sheet).
 
 ## Module 5 (You Are the Variable), rebuilt from the November content file
 
 - **Time:** set to 60 minutes as requested. The plan line's parts still add up to 63 (content 33, knowledge check 10, mindset 5, final task 15); say which part to trim.
 - **Videos:** the Ms. Rivera, Ms. Kim, Mr. Logan, and Hattie slots reuse the existing links, so anything already entered carries over. The Hattie slot is pre-filled with vimeo.com/267382804 only if it was blank; confirm it's the right clip.
-- **Still needed:** the 7-question knowledge check (the 5 existing questions stay until then), mindset statements (3 samples), the "spot the response" items (6 samples from the scenario versions), and the quick-check areas (5 samples).
+- **Filled in (Nov 1 draft, please review):** the 7-question knowledge check, four mindset statements, the 8 "spot the response" items, and six quick-check areas.
 - **Removed:** the old efficacy reflection; the Hard-Day Plan is the final task.
 
 ## Module 1: "Our students' neighborhoods" section (added before the final task)
@@ -57,17 +56,13 @@ The app runs with all of these blank or in draft. Admin → Content flags shows 
 
 ## Module 3 (What We Believe), rebuilt from the November content file
 
-- **Knowledge check:** the file says "Eight questions" but the questions weren't in it. The module keeps its 5 existing questions (asset-based teaching, Pygmalion, deficit thinking, Ladson-Billings, families), which still match the content, until the 8 arrive.
-- **Mindset statements:** three sample statements, marked "Sample statements, replace."
-- **"Try it: reframe it":** the statements weren't in the file. It starts with the one example from the text ("He is a low reader"), marked sample. Add more in Admin → Module content → What We Believe → Reframe practice.
+- **Filled in (Nov 1 draft, please review):** the 8-question knowledge check, four mindset statements, and four "reframe it" examples.
 - **Image still needed:** the three-pillar diagram.
 - **Final task message** has a hard 100-word limit; the module can't be marked complete until it's under.
 - **Removed:** the four-domains video and the old child-development sections (child development now lives in Module 5).
 
 ## Module 2 (Your Story Matters), rebuilt from the November content file and the revised persona quiz
 
-- **Persona descriptions:** the quiz file says the descriptions on pages 12 and 13 of the original still apply, but those pages weren't included. Results show each persona's signature move (from your facilitator notes) and "Full persona description coming soon" until a Strength and Watch for are added. You can paste them in Admin → Module content → Your Story Matters → Teacher Persona Quiz → Personas.
-- **Mindset statements:** three sample statements are in place (marked "Sample statements, replace"). Send the real ones or edit them in Admin → Module content.
 - **Mentor Match merged into About You:** About You's fields come first (track, grade-band interest, feedback, communication style, goals, professional context), followed by the Mentor Match questions that weren't duplicates (placement school, first instinct, how you learn, the rating scales, hard-day need, identity preferences, anything else, teacher in mind). The name question was dropped since the app knows who is signed in. Existing responses carry over.
 - **Certification track** is collected in About You. Routing in Section 4 by track isn't built yet; it will need Section 4's content.
 - **Tiebreakers:** asked when the top two personas finish within one point (per the quiz). Per the "Reading your result" rules they only change the primary when two personas are tied for first; otherwise the leader stays primary and the runner-up is the secondary.
@@ -76,8 +71,7 @@ The app runs with all of these blank or in draft. Admin → Content flags shows 
 
 ## Module 1 (Our City, Our Schools), rebuilt from the November content file
 
-- **Knowledge check:** the file says "Six questions" but the questions themselves weren't in it (they were interactive in the preview). The module keeps the 4 existing questions until the 6 arrive.
-- **Mindset check:** the file describes it (ungraded agree/disagree ratings, repeated after the section and before the first evaluation period) but the statements weren't in it. Send the statements and say whether residents should see their earlier ratings.
+- **Filled in (Nov 1 draft, please review):** the 6-question knowledge check, and a before and after mindset check (three statements). The mindset sections are new in this module and count toward completion like the other modules; remove them from the module's completion list if you do not want that.
 - **Images:** three image slots (ward map, M Street/Dunbar photo, KIPP DC timeline) are hidden until an image is uploaded in Admin → Module content. Content flags lists them.
 - **Timing:** set to 65 minutes, as requested. The plan line still mentions the mindset check.
 - **Completion rule changed:** knowledge check + the Community Strengths Snapshot (the old neighborhood reflection was removed; any earlier answers stay in the database).

@@ -16,7 +16,7 @@
   "sections": [
     {
       "id": "start",
-      "title": "Start here",
+      "title": "Start Here",
       "audioUrl": "",
       "blocks": [
         {
@@ -66,7 +66,7 @@
     },
     {
       "id": "mindset-before",
-      "title": "Mindset check: before",
+      "title": "Mindset Check: Before",
       "blocks": [
         {
           "type": "text",
@@ -75,19 +75,18 @@
         {
           "type": "mindset",
           "activityId": "m2-mindset-before",
-          "sample": true,
           "statements": [
             {
               "id": "s1",
-              "text": "I can name how my own background shapes what I notice in students."
+              "text": "There is more than one effective way to lead a classroom."
             },
             {
               "id": "s2",
-              "text": "I know my natural style for leading a room, including its strengths and blind spots."
+              "text": "My natural style is a strength to build on, and it has places I will need to stretch."
             },
             {
               "id": "s3",
-              "text": "I can explain why I teach in a way that would sustain me on a hard day."
+              "text": "My background shapes what I notice in students, and I can learn to check my assumptions."
             }
           ]
         }
@@ -95,7 +94,7 @@
     },
     {
       "id": "background",
-      "title": "Your background",
+      "title": "Your Background",
       "audioUrl": "",
       "blocks": [
         {
@@ -172,27 +171,37 @@
             {
               "id": "emcee",
               "name": "Emcee",
-              "move": "Shifts the room's energy."
+              "move": "Shifts the room's energy.",
+              "strength": "Engagement Â· Momentum Â· Whole-class command",
+              "watchFor": "Entertainment can crowd out learning. Build in quiet reflection and independent work so students have time to process what they saw."
             },
             {
               "id": "anchor",
               "name": "Anchor",
-              "move": "Slows down and resets."
+              "move": "Slows down and resets.",
+              "strength": "Regulation Â· Safety Â· Consistency",
+              "watchFor": "Routine can harden into a rut. Add a spark of novelty or a change of pace when students need it."
             },
             {
               "id": "engineer",
               "name": "Engineer",
-              "move": "Adjusts the system or procedure."
+              "move": "Adjusts the system or procedure.",
+              "strength": "Efficiency Â· Clarity Â· Student ownership",
+              "watchFor": "Leave room for flexibility and humanity. Some moments call for setting the plan aside, because relationships and real-time needs come first."
             },
             {
               "id": "coach",
               "name": "Coach",
-              "move": "Raises the bar and rallies."
+              "move": "Raises the bar and rallies.",
+              "strength": "Motivation Â· Team culture Â· Accountability",
+              "watchFor": "Not every student responds to pressure or competition the same way. Personalize the push to each studentâ€™s pace and needs."
             },
             {
               "id": "nurturer",
               "name": "Nurturer",
-              "move": "Connects with the individual."
+              "move": "Connects with the individual.",
+              "strength": "Emotional safety Â· Belonging Â· Individualized support",
+              "watchFor": "Do not carry every burden alone. Gentle, firm boundaries sustain your care over time and teach students resilience and self-advocacy."
             }
           ],
           "questions": [
@@ -669,7 +678,7 @@
     },
     {
       "id": "results",
-      "title": "Your results",
+      "title": "Your Results",
       "blocks": [
         {
           "type": "persona_results",
@@ -680,7 +689,7 @@
     },
     {
       "id": "personal-why",
-      "title": "Form 3: Personal Why (final task)",
+      "title": "Form 3: Personal Why (Final Task)",
       "blocks": [
         {
           "type": "text",
@@ -785,7 +794,7 @@
     },
     {
       "id": "mindset-after",
-      "title": "Mindset check: after",
+      "title": "Mindset Check: After",
       "blocks": [
         {
           "type": "text",

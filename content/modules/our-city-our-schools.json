@@ -15,7 +15,7 @@
   "sections": [
     {
       "id": "start",
-      "title": "Start here",
+      "title": "Start Here",
       "audioUrl": "",
       "blocks": [
         {
@@ -26,6 +26,34 @@
           "type": "callout",
           "title": "Your plan for the 65 minutes",
           "text": "Content (47 min), knowledge check (6), mindset check (5), final task (10). The audio episode is required and takes 31 minutes, so plan to listen in one sitting."
+        }
+      ]
+    },
+    {
+      "id": "mindset-before",
+      "title": "Mindset Check: Before",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Not graded. Rate how much you agree with each statement right now. You will rate the same statements again after the knowledge check, and you can revisit both before your first evaluation period."
+        },
+        {
+          "type": "mindset",
+          "activityId": "m1-mindset-before",
+          "statements": [
+            {
+              "id": "s1",
+              "text": "The neighborhoods my students live in hold strengths I can learn from."
+            },
+            {
+              "id": "s2",
+              "text": "Knowing a community's history changes how I read what I see in a classroom."
+            },
+            {
+              "id": "s3",
+              "text": "I can respect a community I did not grow up in and keep learning about it."
+            }
+          ]
         }
       ]
     },
@@ -65,7 +93,7 @@
           "type": "resource",
           "linkKey": "url.m1.statehood_video",
           "kind": "video",
-          "title": "How Washington, D.C., could become a state, and why it probably won't",
+          "title": "How Washington, D.C., Could Become a State, and Why It Probably Won't",
           "description": "A short news segment from June 2020, when the House passed a DC statehood bill. It explains why a city of this size has no voting senator or representative. Watch for how the arguments are about power, not just geography.",
           "source": "PBS NewsHour"
         },
@@ -78,12 +106,12 @@
     },
     {
       "id": "history",
-      "title": "Part 2. How DC's schools got here",
+      "title": "Part 2. How DC's Schools Got Here",
       "audioUrl": "",
       "blocks": [
         {
           "type": "heading",
-          "text": "Schools of excellence, built by Black Washington"
+          "text": "Schools of Excellence, Built by Black Washington"
         },
         {
           "type": "text",
@@ -107,7 +135,7 @@
         },
         {
           "type": "heading",
-          "text": "Desegregation and the loss of Black teachers"
+          "text": "Desegregation and the Loss of Black Teachers"
         },
         {
           "type": "text",
@@ -119,7 +147,7 @@
         },
         {
           "type": "heading",
-          "text": "\"Educationally and managerially bankrupt\""
+          "text": "\"Educationally and Managerially Bankrupt\""
         },
         {
           "type": "text",
@@ -127,7 +155,7 @@
         },
         {
           "type": "heading",
-          "text": "The reform era"
+          "text": "The Reform Era"
         },
         {
           "type": "text",
@@ -147,7 +175,7 @@
           "type": "resource",
           "linkKey": "url.m1.black_teachers_article",
           "kind": "article",
-          "title": "Why did so many Black teachers lose their jobs after the Brown v. Board ruling?",
+          "title": "Why Did So Many Black Teachers Lose Their Jobs After the Brown v. Board Ruling?",
           "description": "Source of the figures above, with the research on students' outcomes.",
           "source": "Chalkbeat",
           "minutes": 8,
@@ -157,7 +185,7 @@
     },
     {
       "id": "landscape",
-      "title": "Part 3. DC's education landscape and KIPP DC",
+      "title": "Part 3. DC's Education Landscape and KIPP DC",
       "audioUrl": "",
       "blocks": [
         {
@@ -170,7 +198,7 @@
         },
         {
           "type": "heading",
-          "text": "Where KIPP DC comes in"
+          "text": "Where KIPP DC Comes in"
         },
         {
           "type": "text",
@@ -196,7 +224,7 @@
     },
     {
       "id": "core",
-      "title": "Core resources",
+      "title": "Core Resources",
       "audioUrl": "",
       "blocks": [
         {
@@ -207,7 +235,7 @@
           "type": "resource",
           "linkKey": "url.m1.tale_of_two_systems",
           "kind": "article",
-          "title": "A Tale of Two Systems: Education Reform in Washington, DC (excerpt)",
+          "title": "A Tale of Two Systems: Education Reform in Washington, DC (Excerpt)",
           "description": "A 2015 report on DC's dual system. It comes from a policy group that favors charters, so read it as one perspective. As you read, jot down one claim you want to check against what you hear in the audio.",
           "source": "Progressive Policy Institute",
           "required": true
@@ -235,7 +263,7 @@
     },
     {
       "id": "knowledge-check",
-      "title": "Knowledge check",
+      "title": "Knowledge Check",
       "blocks": [
         {
           "type": "text",
@@ -247,8 +275,23 @@
       ]
     },
     {
+      "id": "mindset-after",
+      "title": "Mindset Check: After",
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Rate the same statements again. Your two ratings are saved so you can compare them before your first evaluation period."
+        },
+        {
+          "type": "mindset",
+          "activityId": "m1-mindset-after",
+          "compareTo": "m1-mindset-before"
+        }
+      ]
+    },
+    {
       "id": "neighborhoods",
-      "title": "Our students' neighborhoods",
+      "title": "Our Students' Neighborhoods",
       "audioUrl": "",
       "blocks": [
         {
@@ -295,7 +338,7 @@
     },
     {
       "id": "final-task",
-      "title": "Final task: Community Strengths Snapshot",
+      "title": "Final Task: Community Strengths Snapshot",
       "blocks": [
         {
           "type": "text",
@@ -430,84 +473,148 @@
   "quiz": {
     "questions": [
       {
-        "id": "m1-q1",
-        "prompt": "Which of the following best describes the economic landscape of Washington, DC?",
+        "id": "m1-kc1",
+        "prompt": "At back-to-school night, a new colleague says, “DC is one of the richest cities in the country, so I assume most of our families are doing fine.” Which response best reflects what you learned?",
         "options": [
           {
             "id": "A",
-            "text": "DC's poverty rate is lower than most major American cities"
+            "text": "“DC’s average income is high, so hardship is limited to a small number of families in just a few areas.”"
           },
           {
             "id": "B",
-            "text": "DC has high income inequality, with extreme wealth and concentrated poverty coexisting"
+            "text": "“High incomes and deep poverty exist side by side, so many families have far less than the averages suggest.”"
           },
           {
             "id": "C",
-            "text": "DC is a uniformly wealthy city with few low-income residents"
+            "text": "“DC’s wealth is concentrated east of the Anacostia River, so schools there have more resources than schools elsewhere in the city.”"
+          },
+          {
+            "id": "D",
+            "text": "“DC’s poverty is mostly temporary, tied to federal workers who move in and out of the city each year.”"
           }
         ],
         "correct": "B",
-        "explanation": "DC has one of the highest income inequality rates of any major American city."
+        "explanation": "DC has one of the highest rates of income inequality of any major American city. Extreme wealth and concentrated poverty sit within miles of each other, and neighborhoods east of the Anacostia River, in Wards 7 and 8, have historically been under-resourced."
       },
       {
-        "id": "m1-q2",
-        "prompt": "What does research tell us about the impact of having a Black teacher on Black students?",
+        "id": "m1-kc2",
+        "prompt": "At a community event, a neighbor says, “DC schools were a disaster in the 1990s because families just did not care.” You want to explain why DCPS was labeled ‘educationally and managerially bankrupt.’ Which explanation is most accurate?",
         "options": [
           {
             "id": "A",
-            "text": "There is no measurable difference in outcomes based on teacher race"
+            "text": "Families left for the suburbs, enrollment dropped, and the system could no longer pay its bills on time."
           },
           {
             "id": "B",
-            "text": "Black students with at least one Black teacher are significantly more likely to graduate from high school and aspire to college"
+            "text": "Charter schools drew away the strongest students and left DCPS with the hardest cases to serve."
           },
           {
             "id": "C",
-            "text": "The impact only applies to students in elementary school"
+            "text": "Corruption, patronage hiring, and long-term disinvestment left the system unable to run schools or manage money."
+          },
+          {
+            "id": "D",
+            "text": "Teachers’ unions blocked reforms that would have improved both instruction and the district’s budgets."
           }
         ],
-        "correct": "B",
-        "explanation": "Having even one Black teacher raises Black students' graduation rates and college aspirations."
+        "correct": "C",
+        "explanation": "The label described failures of the system: political corruption, patronage hiring, and systemic disinvestment. It did not describe families or children, who cared deeply about their schools."
       },
       {
-        "id": "m1-q3",
-        "prompt": "According to A Tale of Two Systems, what was the primary reason DCPS was labeled \"educationally and managerially bankrupt\" in the 1990s?",
+        "id": "m1-kc3",
+        "prompt": "A news story reports that DC charter students scored higher on a citywide test than DCPS students. A colleague says, “So charters are simply better.” Which response best shows what you learned about DC’s dual-sector landscape?",
         "options": [
           {
             "id": "A",
-            "text": "Significant underfunding relative to other major American cities"
+            "text": "“Both are public but follow different rules and may serve different students, so raw comparisons can mislead.”"
           },
           {
             "id": "B",
-            "text": "Decades of political corruption, patronage hiring, and systemic disinvestment in students"
+            "text": "“Charters are private schools, so their results should not be compared with DCPS results at all.”"
           },
           {
             "id": "C",
-            "text": "A lack of student motivation and family engagement in DC communities"
+            "text": "“The comparison is fair, because both sectors serve the same students under the same rules and funding.”"
+          },
+          {
+            "id": "D",
+            "text": "“The comparison is fair as long as both sectors are measured on the same citywide test each year.”"
           }
         ],
-        "correct": "B",
-        "explanation": "The reading points to political corruption, patronage hiring, and systemic disinvestment, not students or families."
+        "correct": "A",
+        "explanation": "Almost half of DC’s public school students attend charters, which are tuition-free public schools run independently of the district. Differences in rules and student populations make direct comparisons hard, and research shows advantages for many students alongside real criticisms."
       },
       {
-        "id": "m1-q4",
-        "prompt": "What does KIPP DC's mission mean when it says \"the paths they choose\"?",
+        "id": "m1-kc4",
+        "prompt": "A seventh grader tells her teacher, “My cousin says KIPP only cares about getting everybody into a four-year college.” The teacher wants to explain what the mission means by ‘the paths they choose.’ Which response is most faithful to the mission?",
         "options": [
           {
             "id": "A",
-            "text": "KIPP DC guides all students toward four-year college as the primary pathway"
+            "text": "“Every student is expected to enroll in a four-year college, because that path opens the most doors.”"
           },
           {
             "id": "B",
-            "text": "KIPP DC gives students skills and confidence to pursue their own paths: college, career, and beyond"
+            "text": "“The school picks each student’s best path based on their grades, attendance, and test scores.”"
           },
           {
             "id": "C",
-            "text": "KIPP DC allows students to opt out of academic expectations based on personal preference"
+            "text": "“Students may choose any path, and the school’s role ends once they graduate from high school.”"
+          },
+          {
+            "id": "D",
+            "text": "“Students gain the skills and confidence to choose college, career, or another route, alongside families.”"
+          }
+        ],
+        "correct": "D",
+        "explanation": "The mission centers student choice: college, career, and beyond. It also begins with the words “Together with families and communities,” so the work is done with people, not to them."
+      },
+      {
+        "id": "m1-kc5",
+        "prompt": "A parent asks what Brown v. Board of Education changed. Which answer best matches what you learned?",
+        "options": [
+          {
+            "id": "A",
+            "text": "It ended the funding gap between schools east and west of the Anacostia River in the years that followed."
+          },
+          {
+            "id": "B",
+            "text": "It ruled segregated schools unconstitutional, and integration then closed many Black schools and displaced teachers."
+          },
+          {
+            "id": "C",
+            "text": "It created the DC Public Charter School Board so that families could choose among public schools."
+          },
+          {
+            "id": "D",
+            "text": "It required districts to hire more Black teachers to staff the newly integrated public schools."
           }
         ],
         "correct": "B",
-        "explanation": "The mission is about students choosing their own paths, with the skills and confidence to pursue them."
+        "explanation": "Brown (1954) ended legal school segregation. The way many districts integrated, by closing Black schools, displaced thousands of Black teachers and principals."
+      },
+      {
+        "id": "m1-kc6",
+        "prompt": "A new student rarely makes eye contact and waits several seconds before answering. What is the best first move?",
+        "options": [
+          {
+            "id": "A",
+            "text": "Remind the student to look at the speaker, so every student follows the same participation rule."
+          },
+          {
+            "id": "B",
+            "text": "Treat it as disengagement and call home to talk with the family about attention and focus in class."
+          },
+          {
+            "id": "C",
+            "text": "Ask the student and family what participation looks like, and keep expecting everyone to take part."
+          },
+          {
+            "id": "D",
+            "text": "Assume the student is learning English and request an extra language screening right away."
+          }
+        ],
+        "correct": "C",
+        "explanation": "Norms for eye contact and turn-taking differ across cultures. Asking before assuming protects the relationship and keeps expectations high."
       }
     ]
   },
@@ -516,6 +623,8 @@
     "reflections": [],
     "checklist": [],
     "activities": [
+      "m1-mindset-before",
+      "m1-mindset-after",
       "m1-community-snapshot"
     ]
   }
