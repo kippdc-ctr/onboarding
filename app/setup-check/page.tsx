@@ -1,4 +1,4 @@
-import { sql } from "@/lib/db";
+import { databaseUrl, sql } from "@/lib/db";
 import { explainDbError, missingSettings } from "@/lib/setup";
 import { storageMode } from "@/lib/storage";
 import { getConfig } from "@/lib/data";
@@ -11,6 +11,20 @@ export const dynamic = "force-dynamic";
 type Check = { label: string; ok: boolean; detail: string };
 
 /** Public diagnostics page: names of missing settings and whether the database works. Never shows secret values. */
+/** Which kind of Supabase connection string is in use (no host, user, or password shown). */
+function connectionKind(): string {
+  try {
+    const u = new URL(databaseUrl() ?? "");
+    const pooler = u.hostname.includes("pooler.supabase.com");
+    if (pooler && u.port === "6543") return "Supabase pooler, transaction mode (port 6543): recommended.";
+    if (pooler) return `Supabase pooler, session mode (port ${u.port || "5432"}). The transaction-mode string (port 6543) is recommended.`;
+    if (u.hostname.endsWith("supabase.co")) return "Direct Supabase connection.";
+    return "";
+  } catch {
+    return "";
+  }
+}
+
 async function timed<T>(label: string, fn: () => Promise<T>, ms = 15_000): Promise<{ ok: true; value: T; ms: number } | { ok: false; error: unknown; ms: number }> {
   const t = Date.now();
   try {
@@ -69,7 +83,7 @@ export default async function SetupCheck({ searchParams }: { searchParams: Promi
   });
   try {
     await sql`select 1`;
-    checks.push({ label: "Database connection", ok: true, detail: "Connected." });
+    checks.push({ label: "Database connection", ok: true, detail: `Connected. ${connectionKind()}` });
     try {
       const [{ n }] = await sql<{ n: number }[]>`select count(*)::int as n from settings`;
       const [{ r }] = await sql<{ r: number }[]>`select count(*)::int as r from residents`;

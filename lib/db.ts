@@ -34,7 +34,11 @@ function create(): postgres.Sql {
     prepare: false,
     // Supported by postgres.js but missing from its TypeScript types.
     ...({ max_pipeline: 1 } as object),
-    max: 5,
+    // One connection per server instance. Supabase's pooler (especially in session mode, or with its small free pool
+    // already in use) can hold extra connections waiting indefinitely, which made any page that runs several queries at
+    // once hang. Queries now queue on one connection; at this app's size that costs only milliseconds.
+    // Set DB_POOL_SIZE to raise it on a dedicated database.
+    max: Number(process.env.DB_POOL_SIZE) || 1,
     idle_timeout: 20,
     connect_timeout: 15,
     onnotice: () => {},

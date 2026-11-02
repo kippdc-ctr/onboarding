@@ -44,7 +44,7 @@ function cleanUrl(raw) {
     return raw;
   }
 }
-const sql = postgres(cleanUrl(DB_URL), { prepare: false, max_pipeline: 1, onnotice: () => {} });
+const sql = postgres(cleanUrl(DB_URL), { prepare: false, max_pipeline: 1, max: 1, onnotice: () => {} });
 const json = (f) => JSON.parse(readFileSync(path.join(root, f), "utf8"));
 
 async function migrate() {
