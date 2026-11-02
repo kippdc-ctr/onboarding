@@ -26,6 +26,11 @@ export function cleanDatabaseUrl(raw: string): string {
 }
 
 function create(): postgres.Sql {
+  return newClient();
+}
+
+/** A new, separate client with the app's settings (the setup check uses throwaway ones to test each query alone). */
+export function newClient(overrides: { max?: number } = {}): postgres.Sql {
   const url = databaseUrl();
   if (!url) throw new Error("No database connection: set DATABASE_URL (or connect Supabase in Vercel, which sets POSTGRES_URL), then redeploy.");
   // prepare:false is required for Supabase's transaction pooler. max_pipeline:1 sends one query at a time per
@@ -38,7 +43,7 @@ function create(): postgres.Sql {
     // already in use) can hold extra connections waiting indefinitely, which made any page that runs several queries at
     // once hang. Queries now queue on one connection; at this app's size that costs only milliseconds.
     // Set DB_POOL_SIZE to raise it on a dedicated database.
-    max: Number(process.env.DB_POOL_SIZE) || 1,
+    max: overrides.max ?? (Number(process.env.DB_POOL_SIZE) || 1),
     idle_timeout: 20,
     connect_timeout: 15,
     onnotice: () => {},

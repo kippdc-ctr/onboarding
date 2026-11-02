@@ -1,4 +1,4 @@
-import { databaseUrl, sql } from "@/lib/db";
+import { databaseUrl, newClient, sql } from "@/lib/db";
 import { explainDbError, missingSettings } from "@/lib/setup";
 import { storageMode } from "@/lib/storage";
 import { getConfig } from "@/lib/data";
@@ -35,6 +35,39 @@ async function timed<T>(label: string, fn: () => Promise<T>, ms = 15_000): Promi
   }
 }
 
+/** Each query the app's pages depend on, run alone on its own fresh connection, so one stuck query can't hide the rest. */
+async function queryProbes(): Promise<Check> {
+  type Probe = [string, (db: ReturnType<typeof newClient>, ids: string[]) => Promise<unknown>];
+  const probes: Probe[] = [
+    ["groups", (db) => db`select number, welcome_email_date from groups`],
+    ["modules", (db) => db`select * from modules`],
+    ["phase items", (db) => db`select * from phase_items`],
+    ["group overrides", (db) => db`select group_number, target, due_date from group_due_overrides`],
+    ["settings", (db) => db`select key, value from settings`],
+    ["content edits", (db) => db`select module_slug, target, value, original_hash, updated_at from content_overrides`],
+    ["residents", (db) => db`select * from residents where active`],
+    ["item checks", (db, ids) => db`select resident_id, item_id from item_checks where resident_id = any(${ids}::uuid[])`],
+    ["quiz answers", (db, ids) => db`select resident_id, module_slug from quiz_attempts where resident_id = any(${ids}::uuid[])`],
+    ["activities", (db, ids) => db`select resident_id, payload_json from activity_results where resident_id = any(${ids}::uuid[])`],
+    ["forms", (db, ids) => db`select resident_id, answers_json->>'track' as track from form_responses where resident_id = any(${ids}::uuid[])`],
+    ["two at once", (db) => Promise.all([db`select 1`, db`select 2`])],
+  ];
+  let ids: string[] = [];
+  try {
+    ids = (await sql<{ id: string }[]>`select id from residents where active`).map((r) => r.id);
+  } catch {}
+  const parts: string[] = [];
+  let ok = true;
+  for (const [label, fn] of probes) {
+    const db = newClient({ max: 1 });
+    const r = await timed(label, () => fn(db, ids), 8000);
+    db.end({ timeout: 1 }).catch(() => {});
+    if (!r.ok) ok = false;
+    parts.push(r.ok ? `${label} ${r.ms} ms` : `${label} FAILED (${explainDbError(r.error).code}, ${r.ms} ms)`);
+  }
+  return { label: "Each database query on its own", ok, detail: parts.join(" · ") };
+}
+
 /** ?deep=1: database size, whether saves work, and how long the admin page's data takes. Sizes and timings only. */
 async function deepChecks(): Promise<Check[]> {
   const out: Check[] = [];
@@ -61,6 +94,7 @@ async function deepChecks(): Promise<Check[]> {
       : /read-only/i.test(String((write.error as Error)?.message)) ? "No: the database is read-only, usually because it is over the 500 MB free limit." : `${explainDbError(write.error).hint} (${write.ms} ms)`,
   });
 
+  out.push(await queryProbes());
   const cfg = await timed("Loading settings and content", () => getConfig(todayISO()));
   out.push({ label: "Loading settings and module content", ok: cfg.ok, detail: cfg.ok ? `${cfg.ms} ms` : `${explainDbError(cfg.error).hint} (${cfg.ms} ms)` });
   const cohort = await timed("Loading the completion grid", () => loadCohort({}));
@@ -111,6 +145,10 @@ export default async function SetupCheck({ searchParams }: { searchParams: Promi
       <Logo />
       <div className="card mt-8">
         <h1 className="h2">Setup check</h1>
+        <p className="text-sm text-muted">
+          Version: {process.env.VERCEL_GIT_COMMIT_SHA?.slice(0, 7) ?? process.env.RENDER_GIT_COMMIT?.slice(0, 7) ?? "local"}
+          {process.env.VERCEL_GIT_COMMIT_MESSAGE ? ` · ${process.env.VERCEL_GIT_COMMIT_MESSAGE.split("\n")[0]}` : ""}
+        </p>
         <p className={`mt-2 font-semibold ${allOk ? "text-teal-ink" : "text-coral-ink"}`}>{allOk ? "✓ Everything needed is working." : "Something needs attention:"}</p>
         <ul className="mt-4 space-y-3">
           {checks.map((c) => (
