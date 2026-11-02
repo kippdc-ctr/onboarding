@@ -27,6 +27,8 @@ export function explainDbError(e: unknown): { code: string; hint: string } {
   else if (code === "ECONNREFUSED" || code === "ETIMEDOUT" || code === "CONNECT_TIMEOUT" || msg.includes("timeout"))
     hint = "The database didn't answer. If the Supabase project is paused (free projects pause after a week without traffic), restore it in Supabase, then try again.";
   else if (code === "XX000" && msg.includes("tenant or user not found")) hint = "Supabase didn't recognize the database user. Use the connection string exactly as Supabase or Vercel provides it.";
+  else if (code === "TIMEOUT") hint = "The database is answering too slowly. It may be restoring from a pause, or overloaded.";
+  else if (code === "25006" || msg.includes("read-only")) hint = "The database is read-only, usually because it is over the 500 MB free limit.";
   else if (code === "42704" || msg.includes("unrecognized configuration parameter")) hint = "The connection string has an extra setting the database rejects.";
   return { code, hint };
 }

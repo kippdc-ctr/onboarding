@@ -38,7 +38,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
           <ul className="flex gap-1 pb-2">
             {NAV.map(([href, label]) => (
               <li key={href}>
-                <Link href={href} className="block whitespace-nowrap rounded-full px-3 py-1.5 font-semibold text-teal-ink hover:bg-teal-wash">
+                <Link href={href} prefetch={false} className="block whitespace-nowrap rounded-full px-3 py-1.5 font-semibold text-teal-ink hover:bg-teal-wash">
                   {label}
                 </Link>
               </li>
