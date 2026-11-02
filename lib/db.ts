@@ -58,12 +58,55 @@ function client(): postgres.Sql {
   return globalThis.__ctrSql ?? (globalThis.__ctrSql = create());
 }
 
+// ---- One query at a time ----
+// On Supabase's pooler, two table queries in flight on the same connection can hang forever (seen in production:
+// each query alone answered in a few ms; any two at once never returned, and the connection stayed stuck).
+// So every query waits for the previous one to finish before it is sent. If one ever takes too long, the
+// connection is thrown away and a fresh one is used, so a single bad moment can't freeze the site.
+const QUERY_TIMEOUT_MS = 10_000;
+let chain: Promise<unknown> = Promise.resolve();
+
+function enqueue<T>(run: () => Promise<T>): Promise<T> {
+  const next = chain.then(run, run);
+  chain = next.catch(() => {});
+  return next;
+}
+
+function withTimeout<T>(p: Promise<T>): Promise<T> {
+  let timer: ReturnType<typeof setTimeout>;
+  return Promise.race([
+    p,
+    new Promise<never>((_, reject) => {
+      timer = setTimeout(() => {
+        const stuck = globalThis.__ctrSql;
+        globalThis.__ctrSql = undefined;
+        stuck?.end({ timeout: 0 }).catch(() => {});
+        reject(Object.assign(new Error("The database did not answer in time. Please try again."), { code: "TIMEOUT" }));
+      }, QUERY_TIMEOUT_MS);
+    }),
+  ]).finally(() => clearTimeout(timer));
+}
+
+/** Make a postgres.js query run through the one-at-a-time queue when it is awaited. Fragments are untouched. */
+function serialize<T>(q: T): T {
+  const query = q as unknown as { then?: (...a: unknown[]) => unknown };
+  if (!query || typeof query.then !== "function") return q;
+  const originalThen = query.then.bind(query) as (f: (v: unknown) => unknown) => Promise<unknown>;
+  let result: Promise<unknown> | null = null;
+  query.then = (onFulfilled?: unknown, onRejected?: unknown) => {
+    result ??= enqueue(() => withTimeout(originalThen((v) => v)));
+    return result.then(onFulfilled as never, onRejected as never);
+  };
+  return q;
+}
+
 /** Connects on first use, so a missing setting shows a helpful page instead of crashing at import. */
 export const sql: postgres.Sql = new Proxy(function () {} as unknown as postgres.Sql, {
-  apply: (_t, _this, args) => (client() as unknown as (...a: unknown[]) => unknown)(...args),
+  apply: (_t, _this, args) => serialize((client() as unknown as (...a: unknown[]) => unknown)(...args)),
   get: (_t, prop) => {
     const c = client() as unknown as Record<string | symbol, unknown>;
     const v = c[prop];
+    if (prop === "unsafe" && typeof v === "function") return (...a: unknown[]) => serialize((v as (...x: unknown[]) => unknown).apply(c, a));
     return typeof v === "function" ? (v as (...a: unknown[]) => unknown).bind(c) : v;
   },
 });
