@@ -63,3 +63,15 @@ export function AudioPlayer({ url, transcript, label = "Listen to this section" 
     </div>
   );
 }
+
+/** Small player for a recording of one paragraph, list, or box. */
+export function ReadAloud({ url }: { url: string }) {
+  return (
+    <div className="flex flex-wrap items-center gap-2 rounded-xl bg-teal-wash px-3 py-1 print:hidden">
+      <span className="text-sm font-semibold text-teal-ink">🎧 Listen</span>
+      <audio controls preload="none" src={url} className="h-9 min-w-0 flex-1" aria-label="Listen to this part read aloud">
+        <a href={url}>Download the recording</a>
+      </audio>
+    </div>
+  );
+}

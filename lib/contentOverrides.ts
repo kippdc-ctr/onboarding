@@ -29,7 +29,8 @@ export function originalFor(m: ModuleContent, target: string): unknown {
     const s = m.sections.find((x) => x.id === a);
     return s ? { title: s.title, audioUrl: s.audioUrl ?? "", audioTranscript: s.audioTranscript ?? "", video: s.video ?? null } : undefined;
   }
-  if (kind === "block") return m.sections.find((x) => x.id === a)?.blocks[Number(b)];
+  if (kind === "block" || kind === "narration") return m.sections.find((x) => x.id === a)?.blocks[Number(b)];
+  if (kind === "layout") return defaultLayout(m);
   if (kind === "question") return m.quiz?.questions.find((q) => q.id === a);
   if (kind === "activity") {
     for (const s of m.sections) for (const bl of s.blocks) if (isActivity(bl) && bl.activityId === a) return bl;
@@ -40,12 +41,51 @@ export function originalFor(m: ModuleContent, target: string): unknown {
   return undefined;
 }
 
+/** Section order and, per section, the blocks it shows (by their place in the file, "sectionId:index"). */
+export type Layout = { sections: { id: string; blocks: string[] }[] };
+
+export function defaultLayout(m: ModuleContent): Layout {
+  return { sections: m.sections.map((s) => ({ id: s.id, blocks: s.blocks.map((_, i) => `${s.id}:${i}`) })) };
+}
+
+/**
+ * Rearranges sections and blocks. Anything the layout doesn't mention (e.g. added to the file later) stays
+ * in its original section, after the arranged blocks, so nothing ever disappears.
+ */
+export function applyLayout(m: ModuleContent, layout: Layout): void {
+  const byOrigin = new Map<string, Block>();
+  for (const s of m.sections) for (const b of s.blocks) byOrigin.set(b.origin!, b);
+  const byId = new Map(m.sections.map((s) => [s.id, s]));
+  const used = new Set<string>();
+  const placed = new Map<string, Block[]>();
+  for (const ls of layout.sections ?? []) {
+    if (!byId.has(ls.id) || placed.has(ls.id)) continue;
+    const list: Block[] = [];
+    for (const o of ls.blocks ?? []) {
+      const b = byOrigin.get(o);
+      if (b && !used.has(o)) {
+        used.add(o);
+        list.push(b);
+      }
+    }
+    placed.set(ls.id, list);
+  }
+  const order = [...placed.keys(), ...m.sections.filter((s) => !placed.has(s.id)).map((s) => s.id)];
+  m.sections = order.map((id) => {
+    const s = byId.get(id)!;
+    const leftovers = s.blocks.filter((b) => !used.has(b.origin!));
+    return { ...s, blocks: [...(placed.get(id) ?? []), ...leftovers] };
+  });
+}
+
 export type OverrideStatus = { target: string; updatedAt: Date; stale: boolean; applied: boolean };
 
 /** Returns a new module with every applicable override merged in, plus a status per override. */
 export function applyOverrides(original: ModuleContent, rows: OverrideRow[]): { module: ModuleContent; status: OverrideStatus[] } {
   const m: ModuleContent = structuredClone(original);
+  for (const s of m.sections) s.blocks.forEach((b, i) => (b.origin = `${s.id}:${i}`));
   const status: OverrideStatus[] = [];
+  let layout: { layout: Layout; row: OverrideRow; stale: boolean } | null = null;
   for (const row of rows) {
     const orig = originalFor(original, row.target);
     if (orig === undefined) {
@@ -56,7 +96,16 @@ export function applyOverrides(original: ModuleContent, rows: OverrideRow[]): { 
     const [kind, a, b] = row.target.split(":");
     const v = row.value;
     let applied = true;
-    if (kind === "module") Object.assign(m, pick(v, ["title", "description", "estimatedMinutes", "objectives", "softDueNote"]));
+    if (kind === "layout") {
+      // Applied last, after every edit that is tied to a block's original position.
+      layout = { layout: v as unknown as Layout, row, stale };
+      continue;
+    }
+    if (kind === "narration") {
+      // A recording belongs to the exact text it was made for; hide it if the file's text changed.
+      if (stale) applied = false;
+      else m.sections.find((x) => x.id === a)!.blocks[Number(b)].narrationUrl = String(v.url ?? "") || undefined;
+    } else if (kind === "module") Object.assign(m, pick(v, ["title", "description", "estimatedMinutes", "objectives", "softDueNote"]));
     else if (kind === "section") {
       const s = m.sections.find((x) => x.id === a) as Section;
       Object.assign(s, pick(v, ["title", "audioUrl", "audioTranscript", "video"]));
@@ -66,7 +115,7 @@ export function applyOverrides(original: ModuleContent, rows: OverrideRow[]): { 
       else {
         const s = m.sections.find((x) => x.id === a)!;
         const i = Number(b);
-        s.blocks[i] = { ...s.blocks[i], ...v, type: s.blocks[i].type } as Block;
+        s.blocks[i] = { ...s.blocks[i], ...v, type: s.blocks[i].type, origin: s.blocks[i].origin } as Block;
       }
     } else if (kind === "question" && m.quiz) {
       const qi = m.quiz.questions.findIndex((q) => q.id === a);
@@ -83,7 +132,7 @@ export function applyOverrides(original: ModuleContent, rows: OverrideRow[]): { 
       for (const s of m.sections)
         s.blocks = s.blocks.map((bl) => {
           if (kind === "activity" && isActivity(bl) && bl.activityId === a) {
-            return { ...bl, ...v, type: bl.type, activityId: bl.activityId } as Block;
+            return { ...bl, ...v, type: bl.type, activityId: bl.activityId, origin: bl.origin } as Block;
           }
           if (kind === "reflection" && bl.type === "reflection" && bl.promptId === a) {
             return { ...bl, ...pick(v, ["prompt"]) } as Block;
@@ -92,6 +141,10 @@ export function applyOverrides(original: ModuleContent, rows: OverrideRow[]): { 
         });
     }
     status.push({ target: row.target, updatedAt: row.updated_at, stale, applied });
+  }
+  if (layout) {
+    applyLayout(m, layout.layout);
+    status.push({ target: "layout", updatedAt: layout.row.updated_at, stale: layout.stale, applied: true });
   }
   return { module: m, status };
 }

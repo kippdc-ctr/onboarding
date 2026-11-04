@@ -2,7 +2,7 @@ import { readFile } from "node:fs/promises";
 import { localFile, storageMode } from "@/lib/storage";
 
 // Serves locally uploaded media in development. In production, media is served by Supabase Storage.
-const TYPES: Record<string, string> = { mp3: "audio/mpeg", m4a: "audio/mp4", wav: "audio/wav", ogg: "audio/ogg", aac: "audio/aac", png: "image/png", jpg: "image/jpeg", jpeg: "image/jpeg", webp: "image/webp", gif: "image/gif", heic: "image/heic" };
+const TYPES: Record<string, string> = { webm: "audio/webm", mp3: "audio/mpeg", m4a: "audio/mp4", wav: "audio/wav", ogg: "audio/ogg", aac: "audio/aac", png: "image/png", jpg: "image/jpeg", jpeg: "image/jpeg", webp: "image/webp", gif: "image/gif", heic: "image/heic" };
 
 export async function GET(req: Request, { params }: { params: Promise<{ path: string[] }> }) {
   if (storageMode() !== "local") return new Response("Not found", { status: 404 });

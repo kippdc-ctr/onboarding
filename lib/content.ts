@@ -11,7 +11,7 @@ import type { Band } from "./bands";
 
 export type LinkKind = "video" | "article" | "audio" | "form" | "map";
 
-export type Block =
+type BlockCore =
   | { type: "text"; text: string }
   | { type: "heading"; text: string }
   | { type: "list"; items: string[]; ordered?: boolean }
@@ -91,6 +91,10 @@ export type Block =
       fields: WorksheetField[];
       photos: { id: string; label: string; help?: string; optional?: boolean }[];
     };
+
+/** Added when content is resolved: where the block sits in the file ("sectionId:index") and its recorded narration. */
+export type BlockMeta = { origin?: string; narrationUrl?: string };
+export type Block = BlockCore & BlockMeta;
 
 /**
  * One answer box in a worksheet. `options` makes it a dropdown; kind "checkbox" makes it a tick box.

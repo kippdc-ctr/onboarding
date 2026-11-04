@@ -4,8 +4,36 @@ import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
 import type { PreparedUpload } from "@/lib/storage";
 
-type FileInfo = { name: string; type: string; size: number };
-type UploadInfo = { storagePath: string; publicUrl: string; filename: string; contentType: string; size: number };
+export type FileInfo = { name: string; type: string; size: number };
+export type UploadInfo = { storagePath: string; publicUrl: string; filename: string; contentType: string; size: number };
+export type PrepareFn = (file: FileInfo) => Promise<{ ok: true; upload: PreparedUpload } | { ok: false; error: string }>;
+export type FinishFn = (info: UploadInfo) => Promise<{ ok: boolean }>;
+
+/** Asks the server where to put the file, uploads it straight there with progress, then tells the server it arrived. */
+export async function uploadFile(
+  file: File,
+  prepare: PrepareFn,
+  finish: FinishFn,
+  onProgress: (pct: number) => void,
+): Promise<{ ok: true; result: { ok: boolean } & Record<string, unknown> } | { ok: false; error: string }> {
+  const prep = await prepare({ name: file.name, type: file.type, size: file.size });
+  if (!prep.ok) return prep;
+  const u = prep.upload;
+  // XMLHttpRequest (not fetch) so we can show upload progress.
+  const sent = await new Promise<boolean>((resolve) => {
+    const xhr = new XMLHttpRequest();
+    xhr.open(u.method, u.uploadUrl);
+    for (const [k, v] of Object.entries(u.headers)) xhr.setRequestHeader(k, v);
+    xhr.upload.onprogress = (e) => e.lengthComputable && onProgress(Math.round((100 * e.loaded) / e.total));
+    xhr.onload = () => resolve(xhr.status >= 200 && xhr.status < 300);
+    xhr.onerror = () => resolve(false);
+    xhr.send(file);
+  });
+  if (!sent) return { ok: false, error: "The upload didn't finish. Check your connection and try again." };
+  const fin = await finish({ storagePath: u.storagePath, publicUrl: u.publicUrl, filename: file.name, contentType: u.headers["content-type"], size: file.size });
+  if (!fin.ok) return { ok: false, error: "Uploaded, but couldn't attach it here. Try again." };
+  return { ok: true, result: fin };
+}
 
 /** Uploads one file straight to storage with a progress bar. `prepare` and `finish` are server actions bound to the target. */
 export function MediaUploader({
@@ -16,8 +44,8 @@ export function MediaUploader({
   successText,
   onDone,
 }: {
-  prepare: (file: FileInfo) => Promise<{ ok: true; upload: PreparedUpload } | { ok: false; error: string }>;
-  finish: (info: UploadInfo) => Promise<{ ok: boolean }>;
+  prepare: PrepareFn;
+  finish: FinishFn;
   label: string;
   accept: string;
   successText: string;
@@ -34,41 +62,13 @@ export function MediaUploader({
     setError(null);
     setDone(false);
     setProgress(0);
-    const prep = await prepare({ name: file.name, type: file.type, size: file.size });
-    if (!prep.ok) {
-      setError(prep.error);
-      setProgress(null);
-      return;
-    }
-    const u = prep.upload;
-    // XMLHttpRequest (not fetch) so we can show upload progress.
-    const ok = await new Promise<boolean>((resolve) => {
-      const xhr = new XMLHttpRequest();
-      xhr.open(u.method, u.uploadUrl);
-      for (const [k, v] of Object.entries(u.headers)) xhr.setRequestHeader(k, v);
-      xhr.upload.onprogress = (e) => e.lengthComputable && setProgress(Math.round((100 * e.loaded) / e.total));
-      xhr.onload = () => resolve(xhr.status >= 200 && xhr.status < 300);
-      xhr.onerror = () => resolve(false);
-      xhr.send(file);
-    });
-    if (!ok) {
-      setError("The upload didn't finish. Check your connection and try again.");
-      setProgress(null);
-      return;
-    }
-    const fin = await finish({
-      storagePath: u.storagePath,
-      publicUrl: u.publicUrl,
-      filename: file.name,
-      contentType: u.headers["content-type"],
-      size: file.size,
-    });
+    const res = await uploadFile(file, prepare, finish, setProgress);
     setProgress(null);
-    if (!fin.ok) setError("Uploaded, but couldn't attach it here. Try again.");
+    if (!res.ok) setError(res.error);
     else {
       setDone(true);
       if (input.current) input.current.value = "";
-      if (onDone) onDone(fin);
+      if (onDone) onDone(res.result);
       else router.refresh();
     }
   }

@@ -9,7 +9,10 @@ import type { OverrideStatus } from "@/lib/contentOverrides";
 import {
   finishAudioUpload,
   finishImageUpload,
+  finishNarrationUpload,
   prepareAudioUpload,
+  prepareNarrationUpload,
+  removeNarration,
   prepareImageUpload,
   removeAudio,
   resetTarget,
@@ -23,11 +26,16 @@ import {
 import { Flash } from "@/components/Flash";
 import { AudioPlayer, VideoPlayer } from "@/components/Media";
 import { MediaUploader } from "@/components/MediaUploader";
+import { AudioRecorder } from "@/components/AudioRecorder";
+import { BackToTop } from "@/components/BackToTop";
 import { BAND_LABEL } from "@/lib/bands";
 import { ScrollToSaved } from "../ScrollToSaved";
 import { Suspense } from "react";
 
 export const dynamic = "force-dynamic";
+
+/** Blocks with nothing to read aloud. */
+const NO_NARRATION = new Set(["quiz", "band_picker", "persona_results", "image"]);
 
 const LINK_LABEL = new Map(LINK_SETTINGS.map((d) => [d.key, d.label]));
 
@@ -89,6 +97,54 @@ export default async function EditModule({ params, searchParams }: { params: Pro
   const settings = await getSettings();
   const st = new Map((status.get(slug) ?? []).map((s) => [s.target, s]));
   const mode = storageMode();
+
+  function narrationPanel(blk: Block) {
+    const origin = blk.origin!;
+    const t = `narration:${origin}`;
+    const ns = st.get(t);
+    const url = blk.narrationUrl;
+    return (
+      <details className="mt-2 rounded-lg bg-teal-wash/60 p-2" open={!!url || (ns && !ns.applied)}>
+        <summary className="cursor-pointer text-sm font-semibold text-teal-ink">
+          🎙 Read-aloud recording {url ? "(added)" : ns && !ns.applied ? "(needs a new take)" : "(optional)"}
+        </summary>
+        <div className="mt-2 space-y-2">
+          {ns && !ns.applied && (
+            <p className="text-sm font-semibold text-coral-ink">The text in the file changed since this was recorded, so it&apos;s hidden. Record it again.</p>
+          )}
+          {url && (
+            <audio controls preload="none" src={url} className="w-full">
+              <a href={url}>Download</a>
+            </audio>
+          )}
+          {mode === "none" ? (
+            <p className="text-sm">Recording needs Supabase Storage. In Vercel, connect Supabase to this project, then redeploy.</p>
+          ) : (
+            <>
+              <AudioRecorder prepare={prepareNarrationUpload.bind(null, slug, origin)} finish={finishNarrationUpload.bind(null, slug, origin)} hasAudio={!!url} />
+              <details>
+                <summary className="link cursor-pointer text-sm">…or upload an audio file</summary>
+                <div className="mt-2">
+                  <MediaUploader
+                    prepare={prepareNarrationUpload.bind(null, slug, origin)}
+                    finish={finishNarrationUpload.bind(null, slug, origin)}
+                    label="Audio file (.mp3, .m4a, .wav; up to 50 MB)"
+                    accept=".mp3,.m4a,.wav,.ogg,.aac,.webm,audio/*"
+                    successText="Uploaded. Residents can listen now."
+                  />
+                </div>
+              </details>
+            </>
+          )}
+          {(url || ns) && (
+            <form action={removeNarration.bind(null, slug, origin)}>
+              <button className="btn-danger !min-h-8 text-sm">Remove recording</button>
+            </form>
+          )}
+        </div>
+      </details>
+    );
+  }
 
   function blockForm(sec: Section, blk: Block, i: number) {
     const target = `block:${sec.id}:${i}`;
@@ -621,10 +677,20 @@ export default async function EditModule({ params, searchParams }: { params: Pro
         <h1 className="h1">
           Module {m.number}: {m.title}
         </h1>
-        <Link href={`/module/${slug}`} target="_blank" className="btn-small">
-          Preview as a resident ↗
-        </Link>
+        <div className="flex flex-wrap gap-2">
+          <Link href={`/admin/content/${slug}/arrange`} className="btn-small">
+            ⇅ Move content around
+          </Link>
+          <Link href={`/module/${slug}`} target="_blank" className="btn-small">
+            Preview as a resident ↗
+          </Link>
+        </div>
       </div>
+      {st.get("layout") && (
+        <p className="rounded-xl bg-yellow-wash p-3 text-sm">
+          This module uses a custom order. <Link href={`/admin/content/${slug}/arrange`} className="link">Change it or go back to the original order</Link>.
+        </p>
+      )}
       <Flash ok={sp.ok} error={sp.error} />
       <Suspense>
         <ScrollToSaved />
@@ -730,6 +796,11 @@ export default async function EditModule({ params, searchParams }: { params: Pro
                     in the meantime.
                   </p>
                 ) : (
+                  <div className="space-y-3">
+                  <div>
+                    <p className="label">Record narration for the whole section</p>
+                    <AudioRecorder prepare={prepareAudioUpload.bind(null, slug, sec.id)} finish={finishAudioUpload.bind(null, slug, sec.id)} hasAudio={!!sec.audioUrl} />
+                  </div>
                   <MediaUploader
                     prepare={prepareAudioUpload.bind(null, slug, sec.id)}
                     finish={finishAudioUpload.bind(null, slug, sec.id)}
@@ -737,6 +808,7 @@ export default async function EditModule({ params, searchParams }: { params: Pro
                     accept=".mp3,.m4a,.wav,.ogg,.aac,audio/*"
                     successText="Uploaded. Residents can listen now."
                   />
+                  </div>
                 )}
                 {sec.audioUrl && (
                   <form action={removeAudio.bind(null, slug, sec.id)} className="mt-2">
@@ -745,14 +817,24 @@ export default async function EditModule({ params, searchParams }: { params: Pro
                 )}
               </div>
             </div>
-            {sec.blocks.map((blk, i) => blockForm(sec, blk, i))}
+            {sec.blocks.map((blk) => {
+              // Edits stay tied to where the block sits in the file, even after it's been moved.
+              const [fromSection, fromIndex] = blk.origin!.split(":");
+              return (
+                <div key={blk.origin}>
+                  {blockForm({ ...sec, id: fromSection }, blk, Number(fromIndex))}
+                  {!NO_NARRATION.has(blk.type) && narrationPanel(blk)}
+                </div>
+              );
+            })}
           </section>
         );
       })}
 
       <p className="text-sm text-muted">
-        Adding, removing, or reordering sections and questions, and editing the About You form, is done by asking Claude Code to edit the files in /content.
+        Adding or removing sections and questions, and editing the About You form, is done by asking Claude Code to edit the files in /content.
       </p>
+      <BackToTop />
     </div>
   );
 }

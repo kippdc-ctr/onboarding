@@ -7,7 +7,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { sql } from "@/lib/db";
 import { Block, getModule, isActivity, LINK_SETTINGS, ModuleContent, PersonaQuestion } from "@/lib/content";
-import { hashOf, originalFor } from "@/lib/contentOverrides";
+import { hashOf, Layout, originalFor } from "@/lib/contentOverrides";
 import { requireAdmin } from "@/lib/session";
 import { deleteStored, MAX_AUDIO_BYTES, prepareUpload, PreparedUpload } from "@/lib/storage";
 
@@ -113,9 +113,9 @@ function cleanUrlOrPath(v: string) {
 export async function resetTarget(slug: string, target: string, anchor: string) {
   await requireAdmin();
   moduleOr404(slug);
-  if (target.startsWith("section:")) {
+  if (target.startsWith("section:") || target.startsWith("narration:")) {
     const prev = await existing(slug, target);
-    await removeMediaFile(prev.audioUrl as string | undefined);
+    await removeMediaFile((prev.audioUrl ?? prev.url) as string | undefined);
   }
   await sql`delete from content_overrides where module_slug = ${slug} and target = ${target}`;
   revalidatePath("/", "layout");
@@ -315,7 +315,7 @@ export async function saveActivity(slug: string, activityId: string, fd: FormDat
 
 // ---------- Audio upload ----------
 
-const AUDIO_TYPES: Record<string, string> = { mp3: "audio/mpeg", m4a: "audio/mp4", wav: "audio/wav", ogg: "audio/ogg", aac: "audio/aac" };
+const AUDIO_TYPES: Record<string, string> = { mp3: "audio/mpeg", m4a: "audio/mp4", wav: "audio/wav", ogg: "audio/ogg", aac: "audio/aac", webm: "audio/webm" };
 
 export async function prepareAudioUpload(
   slug: string,
@@ -325,6 +325,10 @@ export async function prepareAudioUpload(
   await requireAdmin();
   const m = moduleOr404(slug);
   if (!m.sections.some((s) => s.id === sectionId)) return { ok: false, error: "Unknown section." };
+  return prepareAudio(file);
+}
+
+async function prepareAudio(file: { name: string; type: string; size: number }): Promise<{ ok: true; upload: PreparedUpload } | { ok: false; error: string }> {
   const ext = (file.name.split(".").pop() ?? "").toLowerCase();
   const type = AUDIO_TYPES[ext];
   if (!type) return { ok: false, error: "Please choose an audio file: .mp3, .m4a, .wav, .ogg, or .aac." };
@@ -364,6 +368,86 @@ export async function removeAudio(slug: string, sectionId: string) {
   await removeMediaFile(prev.audioUrl as string | undefined);
   await put(m, target, { ...orig, ...prev, audioUrl: "", audioTranscript: "" });
   done(slug, `sec-${sectionId}`, "Audio removed.");
+}
+
+// ---------- Narration recorded for one block ----------
+
+function narrationTarget(m: ModuleContent, origin: string): string | null {
+  const t = `narration:${origin}`;
+  return /^[\w-]+:\d+$/.test(origin) && originalFor(m, t) !== undefined ? t : null;
+}
+
+export async function prepareNarrationUpload(
+  slug: string,
+  origin: string,
+  file: { name: string; type: string; size: number },
+): Promise<{ ok: true; upload: PreparedUpload } | { ok: false; error: string }> {
+  await requireAdmin();
+  if (!narrationTarget(moduleOr404(slug), origin)) return { ok: false, error: "Unknown content block." };
+  return prepareAudio(file);
+}
+
+export async function finishNarrationUpload(
+  slug: string,
+  origin: string,
+  info: { storagePath: string; publicUrl: string; filename: string; contentType: string; size: number },
+): Promise<{ ok: boolean }> {
+  await requireAdmin();
+  const m = moduleOr404(slug);
+  const target = narrationTarget(m, origin);
+  if (!target || !/^audio\/[\w.-]+$/.test(info.storagePath)) return { ok: false };
+  await sql`insert into media_files (storage_path, public_url, filename, content_type, size_bytes)
+            values (${info.storagePath}, ${info.publicUrl}, ${info.filename.slice(0, 200)}, ${info.contentType}, ${info.size})`;
+  const prev = await existing(slug, target);
+  await removeMediaFile(prev.url as string | undefined);
+  await put(m, target, { url: info.publicUrl });
+  return { ok: true };
+}
+
+export async function removeNarration(slug: string, origin: string) {
+  await requireAdmin();
+  const m = moduleOr404(slug);
+  const target = narrationTarget(m, origin);
+  if (!target) return;
+  const prev = await existing(slug, target);
+  await removeMediaFile(prev.url as string | undefined);
+  await sql`delete from content_overrides where module_slug = ${slug} and target = ${target}`;
+  revalidatePath("/", "layout");
+  done(slug, `blk-${origin.replace(":", "-")}`, "Recording removed.");
+}
+
+// ---------- Arrange: order of sections and blocks ----------
+
+export async function saveLayout(slug: string, layout: Layout): Promise<{ ok: boolean; error?: string }> {
+  await requireAdmin();
+  const m = moduleOr404(slug);
+  const sectionIds = new Set(m.sections.map((s) => s.id));
+  const origins = new Set(m.sections.flatMap((s) => s.blocks.map((_, i) => `${s.id}:${i}`)));
+  const seenS = new Set<string>();
+  const seenB = new Set<string>();
+  const clean: Layout = { sections: [] };
+  for (const ls of Array.isArray(layout?.sections) ? layout.sections : []) {
+    if (!sectionIds.has(ls?.id) || seenS.has(ls.id)) return { ok: false, error: "Unknown or repeated section." };
+    seenS.add(ls.id);
+    const blocks: string[] = [];
+    for (const o of Array.isArray(ls.blocks) ? ls.blocks : []) {
+      if (!origins.has(o) || seenB.has(o)) return { ok: false, error: "Unknown or repeated block." };
+      seenB.add(o);
+      blocks.push(o);
+    }
+    clean.sections.push({ id: ls.id, blocks });
+  }
+  if (seenS.size !== sectionIds.size || seenB.size !== origins.size) return { ok: false, error: "Every section and block must stay in the layout." };
+  await put(m, "layout", clean as unknown as Record<string, unknown>);
+  return { ok: true };
+}
+
+export async function resetLayout(slug: string): Promise<{ ok: boolean }> {
+  await requireAdmin();
+  moduleOr404(slug);
+  await sql`delete from content_overrides where module_slug = ${slug} and target = 'layout'`;
+  revalidatePath("/", "layout");
+  return { ok: true };
 }
 
 // ---------- Image upload (for image blocks) ----------

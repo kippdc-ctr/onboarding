@@ -10,7 +10,8 @@ import { ResidentHeader } from "@/components/ResidentHeader";
 import { StatusChip } from "@/components/StatusChip";
 import { LinkButton } from "@/components/LinkButton";
 import { RichText } from "@/components/RichText";
-import { AudioPlayer, VideoPlayer } from "@/components/Media";
+import { AudioPlayer, ReadAloud, VideoPlayer } from "@/components/Media";
+import { BackToTop } from "@/components/BackToTop";
 import { CheckItem } from "@/components/CheckItem";
 import { ModuleProgressProvider, Requirement } from "@/components/module/ProgressContext";
 import { StickyProgress } from "@/components/module/ProgressBar";
@@ -97,6 +98,17 @@ export default async function ModulePage({ params, searchParams }: { params: Pro
   }
 
   function renderBlock(blk: Block, key: string) {
+    const inner = renderBlockInner(blk, key);
+    if (!blk.narrationUrl) return inner;
+    return (
+      <div key={key} className="space-y-2">
+        <ReadAloud url={blk.narrationUrl} />
+        {inner}
+      </div>
+    );
+  }
+
+  function renderBlockInner(blk: Block, key: string) {
     switch (blk.type) {
       case "text":
         return (
@@ -567,6 +579,7 @@ export default async function ModulePage({ params, searchParams }: { params: Pro
             ) : null}
           </p>
           </fieldset>
+          <BackToTop />
         </main>
       </ModuleProgressProvider>
     </>

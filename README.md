@@ -93,6 +93,10 @@ Vercel integration can delete the database.
 - the matching activities (options and cards; add or remove cards) and the scenario practice
 - **video:** paste a YouTube, Vimeo, or Google Drive link on any video block, or add a video to the top of any section. These play inside the page.
 - **audio:** upload an mp3/m4a/wav (up to 50 MB) or paste an audio link for any section, with an optional transcript
+- **read-aloud recordings:** press **🎙 Record** under any paragraph, list, callout, quote, or activity (or for a whole section), listen back, and save.
+  Residents see a small "🎧 Listen" player above that piece. You can also upload a file instead. The browser asks for microphone access the first time.
+- **order:** **⇅ Move content around** (top of each module's editor) moves sections up and down, moves pieces within a section, and sends a piece to
+  another section. Edits and recordings travel with the piece. "Reset to original order" undoes it.
 
 Changes go live as soon as you save. Each edited item shows **Edited** and a **Reset to original** button.
 "Preview as a resident" opens the module exactly as residents see it, with answers turned off.
@@ -102,11 +106,12 @@ Videos are not uploaded into the app: host them on YouTube or Vimeo (as Unlisted
 because the free hosting plans have monthly bandwidth limits that ~70 residents watching videos could exceed.
 Audio files go to Supabase Storage in a public bucket named `media` with unguessable file names.
 
-**By request (Claude Code).** Adding, removing, or reordering sections or questions, and editing the Mentor Match survey,
+**By request (Claude Code).** Adding or removing sections or questions, reordering quiz questions, and editing the About You survey,
 are done in the files: `content/modules/*.json` and `content/forms/mentor-match.json`.
 - Keep every `id` / `promptId` / `activityId` the same so saved answers stay attached. Add new ids for new questions.
-- Admin edits are tied to those ids (and, for paragraphs and lists, to their position in a section). If a file change moves
-  or rewrites something that was also edited in the app, the editor flags that edit for review instead of guessing.
+- Admin edits are tied to those ids (and, for paragraphs and lists, to their position in the file). If a file change moves
+  or rewrites something that was also edited or recorded in the app, the editor flags it for review instead of guessing.
+  A custom order from "Move content around" keeps working; anything new in the file appears at the end of its section.
 - Blocks marked `"sample": true` show a "sample, replace" or "CTR to confirm" tag to residents until replaced.
 
 ## Next year's cohort
